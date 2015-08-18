@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Compiling sax2 for Debian Etch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Compiling%20sax2%20for%20Debian%20Etch&In-Reply-To=%3C200702241941.18029.dkj%40campuslinux.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000025.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Compiling sax2 for Debian Etch</H1>
+    <B>Dieter J&#228;ger</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Compiling%20sax2%20for%20Debian%20Etch&In-Reply-To=%3C200702241941.18029.dkj%40campuslinux.org%3E"
+       TITLE="[Sax-devel] Compiling sax2 for Debian Etch">dkj at campuslinux.org
+       </A><BR>
+    <I>Sat Feb 24 19:41:14 CET 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000025.html">[Sax-devel] Compiling sax2 for Debian Etch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi friends,
+
+Today I tried to compile sax2 on a Debian Etch. O found and followed the 
+problems in the &quot;sax does not compile&quot; thread and could replay those issues. 
+Yet on Debian there is another issue:
+
+green:~/sax# make
+#============================================
+# checking basic font path
+#--------------------------------------------
+( ./.fontpath )
+#============================================
+# building parsers and system profiler
+#--------------------------------------------
+make -C ./parse -f Makefile.Linux all
+make[1]: Entering directory `/root/sax/parse'
+swig -DHAVE_EXTENSIONS_SECTION -perl5 XFree.i
+perl Makefile.PL
+Note (probably harmless): No library found for -lxf86config
+Writing Makefile for XFree
+make[1]: Leaving directory `/root/sax/parse'
+make -C ./spp   -f Makefile.swig  all
+make[1]: Entering directory `/root/sax/spp'
+make -f Makefile.lex swig
+make[2]: Entering directory `/root/sax/spp'
+make[2]: F&#252;r das Ziel &#187;swig&#171; ist nichts zu tun.
+make[2]: Leaving directory `/root/sax/spp'
+swig -Wall -c++ -perl5 SPP.i
+perl Makefile.PL
+Writing Makefile for SPP
+make[1]: Leaving directory `/root/sax/spp'
+make -C ./parse all
+make[1]: Entering directory `/root/sax/parse'
+Skip blib/lib/XFree.pm (unchanged)
+Skip blib/lib/parse.pl (unchanged)
+cc -c  -iquote /usr/X11R6/include -iquote /usr/include/xorg -I. -D_REENTRANT -D_GNU_SOURCE -DTHREADS_HAVE_PIDS -DDEBIAN -fno-strict-aliasing -pipe -I/usr/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -O2    -DVERSION=\&quot;\&quot; -DXS_VERSION=\&quot;\&quot; -fPIC &quot;-I/usr/lib/perl/5.8/CORE&quot;  -DX_BYTE_ORDER=X_LITTLE_ENDIAN -DNEW_INPUT -DNDEBUG -DHAVE_EXTENSIONS_SECTION 
+parse.c
+parse.c:21:24: error: xf86Parser.h: Datei oder Verzeichnis nicht gefunden
+parse.c:41: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; or &#8216;__attribute__&#8217; 
+before &#8216;ReadConfigFile&#8217;
+parse.c:44: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:45: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:46: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:47: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:50: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:51: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:54: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:57: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:60: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:63: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:66: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:69: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:72: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:75: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c: In function &#8216;main&#8217;:
+parse.c:82: error: &#8216;XF86ConfigPtr&#8217; undeclared (first use in this function)
+parse.c:82: error: (Each undeclared identifier is reported only once
+parse.c:82: error: for each function it appears in.)
+parse.c:82: error: expected &#8216;;&#8217; before &#8216;conf&#8217;
+parse.c:84: error: &#8216;conf&#8217; undeclared (first use in this function)
+parse.c: At top level:
+parse.c:101: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; or &#8216;__attribute__&#8217; 
+before &#8216;ReadConfigFile&#8217;
+parse.c:130: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:135: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:140: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:145: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:154: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:187: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:237: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:314: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:357: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:408: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:588: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:779: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:979: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+parse.c:1067: error: expected &#8216;)&#8217; before &#8216;conf&#8217;
+make[1]: *** [parse.o] Fehler 1
+make[1]: Leaving directory `/root/sax/parse'
+make: *** [all] Fehler 2
+
+
+It does not find the xf86config lib and the xf86Parser.h. As far as I can see 
+the reason is that Debian does not use xfree86 for license problems anymore, 
+but it relies on xorg 7.1. Is there a possibility to switch to xorg (I found 
+some references to xorg in the package) ?
+
+Any help greatly appreciated
+
+Thanks
+
+Dieter J&#228;ger
+
+-- 
+Campus Linux
+<A HREF="http://www.campuslinux.org">http://www.campuslinux.org</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/sax-devel/attachments/20070224/c26a761b/attachment.pgp">https://lists.berlios.de/pipermail/sax-devel/attachments/20070224/c26a761b/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000025.html">[Sax-devel] Compiling sax2 for Debian Etch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

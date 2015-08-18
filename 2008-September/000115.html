@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1723 - sax-head/startup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1723%20-%20sax-head/startup&In-Reply-To=%3C200809231518.m8NFI0P7023061%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000114.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1723 - sax-head/startup</H1>
+    <B>marcus_schaefer at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1723%20-%20sax-head/startup&In-Reply-To=%3C200809231518.m8NFI0P7023061%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1723 - sax-head/startup">marcus_schaefer at mail.berlios.de
+       </A><BR>
+    <I>Tue Sep 23 17:18:00 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000114.html">[Sax-devel] r1722 - in sax-head: . libsax modules modules/create	modules/export parse rpm
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#115">[ date ]</a>
+              <a href="thread.html#115">[ thread ]</a>
+              <a href="subject.html#115">[ subject ]</a>
+              <a href="author.html#115">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: marcus_schaefer
+Date: 2008-09-23 17:17:57 +0200 (Tue, 23 Sep 2008)
+New Revision: 1723
+
+Modified:
+   sax-head/startup/sax.sh
+Log:
+
+- fixed detection of running session
+
+
+
+Modified: sax-head/startup/sax.sh
+===================================================================
+--- sax-head/startup/sax.sh	2008-09-23 15:00:39 UTC (rev 1722)
++++ sax-head/startup/sax.sh	2008-09-23 15:17:57 UTC (rev 1723)
+@@ -431,9 +431,6 @@
+ #----------------------------------
+ IN_TRIGGER=0
+ IN_OPT=`echo $IN_OPT`
+-if [ ! -z &quot;$IN_OPT&quot; ];then
+-	IN_TRIGGER=1
+-fi
+ if [ ! -f $API ];then
+ 	SYS_CONFIG=&quot;&quot;
+ 	IN_TRIGGER=1
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000114.html">[Sax-devel] r1722 - in sax-head: . libsax modules modules/create	modules/export parse rpm
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#115">[ date ]</a>
+              <a href="thread.html#115">[ thread ]</a>
+              <a href="subject.html#115">[ subject ]</a>
+              <a href="author.html#115">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

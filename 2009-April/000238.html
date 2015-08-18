@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1847 - in sax-head: api/mouse rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1847%20-%20in%20sax-head%3A%20api/mouse%20rpm&In-Reply-To=%3C200904280840.n3S8eZq3022190%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000237.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1847 - in sax-head: api/mouse rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1847%20-%20in%20sax-head%3A%20api/mouse%20rpm&In-Reply-To=%3C200904280840.n3S8eZq3022190%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1847 - in sax-head: api/mouse rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Tue Apr 28 10:40:35 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000237.html">[Sax-devel] r1846 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#238">[ date ]</a>
+              <a href="thread.html#238">[ thread ]</a>
+              <a href="subject.html#238">[ subject ]</a>
+              <a href="author.html#238">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-04-28 10:40:33 +0200 (Tue, 28 Apr 2009)
+New Revision: 1847
+
+Modified:
+   sax-head/api/mouse/mouseevent.cpp
+   sax-head/rpm/sax2.changes
+Log:
+- added missing include (&lt;stdio.h&gt;) to fix build for gcc 4.4
+
+
+Modified: sax-head/api/mouse/mouseevent.cpp
+===================================================================
+--- sax-head/api/mouse/mouseevent.cpp	2009-04-27 16:12:00 UTC (rev 1846)
++++ sax-head/api/mouse/mouseevent.cpp	2009-04-28 08:40:33 UTC (rev 1847)
+@@ -22,6 +22,7 @@
+ #include &lt;QMouseEvent&gt;
+ #include &lt;QEvent&gt;
+ #include &lt;QWheelEvent&gt;
++#include &lt;stdio.h&gt;
+ 
+ namespace SaXGUI {
+ //====================================
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-04-27 16:12:00 UTC (rev 1846)
++++ sax-head/rpm/sax2.changes	2009-04-28 08:40:33 UTC (rev 1847)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Tue Apr 28 10:39:26 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- added missing include (&lt;stdio.h&gt;) to fix build for gcc 4.4 
++
++-------------------------------------------------------------------
+ Mon Apr 27 18:04:03 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - Keyboard.map: use 'inet:microsoftpro' for XkbOptions for br/jp
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000237.html">[Sax-devel] r1846 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#238">[ date ]</a>
+              <a href="thread.html#238">[ thread ]</a>
+              <a href="subject.html#238">[ subject ]</a>
+              <a href="author.html#238">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

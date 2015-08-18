@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Compiling sax2 for Debian Etch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Compiling%20sax2%20for%20Debian%20Etch&In-Reply-To=%3C20070501084747.GD18807%40D7.ddts.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Compiling sax2 for Debian Etch</H1>
+    <B>Marcus Sch&#228;fer</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Compiling%20sax2%20for%20Debian%20Etch&In-Reply-To=%3C20070501084747.GD18807%40D7.ddts.net%3E"
+       TITLE="[Sax-devel] Compiling sax2 for Debian Etch">ms at suse.de
+       </A><BR>
+    <I>Tue May  1 10:47:47 CEST 2007</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Dieter,
+
+&gt;<i> Finally, yesterday I created Debian packages for i386 and amd64. As there are 
+</I>&gt;<i> some questions open regarding the Debian xserver package, so far the package 
+</I>&gt;<i> is available via the Campuslinux site 
+</I>&gt;<i> <A HREF="http://wiki.en.campuslinux.org/index.php/Repository.">http://wiki.en.campuslinux.org/index.php/Repository.</A>
+</I>
+*wow* you rock :-) Thanks for all the effort
+
+&gt;<i> I found a small issue in the libsasl:
+</I>&gt;<i> 
+</I>&gt;<i> In config.cpp, SaXConfig::removeXFineCache the xfine cache is deleted in a 
+</I>&gt;<i> while (1) {} loop. Yet if the xfine cache does not exist, the result is an 
+</I>&gt;<i> endless loop. I did kind of a bad hack:
+</I>&gt;<i> 
+</I>&gt;<i> -- sax/sax/libsax/config.cpp.old       2006-03-27 11:58:31.000000000 +0200
+</I>&gt;<i> +++ sax/sax/libsax/config.cpp   2007-04-29 22:46:26.000000000 +0200
+</I>&gt;<i> @@ -516,7 +516,7 @@
+</I>&gt;<i>         struct dirent* entry = NULL;
+</I>&gt;<i>         DIR* cacheDir = NULL;
+</I>&gt;<i>         cacheDir = opendir (SAX_XFINE_CACHE);
+</I>&gt;<i> -       while (1) {
+</I>&gt;<i> +       while (cacheDir) {
+</I>&gt;<i>                 entry = readdir (cacheDir);
+</I>&gt;<i>                 if (! entry) {
+</I>&gt;<i>                         break;
+</I>
+Not a bad hack in my eyes, it was a bad thing not to check whether the
+directory could be opened or not. Included that fix. Thanks
+
+We didn't saw the problem because the RPM package we provide always
+creates an empty cache directory so it could be opened at any time
+
+Thanks again for the fix
+
+Regards,
+Marcus
+-- 
+ Public Key available
+ gpg --keyserver gpg-keyserver.de --recv-keys 0xCCE3C6A2
+ -------------------------------------------------------
+ Marcus Sch&#228;fer (Res. &amp; Dev.)   SUSE LINUX Products GmbH
+ Tel: 0911-740 53 0             Maxfeldstrasse 5
+ FAX: 0911-740 53 479           D-90409 N&#252;rnberg
+ GF: Markus Rex                 HRB: 16746 (AG N&#252;rnberg)
+ <A HREF="http://www.suse.de">http://www.suse.de</A>             Germany
+ -------------------------------------------------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

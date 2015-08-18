@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1726 - in sax-branches/SaX2-71-SuSE-10-1-Devel: rpm	sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1726%20-%20in%20sax-branches/SaX2-71-SuSE-10-1-Devel%3A%20rpm%0A%09sysp/maps&In-Reply-To=%3C200810080351.m983pl4q016567%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000117.html">
+   <LINK REL="Next"  HREF="000119.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1726 - in sax-branches/SaX2-71-SuSE-10-1-Devel: rpm	sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1726%20-%20in%20sax-branches/SaX2-71-SuSE-10-1-Devel%3A%20rpm%0A%09sysp/maps&In-Reply-To=%3C200810080351.m983pl4q016567%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1726 - in sax-branches/SaX2-71-SuSE-10-1-Devel: rpm	sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Oct  8 05:51:47 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000117.html">[Sax-devel] r1725 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+        <LI>Next message: <A HREF="000119.html">[Sax-devel] r1727 - in sax-branches/SaX2-71-SuSE-10-1-Devel:	libsax/tools rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#118">[ date ]</a>
+              <a href="thread.html#118">[ thread ]</a>
+              <a href="subject.html#118">[ subject ]</a>
+              <a href="author.html#118">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-10-08 05:51:44 +0200 (Wed, 08 Oct 2008)
+New Revision: 1726
+
+Modified:
+   sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-71-SuSE-10-1-Devel/sysp/maps/Keyboard.map
+Log:
+- change the default from caps:shiftlock to caps:capslock for
+  french/belgian keyboards (bnc #432682)
+
+
+Modified: sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes	2008-10-07 19:32:47 UTC (rev 1725)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes	2008-10-08 03:51:44 UTC (rev 1726)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Tue Oct  7 15:03:00 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- change the default from caps:shiftlock to caps:capslock for
++  french/belgian keyboards (bnc #432682)
++
++-------------------------------------------------------------------
+ Tue Sep 16 14:35:52 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - make sure that 1024x600 mode is available on Netbooks by
+
+Modified: sax-branches/SaX2-71-SuSE-10-1-Devel/sysp/maps/Keyboard.map
+===================================================================
+--- sax-branches/SaX2-71-SuSE-10-1-Devel/sysp/maps/Keyboard.map	2008-10-07 19:32:47 UTC (rev 1725)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/sysp/maps/Keyboard.map	2008-10-08 03:51:44 UTC (rev 1726)
+@@ -12,8 +12,8 @@
+ atari-uk-falcon : pc101 : gb           : x            : xfree86 : x : x : x : x : x
+ atari-us        : pc101 : us           : x            : xfree86 : x : x : x : x : x
+ azerty          : pc101 : us           : x            : xfree86 : x : x : x : x : x
+-be-latin1       : pc104 : be           : x            : xfree86 : x : x : x : x : caps:shiftlock
+-be2-latin1      : pc104 : be           : x            : xfree86 : x : x : x : x : caps:shiftlock
++be-latin1       : pc104 : be           : x            : xfree86 : x : x : x : x : caps:capslock
++be2-latin1      : pc104 : be           : x            : xfree86 : x : x : x : x : caps:capslock
+ bg              : pc101 : bg           : x            : xfree86 : x : x : x : x : x
+ cf              : pc105 : ca           : fr           : xfree86 : x : x : x : x : x
+ croat           : pc105 : hr           : x            : xfree86 : x : x : x : x : x
+@@ -38,9 +38,9 @@
+ es              : pc102 : es           : x            : xfree86 : x : x : x : x : x
+ fi-latin1       : pc102 : fi           : x            : xfree86 : x : x : x : x : x
+ fi              : pc102 : fi           : x            : xfree86 : x : x : x : x : x
+-fr-latin1       : pc102 : fr           : x            : xfree86 : x : x : x : x : caps:shiftlock
+-fr-pc           : pc102 : fr           : x            : xfree86 : x : x : x : x : caps:shiftlock
+-fr              : pc102 : fr           : x            : xfree86 : x : x : x : x : caps:shiftlock
++fr-latin1       : pc102 : fr           : x            : xfree86 : x : x : x : x : caps:capslock
++fr-pc           : pc102 : fr           : x            : xfree86 : x : x : x : x : caps:capslock
++fr              : pc102 : fr           : x            : xfree86 : x : x : x : x : caps:capslock
+ fr_CH-latin1    : pc102 : ch           : fr           : xfree86 : x : x : x : x : x
+ fr_CH           : pc102 : ch           : fr           : xfree86 : x : x : x : x : x
+ gr-pc           : pc105 : us,gr        : ,extended    : xfree86 : x : x : x : x : grp:alt_shift_toggle,grp_led:scroll
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000117.html">[Sax-devel] r1725 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+	<LI>Next message: <A HREF="000119.html">[Sax-devel] r1727 - in sax-branches/SaX2-71-SuSE-10-1-Devel:	libsax/tools rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#118">[ date ]</a>
+              <a href="thread.html#118">[ thread ]</a>
+              <a href="subject.html#118">[ subject ]</a>
+              <a href="author.html#118">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

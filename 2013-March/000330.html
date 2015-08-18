@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1942 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2013-March/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1942%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09modules/detect%20rpm&In-Reply-To=%3C20130313143802.071C555B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000329.html">
+   <LINK REL="Next"  HREF="000331.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1942 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect rpm</H1>
+    <B>sndirsch at scm.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1942%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09modules/detect%20rpm&In-Reply-To=%3C20130313143802.071C555B0C%40scm.berlios.de%3E"
+       TITLE="[Sax-devel] r1942 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect rpm">sndirsch at scm.berlios.de
+       </A><BR>
+    <I>Wed Mar 13 15:38:01 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000329.html">[Sax-devel] r1941 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+        <LI>Next message: <A HREF="000331.html">[Sax-devel] r1943 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#330">[ date ]</a>
+              <a href="thread.html#330">[ thread ]</a>
+              <a href="subject.html#330">[ subject ]</a>
+              <a href="author.html#330">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2013-03-13 15:38:01 +0100 (Wed, 13 Mar 2013)
+New Revision: 1942
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Monitor.pm
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+Log:
+- Again: Use hsync range up to 100 kHz since apparently on modern
+  machines hwinfo/libhd always fails to detect the monitor and a
+  limit to 60kHz breaks resolutions used nowadays. This should be
+  safe since you can't break modern monitors that easy any longer.
+  Also the mode chosen depends on being detected/supported by KMS
+  in most cases now anyway.
+  This time do this also for detected monitors, since monitor
+  detection apparently often is completely bogus. (bcn#798466)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Monitor.pm
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Monitor.pm	2013-03-12 09:57:11 UTC (rev 1941)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Monitor.pm	2013-03-13 14:38:01 UTC (rev 1942)
+@@ -107,7 +107,7 @@
+ 	for($i=0;$i&lt;@hsync_list;$i++) {
+ 		$hsmax = int($hsync_list[$i]);
+ 		$hsmin = 15;
+-		$var{Monitor}{$i}{HorizSync}  = &quot;$hsmin-$hsmax&quot;;
++		$var{Monitor}{$i}{HorizSync}  = &quot;31-100&quot;;
+ 	}
+  
+ 	# set detected monitor VertRefresh setting...
+@@ -115,7 +115,7 @@
+ 	for($i=0;$i&lt;@vsync_list;$i++) {
+ 		$vsmax = int($vsync_list[$i]);
+ 		$vsmin = 50;
+-		$var{Monitor}{$i}{VertRefresh} = &quot;$vsmin-$vsmax&quot;;
++		$var{Monitor}{$i}{VertRefresh} = &quot;50-75&quot;;
+ 	}
+ 
+ 	# set detected monitor Identifier and a default
+@@ -163,8 +163,8 @@
+ 		# ------------------------------------------------------- 
+ 		$var{Monitor}{$i}{VendorName}  = &quot;$record[0]&quot;;
+ 		$var{Monitor}{$i}{ModelName}   = &quot;$record[1]&quot;; 
+-		$var{Monitor}{$i}{HorizSync}   = &quot;$record[2]-$record[3]&quot;;
+-		$var{Monitor}{$i}{VertRefresh} = &quot;$record[4]-$record[5]&quot;;
++		$var{Monitor}{$i}{HorizSync}   = &quot;31-100&quot;;
++		$var{Monitor}{$i}{VertRefresh} = &quot;50-75&quot;;
+ 		if ($record[8] ne &quot;&quot;) {
+ 		foreach my $bpp (8,15,16,24) {
+ 			$var{Screen}{$i}{Depth}{$bpp}{Modes}  = $record[8];
+@@ -205,8 +205,8 @@
+ 		if ($rsize &gt; 0) {
+ 			$var{Monitor}{$i}{VendorName}  = &quot;$record[0]&quot;;
+ 			$var{Monitor}{$i}{ModelName}   = &quot;$record[1]&quot;;
+-			$var{Monitor}{$i}{HorizSync}   = &quot;$record[2]-$record[3]&quot;;
+-			$var{Monitor}{$i}{VertRefresh} = &quot;$record[4]-$record[5]&quot;;
++			$var{Monitor}{$i}{HorizSync}   = &quot;31-100&quot;;
++			$var{Monitor}{$i}{VertRefresh} = &quot;50-75&quot;;
+ 			# /.../
+ 			# look for modeline defined...
+ 			# -----------------------------
+@@ -221,8 +221,8 @@
+ 		if ($rsize &gt; 0) {
+ 			$var{Monitor}{$i}{VendorName}  = &quot;$record[0]&quot;;
+ 			$var{Monitor}{$i}{ModelName}   = &quot;$record[1]&quot;;
+-			$var{Monitor}{$i}{HorizSync}   = &quot;$record[2]-$record[3]&quot;;
+-			$var{Monitor}{$i}{VertRefresh} = &quot;$record[4]-$record[5]&quot;;
++			$var{Monitor}{$i}{HorizSync}   = &quot;31-100&quot;;
++			$var{Monitor}{$i}{VertRefresh} = &quot;50-75&quot;;
+ 			# /.../
+ 			# look for modeline defined...
+ 			# -----------------------------
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-03-12 09:57:11 UTC (rev 1941)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-03-13 14:38:01 UTC (rev 1942)
+@@ -1,4 +1,16 @@
+ -------------------------------------------------------------------
++Wed Mar 13 15:34:44 CET 2013 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- Again: Use hsync range up to 100 kHz since apparently on modern
++  machines hwinfo/libhd always fails to detect the monitor and a
++  limit to 60kHz breaks resolutions used nowadays. This should be
++  safe since you can't break modern monitors that easy any longer.
++  Also the mode chosen depends on being detected/supported by KMS
++  in most cases now anyway.
++  This time do this also for detected monitors, since monitor
++  detection apparently often is completely bogus. (bcn#798466)
++
++-------------------------------------------------------------------
+ Tue Mar 12 10:55:30 CET 2013 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - no longer use 16bit as default color depth for ATI Radeon ES1000
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000329.html">[Sax-devel] r1941 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+	<LI>Next message: <A HREF="000331.html">[Sax-devel] r1943 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#330">[ date ]</a>
+              <a href="thread.html#330">[ thread ]</a>
+              <a href="subject.html#330">[ subject ]</a>
+              <a href="author.html#330">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1677 - in sax-head: profile/driver rpm sysp/maps	sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-August/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1677%20-%20in%20sax-head%3A%20profile/driver%20rpm%20sysp/maps%0A%09sysp/maps/arch&In-Reply-To=%3C200808041532.m74FWjY7008258%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000072.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1677 - in sax-head: profile/driver rpm sysp/maps	sysp/maps/arch</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1677%20-%20in%20sax-head%3A%20profile/driver%20rpm%20sysp/maps%0A%09sysp/maps/arch&In-Reply-To=%3C200808041532.m74FWjY7008258%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1677 - in sax-head: profile/driver rpm sysp/maps	sysp/maps/arch">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Mon Aug  4 17:32:45 CEST 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000072.html">[Sax-devel] r1678 - in sax-head: api/data/cdb	profile/automatic/input profile/automatic/monitor rpm	sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#71">[ date ]</a>
+              <a href="thread.html#71">[ thread ]</a>
+              <a href="subject.html#71">[ subject ]</a>
+              <a href="author.html#71">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-08-04 17:32:42 +0200 (Mon, 04 Aug 2008)
+New Revision: 1677
+
+Added:
+   sax-head/profile/driver/Virtual
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Driver.map
+   sax-head/sysp/maps/Identity.map
+   sax-head/sysp/maps/arch/Identity.map.i386
+   sax-head/sysp/maps/arch/Identity.map.x86_64
+Log:
+- added 'Virtual' profile for RANDR 1.2 drivers, since framebuffer
+  size cannot be changed on-the-fly at the moment; currently used
+  by radeon, radeonhd drivers and Intel 965 series (bnc #414156)
+
+
+Added: sax-head/profile/driver/Virtual
+===================================================================
+--- sax-head/profile/driver/Virtual	2008-07-31 15:21:45 UTC (rev 1676)
++++ sax-head/profile/driver/Virtual	2008-08-04 15:32:42 UTC (rev 1677)
+@@ -0,0 +1,5 @@
++Screen  -&gt; [X] -&gt;  Depth-&gt;8-&gt;Virtual = 3840 1200
++Screen  -&gt; [X] -&gt;  Depth-&gt;15-&gt;Virtual = 3840 1200
++Screen  -&gt; [X] -&gt;  Depth-&gt;16-&gt;Virtual = 3840 1200
++Screen  -&gt; [X] -&gt;  Depth-&gt;24-&gt;Virtual = 3840 1200
++Screen  -&gt; [X] -&gt;  Depth-&gt;32-&gt;Virtual = 3840 1200
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-07-31 15:21:45 UTC (rev 1676)
++++ sax-head/rpm/sax2.changes	2008-08-04 15:32:42 UTC (rev 1677)
+@@ -1,4 +1,11 @@
+ -------------------------------------------------------------------
++Mon Aug  4 17:03:50 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- added 'Virtual' profile for RANDR 1.2 drivers, since framebuffer
++  size cannot be changed on-the-fly at the moment; currently used
++  by radeon, radeonhd drivers and Intel 965 series (bnc #414156)
++
++-------------------------------------------------------------------
+ Thu Jul 31 16:40:26 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - Added support for the new Touch support of Wacom TabletPC
+
+Modified: sax-head/sysp/maps/Driver.map
+===================================================================
+--- sax-head/sysp/maps/Driver.map	2008-07-31 15:21:45 UTC (rev 1676)
++++ sax-head/sysp/maps/Driver.map	2008-08-04 15:32:42 UTC (rev 1677)
+@@ -5,11 +5,11 @@
+ # -----------------------------------------------------
+ nv       : Depth24,NVidia,NoModelines,NoComposite
+ nvidia   : Depth24,NVidia,NoModelines,Composite
+-radeon   : Depth24,Radeon
++radeon   : Depth24,Radeon,Virtual
+ i810     : Depth24,NoDDC,LinearAlloc
+ sis      : SiS,Depth24
+ fglrx    : FireGL,AIGLX,Composite
+ tseng    : VideoRAM
+ intel    : Depth24,Intel,AIGLX,Composite
+ fbdev    : NoModelines
+-radeonhd : Depth24,RadeonHD
++radeonhd : Depth24,RadeonHD,Virtual
+
+Modified: sax-head/sysp/maps/Identity.map
+===================================================================
+--- sax-head/sysp/maps/Identity.map	2008-07-31 15:21:45 UTC (rev 1676)
++++ sax-head/sysp/maps/Identity.map	2008-08-04 15:32:42 UTC (rev 1677)
+@@ -628,20 +628,20 @@
+ NAME=Intel&amp;DEVICE=945G&amp;VID=0x8086&amp;DID=0x2772&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=i915G&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945 GM&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945 GM&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=G33&amp;VID=0x8086&amp;DID=0x29C2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=G33&amp;VID=0x8086&amp;DID=0x29C2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=Q35&amp;VID=0x8086&amp;DID=0x29B2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-head/sysp/maps/arch/Identity.map.i386
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.i386	2008-07-31 15:21:45 UTC (rev 1676)
++++ sax-head/sysp/maps/arch/Identity.map.i386	2008-08-04 15:32:42 UTC (rev 1677)
+@@ -628,20 +628,20 @@
+ NAME=Intel&amp;DEVICE=945G&amp;VID=0x8086&amp;DID=0x2772&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=i915G&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945 GM&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945 GM&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=G33&amp;VID=0x8086&amp;DID=0x29C2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=G33&amp;VID=0x8086&amp;DID=0x29C2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=Q35&amp;VID=0x8086&amp;DID=0x29B2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-head/sysp/maps/arch/Identity.map.x86_64
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.x86_64	2008-07-31 15:21:45 UTC (rev 1676)
++++ sax-head/sysp/maps/arch/Identity.map.x86_64	2008-08-04 15:32:42 UTC (rev 1677)
+@@ -623,20 +623,20 @@
+ NAME=Intel&amp;DEVICE=945G&amp;VID=0x8086&amp;DID=0x2772&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=i915G&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945 GM&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945 GM&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=G33&amp;VID=0x8086&amp;DID=0x29C2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=G33&amp;VID=0x8086&amp;DID=0x29C2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=Q35&amp;VID=0x8086&amp;DID=0x29B2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000072.html">[Sax-devel] r1678 - in sax-head: api/data/cdb	profile/automatic/input profile/automatic/monitor rpm	sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#71">[ date ]</a>
+              <a href="thread.html#71">[ thread ]</a>
+              <a href="subject.html#71">[ subject ]</a>
+              <a href="author.html#71">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] [SVN:SaX-Team] r1647 - in sax-head: rpm sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20%5BSVN%3ASaX-Team%5D%20r1647%20-%20in%20sax-head%3A%20rpm%20sysp/maps/arch&In-Reply-To=%3C200807022033.m62KX0wc020876%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000044.html">
+   <LINK REL="Next"  HREF="000046.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] [SVN:SaX-Team] r1647 - in sax-head: rpm sysp/maps/arch</H1>
+    <B>sndirsch at BerliOS</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20%5BSVN%3ASaX-Team%5D%20r1647%20-%20in%20sax-head%3A%20rpm%20sysp/maps/arch&In-Reply-To=%3C200807022033.m62KX0wc020876%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] [SVN:SaX-Team] r1647 - in sax-head: rpm sysp/maps/arch">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Jul  2 22:33:00 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000044.html">[Sax-devel] [SVN:SaX-Team] r1646 - in	sax-branches/SaX2-71-SuSE-10-1-Devel: api api/touchscreen	profile/automatic/monitor rpm
+</A></li>
+        <LI>Next message: <A HREF="000046.html">[Sax-devel] r1650 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: Wed Jul  2 22:32:58 2008
+New Revision: 1647
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Identity.map
+   sax-head/sysp/maps/arch/Identity.map.i386
+   sax-head/sysp/maps/arch/Identity.map.ia64
+   sax-head/sysp/maps/arch/Identity.map.x86_64
+
+Log:
+- update x11DB
+
+
+Modified: sax-head/rpm/sax2.changes
+==============================================================================
+--- sax-head/rpm/sax2.changes	(original)
++++ sax-head/rpm/sax2.changes	Wed Jul  2 22:32:58 2008
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Wed Jul  2 22:30:27 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- update x11DB
++
++-------------------------------------------------------------------
+ Mon Jun 30 16:34:56 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - allow to select also COM2/COM3 as device for touchscreens
+
+Modified: sax-head/sysp/maps/Identity.map
+==============================================================================
+--- sax-head/sysp/maps/Identity.map	(original)
++++ sax-head/sysp/maps/Identity.map	Wed Jul  2 22:32:58 2008
+@@ -94,7 +94,7 @@
+ NAME=ATI&amp;DEVICE=3D Rage Pro 215GP&amp;VID=0x1002&amp;DID=0x4750&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage Pro 215GQ&amp;VID=0x1002&amp;DID=0x4751&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage I/II 215GT &amp;VID=0x1002&amp;DID=0x4754&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=ATI&amp;DEVICE=3D Rage IIC 215IIC &amp;VID=0x1002&amp;DID=0x4756&amp;SERVER=fbdev&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=3D Rage IIC 215IIC &amp;VID=0x1002&amp;DID=0x4756&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage IIC AGP&amp;VID=0x1002&amp;DID=0x4757&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=210888GX &amp;VID=0x1002&amp;DID=0x4758&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=ATI_210888GX&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage LT Pro AGP-66&amp;VID=0x1002&amp;DID=0x4c44&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+@@ -650,8 +650,6 @@
+ NAME=Intel&amp;DEVICE=Q33&amp;VID=0x8086&amp;DID=0x29D2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=855 GM Travelmate 661&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1025&amp;SUBDEVICE=0x0035
+ NAME=Intel&amp;DEVICE=855 GM Travelmate 661&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1025&amp;SUBDEVICE=0x0035
+-NAME=Intel&amp;DEVICE=945 GM FSC Lifebook E8110&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x10cf&amp;SUBDEVICE=0x137a
+-NAME=Intel&amp;DEVICE=945 GM FSC Lifebook E8110&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=i810&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x10cf&amp;SUBDEVICE=0x137a
+ NAME=Intel&amp;DEVICE=915 GM - IBM&amp;VID=0x8086&amp;DID=0x2592&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1014&amp;SUBDEVICE=0x0582
+ NAME=Intel&amp;DEVICE=915 GM - IBM&amp;VID=0x8086&amp;DID=0x2592&amp;SERVER=i810&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1014&amp;SUBDEVICE=0x0582
+ 
+
+Modified: sax-head/sysp/maps/arch/Identity.map.i386
+==============================================================================
+--- sax-head/sysp/maps/arch/Identity.map.i386	(original)
++++ sax-head/sysp/maps/arch/Identity.map.i386	Wed Jul  2 22:32:58 2008
+@@ -94,7 +94,7 @@
+ NAME=ATI&amp;DEVICE=3D Rage Pro 215GP&amp;VID=0x1002&amp;DID=0x4750&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage Pro 215GQ&amp;VID=0x1002&amp;DID=0x4751&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage I/II 215GT &amp;VID=0x1002&amp;DID=0x4754&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=ATI&amp;DEVICE=3D Rage IIC 215IIC &amp;VID=0x1002&amp;DID=0x4756&amp;SERVER=fbdev&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=3D Rage IIC 215IIC &amp;VID=0x1002&amp;DID=0x4756&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage IIC AGP&amp;VID=0x1002&amp;DID=0x4757&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=210888GX &amp;VID=0x1002&amp;DID=0x4758&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=ATI_210888GX&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage LT Pro AGP-66&amp;VID=0x1002&amp;DID=0x4c44&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+@@ -650,8 +650,6 @@
+ NAME=Intel&amp;DEVICE=Q33&amp;VID=0x8086&amp;DID=0x29D2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=855 GM Travelmate 661&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1025&amp;SUBDEVICE=0x0035
+ NAME=Intel&amp;DEVICE=855 GM Travelmate 661&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1025&amp;SUBDEVICE=0x0035
+-NAME=Intel&amp;DEVICE=945 GM FSC Lifebook E8110&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x10cf&amp;SUBDEVICE=0x137a
+-NAME=Intel&amp;DEVICE=945 GM FSC Lifebook E8110&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=i810&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x10cf&amp;SUBDEVICE=0x137a
+ NAME=Intel&amp;DEVICE=915 GM - IBM&amp;VID=0x8086&amp;DID=0x2592&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1014&amp;SUBDEVICE=0x0582
+ NAME=Intel&amp;DEVICE=915 GM - IBM&amp;VID=0x8086&amp;DID=0x2592&amp;SERVER=i810&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1014&amp;SUBDEVICE=0x0582
+ 
+
+Modified: sax-head/sysp/maps/arch/Identity.map.ia64
+==============================================================================
+--- sax-head/sysp/maps/arch/Identity.map.ia64	(original)
++++ sax-head/sysp/maps/arch/Identity.map.ia64	Wed Jul  2 22:32:58 2008
+@@ -418,7 +418,6 @@
+ NAME=Intel&amp;DEVICE=Q35&amp;VID=0x8086&amp;DID=0x29B2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=Q33&amp;VID=0x8086&amp;DID=0x29D2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=855 GM Travelmate 661&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1025&amp;SUBDEVICE=0x0035
+-NAME=Intel&amp;DEVICE=945 GM FSC Lifebook E8110&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x10cf&amp;SUBDEVICE=0x137a
+ NAME=Intel&amp;DEVICE=915 GM - IBM&amp;VID=0x8086&amp;DID=0x2592&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1014&amp;SUBDEVICE=0x0582
+ 
+ #-----------------------------------#
+
+Modified: sax-head/sysp/maps/arch/Identity.map.x86_64
+==============================================================================
+--- sax-head/sysp/maps/arch/Identity.map.x86_64	(original)
++++ sax-head/sysp/maps/arch/Identity.map.x86_64	Wed Jul  2 22:32:58 2008
+@@ -645,8 +645,6 @@
+ NAME=Intel&amp;DEVICE=Q33&amp;VID=0x8086&amp;DID=0x29D2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=855 GM Travelmate 661&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1025&amp;SUBDEVICE=0x0035
+ NAME=Intel&amp;DEVICE=855 GM Travelmate 661&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1025&amp;SUBDEVICE=0x0035
+-NAME=Intel&amp;DEVICE=945 GM FSC Lifebook E8110&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x10cf&amp;SUBDEVICE=0x137a
+-NAME=Intel&amp;DEVICE=945 GM FSC Lifebook E8110&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=i810&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x10cf&amp;SUBDEVICE=0x137a
+ NAME=Intel&amp;DEVICE=915 GM - IBM&amp;VID=0x8086&amp;DID=0x2592&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1014&amp;SUBDEVICE=0x0582
+ NAME=Intel&amp;DEVICE=915 GM - IBM&amp;VID=0x8086&amp;DID=0x2592&amp;SERVER=i810&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1014&amp;SUBDEVICE=0x0582
+ 
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000044.html">[Sax-devel] [SVN:SaX-Team] r1646 - in	sax-branches/SaX2-71-SuSE-10-1-Devel: api api/touchscreen	profile/automatic/monitor rpm
+</A></li>
+	<LI>Next message: <A HREF="000046.html">[Sax-devel] r1650 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

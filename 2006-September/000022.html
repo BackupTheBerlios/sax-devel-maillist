@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Sax2 cannot compile - ALL SOLVED
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile%20-%20ALL%20SOLVED&In-Reply-To=%3C200609011205.44931.aj%40getopenlab.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000021.html">
+   <LINK REL="Next"  HREF="000023.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Sax2 cannot compile - ALL SOLVED</H1>
+    <B>A.J. Venter</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile%20-%20ALL%20SOLVED&In-Reply-To=%3C200609011205.44931.aj%40getopenlab.com%3E"
+       TITLE="[Sax-devel] Sax2 cannot compile - ALL SOLVED">aj at getopenlab.com
+       </A><BR>
+    <I>Fri Sep  1 12:05:44 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000021.html">[Sax-devel] Sax2 cannot compile - ALL SOLVED
+</A></li>
+        <LI>Next message: <A HREF="000023.html">[Sax-devel] Sax2 cannot compile - ALL SOLVED
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#22">[ date ]</a>
+              <a href="thread.html#22">[ thread ]</a>
+              <a href="subject.html#22">[ subject ]</a>
+              <a href="author.html#22">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 01 September 2006 11:34, Marcus Sch&#228;fer wrote:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> &gt; I would just like, when an installed machine boots to check whether the
+</I>&gt;<i> &gt; current xorg.conf file will still work, and then invoke the reconfigure
+</I>&gt;<i> &gt; steps if needed.
+</I>&gt;<i>
+</I>&gt;<i> you can check if the X-Server still runs with the current config or not.
+</I>&gt;<i> That is easy to implement I think. Problematic is if there are changes
+</I>&gt;<i> which requires a config change but the X-Server still runs with that
+</I>&gt;<i> config. For example somebody changes its mouse from one without a wheel
+</I>&gt;<i> to one with a wheel. The server runs but the wheel may not work if
+</I>&gt;<i> the ZAxisMapping is missing. There are more than such cases and the worst
+</I>&gt;<i> case is if the X-Server runs but the screen stays black. There is no
+</I>&gt;<i> possibility to check that. I spent some time to think of a clean concept
+</I>&gt;<i> how to recognize environment changes and I must admit I wasn't able
+</I>&gt;<i> to find a good solution.
+</I>I did ;)
+Well partially - my install setup uses a &quot;click here&quot; with a two-layer 
+time-out, one is inside the GUI itself, no input after 20 -seconds die and 
+flag the config as bad.
+For those cases where X stalls halfway through and the program would never 
+run, I start a script called xcatch BEFOREHAND in the background. 
+Xcatch sleeps for 30 seconds, if it finds X in the process table at that 
+time -we KNOW something is  broken, so kill it off, chvt 1 and mark config as 
+bad.
+If we DO get a click from the GUI, then we mark the config as good, and kill 
+xcatch instead.
+This works for initial setup.
+
+I have a variant which is NON-interactive for post-install testing, but this 
+will ONLY catch a config where X fails to start at all :S
+
+Seems there is no way to do this check without having SOME sort of user input 
+validation.
+
+One possibility may be a patch to KDM - which will flag the config as good as 
+soon as KDM gets any kind of sensible input- but that has it's own 
+drawbacks  - like having your config marked bad if a power outage reboots 
+your box while you're at work. 
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> sax2 only has a check for the binary driver part and I would consider this
+</I>&gt;<i> code as a hack but I was forced to implement something like that.
+</I>&gt;<i> Everything else needs to be coded first. By the way checking if an X-Server
+</I>&gt;<i> could be started and is accessable has been implemented in the
+</I>&gt;<i>
+</I>&gt;<i> 	/usr/share/sax/modules/CheckServer.pm
+</I>&gt;<i>
+</I>&gt;<i> perl module. Maybe you can make use of it when you start implementing
+</I>I actually think my variation though simpler code is more advanced and catches 
+more scenarios, albeit only during initial setup where interactivity is an 
+acceptable loss.
+
+I had to do some more patches to the sax2 code to get proper work b.t.w. most 
+notably two functions that use rpm to check for dependencies - this is a 
+problem on slack/OL - although both CAN install rpm they usually don't - so 
+the checks would fail - ditto for debian derivatives.
+
+For now I simply disabled the checks and made them return true in all cases. I 
+could probably hack them to check using slapt-get on slackware - but the 
+problem is that package names and versions vary between distro's - so most 
+likely they will still fail even though the deps are met.
+
+I didn't bother to modify the yast call for installs, even though his is NOT 
+portable to ANY other distro's - disabling the check for package presense 
+effectively makes that function a &quot;can't happen&quot;.
+
+As it stands, out of my test boxes, I got amazing results on some, and bad 
+results on others and one where the sax2  config is COMPLETELY beserk - it 
+half starts and then locks up all input on a screen with apparently CGA 
+colors only (it's an i855 card, though the ONLY driver I have had sensible 
+results with was vesa - fbdev freaks out on this one, some BIOS issue I 
+think - 855resolution MIGHT help on this - though I don't exactly understand 
+how to make 855resolution and sax2 play nicely together - haven't had time to 
+study 855 yet).
+Eventually I opted rather than replacing my own setup system, for using sax2 
+to EXPAND it. My system is quite powerful in it's own way, it uses various 
+methods to try and configure systems, and lets the user choose the best one 
+with a LOT of fallback checks to rule out half-crashes and such.
+This means that where one dectector fails another usually succeeds.
+
+Finally I have some predone highly custom xorg.conf files for obscure cards 
+(mostly written and contributed by users) like those on some thinkpads, if 
+all detections fail - I try these one by one - so even the very obscure stuff 
+tends to work ok, provided anybody anywhere has ever made it work - and sent 
+me their config file.
+
+I'll send you the code once I sign off on OL4.1B - maybe some of the ideas 
+will be usefull to sax2.
+
+This is what I love about free software. Coopetition :)
+
+Ciao
+A.J.
+-- 
+&quot;80% Of a hardware engineer's job is application of the uncertainty principle.
+80% of a software engineer's job is pretending this isn't so.&quot;
+A.J. Venter
+Chief Software Architect
+OpenLab International           | +27 83 455 99 78 (South Africa) 
+<A HREF="http://www.getopenlab.com">http://www.getopenlab.com</A>       | 086 654 2898 (Fax)
+<A HREF="http://www.silentcoder.co.za">http://www.silentcoder.co.za</A>    | +55 118 162 2079 (Brazil)
+GPG Key: <A HREF="http://pgp.mit.edu:11371/pks/lookup?op=get&amp;search=0x27CFFE5A">http://pgp.mit.edu:11371/pks/lookup?op=get&amp;search=0x27CFFE5A</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/sax-devel/attachments/20060901/c2ab34db/attachment.pgp">https://lists.berlios.de/pipermail/sax-devel/attachments/20060901/c2ab34db/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000021.html">[Sax-devel] Sax2 cannot compile - ALL SOLVED
+</A></li>
+	<LI>Next message: <A HREF="000023.html">[Sax-devel] Sax2 cannot compile - ALL SOLVED
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#22">[ date ]</a>
+              <a href="thread.html#22">[ thread ]</a>
+              <a href="subject.html#22">[ subject ]</a>
+              <a href="author.html#22">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

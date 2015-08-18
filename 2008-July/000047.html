@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1651 - sax-head/rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1651%20-%20sax-head/rpm&In-Reply-To=%3C200807071210.m67CAXbo001149%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000046.html">
+   <LINK REL="Next"  HREF="000048.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1651 - sax-head/rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1651%20-%20sax-head/rpm&In-Reply-To=%3C200807071210.m67CAXbo001149%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1651 - sax-head/rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Mon Jul  7 14:10:33 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000046.html">[Sax-devel] r1650 - sax-head/rpm
+</A></li>
+        <LI>Next message: <A HREF="000048.html">[Sax-devel] r1652 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#47">[ date ]</a>
+              <a href="thread.html#47">[ thread ]</a>
+              <a href="subject.html#47">[ subject ]</a>
+              <a href="author.html#47">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-07-07 14:10:32 +0200 (Mon, 07 Jul 2008)
+New Revision: 1651
+
+Added:
+   sax-head/rpm/xorg-server-1_5.diff
+Modified:
+   sax-head/rpm/sax2.spec
+Log:
+- fixed build for xorg-server 1.5
+
+
+Modified: sax-head/rpm/sax2.spec
+===================================================================
+--- sax-head/rpm/sax2.spec	2008-07-07 11:10:21 UTC (rev 1650)
++++ sax-head/rpm/sax2.spec	2008-07-07 12:10:32 UTC (rev 1651)
+@@ -49,6 +49,7 @@
+ %if %{suse_version} &gt; 1020
+ Patch:          sax2.dif
+ %endif
++Patch1:         xorg-server-1_5.diff
+ 
+ %description
+ This package contains the SuSE Advanced X-Configuration
+@@ -162,6 +163,7 @@
+ %if %{suse_version} &gt; 1020
+ %patch
+ %endif
++%patch1
+ 
+ %build
+ test -e /.buildenv &amp;&amp; . /.buildenv
+
+Added: sax-head/rpm/xorg-server-1_5.diff
+===================================================================
+--- sax-head/rpm/xorg-server-1_5.diff	2008-07-07 11:10:21 UTC (rev 1650)
++++ sax-head/rpm/xorg-server-1_5.diff	2008-07-07 12:10:32 UTC (rev 1651)
+@@ -0,0 +1,32 @@
++--- ../sax.orig/parse/XFree.h	2008-07-04 15:42:05.000000000 +0000
+++++ parse/XFree.h	2008-07-04 15:48:06.000000000 +0000
++@@ -9,7 +9,6 @@
++ /* Files Section... */
++ extern char* GetModulePath (XF86ConfigPtr conf);
++ extern char* GetFontPath (XF86ConfigPtr conf);
++-extern char* GetRgbPath (XF86ConfigPtr conf);
++ extern char* GetLogFile (XF86ConfigPtr conf);
++ 
++ /* Module Section... */
++--- ../sax.orig/parse/parse.c	2008-07-04 15:42:05.000000000 +0000
+++++ parse/parse.c	2008-07-04 15:48:24.000000000 +0000
++@@ -43,7 +43,6 @@
++ /* Files Section... */
++ char* GetModulePath (XF86ConfigPtr conf);
++ char* GetFontPath (XF86ConfigPtr conf);
++-char* GetRgbPath (XF86ConfigPtr conf);
++ char* GetLogFile (XF86ConfigPtr conf);
++ 
++ /* Module Section... */
++@@ -137,11 +136,6 @@
++ 	return(conf-&gt;conf_files-&gt;file_fontpath);
++ }
++ 
++-char* GetRgbPath (XF86ConfigPtr conf) {
++-	if (conf == NULL) return(&quot;null&quot;);
++-	return(conf-&gt;conf_files-&gt;file_rgbpath);
++-}
++-
++ char* GetLogFile (XF86ConfigPtr conf) {
++ 	if (conf == NULL) return(&quot;null&quot;);
++ 	return(conf-&gt;conf_files-&gt;file_logfile);
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000046.html">[Sax-devel] r1650 - sax-head/rpm
+</A></li>
+	<LI>Next message: <A HREF="000048.html">[Sax-devel] r1652 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#47">[ date ]</a>
+              <a href="thread.html#47">[ thread ]</a>
+              <a href="subject.html#47">[ subject ]</a>
+              <a href="author.html#47">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

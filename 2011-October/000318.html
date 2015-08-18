@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1929 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/input rpm sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2011-October/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1929%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/automatic/input%20rpm%20sysp/maps&In-Reply-To=%3C20111017115536.586CA48145D%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1929 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/input rpm sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1929%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/automatic/input%20rpm%20sysp/maps&In-Reply-To=%3C20111017115536.586CA48145D%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1929 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/input rpm sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Mon Oct 17 13:55:36 CEST 2011</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#318">[ date ]</a>
+              <a href="thread.html#318">[ thread ]</a>
+              <a href="subject.html#318">[ subject ]</a>
+              <a href="author.html#318">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2011-10-17 13:55:35 +0200 (Mon, 17 Oct 2011)
+New Revision: 1929
+
+Added:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/input/hv-mouse
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Input.map
+Log:
+- enabled use of evdev driver for hyper-v guests; patch by Olaf
+  Hering (bnc #723929)
+
+
+Added: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/input/hv-mouse
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/input/hv-mouse	                        (rev 0)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/input/hv-mouse	2011-10-17 11:55:35 UTC (rev 1929)
+@@ -0,0 +1,19 @@
++# Hyper-V mouse
++# dynamic profile which enables the Hyper-V pointer. The Hyper-V pointer
++# requires the real input device to be set as device node. Therefore
++# the dynamic part replaces the static multiplexer device
++#====================================
++
++!remove InputDevice -&gt; [X] -&gt; Option -&gt; Device
++!remove InputDevice -&gt; [X] -&gt; Option -&gt; Protocol
++!remove InputDevice -&gt; [X] -&gt; Option -&gt; Buttons
++!remove InputDevice -&gt; [X] -&gt; Option -&gt; ZAxisMapping
++
++InputDevice -&gt; [X] -&gt; Identifier = Mouse[[X]]
++InputDevice -&gt; [X] -&gt; Driver     = evdev
++InputDevice -&gt; [X] -&gt; Option -&gt; InputFashion   = Mouse
++InputDevice -&gt; [X] -&gt; Option -&gt; Name           = Microsoft Vmbus HID-compliant Mouse
++InputDevice -&gt; [X] -&gt; Option -&gt; Pass           = 3
++InputDevice -&gt; [X] -&gt; Option -&gt; Vendor         = 0x45e
++InputDevice -&gt; [X] -&gt; Option -&gt; Product        = 0x621
++
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2011-03-17 05:02:43 UTC (rev 1928)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2011-10-17 11:55:35 UTC (rev 1929)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Mon Oct 17 13:52:13 CEST 2011 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- enabled use of evdev driver for hyper-v guests; patch by Olaf
++  Hering (bnc #723929)
++
++-------------------------------------------------------------------
+ Wed Mar 16 13:12:44 CET 2011 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - reenabled use of evdev driver for Xen mouse (new &quot;xen-mouse&quot;
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Input.map
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Input.map	2011-03-17 05:02:43 UTC (rev 1928)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Input.map	2011-10-17 11:55:35 UTC (rev 1929)
+@@ -25,6 +25,7 @@
+ 0x0002 : 0x0008 : alps : synaptics
+ 0x1943 : 0x5000 : fujitsu : fujitsu
+ 0x5853 : 0xfffe : xen-mouse : evdev
++0x045e : 0x0621 : hv-mouse : evdev
+ #0x03f0 : 0x1126 : hp-mouse : evdev
+ #0x0029 : 0x0000 : touchscreen : evdev
+ #0x0030 : 0x0000 : touchscreen : evdev
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#318">[ date ]</a>
+              <a href="thread.html#318">[ thread ]</a>
+              <a href="subject.html#318">[ subject ]</a>
+              <a href="author.html#318">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

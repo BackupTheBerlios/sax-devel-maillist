@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Compiling sax2 for Debian Etch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Compiling%20sax2%20for%20Debian%20Etch&In-Reply-To=%3C200702262104.38927.dieter.jaeger%40magnum-opus.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000027.html">
+   <LINK REL="Next"  HREF="000029.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Compiling sax2 for Debian Etch</H1>
+    <B>Dieter J&#228;ger</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Compiling%20sax2%20for%20Debian%20Etch&In-Reply-To=%3C200702262104.38927.dieter.jaeger%40magnum-opus.de%3E"
+       TITLE="[Sax-devel] Compiling sax2 for Debian Etch">dieter.jaeger at magnum-opus.de
+       </A><BR>
+    <I>Mon Feb 26 21:04:38 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000027.html">[Sax-devel] Compiling sax2 for Debian Etch
+</A></li>
+        <LI>Next message: <A HREF="000029.html">[Sax-devel] Compiling sax2 for Debian Etch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#28">[ date ]</a>
+              <a href="thread.html#28">[ thread ]</a>
+              <a href="subject.html#28">[ subject ]</a>
+              <a href="author.html#28">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi friends,
+
+So far I managed to create libxf86config.a and the parser header files from 
+the debian package and put them into two small packages. After installation, 
+when compiling sax2 I get the following error:
+
+$ make 
+...
+cc -c  -iquote /usr/X11R6/include -iquote /usr/include/xorg -I. -D_REENTRANT -D_
+GNU_SOURCE -DTHREADS_HAVE_PIDS -DDEBIAN -fno-strict-aliasing -pipe -I/usr/local/
+include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -O2    -DVERSION=\&quot;\&quot; -DXS_VE                                                                                                  
+RSION=\&quot;\&quot; -fPIC &quot;-I/usr/lib/perl/5.8/CORE&quot;  -DX_BYTE_ORDER=X_LITTLE_ENDIAN -DNE                                                                                                  
+W_INPUT -DNDEBUG -DHAVE_EXTENSIONS_SECTION parse.c
+cc -c  -iquote /usr/X11R6/include -iquote /usr/include/xorg -I. -D_REENTRANT -D_                                                                                                  
+GNU_SOURCE -DTHREADS_HAVE_PIDS -DDEBIAN -fno-strict-aliasing -pipe -I/usr/local/                                                                                                  
+include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -O2    -DVERSION=\&quot;\&quot; -DXS_VE                                                                                                  
+RSION=\&quot;\&quot; -fPIC &quot;-I/usr/lib/perl/5.8/CORE&quot;  -DX_BYTE_ORDER=X_LITTLE_ENDIAN -DNE                                                                                                  
+W_INPUT -DNDEBUG -DHAVE_EXTENSIONS_SECTION XFree_wrap.c
+Running Mkbootstrap for XFree ()
+chmod 644 XFree.bs
+rm -f blib/arch/auto/XFree/XFree.so
+cc  -shared -L/usr/local/lib parse.o XFree_wrap.o  -o 
+blib/arch/auto/XFree/XFree                                                                                                  .so     
+\
+           -L/usr/X11R6/lib -lm -lxf86config    \
+
+/usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/4.1.2/../../../../lib64/libxf86config                                                                                                  .a(read.o): 
+relocation R_X86_64_32 against `a local symbol' can not be used when                                                                                                   
+making a shared object; recompile with -fPIC
+/usr/lib/gcc/x86_64-linux-gnu/4.1.2/../../../../lib64/libxf86config.a: could 
+not                                                                                                   
+read symbols: Bad value
+collect2: ld returned 1 exit status
+make[1]: *** [blib/arch/auto/XFree/XFree.so] Fehler 1
+make[1]: Leaving directory `/root/sax/parse'
+make: *** [all] Fehler 2
+
+I compiled the xserver with the following flags:
+
+--disable-static \
+             --enable-xorg \
+             --with-mesa-source=/usr/share/mesa-source \
+                 --with-default-font-path=&quot;/usr/share/fonts/X11/misc,/usr/X11R6/lib/X11/fonts/misc,/usr/share/fonts/X11/cyrillic,/usr/share/fonts/X11/100dpi/:unscaled,/usr/share/
+fonts/X11/75dpi/:unscaled,/usr/share/fonts/X11/Type1,/usr/X11R6/lib/  
+X11/fonts/Type1,/usr/share/fonts/X11/100dpi,/usr/share/fonts/X11/75dpi,/var/lib/defoma/x-ttcidfont-conf.d/di
+rs/TrueType&quot; \
+                 --with-serverconfig-path=/etc/X11/xserver \
+                 --with-rgb-path=/etc/X11/rgb \
+             --enable-xtrap \
+             --enable-dmx \
+             --enable-vfb \
+             --enable-install-libxf86config \
+                 --enable-kdrive \
+                 --enable-xephyr \
+             --enable-pic \
+             --disable-lbx \
+             --disable-xprint \
+                 --disable-xorgconfig \
+                 --disable-xorgcfg \
+                 --with-xkb-path=/usr/share/X11/xkb \
+                 --with-xkb-output=/var/lib/xkb \
+             --disable-misc-utils
+
+I used the Debian defaults and 
+added --enable-install-libxf86config --enable-pic.
+
+Can you help me on?
+
+So long 
+
+Dieter
+
+Am Sonntag, 25. Februar 2007 10:38 schrieb Dieter J&#228;ger:
+&gt;<i> Am Sonntag, 25. Februar 2007 10:12 schrieb Dieter J&#228;ger:
+</I>&gt;<i> &gt; Hi Stefan,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Am Samstag, 24. Februar 2007 23:37 schrieb Stefan Dirsch:
+</I>&gt;<i> &gt; &gt; On Sat, Feb 24, 2007 at 07:41:14PM +0100, Dieter J&#228;ger wrote:
+</I>&gt;<i> &gt; &gt; &gt; Today I tried to compile sax2 on a Debian Etch. O found and followed
+</I>&gt;<i> &gt; &gt; &gt; the problems in the &quot;sax does not compile&quot; thread and could replay
+</I>&gt;<i> &gt; &gt; &gt; those issues. Yet on Debian there is another issue:
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; green:~/sax# make
+</I>&gt;<i> &gt; &gt; &gt; parse.c:21:24: error: xf86Parser.h: Datei oder Verzeichnis nicht
+</I>&gt;<i> &gt; &gt; &gt; gefunden
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; It does not find the xf86config lib and the xf86Parser.h. As far as I
+</I>&gt;<i> &gt; &gt; &gt; can see the reason is that Debian does not use xfree86 for license
+</I>&gt;<i> &gt; &gt; &gt; problems anymore, but it relies on xorg 7.1.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Not at all. xf86config lib and xf86Parser.h is still part of
+</I>&gt;<i> &gt; &gt; X.Org. Debian simply does not package libxf86config.a/xf86Parser.h. It
+</I>&gt;<i> &gt; &gt; seems most Linux distributions don't. :-(
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; O.k., but now - in which of those thousands of tar files is it? Do you
+</I>&gt;<i> &gt; happen to know? Seems to be the static component, isn't it?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; If it is a seperate component I could build a Debian package out of it
+</I>&gt;<i> &gt; and this way more or less easily resolve the problem.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I will search a little bit ...
+</I>&gt;<i>
+</I>&gt;<i> O.K., easy to find: in the parser of xserver - that's unfortunate ...
+</I>&gt;<i>
+</I>&gt;<i> &gt; So long
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Dieter
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; Best regards,
+</I>&gt;<i> &gt; &gt; Stefan
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Public Key available
+</I>&gt;<i> &gt; &gt; ------------------------------------------------------
+</I>&gt;<i> &gt; &gt; Stefan Dirsch (Res. &amp; Dev.)   SUSE LINUX Products GmbH
+</I>&gt;<i> &gt; &gt; Tel: 0911-740 53 0            Maxfeldstra&#223;e 5
+</I>&gt;<i> &gt; &gt; FAX: 0911-740 53 479          D-90409 N&#252;rnberg
+</I>&gt;<i> &gt; &gt; <A HREF="http://www.suse.de">http://www.suse.de</A>            Germany
+</I>&gt;<i> &gt; &gt; -----------------------------------------------------------------
+</I>&gt;<i> &gt; &gt; SUSE LINUX Products GmbH, GF: Markus Rex, HRB 16746 (AG N&#252;rnberg)
+</I>&gt;<i> &gt; &gt; -----------------------------------------------------------------
+</I>&gt;<i> &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; Sax-devel mailing list
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">Sax-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">https://lists.berlios.de/mailman/listinfo/sax-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Sax-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">Sax-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">https://lists.berlios.de/mailman/listinfo/sax-devel</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Sax-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">Sax-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">https://lists.berlios.de/mailman/listinfo/sax-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000027.html">[Sax-devel] Compiling sax2 for Debian Etch
+</A></li>
+	<LI>Next message: <A HREF="000029.html">[Sax-devel] Compiling sax2 for Debian Etch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#28">[ date ]</a>
+              <a href="thread.html#28">[ thread ]</a>
+              <a href="subject.html#28">[ subject ]</a>
+              <a href="author.html#28">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

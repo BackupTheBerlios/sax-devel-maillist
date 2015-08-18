@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1882 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	api/data/cdb rpm sysp
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1882%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09api/data/cdb%20rpm%20sysp&In-Reply-To=%3C200907291434.n6TEYRCn030899%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000270.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1882 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	api/data/cdb rpm sysp</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1882%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09api/data/cdb%20rpm%20sysp&In-Reply-To=%3C200907291434.n6TEYRCn030899%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1882 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	api/data/cdb rpm sysp">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Jul 29 16:34:27 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000270.html">[Sax-devel] r1881 - in sax-head: api/data/cdb rpm
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#271">[ date ]</a>
+              <a href="thread.html#271">[ thread ]</a>
+              <a href="subject.html#271">[ subject ]</a>
+              <a href="author.html#271">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-07-29 16:34:25 +0200 (Wed, 29 Jul 2009)
+New Revision: 1882
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/api/data/cdb/Monitors
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/xstuff.c
+Log:
+- added 1600 x 900 to vesa list (bnc #524724)
+- obsoletes special entry for &quot;CMO N156O6-L01&quot; monitor in 
+  api/data/cdb/Monitors
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/api/data/cdb/Monitors
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/api/data/cdb/Monitors	2009-07-29 14:29:33 UTC (rev 1881)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/api/data/cdb/Monitors	2009-07-29 14:34:25 UTC (rev 1882)
+@@ -42363,14 +42363,3 @@
+  Resolution=1920x1080
+  Vsync=56-76
+ }
+-
+-#==============================================
+-# CMO N156O6-L01 LCD Monitor
+-#----------------------------------------------
+-CMO:N156O6-L01 {
+- DDC=CMO1574
+- Hsync=31-57
+- Vsync=59-61
+- Resolution=1600x900
+- Modeline &quot;1600x900&quot;  97.50 1600 1648 1680 1760 900 903 908 926 +hsync -vsync
+-}
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-07-29 14:29:33 UTC (rev 1881)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-07-29 14:34:25 UTC (rev 1882)
+@@ -1,4 +1,11 @@
+ -------------------------------------------------------------------
++Wed Jul 29 16:33:27 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- added 1600 x 900 to vesa list (bnc #524724)
++- obsoletes special entry for &quot;CMO N156O6-L01&quot; monitor in 
++  api/data/cdb/Monitors
++
++-------------------------------------------------------------------
+ Fri Jul 24 05:48:21 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - fixed hsync values for CMO N156O6-L01 monitor to allow also lower
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/xstuff.c
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/xstuff.c	2009-07-29 14:29:33 UTC (rev 1881)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/xstuff.c	2009-07-29 14:34:25 UTC (rev 1882)
+@@ -20,7 +20,7 @@
+ #include &quot;mouse.h&quot;
+ #include &quot;xstuff.h&quot;
+ 
+-#define VESA_LIST 27
++#define VESA_LIST 28
+ 
+ //======================================
+ // ScanXStuff: constructor...
+@@ -202,18 +202,19 @@
+ 	vesaStandard[12].x = 1366; vesaStandard[12].y = 768;
+ 	vesaStandard[13].x = 1400; vesaStandard[13].y = 1050;
+ 	vesaStandard[14].x = 1440; vesaStandard[14].y = 900;
+-	vesaStandard[15].x = 1600; vesaStandard[15].y = 1000;
+-	vesaStandard[16].x = 1600; vesaStandard[16].y = 1024;
+-	vesaStandard[17].x = 1600; vesaStandard[17].y = 1200;
+-	vesaStandard[18].x = 1680; vesaStandard[18].y = 1050;
+-	vesaStandard[19].x = 1900; vesaStandard[19].y = 1200;
+-	vesaStandard[20].x = 1920; vesaStandard[20].y = 1200;
+-	vesaStandard[21].x = 1920; vesaStandard[21].y = 1440;
+-	vesaStandard[22].x = 2048; vesaStandard[22].y = 1536;
+-	vesaStandard[23].x = 2560; vesaStandard[23].y = 1600;
+-	vesaStandard[24].x = 2560; vesaStandard[24].y = 2048;
+-	vesaStandard[25].x = 2800; vesaStandard[25].y = 2100;
+-	vesaStandard[26].x = 3200; vesaStandard[26].y = 2400;
++	vesaStandard[15].x = 1600; vesaStandard[15].y = 900;
++	vesaStandard[16].x = 1600; vesaStandard[16].y = 1000;
++	vesaStandard[17].x = 1600; vesaStandard[17].y = 1024;
++	vesaStandard[18].x = 1600; vesaStandard[18].y = 1200;
++	vesaStandard[19].x = 1680; vesaStandard[19].y = 1050;
++	vesaStandard[20].x = 1900; vesaStandard[20].y = 1200;
++	vesaStandard[21].x = 1920; vesaStandard[21].y = 1200;
++	vesaStandard[22].x = 1920; vesaStandard[22].y = 1440;
++	vesaStandard[23].x = 2048; vesaStandard[23].y = 1536;
++	vesaStandard[24].x = 2560; vesaStandard[24].y = 1600;
++	vesaStandard[25].x = 2560; vesaStandard[25].y = 2048;
++	vesaStandard[26].x = 2800; vesaStandard[26].y = 2100;
++	vesaStandard[27].x = 3200; vesaStandard[27].y = 2400;
+ 
+ 	//======================================
+ 	// lookup framebuffer timing
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000270.html">[Sax-devel] r1881 - in sax-head: api/data/cdb rpm
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#271">[ date ]</a>
+              <a href="thread.html#271">[ thread ]</a>
+              <a href="subject.html#271">[ subject ]</a>
+              <a href="author.html#271">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

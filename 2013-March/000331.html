@@ -1,0 +1,251 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1943 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2013-March/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1943%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/script%20rpm&In-Reply-To=%3C20130328133417.E492255B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000330.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1943 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm</H1>
+    <B>sndirsch at scm.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1943%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/script%20rpm&In-Reply-To=%3C20130328133417.E492255B0C%40scm.berlios.de%3E"
+       TITLE="[Sax-devel] r1943 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm">sndirsch at scm.berlios.de
+       </A><BR>
+    <I>Thu Mar 28 14:34:17 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000330.html">[Sax-devel] r1942 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect rpm
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#331">[ date ]</a>
+              <a href="thread.html#331">[ thread ]</a>
+              <a href="subject.html#331">[ subject ]</a>
+              <a href="author.html#331">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2013-03-28 14:34:17 +0100 (Thu, 28 Mar 2013)
+New Revision: 1943
+
+Added:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/DrvSelectInSecBootMode.sh
+Removed:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/KMSAndNotIntelOrAMD.sh
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/ModeSetting.pl
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+Log:
+- fall back to fbdev in secureboot mode with ast KMS driver,
+  UEFI VGA and other currently unknown frame buffer drivers
+
+
+Added: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/DrvSelectInSecBootMode.sh
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/DrvSelectInSecBootMode.sh	                        (rev 0)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/DrvSelectInSecBootMode.sh	2013-03-28 13:34:17 UTC (rev 1943)
+@@ -0,0 +1,62 @@
++#!/bin/bash
++#
++# DrvSelectInSecBootMode.sh
++#
++
++function Native()
++{
++    echo &quot;native&quot;
++    exit 0
++}
++
++function Modesetting() 
++{
++    echo &quot;modesetting&quot;
++    exit 0
++}
++
++function Fbdev()
++{
++    echo &quot;fbdev&quot;
++    exit 0
++}
++
++secureboot=off
++if mokutil --sb-state | grep -q &quot;SecureBoot enabled&quot;; then
++    secureboot=on
++elif xxd -p \
++    /sys/firmware/efi/vars/SecureBoot-8be4df61-93ca-11d2-aa0d-00e098032b8c/data | \
++    grep -q &quot;01&quot;; then
++    secureboot=on
++fi
++
++if [ &quot;$secureboot&quot; == &quot;off&quot; ]; then
++    Native
++else
++    if [ -r /proc/fb ]; then
++	fb=$(cat /proc/fb)
++        ### for testing purposes
++        #fb=&quot;0 UEFI VGA&quot;
++        #fb=&quot;0 radeondrmfb&quot;
++        #fb=&quot;0 inteldrmfb&quot;
++        #fb=&quot;0 mgadrmfb&quot;
++        #fb=&quot;0 cirrusdrmfb&quot;
++        #fb=&quot;0 astdrmfb&quot;
++	case $fb in
++            *radeon*|\
++            *intel*) 
++		Native 
++		;;
++	    *mga*|\
++            *cirrus*)
++		Modesetting
++		;;
++            #astdrmfb, UEFI VGA
++            *)
++		Fbdev
++		;;
++	esac
++    else
++	Native
++    fi
++fi
+
+
+Property changes on: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/DrvSelectInSecBootMode.sh
+___________________________________________________________________
+Added: svn:executable
+   + *
+
+Deleted: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/KMSAndNotIntelOrAMD.sh
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/KMSAndNotIntelOrAMD.sh	2013-03-13 14:38:01 UTC (rev 1942)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/KMSAndNotIntelOrAMD.sh	2013-03-28 13:34:17 UTC (rev 1943)
+@@ -1,39 +0,0 @@
+-#!/bin/bash
+-#
+-# KMSAndNotIntelOrAMD.sh
+-#
+-
+-function No()
+-{
+-    echo &quot;no&quot;
+-    exit 0
+-}
+-
+-function Yes() 
+-{
+-    echo &quot;yes&quot;
+-    exit 0
+-}
+-
+-if [ -r /proc/fb ]; then
+-    fb=$(cat /proc/fb)
+-    ### for testing purposes
+-    #fb=fb
+-    #fb=&quot;0 radeondrmfb&quot;
+-    #fb=&quot;0 inteldrmfb&quot;
+-    #fb=&quot;0 mgadrmfb&quot;
+-    if echo $fb | grep -q drmfb; then
+-        case $fb in
+-            *radeon*|\
+-            *intel*) 
+-                No 
+-                ;;
+-            *) 
+-                Yes 
+-                ;;
+-        esac
+-    else
+-        No
+-    fi
+-fi
+-No
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/ModeSetting.pl
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/ModeSetting.pl	2013-03-13 14:38:01 UTC (rev 1942)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/ModeSetting.pl	2013-03-28 13:34:17 UTC (rev 1943)
+@@ -5,8 +5,8 @@
+ use strict;
+ use Profile;
+ 
+-sub KMSAndNotIntelOrAMD {
+-  my $ret = qx(/usr/share/sax/profile/KMSAndNotIntelOrAMD.sh);
++sub DrvSelectInSecBootMode {
++  my $ret = qx(/usr/share/sax/profile/DrvSelectInSecBootMode.sh);
+   chomp($ret);
+   return $ret;
+ }
+@@ -21,11 +21,16 @@
+ #==========================================
+ # Check if modesetting driver is neccessary
+ #------------------------------------------
+-if ( KMSAndNotIntelOrAMD() eq &quot;yes&quot;) {
+-        print STDERR &quot;modesetting driver required\n&quot;;
++if ( DrvSelectInSecBootMode () eq &quot;modesetting&quot;) {
++	print STDERR &quot;modesetting driver required\n&quot;;
+ 	print FD &quot;Device -&gt; [X] -&gt; Driver = modesetting\n&quot;;
++	print FD &quot;!remove Screen-&gt;[X]-&gt;DefaultDepth\n&quot;;
++} elsif ( DrvSelectInSecBootMode () eq &quot;fbdev&quot;) {
++	print STDERR &quot;fbdev driver required\n&quot;;
++	print FD &quot;Device -&gt; [X] -&gt; Driver = fbdev\n&quot;;
++	print FD &quot;!remove Screen-&gt;[X]-&gt;DefaultDepth\n&quot;;
+ } else {
+-	print STDERR &quot;modesetting driver not neccessary\n&quot;;
++	print STDERR &quot;native driver can be used\n&quot;;
+         # just to make SaX happy and overwrite the possibly
+         # existing modesetting driver entry in the profile
+ 	print FD &quot;Device -&gt; [X] -&gt; Option -&gt; Dummy = yes&quot;;
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-03-13 14:38:01 UTC (rev 1942)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-03-28 13:34:17 UTC (rev 1943)
+@@ -1,4 +1,16 @@
+ -------------------------------------------------------------------
++Thu Mar 28 13:38:00 CET 2013 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- fall back to fbdev in secureboot mode with ast KMS driver,
++  UEFI VGA and other currently unknown frame buffer drivers
++
++-------------------------------------------------------------------
++Fri Mar 22 13:50:15 CET 2013 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- remove DefaultDepth entry for &quot;modesetting&quot; driver; default
++  color depth of KMS should be used (bnc#806526)
++
++-------------------------------------------------------------------
+ Wed Mar 13 15:34:44 CET 2013 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - Again: Use hsync range up to 100 kHz since apparently on modern
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000330.html">[Sax-devel] r1942 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect rpm
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#331">[ date ]</a>
+              <a href="thread.html#331">[ thread ]</a>
+              <a href="subject.html#331">[ subject ]</a>
+              <a href="author.html#331">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

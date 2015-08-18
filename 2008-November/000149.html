@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1759 - in sax-head: rpm sysp/maps sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1759%20-%20in%20sax-head%3A%20rpm%20sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200811071124.mA7BOU07002933%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000148.html">
+   <LINK REL="Next"  HREF="000150.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1759 - in sax-head: rpm sysp/maps sysp/maps/arch</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1759%20-%20in%20sax-head%3A%20rpm%20sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200811071124.mA7BOU07002933%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1759 - in sax-head: rpm sysp/maps sysp/maps/arch">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri Nov  7 12:24:30 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000148.html">[Sax-devel] r1758 - sax-head/rpm
+</A></li>
+        <LI>Next message: <A HREF="000150.html">[Sax-devel] r1760 - in sax-head: rpm sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#149">[ date ]</a>
+              <a href="thread.html#149">[ thread ]</a>
+              <a href="subject.html#149">[ subject ]</a>
+              <a href="author.html#149">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-11-07 12:24:23 +0100 (Fri, 07 Nov 2008)
+New Revision: 1759
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Identity.map
+   sax-head/sysp/maps/arch/Identity.map.i386
+   sax-head/sysp/maps/arch/Identity.map.ia64
+   sax-head/sysp/maps/arch/Identity.map.ppc
+   sax-head/sysp/maps/arch/Identity.map.x86_64
+Log:
+- no longer use intel driver for i845, since the support for this
+  GPU is currently completely broken (bfo #18270)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-11-06 10:54:55 UTC (rev 1758)
++++ sax-head/rpm/sax2.changes	2008-11-07 11:24:23 UTC (rev 1759)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Fri Nov  7 12:22:40 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- no longer use intel driver for i845, since the support for this
++  GPU is currently completely broken (bfo #18270)
++
++-------------------------------------------------------------------
+ Wed Nov  5 08:33:27 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - accept vboxmouse as standard mouse, i.e. no longer add default
+
+Modified: sax-head/sysp/maps/Identity.map
+===================================================================
+--- sax-head/sysp/maps/Identity.map	2008-11-06 10:54:55 UTC (rev 1758)
++++ sax-head/sysp/maps/Identity.map	2008-11-07 11:24:23 UTC (rev 1759)
+@@ -581,8 +581,6 @@
+ NAME=Intel&amp;DEVICE=i740_PCI&amp;VID=0x8086&amp;DID=0x00d1&amp;SERVER=i740&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=i830&amp;VID=0x8086&amp;DID=0x3577&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=i830&amp;VID=0x8086&amp;DID=0x3577&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=i845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=i845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=855 GM&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=855 GM&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=865 G&amp;VID=0x8086&amp;DID=0x2572&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-head/sysp/maps/arch/Identity.map.i386
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.i386	2008-11-06 10:54:55 UTC (rev 1758)
++++ sax-head/sysp/maps/arch/Identity.map.i386	2008-11-07 11:24:23 UTC (rev 1759)
+@@ -581,8 +581,6 @@
+ NAME=Intel&amp;DEVICE=i740_PCI&amp;VID=0x8086&amp;DID=0x00d1&amp;SERVER=i740&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=i830&amp;VID=0x8086&amp;DID=0x3577&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=i830&amp;VID=0x8086&amp;DID=0x3577&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=i845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=i845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=855 GM&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=855 GM&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=865 G&amp;VID=0x8086&amp;DID=0x2572&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-head/sysp/maps/arch/Identity.map.ia64
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.ia64	2008-11-06 10:54:55 UTC (rev 1758)
++++ sax-head/sysp/maps/arch/Identity.map.ia64	2008-11-07 11:24:23 UTC (rev 1759)
+@@ -385,7 +385,6 @@
+ NAME=Intel&amp;DEVICE=i740&amp;VID=0x8086&amp;DID=0x7800&amp;SERVER=i740&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=i740_PCI&amp;VID=0x8086&amp;DID=0x00d1&amp;SERVER=i740&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=i830&amp;VID=0x8086&amp;DID=0x3577&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=i845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=855 GM&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=865 G&amp;VID=0x8086&amp;DID=0x2572&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=915 G&amp;VID=0x8086&amp;DID=0x2582&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=i915G&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-head/sysp/maps/arch/Identity.map.ppc
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.ppc	2008-11-06 10:54:55 UTC (rev 1758)
++++ sax-head/sysp/maps/arch/Identity.map.ppc	2008-11-07 11:24:23 UTC (rev 1759)
+@@ -376,7 +376,6 @@
+ NAME=Intel&amp;DEVICE=i740&amp;VID=0x8086&amp;DID=0x7800&amp;SERVER=i740&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=i740_PCI&amp;VID=0x8086&amp;DID=0x00d1&amp;SERVER=i740&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=i830&amp;VID=0x8086&amp;DID=0x3577&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=i845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=855 GM&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=865 G&amp;VID=0x8086&amp;DID=0x2572&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=915 G&amp;VID=0x8086&amp;DID=0x2582&amp;SERVER=i810&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=i915G&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-head/sysp/maps/arch/Identity.map.x86_64
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.x86_64	2008-11-06 10:54:55 UTC (rev 1758)
++++ sax-head/sysp/maps/arch/Identity.map.x86_64	2008-11-07 11:24:23 UTC (rev 1759)
+@@ -575,8 +575,6 @@
+ NAME=Intel&amp;DEVICE=i740_PCI&amp;VID=0x8086&amp;DID=0x00d1&amp;SERVER=i740&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=i830&amp;VID=0x8086&amp;DID=0x3577&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=i830&amp;VID=0x8086&amp;DID=0x3577&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=i845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=i845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=855 GM&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=855 GM&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=865 G&amp;VID=0x8086&amp;DID=0x2572&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000148.html">[Sax-devel] r1758 - sax-head/rpm
+</A></li>
+	<LI>Next message: <A HREF="000150.html">[Sax-devel] r1760 - in sax-head: rpm sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#149">[ date ]</a>
+              <a href="thread.html#149">[ thread ]</a>
+              <a href="subject.html#149">[ subject ]</a>
+              <a href="author.html#149">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

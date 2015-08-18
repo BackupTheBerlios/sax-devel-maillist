@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1852 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1852%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/automatic/monitor%20rpm&In-Reply-To=%3C200905151407.n4FE7NqI029827%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000242.html">
+   <LINK REL="Next"  HREF="000244.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1852 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1852%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/automatic/monitor%20rpm&In-Reply-To=%3C200905151407.n4FE7NqI029827%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1852 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri May 15 16:07:23 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000242.html">[Sax-devel] r1851 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+</A></li>
+        <LI>Next message: <A HREF="000244.html">[Sax-devel] r1853 - in sax-head: profile/automatic/monitor rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#243">[ date ]</a>
+              <a href="thread.html#243">[ thread ]</a>
+              <a href="subject.html#243">[ subject ]</a>
+              <a href="author.html#243">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-05-15 16:07:21 +0200 (Fri, 15 May 2009)
+New Revision: 1852
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-AE1900
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+Log:
+- removed UXA option from MSI-AE1900 profile (bnc #500853)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-AE1900
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-AE1900	2009-05-15 10:14:38 UTC (rev 1851)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-AE1900	2009-05-15 14:07:21 UTC (rev 1852)
+@@ -10,4 +10,3 @@
+ Screen-&gt;[X]-&gt;Depth-&gt;15-&gt;Modes = 1366x768
+ Screen-&gt;[X]-&gt;Depth-&gt;16-&gt;Modes = 1366x768
+ Screen-&gt;[X]-&gt;Depth-&gt;24-&gt;Modes = 1366x768
+-Device-&gt;[X]-&gt;Raw-&gt;11-&gt;Option = &quot;AccelMethod&quot; &quot;UXA&quot;
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-05-15 10:14:38 UTC (rev 1851)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-05-15 14:07:21 UTC (rev 1852)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Fri May 15 16:05:26 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- removed UXA option from MSI-AE1900 profile (bnc #500853)
++
++-------------------------------------------------------------------
+ Fri May 15 12:13:13 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - do not use i915G profile, i.e. do not disable modeline generation
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000242.html">[Sax-devel] r1851 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+</A></li>
+	<LI>Next message: <A HREF="000244.html">[Sax-devel] r1853 - in sax-head: profile/automatic/monitor rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#243">[ date ]</a>
+              <a href="thread.html#243">[ thread ]</a>
+              <a href="subject.html#243">[ subject ]</a>
+              <a href="author.html#243">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

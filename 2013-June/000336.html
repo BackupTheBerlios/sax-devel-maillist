@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1948 -	sax-branches/SaX2-81-SuSE-11-1-Devel/api/keyboard
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1948%20-%0A%09sax-branches/SaX2-81-SuSE-11-1-Devel/api/keyboard&In-Reply-To=%3C20130620134601.A401355B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1948 -	sax-branches/SaX2-81-SuSE-11-1-Devel/api/keyboard</H1>
+    <B>sndirsch at scm.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1948%20-%0A%09sax-branches/SaX2-81-SuSE-11-1-Devel/api/keyboard&In-Reply-To=%3C20130620134601.A401355B0C%40scm.berlios.de%3E"
+       TITLE="[Sax-devel] r1948 -	sax-branches/SaX2-81-SuSE-11-1-Devel/api/keyboard">sndirsch at scm.berlios.de
+       </A><BR>
+    <I>Thu Jun 20 15:46:01 CEST 2013</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#336">[ date ]</a>
+              <a href="thread.html#336">[ thread ]</a>
+              <a href="subject.html#336">[ subject ]</a>
+              <a href="author.html#336">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2013-06-20 15:46:01 +0200 (Thu, 20 Jun 2013)
+New Revision: 1948
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/api/keyboard/keyboardoptions.cpp
+Log:
+Return translation key instead of empty string if it doesn't exist.
+
+This is because of localization. Sax2 is translating the descriptions of xkb
+properties using it's localization file. English localization file doesn't
+contain them, so the original description from xkb should be displayed.
+However, because of an obscure way the gettext is used in sax, empty string is
+used. Attached patch solves this issue. (bnc#756591)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/api/keyboard/keyboardoptions.cpp
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/api/keyboard/keyboardoptions.cpp	2013-04-18 02:41:20 UTC (rev 1947)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/api/keyboard/keyboardoptions.cpp	2013-06-20 13:46:01 UTC (rev 1948)
+@@ -137,11 +137,6 @@
+ // init
+ //------------------------------------
+ void SCCKeyboardOptions::init ( void ) {
+-	//=====================================
+-	// get translation pointer
+-	//-------------------------------------
+-	SCCWrapPointer&lt; Q3Dict&lt;QString&gt; &gt; mText (mTextPtr);
+-
+ 	//====================================
+ 	// query XKB file extension
+ 	//------------------------------------
+@@ -154,8 +149,13 @@
+ 	Q3DictIterator&lt;QString&gt; it (mOptionDict);
+ 	for (; it.current(); ++it) {
+ 		QString key = it.currentKey();
+-		QString val = mText[*it.current()];
+-		if (val.isEmpty()) {
++		QString *pval = mTextPtr-&gt;operator[](*it.current());
++		QString val;
++		if (pval) {
++			val = *pval;
++		} else {
++			val = *it.current();
++
+ 			log (L_WARN,
+ 				&quot;SCCKeyboardOptions::Warning: unknown XKB key: %s\n&quot;,
+ 				it.current()-&gt;ascii()
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#336">[ date ]</a>
+              <a href="thread.html#336">[ thread ]</a>
+              <a href="subject.html#336">[ subject ]</a>
+              <a href="author.html#336">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1895 - in sax-head: api/data/cdb rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1895%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200911011112.nA1BCEST028431%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000283.html">
+   <LINK REL="Next"  HREF="000285.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1895 - in sax-head: api/data/cdb rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1895%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200911011112.nA1BCEST028431%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1895 - in sax-head: api/data/cdb rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Sun Nov  1 12:12:14 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000283.html">[Sax-devel] r1894 - in sax-head: rpm sysp/maps
+</A></li>
+        <LI>Next message: <A HREF="000285.html">[Sax-devel] r1896 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#284">[ date ]</a>
+              <a href="thread.html#284">[ thread ]</a>
+              <a href="subject.html#284">[ subject ]</a>
+              <a href="author.html#284">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-11-01 12:12:12 +0100 (Sun, 01 Nov 2009)
+New Revision: 1895
+
+Modified:
+   sax-head/api/data/cdb/Pens
+   sax-head/api/data/cdb/Tablets
+   sax-head/rpm/sax2.changes
+Log:
+- added touchscreen support for HP tx2-12nnxx (bnc #541082)
+
+
+Modified: sax-head/api/data/cdb/Pens
+===================================================================
+--- sax-head/api/data/cdb/Pens	2009-11-01 04:03:13 UTC (rev 1894)
++++ sax-head/api/data/cdb/Pens	2009-11-01 11:12:12 UTC (rev 1895)
+@@ -509,4 +509,29 @@
+  RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;
+ }
+ 
++#---------------------------------------------#
++# TABLET PCs: HP tx2-12nnxx Stylus            #
++#---------------------------------------------#
++TABLET PCs:HP tx2-12nnxx Stylus {
++ Device              = /dev/input/by-path/pci-0000:00:14.5-usb-0:2:1.0-event-mouse
++ Option              = USB
++ TabletMode          = Absolute
++ Driver              = wacom
++ Protocol            = Auto
++ TabletType          = stylus
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;Button2&quot; &quot;3&quot;
++}
+ 
++#---------------------------------------------#
++# TABLET PCs: HP tx2-12nnxx Touch             #
++#---------------------------------------------#
++TABLET PCs:HP tx2-12nnxx Touch {
++ Device              = /dev/input/by-path/pci-0000:00:14.5-usb-0:2:1.0-event-mouse
++ Option              = USB
++ TabletMode          = Absolute
++ Driver              = wacom
++ Protocol            = Auto
++ TabletType          = touch
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;BottomX&quot; &quot;9600&quot;,&quot;BottomY&quot; &quot;7200&quot;
++}
++
+
+Modified: sax-head/api/data/cdb/Tablets
+===================================================================
+--- sax-head/api/data/cdb/Tablets	2009-11-01 04:03:13 UTC (rev 1894)
++++ sax-head/api/data/cdb/Tablets	2009-11-01 11:12:12 UTC (rev 1895)
+@@ -546,3 +546,17 @@
+   RawOption          = &quot;MaximumXPosition&quot; &quot;8600&quot;,&quot;MaximumYPosition&quot; &quot;6485&quot;,&quot;MinimumXPosition&quot; &quot;154&quot;,&quot;MinimumYPosition&quot; &quot;110&quot;,&quot;BaudRate&quot; &quot;19200&quot;
+ }
+ 
++#-----------------------------------------#
++# TABLET PCs: HP tx2-12nnxx               #
++#-----------------------------------------#
++TABLET PCs:HP tx2-12nnxx {
++ Driver           = wacom
++ Device           = /dev/input/by-path/pci-0000:00:14.5-usb-0:2:1.0-event-mouse
++ Option           = USB
++ SendCoreEvents   = on
++ TabletType       = cursor
++ TabletMode       = Absolute
++ StylusLink       = HP tx2-12nnxx Stylus
++ TouchLink        = HP tx2-12nnxx Touch
++}
++
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-11-01 04:03:13 UTC (rev 1894)
++++ sax-head/rpm/sax2.changes	2009-11-01 11:12:12 UTC (rev 1895)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Sun Nov  1 12:10:57 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- added touchscreen support for HP tx2-12nnxx (bnc #541082)
++
++-------------------------------------------------------------------
+ Sun Nov  1 05:00:49 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - no longer try to use a multi-layout for dvorak; apparently it
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000283.html">[Sax-devel] r1894 - in sax-head: rpm sysp/maps
+</A></li>
+	<LI>Next message: <A HREF="000285.html">[Sax-devel] r1896 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#284">[ date ]</a>
+              <a href="thread.html#284">[ thread ]</a>
+              <a href="subject.html#284">[ subject ]</a>
+              <a href="author.html#284">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

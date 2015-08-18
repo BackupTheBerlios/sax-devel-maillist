@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1816 - in sax-head: rpm sysp/maps sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1816%20-%20in%20sax-head%3A%20rpm%20sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200901141147.n0EBlw6e021634%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000203.html">
+   <LINK REL="Next"  HREF="000209.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1816 - in sax-head: rpm sysp/maps sysp/maps/arch</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1816%20-%20in%20sax-head%3A%20rpm%20sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200901141147.n0EBlw6e021634%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1816 - in sax-head: rpm sysp/maps sysp/maps/arch">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Jan 14 12:47:58 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000203.html">[Sax-devel] r1815 - in sax-head/locale: . af/LC_MESSAGES	ar/LC_MESSAGES bg/LC_MESSAGES bn/LC_MESSAGES bs/LC_MESSAGES	ca/LC_MESSAGES cs/LC_MESSAGES cy/LC_MESSAGES da/LC_MESSAGES	de/LC_MESSAGES el/LC_MESSAGES en_GB/LC_MESSAGES	en_US/LC_MESSAGES es/LC_MESSAGES et/LC_MESSAGES	fi/LC_MESSAGES fr/LC_MESSAGES gl/LC_MESSAGES gu/LC_MESSAGES	he/LC_MESSAGES hi/LC_MESSAGES hr/LC_MESSAGES hu/LC_MESSAGES	id/LC_MESSAGES it/LC_MESSAGES ja/LC_MESSAGES ka/LC_MESSAGES	km/LC_MESSAGES ko/LC_MESSAGES lo/LC_MESSAGES lt/LC_MESSAGES	mk/LC_MESSAGES mr/LC_MESSAGES nb/LC_MESSAGES nl/LC_MESSAGES	pa/LC_MESSAGES pl/LC_MESSAGES pt/LC_MESSAGES	pt_BR/LC_MESSAGES ro/LC_MESSAGES ru/LC_MESSAGES sax-template	si/LC_MESSAGES sk/LC_MESSAGES sl/LC_MESSAGES sr/LC_MESSAGES	sv/LC_MESSAGES ta/LC_MESSAGES th/LC_MESSAGES tr/LC_MESSAGES	uk/LC_MESSAGES vi/LC_MESSAGES wa/LC_MESSAGES xh/LC_MESSAGES	zh_CN/LC_MESSAGES zh_TW/LC_MESSAGES zu/LC_MESSAGES
+</A></li>
+        <LI>Next message: <A HREF="000209.html">[Sax-devel] r1817 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#208">[ date ]</a>
+              <a href="thread.html#208">[ thread ]</a>
+              <a href="subject.html#208">[ subject ]</a>
+              <a href="author.html#208">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-01-14 12:47:54 +0100 (Wed, 14 Jan 2009)
+New Revision: 1816
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Identity.map
+   sax-head/sysp/maps/arch/Identity.map.i386
+   sax-head/sysp/maps/arch/Identity.map.x86_64
+Log:
+- Identity.map:
+  * use vesa driver for 'GeForce 6100 nForce 430' (bnc #465190)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-01-13 10:57:49 UTC (rev 1815)
++++ sax-head/rpm/sax2.changes	2009-01-14 11:47:54 UTC (rev 1816)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Wed Jan 14 12:46:28 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- Identity.map:
++  * use vesa driver for 'GeForce 6100 nForce 430' (bnc #465190)
++
++-------------------------------------------------------------------
+ Tue Jan 13 11:54:25 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - don't display a test button when a special configuration
+
+Modified: sax-head/sysp/maps/Identity.map
+===================================================================
+--- sax-head/sysp/maps/Identity.map	2009-01-13 10:57:49 UTC (rev 1815)
++++ sax-head/sysp/maps/Identity.map	2009-01-14 11:47:54 UTC (rev 1816)
+@@ -1138,7 +1138,7 @@
+ NAME=NVidia&amp;DEVICE=Quadro NVS 140M&amp;VID=0x10de&amp;DID=0x0429&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=Quadro NVS 130M&amp;VID=0x10de&amp;DID=0x042a&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=Quadro NVS 135M&amp;VID=0x10de&amp;DID=0x042b&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=NVidia&amp;DEVICE=GeForce 6100 nForce 430&amp;VID=0x10de&amp;DID=0x03d0&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=NVidia&amp;DEVICE=GeForce 6100 nForce 430&amp;VID=0x10de&amp;DID=0x03d0&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce 6100 nForce 405&amp;VID=0x10de&amp;DID=0x03d1&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce 8400 GS (0x0404)&amp;VID=0x10de&amp;DID=0x0404&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce 8700M GT&amp;VID=0x10de&amp;DID=0x0409&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-head/sysp/maps/arch/Identity.map.i386
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.i386	2009-01-13 10:57:49 UTC (rev 1815)
++++ sax-head/sysp/maps/arch/Identity.map.i386	2009-01-14 11:47:54 UTC (rev 1816)
+@@ -1138,7 +1138,7 @@
+ NAME=NVidia&amp;DEVICE=Quadro NVS 140M&amp;VID=0x10de&amp;DID=0x0429&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=Quadro NVS 130M&amp;VID=0x10de&amp;DID=0x042a&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=Quadro NVS 135M&amp;VID=0x10de&amp;DID=0x042b&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=NVidia&amp;DEVICE=GeForce 6100 nForce 430&amp;VID=0x10de&amp;DID=0x03d0&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=NVidia&amp;DEVICE=GeForce 6100 nForce 430&amp;VID=0x10de&amp;DID=0x03d0&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce 6100 nForce 405&amp;VID=0x10de&amp;DID=0x03d1&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce 8400 GS (0x0404)&amp;VID=0x10de&amp;DID=0x0404&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce 8700M GT&amp;VID=0x10de&amp;DID=0x0409&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-head/sysp/maps/arch/Identity.map.x86_64
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.x86_64	2009-01-13 10:57:49 UTC (rev 1815)
++++ sax-head/sysp/maps/arch/Identity.map.x86_64	2009-01-14 11:47:54 UTC (rev 1816)
+@@ -1124,7 +1124,7 @@
+ NAME=NVidia&amp;DEVICE=Quadro NVS 140M&amp;VID=0x10de&amp;DID=0x0429&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=Quadro NVS 130M&amp;VID=0x10de&amp;DID=0x042a&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=Quadro NVS 135M&amp;VID=0x10de&amp;DID=0x042b&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=NVidia&amp;DEVICE=GeForce 6100 nForce 430&amp;VID=0x10de&amp;DID=0x03d0&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=NVidia&amp;DEVICE=GeForce 6100 nForce 430&amp;VID=0x10de&amp;DID=0x03d0&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce 6100 nForce 405&amp;VID=0x10de&amp;DID=0x03d1&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce 8400 GS (0x0404)&amp;VID=0x10de&amp;DID=0x0404&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce 8700M GT&amp;VID=0x10de&amp;DID=0x0409&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000203.html">[Sax-devel] r1815 - in sax-head/locale: . af/LC_MESSAGES	ar/LC_MESSAGES bg/LC_MESSAGES bn/LC_MESSAGES bs/LC_MESSAGES	ca/LC_MESSAGES cs/LC_MESSAGES cy/LC_MESSAGES da/LC_MESSAGES	de/LC_MESSAGES el/LC_MESSAGES en_GB/LC_MESSAGES	en_US/LC_MESSAGES es/LC_MESSAGES et/LC_MESSAGES	fi/LC_MESSAGES fr/LC_MESSAGES gl/LC_MESSAGES gu/LC_MESSAGES	he/LC_MESSAGES hi/LC_MESSAGES hr/LC_MESSAGES hu/LC_MESSAGES	id/LC_MESSAGES it/LC_MESSAGES ja/LC_MESSAGES ka/LC_MESSAGES	km/LC_MESSAGES ko/LC_MESSAGES lo/LC_MESSAGES lt/LC_MESSAGES	mk/LC_MESSAGES mr/LC_MESSAGES nb/LC_MESSAGES nl/LC_MESSAGES	pa/LC_MESSAGES pl/LC_MESSAGES pt/LC_MESSAGES	pt_BR/LC_MESSAGES ro/LC_MESSAGES ru/LC_MESSAGES sax-template	si/LC_MESSAGES sk/LC_MESSAGES sl/LC_MESSAGES sr/LC_MESSAGES	sv/LC_MESSAGES ta/LC_MESSAGES th/LC_MESSAGES tr/LC_MESSAGES	uk/LC_MESSAGES vi/LC_MESSAGES wa/LC_MESSAGES xh/LC_MESSAGES	zh_CN/LC_MESSAGES zh_TW/LC_MESSAGES zu/LC_MESSAGES
+</A></li>
+	<LI>Next message: <A HREF="000209.html">[Sax-devel] r1817 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#208">[ date ]</a>
+              <a href="thread.html#208">[ thread ]</a>
+              <a href="subject.html#208">[ subject ]</a>
+              <a href="author.html#208">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] [SVN:SaX-Team] r1640 - in sax-head:	profile/automatic/input rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20%5BSVN%3ASaX-Team%5D%20r1640%20-%20in%20sax-head%3A%0A%09profile/automatic/input%20rpm&In-Reply-To=%3C200806271503.m5RF3at0013535%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000037.html">
+   <LINK REL="Next"  HREF="000039.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] [SVN:SaX-Team] r1640 - in sax-head:	profile/automatic/input rpm</H1>
+    <B>sndirsch at BerliOS</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20%5BSVN%3ASaX-Team%5D%20r1640%20-%20in%20sax-head%3A%0A%09profile/automatic/input%20rpm&In-Reply-To=%3C200806271503.m5RF3at0013535%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] [SVN:SaX-Team] r1640 - in sax-head:	profile/automatic/input rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri Jun 27 17:03:36 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000037.html">[Sax-devel] [SVN:SaX-Team] r1639 - sax-head
+</A></li>
+        <LI>Next message: <A HREF="000039.html">[Sax-devel] [SVN:SaX-Team] r1641 - in sax-head: rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#38">[ date ]</a>
+              <a href="thread.html#38">[ thread ]</a>
+              <a href="subject.html#38">[ subject ]</a>
+              <a href="author.html#38">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: Fri Jun 27 17:03:32 2008
+New Revision: 1640
+
+Added:
+   sax-head/profile/automatic/input/alps-macbook
+Modified:
+   sax-head/profile/automatic/input/alps
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Input.map
+
+Log:
+- reverted r1619, which broke the VerticalScroll support for a lot of
+  ALPS touchpads (bnc #401661)
+- added alps-macbook profile and use it for Macbook ALPS touchpad 
+  (bnc #250427)
+
+
+Modified: sax-head/profile/automatic/input/alps
+==============================================================================
+--- sax-head/profile/automatic/input/alps	(original)
++++ sax-head/profile/automatic/input/alps	Fri Jun 27 17:03:32 2008
+@@ -6,27 +6,24 @@
+ InputDevice -&gt; [X] -&gt; Option -&gt; ZAxisMapping         = 4 5
+ InputDevice -&gt; [X] -&gt; Option -&gt; Emulate3Buttons      = on
+ InputDevice -&gt; [X] -&gt; Option -&gt; SHMConfig            = on
+-InputDevice -&gt; [X] -&gt; Option -&gt; SendCoreEvents       = on
+ InputDevice -&gt; [X] -&gt; Option -&gt; Protocol             = auto-dev
+-InputDevice -&gt; [X] -&gt; Option -&gt; LeftEdge             = 100
+-InputDevice -&gt; [X] -&gt; Option -&gt; RightEdge            = 1100
+-InputDevice -&gt; [X] -&gt; Option -&gt; TopEdge              = 50
+-InputDevice -&gt; [X] -&gt; Option -&gt; BottomEdge           = 300
+-InputDevice -&gt; [X] -&gt; Option -&gt; FingerLow            = 30
+-InputDevice -&gt; [X] -&gt; Option -&gt; FingerHigh           = 40
+-InputDevice -&gt; [X] -&gt; Option -&gt; MaxTapMove           = 100
++InputDevice -&gt; [X] -&gt; Option -&gt; LeftEdge             = 120
++InputDevice -&gt; [X] -&gt; Option -&gt; RightEdge            = 830
++InputDevice -&gt; [X] -&gt; Option -&gt; TopEdge              = 120
++InputDevice -&gt; [X] -&gt; Option -&gt; BottomEdge           = 650
++InputDevice -&gt; [X] -&gt; Option -&gt; FingerLow            = 14
++InputDevice -&gt; [X] -&gt; Option -&gt; FingerHigh           = 17
++InputDevice -&gt; [X] -&gt; Option -&gt; MaxTapTime           = 180
++InputDevice -&gt; [X] -&gt; Option -&gt; MaxTapMove           = 110
+ InputDevice -&gt; [X] -&gt; Option -&gt; EmulateMidButtonTime = 75
+-InputDevice -&gt; [X] -&gt; Option -&gt; VertScrollDelta      = 25
++InputDevice -&gt; [X] -&gt; Option -&gt; VertScrollDelta      = 20
+ InputDevice -&gt; [X] -&gt; Option -&gt; HorizScrollDelta     = 0
+-InputDevice -&gt; [X] -&gt; Option -&gt; MinSpeed             = 0.15
+-InputDevice -&gt; [X] -&gt; Option -&gt; MaxSpeed             = 0.90
+-InputDevice -&gt; [X] -&gt; Option -&gt; AccelFactor          = 0.10
++InputDevice -&gt; [X] -&gt; Option -&gt; MinSpeed             = 0.2
++InputDevice -&gt; [X] -&gt; Option -&gt; MaxSpeed             = 3
++InputDevice -&gt; [X] -&gt; Option -&gt; AccelFactor          = 0.1
+ InputDevice -&gt; [X] -&gt; Option -&gt; EdgeMotionMinSpeed   = 15
+ InputDevice -&gt; [X] -&gt; Option -&gt; EdgeMotionMaxSpeed   = 15
+ InputDevice -&gt; [X] -&gt; Option -&gt; UpDownScrolling      = 1
+ InputDevice -&gt; [X] -&gt; Option -&gt; CircularScrolling    = 1
+ InputDevice -&gt; [X] -&gt; Option -&gt; CircScrollDelta      = 0.1
+ InputDevice -&gt; [X] -&gt; Option -&gt; CircScrollTrigger    = 2
+-InputDevice -&gt; [X] -&gt; Option -&gt; TapButton1           = 1
+-InputDevice -&gt; [X] -&gt; Option -&gt; TapButton2           = 3
+-InputDevice -&gt; [X] -&gt; Option -&gt; TapButton3           = 2
+
+Added: sax-head/profile/automatic/input/alps-macbook
+==============================================================================
+--- (empty file)
++++ sax-head/profile/automatic/input/alps-macbook	Fri Jun 27 17:03:32 2008
+@@ -0,0 +1,32 @@
++InputDevice -&gt; [X] -&gt; Identifier = Mouse[[X]]
++InputDevice -&gt; [X] -&gt; Driver     = synaptics
++InputDevice -&gt; [X] -&gt; Option -&gt; InputFashion         = Mouse
++InputDevice -&gt; [X] -&gt; Option -&gt; Name                 = ALPS;Touchpad
++InputDevice -&gt; [X] -&gt; Option -&gt; Device               = /dev/input/mice
++InputDevice -&gt; [X] -&gt; Option -&gt; ZAxisMapping         = 4 5
++InputDevice -&gt; [X] -&gt; Option -&gt; Emulate3Buttons      = on
++InputDevice -&gt; [X] -&gt; Option -&gt; SHMConfig            = on
++InputDevice -&gt; [X] -&gt; Option -&gt; SendCoreEvents       = on
++InputDevice -&gt; [X] -&gt; Option -&gt; Protocol             = auto-dev
++InputDevice -&gt; [X] -&gt; Option -&gt; LeftEdge             = 100
++InputDevice -&gt; [X] -&gt; Option -&gt; RightEdge            = 1100
++InputDevice -&gt; [X] -&gt; Option -&gt; TopEdge              = 50
++InputDevice -&gt; [X] -&gt; Option -&gt; BottomEdge           = 300
++InputDevice -&gt; [X] -&gt; Option -&gt; FingerLow            = 30
++InputDevice -&gt; [X] -&gt; Option -&gt; FingerHigh           = 40
++InputDevice -&gt; [X] -&gt; Option -&gt; MaxTapMove           = 100
++InputDevice -&gt; [X] -&gt; Option -&gt; EmulateMidButtonTime = 75
++InputDevice -&gt; [X] -&gt; Option -&gt; VertScrollDelta      = 25
++InputDevice -&gt; [X] -&gt; Option -&gt; HorizScrollDelta     = 0
++InputDevice -&gt; [X] -&gt; Option -&gt; MinSpeed             = 0.15
++InputDevice -&gt; [X] -&gt; Option -&gt; MaxSpeed             = 0.90
++InputDevice -&gt; [X] -&gt; Option -&gt; AccelFactor          = 0.10
++InputDevice -&gt; [X] -&gt; Option -&gt; EdgeMotionMinSpeed   = 15
++InputDevice -&gt; [X] -&gt; Option -&gt; EdgeMotionMaxSpeed   = 15
++InputDevice -&gt; [X] -&gt; Option -&gt; UpDownScrolling      = 1
++InputDevice -&gt; [X] -&gt; Option -&gt; CircularScrolling    = 1
++InputDevice -&gt; [X] -&gt; Option -&gt; CircScrollDelta      = 0.1
++InputDevice -&gt; [X] -&gt; Option -&gt; CircScrollTrigger    = 2
++InputDevice -&gt; [X] -&gt; Option -&gt; TapButton1           = 1
++InputDevice -&gt; [X] -&gt; Option -&gt; TapButton2           = 3
++InputDevice -&gt; [X] -&gt; Option -&gt; TapButton3           = 2
+
+Modified: sax-head/rpm/sax2.changes
+==============================================================================
+--- sax-head/rpm/sax2.changes	(original)
++++ sax-head/rpm/sax2.changes	Fri Jun 27 17:03:32 2008
+@@ -1,4 +1,12 @@
+ -------------------------------------------------------------------
++Fri Jun 27 17:00:13 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- reverted r1619, which broke the VerticalScroll support for a lot
++  of ALPS touchpads (bnc #401661)
++- added alps-macbook profile and use it for Macbook ALPS touchpad 
++  (bnc #250427)
++
++-------------------------------------------------------------------
+ Wed Jun 25 11:05:58 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - disable horizontal scroll on ALPS touchpads by default
+
+Modified: sax-head/sysp/maps/Input.map
+==============================================================================
+--- sax-head/sysp/maps/Input.map	(original)
++++ sax-head/sysp/maps/Input.map	Fri Jun 27 17:03:32 2008
+@@ -20,7 +20,7 @@
+ 0x0002 : 0x000a : ibm-trackpoint : mouse
+ 0x056a : 0x0013 : wacom : wacom
+ 0x05ac : 0x030b : alps : synaptics
+-0x05ac : 0x1000 : alps : synaptics
++0x05ac : 0x1000 : alps-macbook : synaptics
+ 0x0002 : 0x0008 : alps : synaptics
+ 0x1943 : 0x5000 : fujitsu : fujitsu
+ 0x0210 : 0x0018 : xen-mouse : evdev
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000037.html">[Sax-devel] [SVN:SaX-Team] r1639 - sax-head
+</A></li>
+	<LI>Next message: <A HREF="000039.html">[Sax-devel] [SVN:SaX-Team] r1641 - in sax-head: rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#38">[ date ]</a>
+              <a href="thread.html#38">[ thread ]</a>
+              <a href="subject.html#38">[ subject ]</a>
+              <a href="author.html#38">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

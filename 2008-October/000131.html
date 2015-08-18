@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1739 - in sax-head/api: tablet touchscreen
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1739%20-%20in%20sax-head/api%3A%20tablet%20touchscreen&In-Reply-To=%3C200810151312.m9FDChVV032337%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000130.html">
+   <LINK REL="Next"  HREF="000132.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1739 - in sax-head/api: tablet touchscreen</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1739%20-%20in%20sax-head/api%3A%20tablet%20touchscreen&In-Reply-To=%3C200810151312.m9FDChVV032337%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1739 - in sax-head/api: tablet touchscreen">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Oct 15 15:12:43 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000130.html">[Sax-devel] r1738 - sax-head/rpm
+</A></li>
+        <LI>Next message: <A HREF="000132.html">[Sax-devel] r1740 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#131">[ date ]</a>
+              <a href="thread.html#131">[ thread ]</a>
+              <a href="subject.html#131">[ subject ]</a>
+              <a href="author.html#131">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-10-15 15:12:41 +0200 (Wed, 15 Oct 2008)
+New Revision: 1739
+
+Modified:
+   sax-head/api/tablet/tabletconnection.cpp
+   sax-head/api/touchscreen/touchselection.cpp
+Log:
+- insert device name for COM5 (ttyS4)
+
+
+Modified: sax-head/api/tablet/tabletconnection.cpp
+===================================================================
+--- sax-head/api/tablet/tabletconnection.cpp	2008-10-15 10:57:32 UTC (rev 1738)
++++ sax-head/api/tablet/tabletconnection.cpp	2008-10-15 13:12:41 UTC (rev 1739)
+@@ -100,6 +100,7 @@
+ 	mPortBox -&gt; insertItem ( mText[&quot;Serial2&quot;] );
+ 	mPortBox -&gt; insertItem ( mText[&quot;Serial3&quot;] );
+ 	mPortBox -&gt; insertItem ( mText[&quot;Serial4&quot;] );
++	mPortBox -&gt; insertItem ( mText[&quot;Serial5&quot;] );
+ 
+ 	//=====================================
+ 	// set default tablet mode to relative
+
+Modified: sax-head/api/touchscreen/touchselection.cpp
+===================================================================
+--- sax-head/api/touchscreen/touchselection.cpp	2008-10-15 10:57:32 UTC (rev 1738)
++++ sax-head/api/touchscreen/touchselection.cpp	2008-10-15 13:12:41 UTC (rev 1739)
+@@ -120,6 +120,7 @@
+ 	mPortBox -&gt; insertItem ( mText[&quot;Serial2&quot;] );
+ 	mPortBox -&gt; insertItem ( mText[&quot;Serial3&quot;] );
+ 	mPortBox -&gt; insertItem ( mText[&quot;Serial4&quot;] );
++	mPortBox -&gt; insertItem ( mText[&quot;Serial5&quot;] );
+ 
+ 	//====================================
+ 	// update widget status...
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000130.html">[Sax-devel] r1738 - sax-head/rpm
+</A></li>
+	<LI>Next message: <A HREF="000132.html">[Sax-devel] r1740 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#131">[ date ]</a>
+              <a href="thread.html#131">[ thread ]</a>
+              <a href="subject.html#131">[ subject ]</a>
+              <a href="author.html#131">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

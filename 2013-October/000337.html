@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1949 - sax-branches/SaX2-81-SuSE-11-1-Devel/rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2013-October/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1949%20-%20sax-branches/SaX2-81-SuSE-11-1-Devel/rpm&In-Reply-To=%3C20131030115411.5FFD755B10%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1949 - sax-branches/SaX2-81-SuSE-11-1-Devel/rpm</H1>
+    <B>sndirsch at scm.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1949%20-%20sax-branches/SaX2-81-SuSE-11-1-Devel/rpm&In-Reply-To=%3C20131030115411.5FFD755B10%40scm.berlios.de%3E"
+       TITLE="[Sax-devel] r1949 - sax-branches/SaX2-81-SuSE-11-1-Devel/rpm">sndirsch at scm.berlios.de
+       </A><BR>
+    <I>Wed Oct 30 12:54:11 CET 2013</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#337">[ date ]</a>
+              <a href="thread.html#337">[ thread ]</a>
+              <a href="subject.html#337">[ subject ]</a>
+              <a href="author.html#337">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2013-10-30 12:54:10 +0100 (Wed, 30 Oct 2013)
+New Revision: 1949
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.spec
+Log:
+- specfile: no longer let sax2-ident require sax2 (bnc#848165)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-06-20 13:46:01 UTC (rev 1948)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-10-30 11:54:10 UTC (rev 1949)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Wed Oct 30 12:53:08 CET 2013 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- no longer let sax2-ident require sax2 (bnc#848165) 
++
++-------------------------------------------------------------------
+ Thu Apr 18 04:35:52 CEST 2013 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - limit hsync max to 94kHz to avoid 1024x768 doublescan mode, 
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.spec
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.spec	2013-06-20 13:46:01 UTC (rev 1948)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.spec	2013-10-30 11:54:10 UTC (rev 1949)
+@@ -107,7 +107,7 @@
+ Provides:       sax2-tools:/usr/share/sax/sysp/maps/Identity.map
+ Provides:       saxident
+ Obsoletes:      saxident
+-Requires:       sax2 sax2-libsax-perl
++Requires:       sax2-libsax-perl
+ 
+ %description -n sax2-ident
+ This package contains information about the supported graphics hardware
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#337">[ date ]</a>
+              <a href="thread.html#337">[ thread ]</a>
+              <a href="subject.html#337">[ subject ]</a>
+              <a href="author.html#337">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

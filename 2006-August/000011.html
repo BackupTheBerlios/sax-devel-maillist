@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Sax2 cannot compile
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile&In-Reply-To=%3C200608311427.04311.aj%40getopenlab.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000010.html">
+   <LINK REL="Next"  HREF="000012.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Sax2 cannot compile</H1>
+    <B>A.J. Venter</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile&In-Reply-To=%3C200608311427.04311.aj%40getopenlab.com%3E"
+       TITLE="[Sax-devel] Sax2 cannot compile">aj at getopenlab.com
+       </A><BR>
+    <I>Thu Aug 31 14:27:03 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000010.html">[Sax-devel] Sax2 cannot compile
+</A></li>
+        <LI>Next message: <A HREF="000012.html">[Sax-devel] Sax2 cannot compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> This sounds like your system doesn't provide the libsysfs headers
+</I>&gt;<i> I would suggest to use the current SVN head version of sax2 which
+</I>&gt;<i> doesn't make use of libsysfs any longer. If you don't mind refer
+</I>&gt;<i> to the SVN repository or use the src.rpm from here:
+</I>&gt;<i>
+</I>&gt;<i> 	 <A HREF="http://ftp.opensuse.org/pub/opensuse/repositories/SaX2/SL10.2/src/">http://ftp.opensuse.org/pub/opensuse/repositories/SaX2/SL10.2/src/</A>
+</I>I was using head, but just in case, I did a recheckout, and got exactly the 
+same results.
+I also verified the existence of:
+/usr/include/sysfs/dlist.h /usr/include/sysfs/libsysfs.h
+So even if it WAS looking for sysfs headers it should have found them :S
+
+I'm afraid I'm still lost.
+
+A.J.
+-- 
+&quot;80% Of a hardware engineer's job is application of the uncertainty principle.
+80% of a software engineer's job is pretending this isn't so.&quot;
+A.J. Venter
+Chief Software Architect
+OpenLab International           | +27 83 455 99 78 (South Africa) 
+<A HREF="http://www.getopenlab.com">http://www.getopenlab.com</A>       | 086 654 2898 (Fax)
+<A HREF="http://www.silentcoder.co.za">http://www.silentcoder.co.za</A>    | +55 118 162 2079 (Brazil)
+GPG Key: <A HREF="http://pgp.mit.edu:11371/pks/lookup?op=get&amp;search=0x27CFFE5A">http://pgp.mit.edu:11371/pks/lookup?op=get&amp;search=0x27CFFE5A</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/sax-devel/attachments/20060831/34a25301/attachment.pgp">https://lists.berlios.de/pipermail/sax-devel/attachments/20060831/34a25301/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000010.html">[Sax-devel] Sax2 cannot compile
+</A></li>
+	<LI>Next message: <A HREF="000012.html">[Sax-devel] Sax2 cannot compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

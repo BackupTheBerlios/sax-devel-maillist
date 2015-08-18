@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1927 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1927%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps&In-Reply-To=%3C20110225131210.E1206481392%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1927 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1927%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps&In-Reply-To=%3C20110225131210.E1206481392%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1927 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri Feb 25 14:12:10 CET 2011</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#316">[ date ]</a>
+              <a href="thread.html#316">[ thread ]</a>
+              <a href="subject.html#316">[ subject ]</a>
+              <a href="author.html#316">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2011-02-25 14:12:10 +0100 (Fri, 25 Feb 2011)
+New Revision: 1927
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Keyboard.map
+Log:
+- Keyboard.map
+  * switch from &quot;nl&quot; to &quot;us(intl)&quot; for dutch (bnc #671903)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2010-09-16 14:46:52 UTC (rev 1926)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2011-02-25 13:12:10 UTC (rev 1927)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Fri Feb 25 14:10:08 CET 2011 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- Keyboard.map
++  * switch from &quot;nl&quot; to &quot;us(intl)&quot; for dutch (bnc #671903)
++
++-------------------------------------------------------------------
+ Thu Sep 16 16:39:14 CEST 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - modules/ImportAPI.pm
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Keyboard.map
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Keyboard.map	2010-09-16 14:46:52 UTC (rev 1926)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Keyboard.map	2011-02-25 13:12:10 UTC (rev 1927)
+@@ -137,8 +137,8 @@
+ default         : microsoftpro : us           : x            : xfree86 : x : x : x : x : x
+ de-latin1-nodeadkeys : microsoftpro : de  : nodeadkeys   : xfree86 : x : x : x : x : x
+ mac-de-latin1-nodeadkeys:macintosh: de : nodeadkeys   : xfree86 : x : x : x : x : x
+-nl              : microsoftpro : nl           : x            : xfree86 : x : x : x : x : x
+-nl2             : microsoftpro : nl           : x            : xfree86 : x : x : x : x : x
++nl              : microsoftpro : us           : intl         : xfree86 : x : x : x : x : x
++nl2             : microsoftpro : us           : intl         : xfree86 : x : x : x : x : x
+ khmer           : microsoftpro : us,kh        : x            : xfree86 : x : x : x : x : grp:shift_toggle
+ korean          : microsoftpro : kr           : x            : xfree86 : x : x : x : x : x
+ cn-latin1       : microsoftpro : ca           : multix       : xfree86 : x : x : x : x : x
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#316">[ date ]</a>
+              <a href="thread.html#316">[ thread ]</a>
+              <a href="subject.html#316">[ subject ]</a>
+              <a href="author.html#316">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

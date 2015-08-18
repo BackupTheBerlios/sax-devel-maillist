@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1911 - in sax-head: rpm sysp/lib/hw
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1911%20-%20in%20sax-head%3A%20rpm%20sysp/lib/hw&In-Reply-To=%3C201004062203.o36M3REV027842%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000298.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1911 - in sax-head: rpm sysp/lib/hw</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1911%20-%20in%20sax-head%3A%20rpm%20sysp/lib/hw&In-Reply-To=%3C201004062203.o36M3REV027842%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1911 - in sax-head: rpm sysp/lib/hw">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Apr  7 00:03:27 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000298.html">[Sax-devel] r1912 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#297">[ date ]</a>
+              <a href="thread.html#297">[ thread ]</a>
+              <a href="subject.html#297">[ subject ]</a>
+              <a href="author.html#297">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2010-04-07 00:03:26 +0200 (Wed, 07 Apr 2010)
+New Revision: 1911
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/lib/hw/monitor.c
+Log:
+- likely fixed buffer overflow in sysp (bnc #586112)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2010-03-27 12:33:18 UTC (rev 1910)
++++ sax-head/rpm/sax2.changes	2010-04-06 22:03:26 UTC (rev 1911)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Wed Apr  7 00:02:38 CEST 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- likely fixed buffer overflow in sysp (bnc #586112) 
++
++-------------------------------------------------------------------
+ Sat Mar 27 13:06:39 CET 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - switch to gcc 4.3 for now to fix buffer overflows in sysp 
+
+Modified: sax-head/sysp/lib/hw/monitor.c
+===================================================================
+--- sax-head/sysp/lib/hw/monitor.c	2010-03-27 12:33:18 UTC (rev 1910)
++++ sax-head/sysp/lib/hw/monitor.c	2010-04-06 22:03:26 UTC (rev 1911)
+@@ -170,8 +170,7 @@
+ 		//===================================
+ 		// Save Monitor DDC ID ...
+ 		//-----------------------------------
+-		sprintf(display-&gt;ddc,&quot;%c&quot;,'\0');
+-		snprintf(display-&gt;ddc, strlen(display-&gt;ddc) - 1, &quot;%s%04x&quot;,
++		snprintf(display-&gt;ddc, sizeof(display-&gt;ddc), &quot;%s%04x&quot;,
+ 			vend_id2str(hd-&gt;vendor.id),ID_VALUE(hd-&gt;device.id)
+ 		);
+ 		toUpper (display-&gt;ddc);
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000298.html">[Sax-devel] r1912 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#297">[ date ]</a>
+              <a href="thread.html#297">[ thread ]</a>
+              <a href="subject.html#297">[ subject ]</a>
+              <a href="author.html#297">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

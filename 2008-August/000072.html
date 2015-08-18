@@ -1,0 +1,318 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1678 - in sax-head: api/data/cdb	profile/automatic/input profile/automatic/monitor rpm	sysp/maps sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-August/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1678%20-%20in%20sax-head%3A%20api/data/cdb%0A%09profile/automatic/input%20profile/automatic/monitor%20rpm%0A%09sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200808041944.m74JiDHw028792%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000071.html">
+   <LINK REL="Next"  HREF="000073.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1678 - in sax-head: api/data/cdb	profile/automatic/input profile/automatic/monitor rpm	sysp/maps sysp/maps/arch</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1678%20-%20in%20sax-head%3A%20api/data/cdb%0A%09profile/automatic/input%20profile/automatic/monitor%20rpm%0A%09sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200808041944.m74JiDHw028792%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1678 - in sax-head: api/data/cdb	profile/automatic/input profile/automatic/monitor rpm	sysp/maps sysp/maps/arch">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Mon Aug  4 21:44:13 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000071.html">[Sax-devel] r1677 - in sax-head: profile/driver rpm sysp/maps	sysp/maps/arch
+</A></li>
+        <LI>Next message: <A HREF="000073.html">[Sax-devel] r1679 - in sax-head: . doc profile/driver rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#72">[ date ]</a>
+              <a href="thread.html#72">[ thread ]</a>
+              <a href="subject.html#72">[ subject ]</a>
+              <a href="author.html#72">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-08-04 21:44:08 +0200 (Mon, 04 Aug 2008)
+New Revision: 1678
+
+Added:
+   sax-head/profile/automatic/input/elo
+   sax-head/profile/automatic/monitor/AUO10C2
+   sax-head/profile/automatic/monitor/CMO0800
+   sax-head/rpm/66-elo.rules
+Modified:
+   sax-head/api/data/cdb/Monitors
+   sax-head/rpm/sax2.changes
+   sax-head/rpm/sax2.spec
+   sax-head/sysp/maps/Identity.map
+   sax-head/sysp/maps/Input.map
+   sax-head/sysp/maps/arch/Identity.map.i386
+Log:
+- HP Preload:
+  * added monitor entries and profiles
+- SLEPOS:
+  * use evdev driver for elo touchscreen (bnc #408436)
+  * Identity.map/Identity.map.i386:
+    - 855GM IBM hardware needs swcursor + noaccel (bnc #408994)
+    - use DDC profile for IBM 855G device to make additionally
+      required options (Noaccel,SWcursor) available again 
+      (bnc #408994)
+  * added elo udev rule to use /dev/input/elo as device for elo
+    profile; adjusted elo profile (bnc #410315)
+
+
+Modified: sax-head/api/data/cdb/Monitors
+===================================================================
+--- sax-head/api/data/cdb/Monitors	2008-08-04 15:32:42 UTC (rev 1677)
++++ sax-head/api/data/cdb/Monitors	2008-08-04 19:44:08 UTC (rev 1678)
+@@ -41117,6 +41117,32 @@
+ }
+ 
+ #==============================================
++# AUO LCD MONITOR
++#----------------------------------------------
++AUO:AUO LCD MONITOR {
++ DDC=AUO10C2
++ Resolution=1024x600
++ Profile=AUO10C2
++}
++
++#==============================================
++# AUO 1020 LCD MONITOR
++#----------------------------------------------
++AUO:AUO 1020 LCD MONITOR {
++ DDC=AUO1020
++ Resolution=1024x600
++ Profile=AUO10C2
++}
++
++#==============================================
++# CMO LCD Monitor
++#----------------------------------------------
++CMO:CMO LCD Monitor {
++ DDC=CMO0800
++ Resolution=1280x768
++ Profile=CMO0800
++}
++#==============================================
+ # ZCM-1522
+ #----------------------------------------------
+ ZENITH:ZCM-1522  {
+
+Added: sax-head/profile/automatic/input/elo
+===================================================================
+--- sax-head/profile/automatic/input/elo	2008-08-04 15:32:42 UTC (rev 1677)
++++ sax-head/profile/automatic/input/elo	2008-08-04 19:44:08 UTC (rev 1678)
+@@ -0,0 +1,10 @@
++InputDevice -&gt; [X] -&gt; Identifier = Mouse[[X]]
++InputDevice -&gt; [X] -&gt; Driver     = evdev
++InputDevice -&gt; [X] -&gt; Option -&gt; InputFashion         = Mouse
++InputDevice -&gt; [X] -&gt; Option -&gt; Name                 = evdev;Touchscreen
++InputDevice -&gt; [X] -&gt; Option -&gt; Device               = /dev/input/elo
++!remove InputDevice -&gt; [X] -&gt; Option -&gt; Emulate3Buttons
++!remove InputDevice -&gt; [X] -&gt; Option -&gt; Buttons
++!remove InputDevice -&gt; [X] -&gt; Option -&gt; Protocol
++!remove InputDevice -&gt; [X] -&gt; Option -&gt; ZAxisMapping
++!remove InputDevice -&gt; [X] -&gt; Option -&gt; Option
+
+Added: sax-head/profile/automatic/monitor/AUO10C2
+===================================================================
+--- sax-head/profile/automatic/monitor/AUO10C2	2008-08-04 15:32:42 UTC (rev 1677)
++++ sax-head/profile/automatic/monitor/AUO10C2	2008-08-04 19:44:08 UTC (rev 1678)
+@@ -0,0 +1,2 @@
++Monitor-&gt;[X]-&gt;DisplaySize = 195 113
++Device-&gt;[X]-&gt;Raw-&gt;21-&gt;Option = &quot;PanelID&quot; &quot;17&quot;
+
+Added: sax-head/profile/automatic/monitor/CMO0800
+===================================================================
+--- sax-head/profile/automatic/monitor/CMO0800	2008-08-04 15:32:42 UTC (rev 1677)
++++ sax-head/profile/automatic/monitor/CMO0800	2008-08-04 19:44:08 UTC (rev 1678)
+@@ -0,0 +1,2 @@
++Monitor-&gt;[X]-&gt;DisplaySize = 190 120
++Device-&gt;[X]-&gt;Raw-&gt;21-&gt;Option = &quot;PanelID&quot; &quot;3&quot;
+
+Added: sax-head/rpm/66-elo.rules
+===================================================================
+--- sax-head/rpm/66-elo.rules	2008-08-04 15:32:42 UTC (rev 1677)
++++ sax-head/rpm/66-elo.rules	2008-08-04 19:44:08 UTC (rev 1678)
+@@ -0,0 +1 @@
++KERNEL==&quot;event[0-9]*&quot;, SYSFS{idVendor}==&quot;04e7&quot;, SYSFS{idProduct}==&quot;0030&quot;, SYMLINK+=&quot;input/elo&quot;
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-08-04 15:32:42 UTC (rev 1677)
++++ sax-head/rpm/sax2.changes	2008-08-04 19:44:08 UTC (rev 1678)
+@@ -1,4 +1,19 @@
+ -------------------------------------------------------------------
++Mon Aug  4 20:50:36 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- HP Preload:
++  * added monitor entries and profiles
++- SLEPOS:
++  * use evdev driver for elo touchscreen (bnc #408436)
++  * Identity.map/Identity.map.i386:
++    - 855GM IBM hardware needs swcursor + noaccel (bnc #408994)
++    - use DDC profile for IBM 855G device to make additionally
++      required options (Noaccel,SWcursor) available again 
++      (bnc #408994)
++  * added elo udev rule to use /dev/input/elo as device for elo
++    profile; adjusted elo profile (bnc #410315)
++
++-------------------------------------------------------------------
+ Mon Aug  4 17:03:50 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - added 'Virtual' profile for RANDR 1.2 drivers, since framebuffer
+
+Modified: sax-head/rpm/sax2.spec
+===================================================================
+--- sax-head/rpm/sax2.spec	2008-08-04 15:32:42 UTC (rev 1677)
++++ sax-head/rpm/sax2.spec	2008-08-04 19:44:08 UTC (rev 1678)
+@@ -44,6 +44,7 @@
+ License:        GNU General Public License (GPL)
+ Source:         sax2.tar.bz2
+ Source1:        sax2.desktop
++Source2:        66-elo.rules
+ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+ ExcludeArch:  s390
+ %if %{suse_version} &gt; 1020
+@@ -213,6 +214,21 @@
+ #-------------------------------------------------
+ %suse_update_desktop_file -i %name System SystemSetup
+ #=================================================
++# hwinfo data (bnc #408436)
++#-------------------------------------------------
++mkdir -p $RPM_BUILD_ROOT/var/lib/hardware/ids
++cat &gt; $RPM_BUILD_ROOT/var/lib/hardware/ids/sax2-ident &lt;&lt; EOF
++ vendor.id              usb 0x04e7
++&amp;device.id              usb 0x0030
++ +hwclass                mouse
++EOF
++#=================================================
++# udev rule for creating /dev/input/elo symlink (Bug #410315)
++#-------------------------------------------------
++mkdir -p $RPM_BUILD_ROOT/etc/udev/rules.d
++install -m 644 $RPM_SOURCE_DIR/66-elo.rules \
++               $RPM_BUILD_ROOT/etc/udev/rules.d
++#=================================================
+ # uninstall script stage:[previous]
+ #-------------------------------------------------
+ 
+@@ -222,6 +238,26 @@
+ 	mkdir -p /var/cache/xfine
+ fi
+ 
++%post -n sax2-ident
++if ls var/lib/hardware/ids/* &amp;&gt; /dev/null; then
++  &gt;  var/lib/hardware/hd.ids
++  for i in var/lib/hardware/ids/*; do
++    cat $i &gt;&gt; var/lib/hardware/hd.ids
++  done
++fi
++
++%postun -n sax2-ident
++if [ &quot;$1&quot; -eq 0 ]; then
++  if ls var/lib/hardware/ids/* &amp;&gt; /dev/null; then
++    &gt;  var/lib/hardware/hd.ids
++    for i in var/lib/hardware/ids/*; do
++      cat $i &gt;&gt; var/lib/hardware/hd.ids
++    done
++  else
++    rm -f var/lib/hardware/hd.ids
++  fi
++fi
++
+ %post -n sax2-libsax
+ %run_ldconfig
+ 
+@@ -334,12 +370,15 @@
+ 
+ %files -n sax2-ident
+ %defattr(-,root,root)
++%dir /etc/udev/rules.d
+ %dir %{_datadir}/sax
+ %dir %{_datadir}/sax/api
+ %dir %{_datadir}/sax/api/data/cdb
+ %dir %{_datadir}/sax/api/data
+ %dir %{_datadir}/sax/sysp/maps
+ %dir %{_datadir}/sax/sysp
++%dir /var/lib/hardware
++/etc/udev/rules.d/66-elo.rules
+ %{_datadir}/sax/sysp/maps/Identity.map
+ %{_datadir}/sax/sysp/maps/Keyboard.map
+ %{_datadir}/sax/sysp/maps/Vendor.map
+@@ -354,6 +393,7 @@
+ %{_datadir}/sax/api/data/cdb/Touchscreens
+ %config %{_datadir}/sax/api/data/cdb/Monitors
+ %{_datadir}/sax/profile
++/var/lib/hardware/ids
+ #=================================================
+ # SaX-libsax file list...  
+ # ------------------------------------------------
+
+Modified: sax-head/sysp/maps/Identity.map
+===================================================================
+--- sax-head/sysp/maps/Identity.map	2008-08-04 15:32:42 UTC (rev 1677)
++++ sax-head/sysp/maps/Identity.map	2008-08-04 19:44:08 UTC (rev 1678)
+@@ -590,6 +590,7 @@
+ #-----------------------------------#
+ # IBM Cards
+ #-----------------------------------#
++NAME=IBM&amp;DEVICE=855 GM&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=i810&amp;EXT=&amp;OPT=Noaccel,SWcursor&amp;RAW=&amp;PROFILE=DDC&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x8086&amp;SUBDEVICE=0x3582
+ 
+ #-----------------------------------#
+ # Imstt Cards
+
+Modified: sax-head/sysp/maps/Input.map
+===================================================================
+--- sax-head/sysp/maps/Input.map	2008-08-04 15:32:42 UTC (rev 1677)
++++ sax-head/sysp/maps/Input.map	2008-08-04 19:44:08 UTC (rev 1678)
+@@ -25,6 +25,7 @@
+ 0x1943 : 0x5000 : fujitsu : fujitsu
+ 0x5853 : 0xfffe : xen-mouse : evdev
+ 0x03f0 : 0x1126 : hp-mouse : evdev
++0x04e7 : 0x0030 : elo : evdev
+ 0x80ee : 0x0100 : vbox-mouse : vboxmouse
+ 0x15ad : 0x0100 : vmware-mouse
+ # Keyboards
+
+Modified: sax-head/sysp/maps/arch/Identity.map.i386
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.i386	2008-08-04 15:32:42 UTC (rev 1677)
++++ sax-head/sysp/maps/arch/Identity.map.i386	2008-08-04 19:44:08 UTC (rev 1678)
+@@ -590,6 +590,7 @@
+ #-----------------------------------#
+ # IBM Cards
+ #-----------------------------------#
++NAME=IBM&amp;DEVICE=855 GM&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=i810&amp;EXT=&amp;OPT=Noaccel,SWcursor&amp;RAW=&amp;PROFILE=DDC&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x8086&amp;SUBDEVICE=0x3582
+ 
+ #-----------------------------------#
+ # Imstt Cards
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000071.html">[Sax-devel] r1677 - in sax-head: profile/driver rpm sysp/maps	sysp/maps/arch
+</A></li>
+	<LI>Next message: <A HREF="000073.html">[Sax-devel] r1679 - in sax-head: . doc profile/driver rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#72">[ date ]</a>
+              <a href="thread.html#72">[ thread ]</a>
+              <a href="subject.html#72">[ subject ]</a>
+              <a href="author.html#72">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

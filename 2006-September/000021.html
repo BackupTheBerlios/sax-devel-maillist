@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Sax2 cannot compile - ALL SOLVED
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile%20-%20ALL%20SOLVED&In-Reply-To=%3C20060901093402.GC11167%40D7.ddts.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000022.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Sax2 cannot compile - ALL SOLVED</H1>
+    <B>Marcus Sch&#228;fer</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile%20-%20ALL%20SOLVED&In-Reply-To=%3C20060901093402.GC11167%40D7.ddts.net%3E"
+       TITLE="[Sax-devel] Sax2 cannot compile - ALL SOLVED">ms at suse.de
+       </A><BR>
+    <I>Fri Sep  1 11:34:02 CEST 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000022.html">[Sax-devel] Sax2 cannot compile - ALL SOLVED
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#21">[ date ]</a>
+              <a href="thread.html#21">[ thread ]</a>
+              <a href="subject.html#21">[ subject ]</a>
+              <a href="author.html#21">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> I would just like, when an installed machine boots to check whether the 
+</I>&gt;<i> current xorg.conf file will still work, and then invoke the reconfigure steps 
+</I>&gt;<i> if needed.
+</I>
+you can check if the X-Server still runs with the current config or not.
+That is easy to implement I think. Problematic is if there are changes
+which requires a config change but the X-Server still runs with that
+config. For example somebody changes its mouse from one without a wheel
+to one with a wheel. The server runs but the wheel may not work if
+the ZAxisMapping is missing. There are more than such cases and the worst
+case is if the X-Server runs but the screen stays black. There is no
+possibility to check that. I spent some time to think of a clean concept
+how to recognize environment changes and I must admit I wasn't able
+to find a good solution.
+
+&gt;<i> So basically if the user swops out his video card, or replaces his monitor 
+</I>&gt;<i> mostly, but basically any change that would prevent X from starting correctly 
+</I>&gt;<i> should cause an automagic reconfiguration. Ideally it should also pick up one 
+</I>&gt;<i> or two other things like if the nvidia drivers have been installed since the 
+</I>&gt;<i> last run.
+</I>
+As said if the X-Server couldn't be started it's easy. The check for the
+binary drivers (nvidia and fglrx) has been implemented into the sax2
+startup script.
+
+&gt;<i> I don't know if this is (directly) doable, or if I'll need to write some code 
+</I>&gt;<i> plugging into sax2 abilities where possible, I'm quite willing and able to 
+</I>&gt;<i> write some code myself if needed, but it would be a waste if sax2 can already 
+</I>&gt;<i> do something like this.
+</I>
+sax2 only has a check for the binary driver part and I would consider this
+code as a hack but I was forced to implement something like that. Everything
+else needs to be coded first. By the way checking if an X-Server could be
+started and is accessable has been implemented in the
+
+	/usr/share/sax/modules/CheckServer.pm
+
+perl module. Maybe you can make use of it when you start implementing
+
+Regards
+Marcus
+-- 
+ Public Key available
+ -------------------------------------------------------
+ Marcus Sch&#228;fer (Res. &amp; Dev.)   SUSE LINUX Products GmbH
+ Tel: 07562-905437              Unter&#246;sch 9
+ FAX: 07562-905438              D-88316 Isny / Rohrdorf
+ <A HREF="http://www.suse.de">http://www.suse.de</A>             Germany [ HomeOffice ]
+ -------------------------------------------------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000022.html">[Sax-devel] Sax2 cannot compile - ALL SOLVED
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#21">[ date ]</a>
+              <a href="thread.html#21">[ thread ]</a>
+              <a href="subject.html#21">[ subject ]</a>
+              <a href="author.html#21">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

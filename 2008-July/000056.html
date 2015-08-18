@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1660 - sax-head/tools/getPrimary
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1660%20-%20sax-head/tools/getPrimary&In-Reply-To=%3C200807160108.m6G18nPk017715%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000055.html">
+   <LINK REL="Next"  HREF="000057.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1660 - sax-head/tools/getPrimary</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1660%20-%20sax-head/tools/getPrimary&In-Reply-To=%3C200807160108.m6G18nPk017715%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1660 - sax-head/tools/getPrimary">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Jul 16 03:08:49 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000055.html">[Sax-devel] r1659 - in sax-head: rpm startup tools tools/getPrimary
+</A></li>
+        <LI>Next message: <A HREF="000057.html">[Sax-devel] r1661 - in sax-head: rpm startup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#56">[ date ]</a>
+              <a href="thread.html#56">[ thread ]</a>
+              <a href="subject.html#56">[ subject ]</a>
+              <a href="author.html#56">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-07-16 03:08:47 +0200 (Wed, 16 Jul 2008)
+New Revision: 1660
+
+Modified:
+   sax-head/tools/getPrimary/getPrimary.sh
+Log:
+- make sure that lspci output filter in getPrimary returns only *one*
+  VGA primary card; it happened to me that after a soft reset and
+  switching PCI/PCIe graphics card order in BIOS setup both graphics
+  cards showed up as primary in lspci output filter - until I halted
+  the machine and turned it on again (hard reset).
+
+
+Modified: sax-head/tools/getPrimary/getPrimary.sh
+===================================================================
+--- sax-head/tools/getPrimary/getPrimary.sh	2008-07-15 16:58:18 UTC (rev 1659)
++++ sax-head/tools/getPrimary/getPrimary.sh	2008-07-16 01:08:47 UTC (rev 1660)
+@@ -29,7 +29,7 @@
+ bus_slot_function=$(/sbin/lspci -vv | \
+                     grep -B2 &quot;Control: I/O+&quot; | \
+                     grep &quot;VGA compatible&quot; | \
+-                    awk '{print $1}')
++                    awk '{print $1}' | head -n 1)
+ test &quot;$bus_slot_function&quot; == &quot;&quot; &amp;&amp; fallback
+ 
+ # search for SaX2 ChipID (&quot;sysp -c&quot; is the same as &quot;sax2 -p&quot;)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000055.html">[Sax-devel] r1659 - in sax-head: rpm startup tools tools/getPrimary
+</A></li>
+	<LI>Next message: <A HREF="000057.html">[Sax-devel] r1661 - in sax-head: rpm startup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#56">[ date ]</a>
+              <a href="thread.html#56">[ thread ]</a>
+              <a href="subject.html#56">[ subject ]</a>
+              <a href="author.html#56">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1761 - in sax-head: rpm sysp/maps sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1761%20-%20in%20sax-head%3A%20rpm%20sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200811101329.mAADTfNV022109%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000150.html">
+   <LINK REL="Next"  HREF="000152.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1761 - in sax-head: rpm sysp/maps sysp/maps/arch</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1761%20-%20in%20sax-head%3A%20rpm%20sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200811101329.mAADTfNV022109%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1761 - in sax-head: rpm sysp/maps sysp/maps/arch">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Mon Nov 10 14:29:41 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000150.html">[Sax-devel] r1760 - in sax-head: rpm sysp/maps
+</A></li>
+        <LI>Next message: <A HREF="000152.html">[Sax-devel] r1762 - in sax-head: rpm sysp
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#151">[ date ]</a>
+              <a href="thread.html#151">[ thread ]</a>
+              <a href="subject.html#151">[ subject ]</a>
+              <a href="author.html#151">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-11-10 14:29:37 +0100 (Mon, 10 Nov 2008)
+New Revision: 1761
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Identity.map
+   sax-head/sysp/maps/arch/Identity.map.i386
+Log:
+- use NoVirtual profile for Intel 810/815 (bnc #442413)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-11-10 10:15:31 UTC (rev 1760)
++++ sax-head/rpm/sax2.changes	2008-11-10 13:29:37 UTC (rev 1761)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Mon Nov 10 14:28:38 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- use NoVirtual profile for Intel 810/815 (bnc #442413)
++
++-------------------------------------------------------------------
+ Mon Nov 10 11:13:36 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - fixed Input.map, vmware-mouse line is missing the driver
+
+Modified: sax-head/sysp/maps/Identity.map
+===================================================================
+--- sax-head/sysp/maps/Identity.map	2008-11-10 10:15:31 UTC (rev 1760)
++++ sax-head/sysp/maps/Identity.map	2008-11-10 13:29:37 UTC (rev 1761)
+@@ -569,14 +569,14 @@
+ #-----------------------------------#
+ # Intel Corporation Cards
+ #-----------------------------------#
+-NAME=Intel&amp;DEVICE=82810 CGC &amp;VID=0x8086&amp;DID=0x7121&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=82810 CGC &amp;VID=0x8086&amp;DID=0x7121&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=82810-DC100 CGC &amp;VID=0x8086&amp;DID=0x7123&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=82810-DC100 CGC &amp;VID=0x8086&amp;DID=0x7123&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=82810E CGC &amp;VID=0x8086&amp;DID=0x7125&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=82810E CGC &amp;VID=0x8086&amp;DID=0x7125&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=I815&amp;VID=0x8086&amp;DID=0x1132&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=I815&amp;VID=0x8086&amp;DID=0x1132&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=82810 CGC &amp;VID=0x8086&amp;DID=0x7121&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=82810 CGC &amp;VID=0x8086&amp;DID=0x7121&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=82810-DC100 CGC &amp;VID=0x8086&amp;DID=0x7123&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=82810-DC100 CGC &amp;VID=0x8086&amp;DID=0x7123&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=82810E CGC &amp;VID=0x8086&amp;DID=0x7125&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=82810E CGC &amp;VID=0x8086&amp;DID=0x7125&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=I815&amp;VID=0x8086&amp;DID=0x1132&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=I815&amp;VID=0x8086&amp;DID=0x1132&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=i740&amp;VID=0x8086&amp;DID=0x7800&amp;SERVER=i740&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=i740_PCI&amp;VID=0x8086&amp;DID=0x00d1&amp;SERVER=i740&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=i830&amp;VID=0x8086&amp;DID=0x3577&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-head/sysp/maps/arch/Identity.map.i386
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.i386	2008-11-10 10:15:31 UTC (rev 1760)
++++ sax-head/sysp/maps/arch/Identity.map.i386	2008-11-10 13:29:37 UTC (rev 1761)
+@@ -569,14 +569,14 @@
+ #-----------------------------------#
+ # Intel Corporation Cards
+ #-----------------------------------#
+-NAME=Intel&amp;DEVICE=82810 CGC &amp;VID=0x8086&amp;DID=0x7121&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=82810 CGC &amp;VID=0x8086&amp;DID=0x7121&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=82810-DC100 CGC &amp;VID=0x8086&amp;DID=0x7123&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=82810-DC100 CGC &amp;VID=0x8086&amp;DID=0x7123&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=82810E CGC &amp;VID=0x8086&amp;DID=0x7125&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=82810E CGC &amp;VID=0x8086&amp;DID=0x7125&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=I815&amp;VID=0x8086&amp;DID=0x1132&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=I815&amp;VID=0x8086&amp;DID=0x1132&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=82810 CGC &amp;VID=0x8086&amp;DID=0x7121&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=82810 CGC &amp;VID=0x8086&amp;DID=0x7121&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=82810-DC100 CGC &amp;VID=0x8086&amp;DID=0x7123&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=82810-DC100 CGC &amp;VID=0x8086&amp;DID=0x7123&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=82810E CGC &amp;VID=0x8086&amp;DID=0x7125&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=82810E CGC &amp;VID=0x8086&amp;DID=0x7125&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=I815&amp;VID=0x8086&amp;DID=0x1132&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=I815&amp;VID=0x8086&amp;DID=0x1132&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=i740&amp;VID=0x8086&amp;DID=0x7800&amp;SERVER=i740&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=i740_PCI&amp;VID=0x8086&amp;DID=0x00d1&amp;SERVER=i740&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=i830&amp;VID=0x8086&amp;DID=0x3577&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000150.html">[Sax-devel] r1760 - in sax-head: rpm sysp/maps
+</A></li>
+	<LI>Next message: <A HREF="000152.html">[Sax-devel] r1762 - in sax-head: rpm sysp
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#151">[ date ]</a>
+              <a href="thread.html#151">[ thread ]</a>
+              <a href="subject.html#151">[ subject ]</a>
+              <a href="author.html#151">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

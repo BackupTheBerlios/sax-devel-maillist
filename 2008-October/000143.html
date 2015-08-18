@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1750 - in sax-head: . rpm sysp sysp/lib sysp/lib/hw
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1750%20-%20in%20sax-head%3A%20.%20rpm%20sysp%20sysp/lib%20sysp/lib/hw&In-Reply-To=%3C200810271651.m9RGpAP4001563%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000140.html">
+   <LINK REL="Next"  HREF="000142.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1750 - in sax-head: . rpm sysp sysp/lib sysp/lib/hw</H1>
+    <B>marcus_schaefer at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1750%20-%20in%20sax-head%3A%20.%20rpm%20sysp%20sysp/lib%20sysp/lib/hw&In-Reply-To=%3C200810271651.m9RGpAP4001563%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1750 - in sax-head: . rpm sysp sysp/lib sysp/lib/hw">marcus_schaefer at mail.berlios.de
+       </A><BR>
+    <I>Mon Oct 27 17:51:10 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000140.html">[Sax-devel] r1749 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+        <LI>Next message: <A HREF="000142.html">[Sax-devel] r1751 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#143">[ date ]</a>
+              <a href="thread.html#143">[ thread ]</a>
+              <a href="subject.html#143">[ subject ]</a>
+              <a href="author.html#143">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: marcus_schaefer
+Date: 2008-10-27 17:49:32 +0100 (Mon, 27 Oct 2008)
+New Revision: 1750
+
+Added:
+   sax-head/rpm/sax2-rpmlintrc
+Removed:
+   sax-head/rpm/sax2.dif
+   sax-head/sysp/lib/libhd/
+Modified:
+   sax-head/Makefile
+   sax-head/rpm/sax2.changes
+   sax-head/rpm/sax2.spec
+   sax-head/sysp/Makefile
+   sax-head/sysp/lib/Makefile
+   sax-head/sysp/lib/hw/hwdata.h
+Log:
+
+- prepared for building on s390x, not completed (bnc #432738)
+- removed local copy of libhd, other distros will now complain
+  because libhd is not a public open source project AI snwint
+- added rpmlintrc
+
+
+
+Modified: sax-head/Makefile
+===================================================================
+--- sax-head/Makefile	2008-10-26 15:35:40 UTC (rev 1749)
++++ sax-head/Makefile	2008-10-27 16:49:32 UTC (rev 1750)
+@@ -304,3 +304,6 @@
+ 	for i in `ls -1 ./doc/sax-man`;do \
+ 		install -m 644 ./doc/sax-man/$$i ${MANVZ}/$$i.1 ;\
+ 	done
++
++build:
++	./.doit -p --local
+
+Added: sax-head/rpm/sax2-rpmlintrc
+===================================================================
+--- sax-head/rpm/sax2-rpmlintrc	2008-10-26 15:35:40 UTC (rev 1749)
++++ sax-head/rpm/sax2-rpmlintrc	2008-10-27 16:49:32 UTC (rev 1750)
+@@ -0,0 +1,12 @@
++# don't apply perl naming policy on libsax
++addFilter(&quot;sax2-libsax.* perl5-naming-policy-not-applied&quot;)
++
++# don't apply perl naming policy on SPP
++addFilter(&quot;SPP.* perl5-naming-policy-not-applied&quot;)
++
++# don't apply python naming policy on libsax
++addFilter(&quot;sax2-libsax.* python-naming-policy-not-applied&quot;)
++
++# don't care for zero length .bs files
++addFilter(&quot;.*zero-length.*.bs&quot;)
++
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-10-26 15:35:40 UTC (rev 1749)
++++ sax-head/rpm/sax2.changes	2008-10-27 16:49:32 UTC (rev 1750)
+@@ -1,4 +1,12 @@
+ -------------------------------------------------------------------
++Mon Oct 27 17:25:25 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
++
++- prepared for building on s390x, not completed (bnc #432738)
++- removed local copy of libhd, other distros will now complain
++  because libhd is not a public open source project AI snwint
++- added rpmlintrc
++
++-------------------------------------------------------------------
+ Sun Oct 26 16:33:08 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - Identity.map: renamed &quot;AST1000/2000&quot; to &quot;ASPEED Graphics Family&quot;
+
+Deleted: sax-head/rpm/sax2.dif
+===================================================================
+--- sax-head/rpm/sax2.dif	2008-10-26 15:35:40 UTC (rev 1749)
++++ sax-head/rpm/sax2.dif	2008-10-27 16:49:32 UTC (rev 1750)
+@@ -1,32 +0,0 @@
+---- sysp/Makefile
+-+++ sysp/Makefile
+-@@ -1,5 +1,5 @@
+- CC  = g++ -Wall -L/usr/X11R6/lib -L/usr/X11R6/lib64 -DXORG_LOADER
+--LIB = ./lib/libsysp.a ./lib/libhd/libhd.a -lfl -lstdc++ -lX11 -lXrandr -lhal -lXxf86misc
+-+LIB = ./lib/libsysp.a -lhd -lfl -lstdc++ -lX11 -lXrandr -lhal -lXxf86misc
+- 
+- OBJ = sysp.o mouse.o keyboard.o server.o cfg.o xstuff.o d3.o
+- SYS = ./lib
+---- sysp/lib/Makefile
+-+++ sysp/lib/Makefile
+-@@ -22,14 +22,12 @@ PCI      = ./pci
+- FBSET    = ./fbset
+- HW       = ./hw
+- COMMON   = ./common
+--LIBHD    = ./libhd
+- 
+- export CFLAGS
+- 
+- all:${AIM}
+- 
+- libsysp.a:
+--	${MAKE} -C ${LIBHD}  all
+- 	${MAKE} -C ${PLOG}   all
+- 	${MAKE} -C ${PCI}    all
+- 	${MAKE} -C ${FBSET}  -f Makefile.swig all
+-@@ -52,5 +50,4 @@ clean:
+- 	${MAKE} -C ${FBSET}  -f Makefile.swig clean
+- 	${MAKE} -C ${HW}     clean
+- 	${MAKE} -C ${COMMON} clean
+--	${MAKE} -C ${LIBHD}  clean
+- 
+
+Modified: sax-head/rpm/sax2.spec
+===================================================================
+--- sax-head/rpm/sax2.spec	2008-10-26 15:35:40 UTC (rev 1749)
++++ sax-head/rpm/sax2.spec	2008-10-27 16:49:32 UTC (rev 1750)
+@@ -17,8 +17,11 @@
+ BuildRequires:  antlr bison doxygen flex gettext-devel ghostscript-fonts-std
+ BuildRequires:  graphviz hal-devel python-devel
+ BuildRequires:  libqt4 libqt4-qt3support libqt4-devel libqt4-x11
+-BuildRequires:  readline-devel swig sysfsutils update-desktop-files
+-BuildRequires:  xorg-x11-server-sdk hwinfo-devel
++BuildRequires:  readline-devel swig sysfsutils update-desktop-files hwinfo-devel
++BuildRequires:  xorg-x11-server-sdk
++%if %{suse_version} &gt; 1020
++BuildRequires:  fdupes
++%endif
+ %if %{build_java}
+ BuildRequires: java-1_4_2-gcj-compat-devel
+ %endif
+@@ -46,11 +49,8 @@
+ Source1:        sax2.desktop
+ Source2:        66-elo.rules
+ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+-ExcludeArch:  s390
+-%if %{suse_version} &gt; 1020
+-Patch:          sax2.dif
+-%endif
+-Patch1:         xorg-server-1_5.diff
++ExcludeArch:    s390
++Patch:          xorg-server-1_5.diff
+ 
+ %description
+ This package contains the SuSE Advanced X-Configuration
+@@ -162,12 +162,9 @@
+ 
+ %prep
+ %setup -n sax
+-%if %{suse_version} &gt; 1020
++%if %{suse_version} &gt; 1100
+ %patch
+ %endif
+-%if %{suse_version} &gt; 1100
+-%patch1
+-%endif
+ 
+ %build
+ test -e /.buildenv &amp;&amp; . /.buildenv
+@@ -228,10 +225,16 @@
+ mkdir -p $RPM_BUILD_ROOT/etc/udev/rules.d
+ install -m 644 $RPM_SOURCE_DIR/66-elo.rules \
+                $RPM_BUILD_ROOT/etc/udev/rules.d
++%if %{suse_version} &gt; 1020
++%fdupes $RPM_BUILD_ROOT/usr/share/sax/api/figures
++%endif
+ #=================================================
+ # uninstall script stage:[previous]
+ #-------------------------------------------------
+ 
++%postin
++touch /var/log/SaX.log
++
+ %preun
+ chroot . rm -f /var/cache/xfine/*
+ if [ ! -d /var/cache/xfine ];then
+@@ -378,7 +381,7 @@
+ %dir %{_datadir}/sax/sysp/maps
+ %dir %{_datadir}/sax/sysp
+ %dir /var/lib/hardware
+-/etc/udev/rules.d/66-elo.rules
++%config /etc/udev/rules.d/66-elo.rules
+ %{_datadir}/sax/sysp/maps/Identity.map
+ %{_datadir}/sax/sysp/maps/Keyboard.map
+ %{_datadir}/sax/sysp/maps/Vendor.map
+
+Modified: sax-head/sysp/Makefile
+===================================================================
+--- sax-head/sysp/Makefile	2008-10-26 15:35:40 UTC (rev 1749)
++++ sax-head/sysp/Makefile	2008-10-27 16:49:32 UTC (rev 1750)
+@@ -1,5 +1,5 @@
+ CC  = g++ -Wall -L/usr/X11R6/lib -L/usr/X11R6/lib64 -DXORG_LOADER
+-LIB = ./lib/libsysp.a ./lib/libhd/libhd.a -lfl -lstdc++ -lX11 -lXrandr -lhal -lXxf86misc
++LIB = ./lib/libsysp.a -lhd -lfl -lstdc++ -lX11 -lXrandr -lhal -lXxf86misc
+ 
+ OBJ = sysp.o mouse.o keyboard.o server.o cfg.o xstuff.o d3.o
+ SYS = ./lib
+
+Modified: sax-head/sysp/lib/Makefile
+===================================================================
+--- sax-head/sysp/lib/Makefile	2008-10-26 15:35:40 UTC (rev 1749)
++++ sax-head/sysp/lib/Makefile	2008-10-27 16:49:32 UTC (rev 1750)
+@@ -22,14 +22,12 @@
+ FBSET    = ./fbset
+ HW       = ./hw
+ COMMON   = ./common
+-LIBHD    = ./libhd
+ 
+ export CFLAGS
+ 
+ all:${AIM}
+ 
+ libsysp.a:
+-	${MAKE} -C ${LIBHD}  all
+ 	${MAKE} -C ${PLOG}   all
+ 	${MAKE} -C ${PCI}    all
+ 	${MAKE} -C ${FBSET}  -f Makefile.swig all
+@@ -52,5 +50,4 @@
+ 	${MAKE} -C ${FBSET}  -f Makefile.swig clean
+ 	${MAKE} -C ${HW}     clean
+ 	${MAKE} -C ${COMMON} clean
+-	${MAKE} -C ${LIBHD}  clean
+ 
+
+Modified: sax-head/sysp/lib/hw/hwdata.h
+===================================================================
+--- sax-head/sysp/lib/hw/hwdata.h	2008-10-26 15:35:40 UTC (rev 1749)
++++ sax-head/sysp/lib/hw/hwdata.h	2008-10-27 16:49:32 UTC (rev 1750)
+@@ -22,7 +22,7 @@
+ #include &lt;string.h&gt;
+ #include &lt;unistd.h&gt;
+ 
+-#include &quot;../libhd/hd/hd.h&quot;
++#include &quot;hd.h&quot;
+ #include &quot;../syslib.h&quot;
+ #include &quot;../../config.h&quot;
+ 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000140.html">[Sax-devel] r1749 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+	<LI>Next message: <A HREF="000142.html">[Sax-devel] r1751 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#143">[ date ]</a>
+              <a href="thread.html#143">[ thread ]</a>
+              <a href="subject.html#143">[ subject ]</a>
+              <a href="author.html#143">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

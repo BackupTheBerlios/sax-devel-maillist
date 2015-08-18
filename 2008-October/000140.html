@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1749 - in sax-head: rpm sysp/maps sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1749%20-%20in%20sax-head%3A%20rpm%20sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200810261535.m9QFZh02020629%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000139.html">
+   <LINK REL="Next"  HREF="000143.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1749 - in sax-head: rpm sysp/maps sysp/maps/arch</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1749%20-%20in%20sax-head%3A%20rpm%20sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200810261535.m9QFZh02020629%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1749 - in sax-head: rpm sysp/maps sysp/maps/arch">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Sun Oct 26 16:35:43 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000139.html">[Sax-devel] r1748 - in sax-head: libsax rpm
+</A></li>
+        <LI>Next message: <A HREF="000143.html">[Sax-devel] r1750 - in sax-head: . rpm sysp sysp/lib sysp/lib/hw
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#140">[ date ]</a>
+              <a href="thread.html#140">[ thread ]</a>
+              <a href="subject.html#140">[ subject ]</a>
+              <a href="author.html#140">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-10-26 16:35:40 +0100 (Sun, 26 Oct 2008)
+New Revision: 1749
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Identity.map
+   sax-head/sysp/maps/arch/Identity.map.i386
+   sax-head/sysp/maps/arch/Identity.map.ia64
+   sax-head/sysp/maps/arch/Identity.map.ppc
+   sax-head/sysp/maps/arch/Identity.map.x86_64
+Log:
+- Identity.map: renamed &quot;AST1000/2000&quot; to &quot;ASPEED Graphics Family&quot;
+  (bnc #439053)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-10-23 15:06:58 UTC (rev 1748)
++++ sax-head/rpm/sax2.changes	2008-10-26 15:35:40 UTC (rev 1749)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Sun Oct 26 16:33:08 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- Identity.map: renamed &quot;AST1000/2000&quot; to &quot;ASPEED Graphics Family&quot;
++  (bnc #439053)
++
++-------------------------------------------------------------------
+ Thu Oct 23 17:06:10 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - fixed setPrimaryChip option setup (bnc #432732)
+
+Modified: sax-head/sysp/maps/Identity.map
+===================================================================
+--- sax-head/sysp/maps/Identity.map	2008-10-23 15:06:58 UTC (rev 1748)
++++ sax-head/sysp/maps/Identity.map	2008-10-26 15:35:40 UTC (rev 1749)
+@@ -70,7 +70,7 @@
+ #-----------------------------------#
+ # ASPEED Technology Inc. Cards
+ #-----------------------------------#
+-NAME=ASPEED Technology Inc.&amp;DEVICE=AST1000/2000&amp;VID=0x1A03&amp;DID=0x2000&amp;SERVER=ast&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ASPEED Technology Inc.&amp;DEVICE=ASPEED Graphics Family&amp;VID=0x1A03&amp;DID=0x2000&amp;SERVER=ast&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ 
+ #-----------------------------------#
+ # Asustek Computer, Inc. Cards
+
+Modified: sax-head/sysp/maps/arch/Identity.map.i386
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.i386	2008-10-23 15:06:58 UTC (rev 1748)
++++ sax-head/sysp/maps/arch/Identity.map.i386	2008-10-26 15:35:40 UTC (rev 1749)
+@@ -70,7 +70,7 @@
+ #-----------------------------------#
+ # ASPEED Technology Inc. Cards
+ #-----------------------------------#
+-NAME=ASPEED Technology Inc.&amp;DEVICE=AST1000/2000&amp;VID=0x1A03&amp;DID=0x2000&amp;SERVER=ast&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ASPEED Technology Inc.&amp;DEVICE=ASPEED Graphics Family&amp;VID=0x1A03&amp;DID=0x2000&amp;SERVER=ast&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ 
+ #-----------------------------------#
+ # Asustek Computer, Inc. Cards
+
+Modified: sax-head/sysp/maps/arch/Identity.map.ia64
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.ia64	2008-10-23 15:06:58 UTC (rev 1748)
++++ sax-head/sysp/maps/arch/Identity.map.ia64	2008-10-26 15:35:40 UTC (rev 1749)
+@@ -65,7 +65,7 @@
+ #-----------------------------------#
+ # ASPEED Technology Inc. Cards
+ #-----------------------------------#
+-NAME=ASPEED Technology Inc.&amp;DEVICE=AST1000/2000&amp;VID=0x1A03&amp;DID=0x2000&amp;SERVER=ast&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ASPEED Technology Inc.&amp;DEVICE=ASPEED Graphics Family&amp;VID=0x1A03&amp;DID=0x2000&amp;SERVER=ast&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ 
+ #-----------------------------------#
+ # Asustek Computer, Inc. Cards
+
+Modified: sax-head/sysp/maps/arch/Identity.map.ppc
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.ppc	2008-10-23 15:06:58 UTC (rev 1748)
++++ sax-head/sysp/maps/arch/Identity.map.ppc	2008-10-26 15:35:40 UTC (rev 1749)
+@@ -65,7 +65,7 @@
+ #-----------------------------------#
+ # ASPEED Technology Inc. Cards
+ #-----------------------------------#
+-NAME=ASPEED Technology Inc.&amp;DEVICE=AST1000/2000&amp;VID=0x1A03&amp;DID=0x2000&amp;SERVER=ast&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ASPEED Technology Inc.&amp;DEVICE=ASPEED Graphics Family&amp;VID=0x1A03&amp;DID=0x2000&amp;SERVER=ast&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ 
+ #-----------------------------------#
+ # ATI Technologies Inc Cards
+
+Modified: sax-head/sysp/maps/arch/Identity.map.x86_64
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.x86_64	2008-10-23 15:06:58 UTC (rev 1748)
++++ sax-head/sysp/maps/arch/Identity.map.x86_64	2008-10-26 15:35:40 UTC (rev 1749)
+@@ -65,7 +65,7 @@
+ #-----------------------------------#
+ # ASPEED Technology Inc. Cards
+ #-----------------------------------#
+-NAME=ASPEED Technology Inc.&amp;DEVICE=AST1000/2000&amp;VID=0x1A03&amp;DID=0x2000&amp;SERVER=ast&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ASPEED Technology Inc.&amp;DEVICE=ASPEED Graphics Family&amp;VID=0x1A03&amp;DID=0x2000&amp;SERVER=ast&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ 
+ #-----------------------------------#
+ # Asustek Computer, Inc. Cards
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000139.html">[Sax-devel] r1748 - in sax-head: libsax rpm
+</A></li>
+	<LI>Next message: <A HREF="000143.html">[Sax-devel] r1750 - in sax-head: . rpm sysp sysp/lib sysp/lib/hw
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#140">[ date ]</a>
+              <a href="thread.html#140">[ thread ]</a>
+              <a href="subject.html#140">[ subject ]</a>
+              <a href="author.html#140">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

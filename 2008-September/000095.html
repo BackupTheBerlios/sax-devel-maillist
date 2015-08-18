@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1703 - in sax-head: api/data/cdb rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1703%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200809101325.m8ADPJAH023499%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000094.html">
+   <LINK REL="Next"  HREF="000096.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1703 - in sax-head: api/data/cdb rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1703%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200809101325.m8ADPJAH023499%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1703 - in sax-head: api/data/cdb rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Sep 10 15:25:19 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000094.html">[Sax-devel] r1702 - in sax-head: api/data/cdb rpm
+</A></li>
+        <LI>Next message: <A HREF="000096.html">[Sax-devel] r1704 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#95">[ date ]</a>
+              <a href="thread.html#95">[ thread ]</a>
+              <a href="subject.html#95">[ subject ]</a>
+              <a href="author.html#95">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-09-10 15:25:18 +0200 (Wed, 10 Sep 2008)
+New Revision: 1703
+
+Modified:
+   sax-head/api/data/cdb/Tablets
+   sax-head/rpm/sax2.changes
+Log:
+- add some more serial Wacom TabletPCs:
+  * LG LT20 Tablet PC
+  * Panasonic Toughbook CF-18
+  * Toshiba Port?\195?\169g?\195?\169 M series Tablet PC
+  * Toshiba Satellite R15/R20
+  * Toshiba Tecra M series Tablet PC
+  (Danny Kukawka &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">dkukawka at suse.de</A>&gt;)
+
+
+Modified: sax-head/api/data/cdb/Tablets
+===================================================================
+--- sax-head/api/data/cdb/Tablets	2008-09-10 13:22:19 UTC (rev 1702)
++++ sax-head/api/data/cdb/Tablets	2008-09-10 13:25:18 UTC (rev 1703)
+@@ -139,6 +139,10 @@
+   RawOption          = &quot;Model&quot; &quot;Flair&quot;,&quot;ReportSpeed&quot; &quot;85&quot;
+ }
+ 
++#-----------------------------------------------------------------------------------------#
++#		   		   TABLET PC Section					  #
++#-----------------------------------------------------------------------------------------#
++
+ #--------------------------------------------#
+ # TABLET PCs: ACER TM C300/C301/C302 (+XMi)  #
+ #--------------------------------------------#
+@@ -153,6 +157,36 @@
+  EraserLink       = ACER TravelMate C30x series Eraser (SERIAL)
+ }
+ 
++#----------------------------------#
++# TABLET PCs: ASUS R1E (USB)       #
++#----------------------------------#
++TABLET PCs:ASUS R1E (USB) {
++ Driver           = wacom
++ Device           = /dev/input/by-id/usb-Tablet_ISD-V4-event-stylus
++ Option           = USB
++ SendCoreEvents   = on
++ TabletType       = cursor
++ TabletMode       = Absolute
++ RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ StylusLink       = ASUS R1E Stylus (USB)
++ EraserLink       = ASUS R1E Eraser (USB)
++}
++
++#----------------------------------#
++# TABLET PCs: ASUS R1F (USB)       #
++#----------------------------------#
++TABLET PCs:ASUS R1F (USB) {
++ Driver           = wacom
++ Device           = /dev/input/by-id/usb-Tablet_ISD-V4-event-stylus
++ Option           = USB
++ SendCoreEvents   = on
++ TabletType       = cursor
++ TabletMode       = Absolute
++ RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ StylusLink       = ASUS R1F Stylus (USB)
++ EraserLink       = ASUS R1F Eraser (USB)
++}
++
+ #--------------------------------------------#
+ # TABLET PCs: Fujitsu Lifebook T series      #
+ # &quot;BottomX&quot; &quot;24576&quot;,&quot;BottomY&quot; &quot;18432&quot;        #
+@@ -271,6 +305,20 @@
+ }
+ 
+ #----------------------------------#
++# TABLET PCs: LG LT20 Tablet PC    #
++#----------------------------------#
++TABLET PCs:LG LT20 Tablet PC (SERIAL) {
++ TabletType       = cursor
++ TabletMode       = Absolute
++ Driver           = wacom
++ Device           = /dev/ttyS0
++ SendCoreEvents   = on
++ RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ StylusLink       = ISDV4 TABLET PC Stylus (SERIAL)
++ EraserLink       = ISDV4 TABLET PC Eraser (SERIAL)
++}
++
++#----------------------------------#
+ # TABLET PCs: Motion M1200         #
+ #----------------------------------#
+ TABLET PCs:Motion M1200 (SERIAL) {
+@@ -298,6 +346,62 @@
+  StylusLink       = Motion M1400 Stylus (SERIAL)
+ }
+ 
++#---------------------------------------#
++# TABLET PCs: Panasonic Toughbook CF-18 #
++#---------------------------------------#
++TABLET PCs:Panasonic Toughbook CF-18 (SERIAL) {
++ TabletType       = cursor
++ TabletMode       = Absolute
++ Driver           = wacom
++ Device           = /dev/ttyS0
++ SendCoreEvents   = on
++ RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ StylusLink       = ISDV4 TABLET PC Stylus (SERIAL)
++ EraserLink       = ISDV4 TABLET PC Eraser (SERIAL)
++}
++
++#---------------------------------------------------------#
++# TABLET PCs: Toshiba Portege M series Tablet PC (Serial) #
++#---------------------------------------------------------#
++TABLET PCs:Toshiba Portege M series Tablet PCs (SERIAL) {
++ TabletType       = cursor
++ TabletMode       = Absolute
++ Driver           = wacom
++ Device           = /dev/ttyS0
++ SendCoreEvents   = on
++ RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ StylusLink       = ISDV4 TABLET PC Stylus (SERIAL)
++ EraserLink       = ISDV4 TABLET PC Eraser (SERIAL)
++}
++
++#---------------------------------------#
++# TABLET PCs: Toshiba Satellite R15/R20 #
++#---------------------------------------#
++TABLET PCs:Toshiba Satellite R15/R20 (SERIAL) {
++ TabletType       = cursor
++ TabletMode       = Absolute
++ Driver           = wacom
++ Device           = /dev/ttyS0
++ SendCoreEvents   = on
++ RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ StylusLink       = ISDV4 TABLET PC Stylus (SERIAL)
++ EraserLink       = ISDV4 TABLET PC Eraser (SERIAL)
++}
++
++#-------------------------------------------------------#
++# TABLET PCs: Toshiba Tecra M series Tablet PC (Serial) #
++#-------------------------------------------------------#
++TABLET PCs:Toshiba Tecra M series Tablet PCs (SERIAL) {
++ TabletType       = cursor
++ TabletMode       = Absolute
++ Driver           = wacom
++ Device           = /dev/ttyS0
++ SendCoreEvents   = on
++ RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ StylusLink       = ISDV4 TABLET PC Stylus (SERIAL)
++ EraserLink       = ISDV4 TABLET PC Eraser (SERIAL)
++}
++
+ #----------------------------------#
+ # TABLET PCs: Wacom ISDV4 Serial   #
+ #----------------------------------#
+@@ -340,34 +444,3 @@
+   SendCoreEvents     = on
+   RawOption          = &quot;MaximumXPosition&quot; &quot;12550&quot;,&quot;MaximumYPosition&quot; &quot;7650&quot;,&quot;MinimumXPosition&quot; &quot;400&quot;,&quot;MinimumYPosition&quot; &quot;400&quot;,&quot;BaudRate&quot; &quot;19200&quot;
+ }
+-
+-#----------------------------------#
+-# TABLET PCs: ASUS R1E (USB)       #
+-#----------------------------------#
+-TABLET PCs:ASUS R1E (USB) {
+- Driver           = wacom
+- Device           = /dev/input/by-id/usb-Tablet_ISD-V4-event-stylus
+- Option           = USB
+- SendCoreEvents   = on
+- TabletType       = cursor
+- TabletMode       = Absolute
+- RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
+- StylusLink       = ASUS R1E Stylus (USB)
+- EraserLink       = ASUS R1E Eraser (USB)
+-}
+-
+-#----------------------------------#
+-# TABLET PCs: ASUS R1F (USB)       #
+-#----------------------------------#
+-TABLET PCs:ASUS R1F (USB) {
+- Driver           = wacom
+- Device           = /dev/input/by-id/usb-Tablet_ISD-V4-event-stylus
+- Option           = USB
+- SendCoreEvents   = on
+- TabletType       = cursor
+- TabletMode       = Absolute
+- RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
+- StylusLink       = ASUS R1F Stylus (USB)
+- EraserLink       = ASUS R1F Eraser (USB)
+-}
+-
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-09-10 13:22:19 UTC (rev 1702)
++++ sax-head/rpm/sax2.changes	2008-09-10 13:25:18 UTC (rev 1703)
+@@ -1,4 +1,15 @@
+ -------------------------------------------------------------------
++Wed Sep 10 15:23:24 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- add some more serial Wacom TabletPCs:
++  * LG LT20 Tablet PC
++  * Panasonic Toughbook CF-18
++  * Toshiba Port&#233;g&#233; M series Tablet PC
++  * Toshiba Satellite R15/R20
++  * Toshiba Tecra M series Tablet PC
++  (Danny Kukawka &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">dkukawka at suse.de</A>&gt;)
++
++-------------------------------------------------------------------
+ Wed Sep 10 15:21:04 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - Added touch devices also the the generic Wacom USB TabletPC entry
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000094.html">[Sax-devel] r1702 - in sax-head: api/data/cdb rpm
+</A></li>
+	<LI>Next message: <A HREF="000096.html">[Sax-devel] r1704 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#95">[ date ]</a>
+              <a href="thread.html#95">[ thread ]</a>
+              <a href="subject.html#95">[ subject ]</a>
+              <a href="author.html#95">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1811 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1811%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps&In-Reply-To=%3C200901091719.n09HJNnc025183%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000198.html">
+   <LINK REL="Next"  HREF="000200.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1811 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1811%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps&In-Reply-To=%3C200901091719.n09HJNnc025183%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1811 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri Jan  9 18:19:23 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000198.html">[Sax-devel] r1810 - in sax-branches/SaX2-81-SuSE-11-1-Devel: parse	rpm
+</A></li>
+        <LI>Next message: <A HREF="000200.html">[Sax-devel] r1812 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#199">[ date ]</a>
+              <a href="thread.html#199">[ thread ]</a>
+              <a href="subject.html#199">[ subject ]</a>
+              <a href="author.html#199">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-01-09 18:19:21 +0100 (Fri, 09 Jan 2009)
+New Revision: 1811
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Input.map
+Log:
+- Input.map: added another device (0x04b3:0x300f) to use
+  ibm-trackpoint profile
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-01-09 17:18:38 UTC (rev 1810)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-01-09 17:19:21 UTC (rev 1811)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Fri Jan  9 17:02:00 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- Input.map: added another device (0x04b3:0x300f) to use
++  ibm-trackpoint profile
++
++-------------------------------------------------------------------
+ Wed Jan  7 11:20:25 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - fixed parser version check
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Input.map
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Input.map	2009-01-09 17:18:38 UTC (rev 1810)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Input.map	2009-01-09 17:19:21 UTC (rev 1811)
+@@ -18,6 +18,7 @@
+ 0x046d : 0xc040 : logitech-optical : evdev
+ 0x0210 : 0x0003 : ibm-trackpoint : mouse
+ 0x0002 : 0x000a : ibm-trackpoint : mouse
++0x04b3 : 0x300f : ibm-trackpoint : mouse
+ 0x056a : 0x0013 : wacom : wacom
+ 0x05ac : 0x030b : alps : synaptics
+ 0x05ac : 0x1000 : alps-macbook : synaptics
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000198.html">[Sax-devel] r1810 - in sax-branches/SaX2-81-SuSE-11-1-Devel: parse	rpm
+</A></li>
+	<LI>Next message: <A HREF="000200.html">[Sax-devel] r1812 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#199">[ date ]</a>
+              <a href="thread.html#199">[ thread ]</a>
+              <a href="subject.html#199">[ subject ]</a>
+              <a href="author.html#199">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

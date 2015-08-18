@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1906 - in sax-head: modules/detect rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1906%20-%20in%20sax-head%3A%20modules/detect%20rpm&In-Reply-To=%3C201003160439.o2G4dZjj011166%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000294.html">
+   <LINK REL="Next"  HREF="000296.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1906 - in sax-head: modules/detect rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1906%20-%20in%20sax-head%3A%20modules/detect%20rpm&In-Reply-To=%3C201003160439.o2G4dZjj011166%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1906 - in sax-head: modules/detect rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Tue Mar 16 05:39:35 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000294.html">[Sax-devel] r1905 - sax-head/rpm
+</A></li>
+        <LI>Next message: <A HREF="000296.html">[Sax-devel] r1908 - sax-branches/SaX2-81-SuSE-11-1-Devel/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#295">[ date ]</a>
+              <a href="thread.html#295">[ thread ]</a>
+              <a href="subject.html#295">[ subject ]</a>
+              <a href="author.html#295">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2010-03-16 05:39:34 +0100 (Tue, 16 Mar 2010)
+New Revision: 1906
+
+Modified:
+   sax-head/modules/detect/Card.pm
+   sax-head/rpm/sax2.changes
+Log:
+- specify domain in BusID if &gt; 0 (bnc #583359)
+
+
+Modified: sax-head/modules/detect/Card.pm
+===================================================================
+--- sax-head/modules/detect/Card.pm	2010-03-16 04:35:42 UTC (rev 1905)
++++ sax-head/modules/detect/Card.pm	2010-03-16 04:39:34 UTC (rev 1906)
+@@ -61,7 +61,8 @@
+ 		$dom  = hex($dom_list[$i]);
+ 		$arch = qx(/bin/arch);
+ 		chomp $arch;
+-		if ($arch eq &quot;ia64&quot;) {
++		# specify domain if &gt; 0 (bnc #583359)
++		if ($dom &gt; 0) {
+ 			$busid = &quot;PCI:$bus\@$dom:$slot:$func&quot;;
+ 		} else {
+ 			$busid = &quot;$bus:$slot:$func&quot;;
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2010-03-16 04:35:42 UTC (rev 1905)
++++ sax-head/rpm/sax2.changes	2010-03-16 04:39:34 UTC (rev 1906)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Tue Mar 16 05:38:43 CET 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- specify domain in BusID if &gt; 0 (bnc #583359) 
++
++-------------------------------------------------------------------
+ Thu Feb 25 12:35:27 UTC 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">prusnak at suse.cz</A>
+ 
+ - replace X-KDE-SubstituteUID in favor of xdg-su [#bnc540627]
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000294.html">[Sax-devel] r1905 - sax-head/rpm
+</A></li>
+	<LI>Next message: <A HREF="000296.html">[Sax-devel] r1908 - sax-branches/SaX2-81-SuSE-11-1-Devel/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#295">[ date ]</a>
+              <a href="thread.html#295">[ thread ]</a>
+              <a href="subject.html#295">[ subject ]</a>
+              <a href="author.html#295">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1662 - in sax-head: rpm startup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1662%20-%20in%20sax-head%3A%20rpm%20startup&In-Reply-To=%3C200807160934.m6G9YKcs020387%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000057.html">
+   <LINK REL="Next"  HREF="000059.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1662 - in sax-head: rpm startup</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1662%20-%20in%20sax-head%3A%20rpm%20startup&In-Reply-To=%3C200807160934.m6G9YKcs020387%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1662 - in sax-head: rpm startup">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Jul 16 11:34:20 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000057.html">[Sax-devel] r1661 - in sax-head: rpm startup
+</A></li>
+        <LI>Next message: <A HREF="000059.html">[Sax-devel] r1663 -	sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#58">[ date ]</a>
+              <a href="thread.html#58">[ thread ]</a>
+              <a href="subject.html#58">[ subject ]</a>
+              <a href="author.html#58">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-07-16 11:34:18 +0200 (Wed, 16 Jul 2008)
+New Revision: 1662
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/startup/sax.sh
+Log:
+- disable intelmagic by default; obsoleted by single card setup,
+  which we use as default now
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-07-16 09:27:58 UTC (rev 1661)
++++ sax-head/rpm/sax2.changes	2008-07-16 09:34:18 UTC (rev 1662)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Wed Jul 16 11:30:59 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- disable intelmagic by default; obsoleted by single card setup,
++  which we use as default now
++
++-------------------------------------------------------------------
+ Wed Jul 16 10:29:40 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - no longer set BusID for single card configurations (bnc #381644)
+
+Modified: sax-head/startup/sax.sh
+===================================================================
+--- sax-head/startup/sax.sh	2008-07-16 09:27:58 UTC (rev 1661)
++++ sax-head/startup/sax.sh	2008-07-16 09:34:18 UTC (rev 1662)
+@@ -54,7 +54,8 @@
+ DIALOG=&quot;&quot;
+ REINIT=0
+ FULLSCREEN=&quot;&quot;
+-NOINTELMAGIC=&quot;&quot;
++### obsoleted by single card setup, which we use as default now
++NOINTELMAGIC=&quot;--nointelmagic&quot;
+ 
+ #==================================
+ # Functions...
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000057.html">[Sax-devel] r1661 - in sax-head: rpm startup
+</A></li>
+	<LI>Next message: <A HREF="000059.html">[Sax-devel] r1663 -	sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#58">[ date ]</a>
+              <a href="thread.html#58">[ thread ]</a>
+              <a href="subject.html#58">[ subject ]</a>
+              <a href="author.html#58">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

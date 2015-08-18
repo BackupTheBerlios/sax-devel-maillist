@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1684 - in sax-head: api/data/cdb rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-August/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1684%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200808222010.m7MKAPg3011298%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000075.html">
+   <LINK REL="Next"  HREF="000077.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1684 - in sax-head: api/data/cdb rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1684%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200808222010.m7MKAPg3011298%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1684 - in sax-head: api/data/cdb rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri Aug 22 22:10:25 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000075.html">[Sax-devel] r1683 - in sax-head: api api/tablet modules rpm
+</A></li>
+        <LI>Next message: <A HREF="000077.html">[Sax-devel] r1685 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#76">[ date ]</a>
+              <a href="thread.html#76">[ thread ]</a>
+              <a href="subject.html#76">[ subject ]</a>
+              <a href="author.html#76">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-08-22 22:10:22 +0200 (Fri, 22 Aug 2008)
+New Revision: 1684
+
+Modified:
+   sax-head/api/data/cdb/Pens
+   sax-head/api/data/cdb/Tablets
+   sax-head/rpm/sax2.changes
+Log:
+- Added new entries for TabletPCs with internal WACOM USB Tablet 
+  devices from ASUS (R1E and R1F).
+  (Danny Kukawka)
+
+
+Modified: sax-head/api/data/cdb/Pens
+===================================================================
+--- sax-head/api/data/cdb/Pens	2008-08-22 20:07:30 UTC (rev 1683)
++++ sax-head/api/data/cdb/Pens	2008-08-22 20:10:22 UTC (rev 1684)
+@@ -298,3 +298,57 @@
+  RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;
+ }
+ 
++#-------------------------------------------#
++# TABLET PCs: ASUS R1E Eraser (USB)         #
++#-------------------------------------------#
++TABLET PCs:ASUS R1E Eraser (USB) {
++ Device              = /dev/input/by-id/usb-Tablet_ISD-V4-event-mouse
++ Option              = USB
++ TabletMode          = Absolute
++ Driver              = wacom
++ Protocol            = Auto
++ TabletType          = eraser
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++}
++
++#-------------------------------------------#
++# TABLET PCs: ASUS R1E Stylus (USB)         #
++#-------------------------------------------#
++TABLET PCs:ASUS R1E Stylus (USB) {
++ Device              = /dev/input/by-id/usb-Tablet_ISD-V4-event-mouse
++ Option              = USB
++ TabletMode          = Absolute
++ Driver              = wacom
++ Protocol            = Auto
++ TabletType          = stylus
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;BottomX&quot; &quot;26365&quot;,&quot;BottomY&quot; &quot;16488&quot;,&quot;TopX&quot; &quot;0&quot;,&quot;TopY&quot; &quot;0&quot;
++}
++
++
++#-------------------------------------------#
++# TABLET PCs: ASUS R1F Eraser (USB)         #
++#-------------------------------------------#
++TABLET PCs:ASUS R1F Eraser (USB) {
++ Device              = /dev/input/by-id/usb-Tablet_ISD-V4-event-mouse
++ Option              = USB
++ TabletMode          = Absolute
++ Driver              = wacom
++ Protocol            = Auto
++ TabletType          = eraser
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++}
++
++#-------------------------------------------#
++# TABLET PCs: ASUS R1F Stylus (USB)         #
++#-------------------------------------------#
++TABLET PCs:ASUS R1F Stylus (USB) {
++ Device              = /dev/input/by-id/usb-Tablet_ISD-V4-event-mouse
++ Option              = USB
++ TabletMode          = Absolute
++ Driver              = wacom
++ Protocol            = Auto
++ TabletType          = stylus
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;BottomX&quot; &quot;28606&quot;,&quot;BottomY&quot; &quot;17876&quot;,&quot;TopX&quot; &quot;0&quot;,&quot;TopY&quot; &quot;0&quot;
++}
++
++
+
+Modified: sax-head/api/data/cdb/Tablets
+===================================================================
+--- sax-head/api/data/cdb/Tablets	2008-08-22 20:07:30 UTC (rev 1683)
++++ sax-head/api/data/cdb/Tablets	2008-08-22 20:10:22 UTC (rev 1684)
+@@ -275,4 +275,33 @@
+   RawOption          = &quot;MaximumXPosition&quot; &quot;12550&quot;,&quot;MaximumYPosition&quot; &quot;7650&quot;,&quot;MinimumXPosition&quot; &quot;400&quot;,&quot;MinimumYPosition&quot; &quot;400&quot;,&quot;BaudRate&quot; &quot;19200&quot;
+ }
+ 
++#----------------------------------#
++# TABLET PCs: ASUS R1E (USB)       #
++#----------------------------------#
++TABLET PCs:ASUS R1E (USB) {
++ Driver           = wacom
++ Device           = /dev/input/by-id/usb-Tablet_ISD-V4-event-mouse
++ Option           = USB
++ SendCoreEvents   = on
++ TabletType       = cursor
++ TabletMode       = Absolute
++ RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ StylusLink       = ASUS R1E Stylus (USB)
++ EraserLink       = ASUS R1E Eraser (USB)
++}
+ 
++#----------------------------------#
++# TABLET PCs: ASUS R1F (USB)       #
++#----------------------------------#
++TABLET PCs:ASUS R1F (USB) {
++ Driver           = wacom
++ Device           = /dev/input/by-id/usb-Tablet_ISD-V4-event-mouse
++ Option           = USB
++ SendCoreEvents   = on
++ TabletType       = cursor
++ TabletMode       = Absolute
++ RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ StylusLink       = ASUS R1F Stylus (USB)
++ EraserLink       = ASUS R1F Eraser (USB)
++}
++
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-08-22 20:07:30 UTC (rev 1683)
++++ sax-head/rpm/sax2.changes	2008-08-22 20:10:22 UTC (rev 1684)
+@@ -1,4 +1,11 @@
+ -------------------------------------------------------------------
++Fri Aug 22 22:09:04 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- Added new entries for TabletPCs with internal WACOM USB Tablet
++  devices from ASUS (R1E and R1F).
++  (Danny Kukawka)
++
++-------------------------------------------------------------------
+ Fri Aug 22 22:05:08 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - This patch allows to use for Tablets (as also TabletPCs) devices
+@@ -8,6 +15,7 @@
+   * /dev/input/by-path/*
+   This allows to use persistend device names as e.g. needed for 
+   new Wacom USB based TabletPC devices.
++  (Danny Kukawka)
+ 
+ -------------------------------------------------------------------
+ Fri Aug 22 22:02:23 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000075.html">[Sax-devel] r1683 - in sax-head: api api/tablet modules rpm
+</A></li>
+	<LI>Next message: <A HREF="000077.html">[Sax-devel] r1685 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#76">[ date ]</a>
+              <a href="thread.html#76">[ thread ]</a>
+              <a href="subject.html#76">[ subject ]</a>
+              <a href="author.html#76">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

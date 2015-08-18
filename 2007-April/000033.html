@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Compiling sax2 for Debian Etch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Compiling%20sax2%20for%20Debian%20Etch&In-Reply-To=%3C200704300816.13686.dieter%40linuxjaeger.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Compiling sax2 for Debian Etch</H1>
+    <B>Dieter J&#228;ger</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Compiling%20sax2%20for%20Debian%20Etch&In-Reply-To=%3C200704300816.13686.dieter%40linuxjaeger.de%3E"
+       TITLE="[Sax-devel] Compiling sax2 for Debian Etch">dieter at linuxjaeger.de
+       </A><BR>
+    <I>Mon Apr 30 08:16:13 CEST 2007</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#33">[ date ]</a>
+              <a href="thread.html#33">[ thread ]</a>
+              <a href="subject.html#33">[ subject ]</a>
+              <a href="author.html#33">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello friends,
+
+Finally, yesterday I created Debian packages for i386 and amd64. As there are 
+some questions open regarding the Debian xserver package, so far the package 
+is available via the Campuslinux site 
+<A HREF="http://wiki.en.campuslinux.org/index.php/Repository.">http://wiki.en.campuslinux.org/index.php/Repository.</A>
+
+Currently the package is in the experimental tree, since the /etc/sysconfig 
+references are not fixed so far. All packages are compiled for Debian Etch.
+
+I found a small issue in the libsasl:
+
+In config.cpp, SaXConfig::removeXFineCache the xfine cache is deleted in a 
+while (1) {} loop. Yet if the xfine cache does not exist, the result is an 
+endless loop. I did kind of a bad hack:
+
+-- sax/sax/libsax/config.cpp.old       2006-03-27 11:58:31.000000000 +0200
++++ sax/sax/libsax/config.cpp   2007-04-29 22:46:26.000000000 +0200
+@@ -516,7 +516,7 @@
+        struct dirent* entry = NULL;
+        DIR* cacheDir = NULL;
+        cacheDir = opendir (SAX_XFINE_CACHE);
+-       while (1) {
++       while (cacheDir) {
+                entry = readdir (cacheDir);
+                if (! entry) {
+                        break;
+
+This seems to work, but no clue whether there can be problems using cacheDir 
+as trigger.
+
+So long
+
+Dieter
+
+Am Montag, 26. Februar 2007 23:16 schrieb Stefan Dirsch:
+&gt;<i> On Mon, Feb 26, 2007 at 09:04:38PM +0100, Dieter J&#228;ger wrote:
+</I>&gt;<i> &gt; Hi friends,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; So far I managed to create libxf86config.a and the parser header files
+</I>&gt;<i> &gt; from the debian package and put them into two small packages. After
+</I>&gt;<i> &gt; installation, when compiling sax2 I get the following error:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; $ make
+</I>&gt;<i> &gt; ...
+</I>&gt;<i> &gt; cc -c  -iquote /usr/X11R6/include -iquote /usr/include/xorg -I.
+</I>&gt;<i> &gt; -D_REENTRANT -D_ GNU_SOURCE -DTHREADS_HAVE_PIDS -DDEBIAN
+</I>&gt;<i> &gt; -fno-strict-aliasing -pipe -I/usr/local/ include -D_LARGEFILE_SOURCE
+</I>&gt;<i> &gt; -D_FILE_OFFSET_BITS=64 -O2    -DVERSION=\&quot;\&quot; -DXS_VE RSION=\&quot;\&quot; -fPIC
+</I>&gt;<i> &gt; &quot;-I/usr/lib/perl/5.8/CORE&quot;  -DX_BYTE_ORDER=X_LITTLE_ENDIAN -DNE W_INPUT
+</I>&gt;<i> &gt; -DNDEBUG -DHAVE_EXTENSIONS_SECTION parse.c
+</I>&gt;<i> &gt; cc -c  -iquote /usr/X11R6/include -iquote /usr/include/xorg -I.
+</I>&gt;<i> &gt; -D_REENTRANT -D_ GNU_SOURCE -DTHREADS_HAVE_PIDS -DDEBIAN
+</I>&gt;<i> &gt; -fno-strict-aliasing -pipe -I/usr/local/ include -D_LARGEFILE_SOURCE
+</I>&gt;<i> &gt; -D_FILE_OFFSET_BITS=64 -O2    -DVERSION=\&quot;\&quot; -DXS_VE RSION=\&quot;\&quot; -fPIC
+</I>&gt;<i> &gt; &quot;-I/usr/lib/perl/5.8/CORE&quot;  -DX_BYTE_ORDER=X_LITTLE_ENDIAN -DNE W_INPUT
+</I>&gt;<i> &gt; -DNDEBUG -DHAVE_EXTENSIONS_SECTION XFree_wrap.c
+</I>&gt;<i> &gt; Running Mkbootstrap for XFree ()
+</I>&gt;<i> &gt; chmod 644 XFree.bs
+</I>&gt;<i> &gt; rm -f blib/arch/auto/XFree/XFree.so
+</I>&gt;<i> &gt; cc  -shared -L/usr/local/lib parse.o XFree_wrap.o  -o
+</I>&gt;<i> &gt; blib/arch/auto/XFree/XFree                                               
+</I>&gt;<i> &gt;                                                   .so \
+</I>&gt;<i> &gt;            -L/usr/X11R6/lib -lm -lxf86config    \
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; /usr/bin/ld:
+</I>&gt;<i> &gt; /usr/lib/gcc/x86_64-linux-gnu/4.1.2/../../../../lib64/libxf86config      
+</I>&gt;<i> &gt;                                                                          
+</I>&gt;<i> &gt;                  .a(read.o): relocation R_X86_64_32 against `a local
+</I>&gt;<i> &gt; symbol' can not be used when making a shared object; recompile with -fPIC
+</I>&gt;<i> &gt; /usr/lib/gcc/x86_64-linux-gnu/4.1.2/../../../../lib64/libxf86config.a:
+</I>&gt;<i> &gt; could not
+</I>&gt;<i> &gt; read symbols: Bad value
+</I>&gt;<i> &gt; collect2: ld returned 1 exit status
+</I>&gt;<i> &gt; make[1]: *** [blib/arch/auto/XFree/XFree.so] Fehler 1
+</I>&gt;<i> &gt; make[1]: Leaving directory `/root/sax/parse'
+</I>&gt;<i> &gt; make: *** [all] Fehler 2
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I compiled the xserver with the following flags:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; --disable-static \
+</I>&gt;<i> &gt;              --enable-xorg \
+</I>&gt;<i> &gt;              --with-mesa-source=/usr/share/mesa-source \
+</I>&gt;<i> &gt;                 
+</I>&gt;<i> &gt; --with-default-font-path=&quot;/usr/share/fonts/X11/misc,/usr/X11R6/lib/X11/fo
+</I>&gt;<i> &gt;nts/misc,/usr/share/fonts/X11/cyrillic,/usr/share/fonts/X11/100dpi/:unscal
+</I>&gt;<i> &gt;ed,/usr/share/
+</I>&gt;<i> &gt; fonts/X11/75dpi/:unscaled,/usr/share/fonts/X11/Type1,/usr/X11R6/lib/
+</I>&gt;<i> &gt; X11/fonts/Type1,/usr/share/fonts/X11/100dpi,/usr/share/fonts/X11/75dpi,/v
+</I>&gt;<i> &gt;ar/lib/defoma/x-ttcidfont-conf.d/di rs/TrueType&quot; \
+</I>&gt;<i> &gt;                  --with-serverconfig-path=/etc/X11/xserver \
+</I>&gt;<i> &gt;                  --with-rgb-path=/etc/X11/rgb \
+</I>&gt;<i> &gt;              --enable-xtrap \
+</I>&gt;<i> &gt;              --enable-dmx \
+</I>&gt;<i> &gt;              --enable-vfb \
+</I>&gt;<i> &gt;              --enable-install-libxf86config \
+</I>&gt;<i> &gt;                  --enable-kdrive \
+</I>&gt;<i> &gt;                  --enable-xephyr \
+</I>&gt;<i> &gt;              --enable-pic \
+</I>&gt;<i> &gt;              --disable-lbx \
+</I>&gt;<i> &gt;              --disable-xprint \
+</I>&gt;<i> &gt;                  --disable-xorgconfig \
+</I>&gt;<i> &gt;                  --disable-xorgcfg \
+</I>&gt;<i> &gt;                  --with-xkb-path=/usr/share/X11/xkb \
+</I>&gt;<i> &gt;                  --with-xkb-output=/var/lib/xkb \
+</I>&gt;<i> &gt;              --disable-misc-utils
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I used the Debian defaults and
+</I>&gt;<i> &gt; added --enable-install-libxf86config --enable-pic.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Can you help me on?
+</I>&gt;<i>
+</I>&gt;<i> Add the attached patch.
+</I>&gt;<i>
+</I>&gt;<i> Stefan
+</I>&gt;<i>
+</I>&gt;<i> Public Key available
+</I>&gt;<i> ------------------------------------------------------
+</I>&gt;<i> Stefan Dirsch (Res. &amp; Dev.)   SUSE LINUX Products GmbH
+</I>&gt;<i> Tel: 0911-740 53 0            Maxfeldstra&#223;e 5
+</I>&gt;<i> FAX: 0911-740 53 479          D-90409 N&#252;rnberg
+</I>&gt;<i> <A HREF="http://www.suse.de">http://www.suse.de</A>            Germany
+</I>&gt;<i> -----------------------------------------------------------------
+</I>&gt;<i> SUSE LINUX Products GmbH, GF: Markus Rex, HRB 16746 (AG N&#252;rnberg)
+</I>&gt;<i> -----------------------------------------------------------------
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#33">[ date ]</a>
+              <a href="thread.html#33">[ thread ]</a>
+              <a href="subject.html#33">[ subject ]</a>
+              <a href="author.html#33">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

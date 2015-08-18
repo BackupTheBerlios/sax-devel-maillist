@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1795 - in sax-head: rpm startup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1795%20-%20in%20sax-head%3A%20rpm%20startup&In-Reply-To=%3C200901051003.n05A39TL012352%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000184.html">
+   <LINK REL="Next"  HREF="000186.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1795 - in sax-head: rpm startup</H1>
+    <B>marcus_schaefer at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1795%20-%20in%20sax-head%3A%20rpm%20startup&In-Reply-To=%3C200901051003.n05A39TL012352%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1795 - in sax-head: rpm startup">marcus_schaefer at mail.berlios.de
+       </A><BR>
+    <I>Mon Jan  5 11:03:09 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000184.html">[Sax-devel] r1794 - in sax-head: profile/script rpm sysp sysp/script
+</A></li>
+        <LI>Next message: <A HREF="000186.html">[Sax-devel] r1796 - in sax-head: api api/macros rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#185">[ date ]</a>
+              <a href="thread.html#185">[ thread ]</a>
+              <a href="subject.html#185">[ subject ]</a>
+              <a href="author.html#185">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: marcus_schaefer
+Date: 2009-01-05 11:03:04 +0100 (Mon, 05 Jan 2009)
+New Revision: 1795
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/startup/SaX2
+   sax-head/startup/sax.sh
+Log:
+
+- fixed tmp race problem in SaX2/sax.sh (bnc #460471)
+
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-01-03 17:24:10 UTC (rev 1794)
++++ sax-head/rpm/sax2.changes	2009-01-05 10:03:04 UTC (rev 1795)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Mon Jan  5 11:01:55 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
++
++- fixed tmp race problem in SaX2/sax.sh (bnc #460471)
++
++-------------------------------------------------------------------
+ Fri Jan  2 23:50:51 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - always use '-br' option when starting the Xserver; workarounds
+
+Modified: sax-head/startup/SaX2
+===================================================================
+--- sax-head/startup/SaX2	2009-01-03 17:24:10 UTC (rev 1794)
++++ sax-head/startup/SaX2	2009-01-05 10:03:04 UTC (rev 1795)
+@@ -16,7 +16,6 @@
+ #----------------------------------------
+ function signal {
+ 	killall dots.pl 2&gt;/dev/null &gt;/dev/null
+-	test -n &quot;$TMPFILE&quot; &amp;&amp; rm -f $TMPFILE
+ }
+ function isTTY {
+ 	case `tty` in
+@@ -63,31 +62,15 @@
+ fi
+ 
+ #========================================
+-# lookup tmp file for language info...
+-#----------------------------------------
+-if [ ! &quot;$UID&quot; = 0 ];then
+-	TMPFILE=`mktemp -q /tmp/sax_lenv.XXXXXX`
+-	if [ $? -ne 0 ]; then
+-	echo &quot;SaX: Can't create tmp file, exiting...&quot;
+-	exit 1
+-	fi 
+-fi
+-
+-#========================================
+ # test for root privileges...
+ #----------------------------------------
+ if [ ! &quot;$UID&quot; = 0 ];then
+-	#========================================
+-	# export LANG user environment...
+-	#----------------------------------------
+-	echo $LANG &gt;&gt; $TMPFILE
+-
+ 	echo -n &quot;SaX: root &quot;
+ 	if [ -f &quot;$SUX&quot; ];then
+ 		$SUX -c &quot;/usr/sbin/SaX2 $*&quot;
+ 	else
+ 		xhost + localhost &gt; /dev/null 2&gt;/dev/null
+-		su - -c &quot;/usr/sbin/SaX2 $*&quot;
++		su -c &quot;/usr/sbin/SaX2 $*&quot;
+ 	fi
+ 
+ 	if [ ! &quot;$?&quot; = 0 ];then
+
+Modified: sax-head/startup/sax.sh
+===================================================================
+--- sax-head/startup/sax.sh	2009-01-03 17:24:10 UTC (rev 1794)
++++ sax-head/startup/sax.sh	2009-01-05 10:03:04 UTC (rev 1795)
+@@ -347,16 +347,6 @@
+ fi
+ 
+ #==================================
+-# export LANG from user environment
+-#----------------------------------
+-TMPFILE=`ls -1 /tmp/sax_lenv* 2&gt;/dev/null` 
+-if [ -f &quot;$TMPFILE&quot; ];then
+-	export LANG=`cat $TMPFILE`
+-else
+-	export LANG=$LANG 
+-fi
+-
+-#==================================
+ # run the dots...
+ #----------------------------------
+ nice -n 19 $DOTS &amp;
+@@ -365,7 +355,7 @@
+ #==================================
+ # clean sweep...
+ #----------------------------------
+-rm -f  $TMPFILE $REF
++rm -f  $REF
+ rm -rf $XFT $ERR
+ if [ &quot;$REINIT&quot; = 1 ];then
+ 	rm -f /var/cache/sax/files/*
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000184.html">[Sax-devel] r1794 - in sax-head: profile/script rpm sysp sysp/script
+</A></li>
+	<LI>Next message: <A HREF="000186.html">[Sax-devel] r1796 - in sax-head: api api/macros rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#185">[ date ]</a>
+              <a href="thread.html#185">[ thread ]</a>
+              <a href="subject.html#185">[ subject ]</a>
+              <a href="author.html#185">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

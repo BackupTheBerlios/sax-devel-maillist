@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1867 - in sax-head: rpm sysp/lib/common
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1867%20-%20in%20sax-head%3A%20rpm%20sysp/lib/common&In-Reply-To=%3C200906181703.n5IH3FpD027693%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000257.html">
+   <LINK REL="Next"  HREF="000259.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1867 - in sax-head: rpm sysp/lib/common</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1867%20-%20in%20sax-head%3A%20rpm%20sysp/lib/common&In-Reply-To=%3C200906181703.n5IH3FpD027693%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1867 - in sax-head: rpm sysp/lib/common">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Thu Jun 18 19:03:15 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000257.html">[Sax-devel] r1866 - in sax-head: profile/automatic/monitor rpm
+</A></li>
+        <LI>Next message: <A HREF="000259.html">[Sax-devel] r1868 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/lib/common
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#258">[ date ]</a>
+              <a href="thread.html#258">[ thread ]</a>
+              <a href="subject.html#258">[ subject ]</a>
+              <a href="author.html#258">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-06-18 19:03:10 +0200 (Thu, 18 Jun 2009)
+New Revision: 1867
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/lib/common/qx.c
+Log:
+Fix bnc 504728: on some machines the intel agpgart takes a long time
+for memory cleanup, thus a race condition triggers and the VT_ACTIVATE
+never gets through. Thus do it every second.
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-06-01 18:41:14 UTC (rev 1866)
++++ sax-head/rpm/sax2.changes	2009-06-18 17:03:10 UTC (rev 1867)
+@@ -1,4 +1,11 @@
+ -------------------------------------------------------------------
++Thu Jun 18 18:53:03 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">mhopf at suse.de</A>
++
++- fix bnc 504728: on some machines the intel agpgart takes a long time
++  for memory cleanup, thus a race condition triggers and the VT_ACTIVATE
++  never gets through. Thus do it every second.
++
++-------------------------------------------------------------------
+ Mon Jun  1 20:40:32 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - fixed MSI-AE1900 and MSI-N011 profiles (bnc #507437, bnc #497963) 
+
+Modified: sax-head/sysp/lib/common/qx.c
+===================================================================
+--- sax-head/sysp/lib/common/qx.c	2009-06-01 18:41:14 UTC (rev 1866)
++++ sax-head/sysp/lib/common/qx.c	2009-06-18 17:03:10 UTC (rev 1867)
+@@ -178,18 +178,42 @@
+ //=====================================
+ // Change virtual terminal
+ //-------------------------------------
++// bnc 504728: on some machines the intel agpgart takes a long time
++// for memory cleanup, thus a race condition triggers and the VT_ACTIVATE
++// never gets through. Thus do it every second.
++static int chvt_fd, chvt_num, chvt_ret;
++static void chvt_alrm_handler (int signum)
++{
++	if (ioctl(chvt_fd, VT_ACTIVATE, chvt_num)) {
++		chvt_ret = 0;
++	}
++	alarm (1);
++}
+ int chvt (int num) {
+ 	int fd = getfd();
++	int ret;
++	struct sigaction act;
+ 	if (fd &lt; 0) {
+ 		return 0;
+ 	}
++	memset (&amp;act, 0, sizeof(struct sigaction));
++	act.sa_handler = chvt_alrm_handler;
++	act.sa_flags   = SA_RESTART;
++	sigaction (SIGALRM, &amp;act, NULL);
++	// Yes, this is not multithread-proof. And ugly.
++	chvt_fd  = fd;
++	chvt_num = num;
++	chvt_ret = 1;
++	alarm (1);
+ 	if (ioctl(fd,VT_ACTIVATE,num)) {
+ 		return 0;
+ 	}
+-	if (ioctl(fd,VT_WAITACTIVE,num)) {
+-		return 0;
+-	}
+-	return 1;
++	while ( (ret = ioctl(fd,VT_WAITACTIVE,num)) == -1 &amp;&amp; errno == EINTR &amp;&amp; chvt_ret)
++		;
++	alarm (0);
++	act.sa_handler = SIG_DFL;
++	sigaction (SIGALRM, &amp;act, NULL);
++	return (ret == 0);
+ }   
+ 
+ //=====================================
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000257.html">[Sax-devel] r1866 - in sax-head: profile/automatic/monitor rpm
+</A></li>
+	<LI>Next message: <A HREF="000259.html">[Sax-devel] r1868 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/lib/common
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#258">[ date ]</a>
+              <a href="thread.html#258">[ thread ]</a>
+              <a href="subject.html#258">[ subject ]</a>
+              <a href="author.html#258">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1804 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1804%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200901091712.n09HCSJX024754%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000207.html">
+   <LINK REL="Next"  HREF="000193.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1804 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1804%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200901091712.n09HCSJX024754%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1804 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri Jan  9 18:12:28 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000207.html">[Sax-devel] r1803 - in sax-branches/SaX2-81-SuSE-11-1-Devel: api/data locale locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES loca! le/sax-template locale/si/LC_MESSAGES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES rpm
+</A></li>
+        <LI>Next message: <A HREF="000193.html">[Sax-devel] r1805 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#192">[ date ]</a>
+              <a href="thread.html#192">[ thread ]</a>
+              <a href="subject.html#192">[ subject ]</a>
+              <a href="author.html#192">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-01-09 18:12:27 +0100 (Fri, 09 Jan 2009)
+New Revision: 1804
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386
+Log:
+- don't use broken geode driver (bnc #457182)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-01-09 17:11:20 UTC (rev 1803)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-01-09 17:12:27 UTC (rev 1804)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Mon Dec 22 12:12:26 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- don't use broken geode driver (bnc #457182) 
++
++-------------------------------------------------------------------
+ Fri Dec 19 14:18:30 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - xapi.gtx: added missig XKB keys (bnc #450851) 
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map	2009-01-09 17:11:20 UTC (rev 1803)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map	2009-01-09 17:12:27 UTC (rev 1804)
+@@ -52,7 +52,6 @@
+ #-----------------------------------#
+ # Advanced Micro Devices [AMD] Cards
+ #-----------------------------------#
+-NAME=Advanced Micro Devices [AMD]&amp;DEVICE=Geode LX&amp;VID=0x1022&amp;DID=0x2081&amp;SERVER=amd&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ 
+ #-----------------------------------#
+ # Alliance Semiconductor Corporation Cards
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386	2009-01-09 17:11:20 UTC (rev 1803)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386	2009-01-09 17:12:27 UTC (rev 1804)
+@@ -52,7 +52,6 @@
+ #-----------------------------------#
+ # Advanced Micro Devices [AMD] Cards
+ #-----------------------------------#
+-NAME=Advanced Micro Devices [AMD]&amp;DEVICE=Geode LX&amp;VID=0x1022&amp;DID=0x2081&amp;SERVER=amd&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ 
+ #-----------------------------------#
+ # Alliance Semiconductor Corporation Cards
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000207.html">[Sax-devel] r1803 - in sax-branches/SaX2-81-SuSE-11-1-Devel: api/data locale locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES loca! le/sax-template locale/si/LC_MESSAGES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES rpm
+</A></li>
+	<LI>Next message: <A HREF="000193.html">[Sax-devel] r1805 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#192">[ date ]</a>
+              <a href="thread.html#192">[ thread ]</a>
+              <a href="subject.html#192">[ subject ]</a>
+              <a href="author.html#192">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

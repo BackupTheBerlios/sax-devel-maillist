@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1708 - in sax-head: api/data/cdb rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1708%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200809101333.m8ADXHvE024467%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000099.html">
+   <LINK REL="Next"  HREF="000101.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1708 - in sax-head: api/data/cdb rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1708%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200809101333.m8ADXHvE024467%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1708 - in sax-head: api/data/cdb rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Sep 10 15:33:17 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000099.html">[Sax-devel] r1707 - in sax-head: api/data/cdb rpm
+</A></li>
+        <LI>Next message: <A HREF="000101.html">[Sax-devel] r1709 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#100">[ date ]</a>
+              <a href="thread.html#100">[ thread ]</a>
+              <a href="subject.html#100">[ subject ]</a>
+              <a href="author.html#100">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-09-10 15:33:15 +0200 (Wed, 10 Sep 2008)
+New Revision: 1708
+
+Modified:
+   sax-head/api/data/cdb/Tablets
+   sax-head/api/data/cdb/Touchscreens
+   sax-head/rpm/sax2.changes
+Log:
+- moved LG-C1 to Touchscreen section, moved all TabletPCs with
+  touchscreen to Vendor TabletPC, add new machines:
+  - Clevo TN120R (a.k.a Nexoc Osiris S621)
+  - Samsung Q1-Ultra
+  (Danny Kukawka &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">dkukawka at suse.de</A>&gt;)
+
+
+Modified: sax-head/api/data/cdb/Tablets
+===================================================================
+--- sax-head/api/data/cdb/Tablets	2008-09-10 13:31:38 UTC (rev 1707)
++++ sax-head/api/data/cdb/Tablets	2008-09-10 13:33:15 UTC (rev 1708)
+@@ -492,13 +492,3 @@
+   RawOption          = &quot;MaximumXPosition&quot; &quot;12550&quot;,&quot;MaximumYPosition&quot; &quot;7650&quot;,&quot;MinimumXPosition&quot; &quot;400&quot;,&quot;MinimumYPosition&quot; &quot;400&quot;,&quot;BaudRate&quot; &quot;19200&quot;
+ }
+ 
+-#---------------------------------#
+-# TABLET PCs: LG C1 (fujitouch)   #
+-#---------------------------------#
+-TABLET PCs:LG C1 (fujitouch) {
+-  Driver             = fujitsu
+-  Device             = /dev/ttyS0
+-  SendCoreEvents     = on
+-  RawOption          = &quot;MinX&quot; &quot;82&quot;,&quot;MinY&quot; &quot;146&quot;,&quot;MaxX&quot; &quot;4036&quot;,&quot;MaxY&quot; &quot;3999&quot;
+-}
+-
+
+Modified: sax-head/api/data/cdb/Touchscreens
+===================================================================
+--- sax-head/api/data/cdb/Touchscreens	2008-09-10 13:31:38 UTC (rev 1707)
++++ sax-head/api/data/cdb/Touchscreens	2008-09-10 13:33:15 UTC (rev 1708)
+@@ -83,17 +83,65 @@
+  SendCoreEvents       = on
+ }
+ 
+-#--------------------------#
+-# P-SERIES LIFEBOOK TOUCH  #
+-#--------------------------#
+-FUJITSU:P-SERIES LIFEBOOK TOUCHSCREEN {
++#---------------------------------------#
++# TABLET PCs:Fujitsu P-SERIES Lifebook  #
++#---------------------------------------#
++TABLET PCs:Fujitsu P-SERIES Lifebook {
+  Driver               = fujitsu
+  Device               = /dev/ttyS0
+  RawOption            = &quot;SwapX&quot; &quot;false&quot;,&quot;ButtonlessDevice&quot; &quot;On&quot;,&quot;Emulate3Timeout&quot; &quot;50&quot;,&quot;TapTimer&quot; &quot;90&quot;,&quot;LongTouchTimer&quot; &quot;160&quot;,&quot;OneandahalfTimer&quot; &quot;150&quot;,&quot;MoveLimit&quot; &quot;180&quot;
+  ReportingMode        = Raw
+  SendCoreEvents       = on
+  MinX                 = 82
++ MinY                 = 146
+  MaxX                 = 4036
++ MaxY                 = 3999
++}
++
++#---------------------------------#
++# TABLET PCs: LG C1 (fujitouch)   #
++#---------------------------------#
++TABLET PCs:LG C1 (fujitouch) {
++ Driver               = fujitsu
++ Device               = /dev/ttyS0
++ SendCoreEvents       = on
++ MinX                 = 82
++ MaxX                 = 4036
+  MinY                 = 146
+  MaxY                 = 3999
+ }
++
++#------------------------------------#
++# TABLET PCs:Clevo TN120R (evtouch)  #
++#------------------------------------#
++TABLET PCs:Clevo TN120R (evtouch) {
++ Driver               = evtouch
++ Device               = /dev/input/evtouch_event
++ RawOption            = &quot;TapTimer&quot; &quot;50&quot;,&quot;LongTouchTimer&quot; &quot;30&quot;,&quot;MoveLimit&quot; &quot;15&quot;
++ ReportingMode        = Raw
++ SendCoreEvents       = on
++ Emulate3Buttons      = on
++ Emulate3Timeout      = 50
++ MinX                 = 116
++ MinY                 = 268
++ MaxX                 = 7940
++ MaxY                 = 7828
++}
++
++#----------------------------------------#
++# TABLET PCs:Samsung Q1-Ultra (evtouch)  #
++#----------------------------------------#
++TABLET PCs:Samsung Q1-Ultra (evtouch) {
++ Driver               = evtouch
++ Device               = /dev/input/evtouch_event
++ RawOption            = &quot;TapTimer&quot; &quot;200&quot;,&quot;LongTouchTimer&quot; &quot;400&quot;
++ ReportingMode        = Raw
++ SendCoreEvents       = on
++ Emulate3Buttons      = on
++ Emulate3Timeout      = 50
++ MinX                 = 145
++ MinY                 = 193
++ MaxX                 = 3973
++ MaxY                 = 3898
++}
++
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-09-10 13:31:38 UTC (rev 1707)
++++ sax-head/rpm/sax2.changes	2008-09-10 13:33:15 UTC (rev 1708)
+@@ -1,4 +1,13 @@
+ -------------------------------------------------------------------
++Wed Sep 10 15:32:08 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- moved LG-C1 to Touchscreen section, moved all TabletPCs with
++  touchscreen to Vendor TabletPC, add new machines:
++  - Clevo TN120R (a.k.a Nexoc Osiris S621)
++  - Samsung Q1-Ultra
++  (Danny Kukawka &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">dkukawka at suse.de</A>&gt;)
++
++-------------------------------------------------------------------
+ Wed Sep 10 15:30:48 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - added entry for HP Compaq 2710p/2730p 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000099.html">[Sax-devel] r1707 - in sax-head: api/data/cdb rpm
+</A></li>
+	<LI>Next message: <A HREF="000101.html">[Sax-devel] r1709 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#100">[ date ]</a>
+              <a href="thread.html#100">[ thread ]</a>
+              <a href="subject.html#100">[ subject ]</a>
+              <a href="author.html#100">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

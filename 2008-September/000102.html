@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1710 - in sax-head: api/data/cdb rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1710%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200809101336.m8ADa7ZE024786%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000101.html">
+   <LINK REL="Next"  HREF="000103.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1710 - in sax-head: api/data/cdb rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1710%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200809101336.m8ADa7ZE024786%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1710 - in sax-head: api/data/cdb rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Sep 10 15:36:07 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000101.html">[Sax-devel] r1709 - in sax-head: api/data/cdb rpm
+</A></li>
+        <LI>Next message: <A HREF="000103.html">[Sax-devel] r1711 - in sax-head: api api/touchscreen rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#102">[ date ]</a>
+              <a href="thread.html#102">[ thread ]</a>
+              <a href="subject.html#102">[ subject ]</a>
+              <a href="author.html#102">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-09-10 15:36:05 +0200 (Wed, 10 Sep 2008)
+New Revision: 1710
+
+Modified:
+   sax-head/api/data/cdb/Pens
+   sax-head/rpm/sax2.changes
+Log:
+- set the stylus/pen button for all Wacom TabletPC devices to the 
+  right mouse button (via Option &quot;Button2&quot; &quot;3&quot;). This setting 
+  should be more useful for all users. 
+  (Danny Kukawka &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">dkukawka at suse.de</A>&gt;)
+
+
+Modified: sax-head/api/data/cdb/Pens
+===================================================================
+--- sax-head/api/data/cdb/Pens	2008-09-10 13:34:49 UTC (rev 1709)
++++ sax-head/api/data/cdb/Pens	2008-09-10 13:36:05 UTC (rev 1710)
+@@ -156,7 +156,7 @@
+  Driver              = wacom
+  Protocol            = Auto
+  TabletType          = stylus
+- RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;BottomX&quot; &quot;28800&quot;,&quot;BottomY&quot; &quot;21760&quot;
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;Button2&quot; &quot;3&quot;,&quot;BottomX&quot; &quot;28800&quot;,&quot;BottomY&quot; &quot;21760&quot;
+ }
+ 
+ #-------------------------------------------#
+@@ -182,7 +182,7 @@
+  Driver              = wacom
+  Protocol            = Auto
+  TabletType          = stylus
+- RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;BottomX&quot; &quot;26365&quot;,&quot;BottomY&quot; &quot;16488&quot;,&quot;TopX&quot; &quot;0&quot;,&quot;TopY&quot; &quot;0&quot;
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;Button2&quot; &quot;3&quot;,&quot;BottomX&quot; &quot;26365&quot;,&quot;BottomY&quot; &quot;16488&quot;,&quot;TopX&quot; &quot;0&quot;,&quot;TopY&quot; &quot;0&quot;
+ }
+ 
+ 
+@@ -209,7 +209,7 @@
+  Driver              = wacom
+  Protocol            = Auto
+  TabletType          = stylus
+- RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;BottomX&quot; &quot;28606&quot;,&quot;BottomY&quot; &quot;17876&quot;,&quot;TopX&quot; &quot;0&quot;,&quot;TopY&quot; &quot;0&quot;
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;Button2&quot; &quot;3&quot;,&quot;BottomX&quot; &quot;28606&quot;,&quot;BottomY&quot; &quot;17876&quot;,&quot;TopX&quot; &quot;0&quot;,&quot;TopY&quot; &quot;0&quot;
+ }
+ 
+ #---------------------------------------------#
+@@ -235,7 +235,7 @@
+  Driver              = wacom
+  Protocol            = Auto
+  TabletType          = stylus
+- RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;BottomX&quot; &quot;26294&quot;,&quot;BottomY&quot; &quot;16376&quot;,&quot;TopX&quot; &quot;44&quot;,&quot;TopY&quot; &quot;229&quot;
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;Button2&quot; &quot;3&quot;,&quot;BottomX&quot; &quot;26294&quot;,&quot;BottomY&quot; &quot;16376&quot;,&quot;TopX&quot; &quot;44&quot;,&quot;TopY&quot; &quot;229&quot;
+ }
+ 
+ #---------------------------------------------#
+@@ -271,7 +271,7 @@
+  Driver              = wacom
+  Protocol            = Auto
+  TabletType          = stylus
+- RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;Button2&quot; &quot;3&quot;
+ }
+ 
+ #---------------------------------------------#
+@@ -297,7 +297,7 @@
+  Driver              = wacom
+  Protocol            = Auto
+  TabletType          = stylus
+- RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;BottomX&quot; &quot;26300&quot;,&quot;BottomY&quot; &quot;16375&quot;,&quot;TopX&quot; &quot;225&quot;,&quot;TopY&quot; &quot;225&quot;
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;Button2&quot; &quot;3&quot;,&quot;BottomX&quot; &quot;26300&quot;,&quot;BottomY&quot; &quot;16375&quot;,&quot;TopX&quot; &quot;225&quot;,&quot;TopY&quot; &quot;225&quot;
+ }
+ 
+ #---------------------------------------------#
+@@ -334,7 +334,7 @@
+  Driver              = wacom
+  Protocol            = Auto
+  TabletType          = stylus
+- RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;Button2&quot; &quot;3&quot;
+ }
+ 
+ #---------------------------------------------#
+@@ -358,7 +358,7 @@
+  Driver              = wacom
+  Protocol            = Auto
+  TabletType          = stylus
+- RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;Button2&quot; &quot;3&quot;
+ }
+ 
+ #-----------------------------------------#
+@@ -393,7 +393,7 @@
+  Driver              = wacom
+  Protocol            = Auto
+  TabletType          = stylus
+- RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;TopX&quot; &quot;297&quot;,&quot;TopY&quot; &quot;123&quot;
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;Button2&quot; &quot;3&quot;,&quot;TopX&quot; &quot;297&quot;,&quot;TopY&quot; &quot;123&quot;
+ }
+ 
+ #-------------------------------------------#
+@@ -405,7 +405,7 @@
+  Driver              = wacom
+  Protocol            = Auto
+  TabletType          = stylus
+- RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;Button2&quot; &quot;3&quot;
+ }
+ 
+ #-------------------------------------------#
+@@ -429,7 +429,7 @@
+  Driver              = wacom
+  Protocol            = Auto
+  TabletType          = stylus
+- RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;Button2&quot; &quot;3&quot;
+ }
+ 
+ #-------------------------------------------#
+@@ -468,7 +468,7 @@
+  Driver              = wacom
+  Protocol            = Auto
+  TabletType          = stylus
+- RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;,&quot;Button2&quot; &quot;3&quot;
+ }
+ 
+ #------------------------------------------------#
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-09-10 13:34:49 UTC (rev 1709)
++++ sax-head/rpm/sax2.changes	2008-09-10 13:36:05 UTC (rev 1710)
+@@ -1,4 +1,12 @@
+ -------------------------------------------------------------------
++Wed Sep 10 15:35:12 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- set the stylus/pen button for all Wacom TabletPC devices to the 
++  right mouse button (via Option &quot;Button2&quot; &quot;3&quot;). This setting 
++  should be more useful for all users. 
++  (Danny Kukawka &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">dkukawka at suse.de</A>&gt;)
++
++-------------------------------------------------------------------
+ Wed Sep 10 15:33:37 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - added new Gateway TabletPCs: C-140X/E-295C, updated existing
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000101.html">[Sax-devel] r1709 - in sax-head: api/data/cdb rpm
+</A></li>
+	<LI>Next message: <A HREF="000103.html">[Sax-devel] r1711 - in sax-head: api api/touchscreen rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#102">[ date ]</a>
+              <a href="thread.html#102">[ thread ]</a>
+              <a href="subject.html#102">[ subject ]</a>
+              <a href="author.html#102">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

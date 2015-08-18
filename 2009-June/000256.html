@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1865 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1865%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/automatic/monitor%20rpm&In-Reply-To=%3C200906011829.n51ITq0k028878%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000257.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1865 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1865%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/automatic/monitor%20rpm&In-Reply-To=%3C200906011829.n51ITq0k028878%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1865 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Mon Jun  1 20:29:52 CEST 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000257.html">[Sax-devel] r1866 - in sax-head: profile/automatic/monitor rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#256">[ date ]</a>
+              <a href="thread.html#256">[ thread ]</a>
+              <a href="subject.html#256">[ subject ]</a>
+              <a href="author.html#256">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-06-01 20:29:49 +0200 (Mon, 01 Jun 2009)
+New Revision: 1865
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-AE1900
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-N011
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+Log:
+- fixed MSI-AE1900 and MSI-N011 profiles (bnc #507437, bnc #497963)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-AE1900
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-AE1900	2009-05-30 09:35:38 UTC (rev 1864)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-AE1900	2009-06-01 18:29:49 UTC (rev 1865)
+@@ -10,5 +10,5 @@
+ Screen-&gt;[X]-&gt;Depth-&gt;15-&gt;Modes = 1366x768
+ Screen-&gt;[X]-&gt;Depth-&gt;16-&gt;Modes = 1366x768
+ Screen-&gt;[X]-&gt;Depth-&gt;24-&gt;Modes = 1366x768
+-Device-&gt;[X]-&gt;Raw-&gt;11-&gt;Option = &quot;monitor-LVDS&quot; &quot;Monitor[[X]]&quot;
+-Device-&gt;[X]-&gt;Raw-&gt;11-&gt;Option = &quot;monitor-LVDS-1&quot; &quot;Monitor[[X]]&quot;
++Device-&gt;[X]-&gt;Raw-&gt;11-&gt;Option = &quot;monitor-LVDS1&quot; &quot;Monitor[[X]]&quot;
++Device-&gt;[X]-&gt;Raw-&gt;12-&gt;Option = &quot;monitor-LVDS-1&quot; &quot;Monitor[[X]]&quot;
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-N011
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-N011	2009-05-30 09:35:38 UTC (rev 1864)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-N011	2009-06-01 18:29:49 UTC (rev 1865)
+@@ -1,6 +1,12 @@
+ # /.../
+-# MSI-N011 monitor profile
++# MSI-N011 (LVDS) monitor profile
+ # ----
+ 
+ Monitor-&gt;[X]-&gt;HorizSync = 30-48
+ Monitor-&gt;[X]-&gt;VertRefresh = 59-61
++Monitor-&gt;[X]-&gt;PreferredMode = 1024x600
++Screen-&gt;[X]-&gt;Depth-&gt;8-&gt;Modes = 1024x600
++Screen-&gt;[X]-&gt;Depth-&gt;15-&gt;Modes = 1024x600
++Screen-&gt;[X]-&gt;Depth-&gt;16-&gt;Modes = 1024x600
++Screen-&gt;[X]-&gt;Depth-&gt;24-&gt;Modes = 1024x600
++Device-&gt;[X]-&gt;Raw-&gt;11-&gt;Option = &quot;monitor-LVDS&quot; &quot;Monitor[[X]]&quot;
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-05-30 09:35:38 UTC (rev 1864)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-06-01 18:29:49 UTC (rev 1865)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Mon Jun  1 20:25:55 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- fixed MSI-AE1900 and MSI-N011 profiles (bnc #507437, bnc #497963)
++
++-------------------------------------------------------------------
+ Sat May 30 11:22:07 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - MSI-AE1900 profile
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000257.html">[Sax-devel] r1866 - in sax-head: profile/automatic/monitor rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#256">[ date ]</a>
+              <a href="thread.html#256">[ thread ]</a>
+              <a href="subject.html#256">[ subject ]</a>
+              <a href="author.html#256">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,435 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1722 - in sax-head: . libsax modules modules/create	modules/export parse rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1722%20-%20in%20sax-head%3A%20.%20libsax%20modules%20modules/create%0A%09modules/export%20parse%20rpm&In-Reply-To=%3C200809231500.m8NF0knI021798%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000113.html">
+   <LINK REL="Next"  HREF="000115.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1722 - in sax-head: . libsax modules modules/create	modules/export parse rpm</H1>
+    <B>marcus_schaefer at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1722%20-%20in%20sax-head%3A%20.%20libsax%20modules%20modules/create%0A%09modules/export%20parse%20rpm&In-Reply-To=%3C200809231500.m8NF0knI021798%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1722 - in sax-head: . libsax modules modules/create	modules/export parse rpm">marcus_schaefer at mail.berlios.de
+       </A><BR>
+    <I>Tue Sep 23 17:00:46 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000113.html">[Sax-devel] r1721 - in sax-head: rpm startup
+</A></li>
+        <LI>Next message: <A HREF="000115.html">[Sax-devel] r1723 - sax-head/startup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#114">[ date ]</a>
+              <a href="thread.html#114">[ thread ]</a>
+              <a href="subject.html#114">[ subject ]</a>
+              <a href="author.html#114">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: marcus_schaefer
+Date: 2008-09-23 17:00:39 +0200 (Tue, 23 Sep 2008)
+New Revision: 1722
+
+Modified:
+   sax-head/init.pl
+   sax-head/libsax/desktop.cpp
+   sax-head/libsax/path.cpp
+   sax-head/libsax/path.h
+   sax-head/modules/ImportAPI.pm
+   sax-head/modules/ParseConfig.pm
+   sax-head/modules/create/module.pm
+   sax-head/modules/export/ExportAPI.pm
+   sax-head/parse/XFree.h
+   sax-head/parse/parse.c
+   sax-head/rpm/sax2.changes
+Log:
+
+- fixed deactivation of the 3D subsystem (bnc #427753)
+- fixed initial 3D (dri) setup (bnc #427753)
+
+
+
+Modified: sax-head/init.pl
+===================================================================
+--- sax-head/init.pl	2008-09-23 14:32:54 UTC (rev 1721)
++++ sax-head/init.pl	2008-09-23 15:00:39 UTC (rev 1722)
+@@ -176,7 +176,7 @@
+ 	#==========================================
+ 	# Module specification                     
+ 	#------------------------------------------
+-	$var{Module}{0}{Load}      = &quot;dbe,freetype,extmod,glx&quot;;
++	$var{Module}{0}{Load}      = &quot;dri,dbe,freetype,extmod,glx&quot;;
+ 
+ 	#==========================================
+ 	# ServerFlags specification                
+
+Modified: sax-head/libsax/desktop.cpp
+===================================================================
+--- sax-head/libsax/desktop.cpp	2008-09-23 14:32:54 UTC (rev 1721)
++++ sax-head/libsax/desktop.cpp	2008-09-23 15:00:39 UTC (rev 1722)
+@@ -530,6 +530,7 @@
+ 		//----------------------------------------
+ 		if (extends) {
+ 			SaXManipulatePath pathInfo (mPath);
++			pathInfo.removeDisableModule (*extends);
+ 			pathInfo.removeLoadableModule (*extends);
+ 			pathInfo.addLoadableModule (*extends);
+ 		}
+@@ -683,6 +684,8 @@
+ 		if (extends) {
+ 			SaXManipulatePath pathInfo (mPath);
+ 			pathInfo.removeLoadableModule (*extends);
++			pathInfo.removeDisableModule (*extends);
++			pathInfo.addDisableModule (*extends);
+ 		}
+ 		//========================================
+ 		// set driver to use with 2D
+
+Modified: sax-head/libsax/path.cpp
+===================================================================
+--- sax-head/libsax/path.cpp	2008-09-23 14:32:54 UTC (rev 1721)
++++ sax-head/libsax/path.cpp	2008-09-23 15:00:39 UTC (rev 1722)
+@@ -114,6 +114,20 @@
+ }
+ 
+ //====================================
++// setDisableModule
++//------------------------------------
++void SaXManipulatePath::setDisableModule (const QString&amp; module) {
++	// .../
++	//! set global module to be disabled for this configuration. Using
++	//! this function will overwrite the current module list
++	// ----
++	if (! mImport) {
++		return;
++	}
++	mImport -&gt; setItem ( &quot;ModuleDisable&quot;,module );
++}
++
++//====================================
+ // addLoadableModule
+ //------------------------------------
+ void SaXManipulatePath::addLoadableModule (const QString&amp; module) {
+@@ -134,6 +148,26 @@
+ }
+ 
+ //====================================
++// addDisableModule
++//------------------------------------
++void SaXManipulatePath::addDisableModule (const QString&amp; module) {
++	// .../
++	//! add module name to the current list of disabled modules. The
++	//! comma separator is used for each item
++	// ----
++	if (! mImport) {
++		return;
++	}
++	QString val;
++	QString key (&quot;ModuleDisable&quot;);
++	if (! mImport -&gt; getItem (key).isEmpty()) {
++		val = mImport -&gt; getItem (key);
++	}
++	QTextOStream (&amp;val) &lt;&lt; &quot;,&quot; &lt;&lt; module;
++	mImport -&gt; setItem ( key,val );
++}
++
++//====================================
+ // removeLoadableModule
+ //------------------------------------
+ void SaXManipulatePath::removeLoadableModule (const QString&amp; module) {
+@@ -153,6 +187,25 @@
+ }
+ 
+ //====================================
++// removeDisableModule
++//------------------------------------
++void SaXManipulatePath::removeDisableModule (const QString&amp; module) {
++	// .../
++	//! remove the given module (module) from the current
++	//! list of disabled modules. If the module doesn't exist nothing
++	//! will be changed
++	// ----
++	if (! mImport) {
++		return;
++	}
++	QString val (module);
++	QString key (&quot;ModuleDisable&quot;);
++	if (! mImport -&gt; getItem (key).isEmpty()) {
++		mImport -&gt; removeItem (key,val);
++	}
++}
++
++//====================================
+ // setServerFlag
+ //------------------------------------
+ void SaXManipulatePath::setServerFlag (const QString&amp; flag) {
+
+Modified: sax-head/libsax/path.h
+===================================================================
+--- sax-head/libsax/path.h	2008-09-23 14:32:54 UTC (rev 1721)
++++ sax-head/libsax/path.h	2008-09-23 15:00:39 UTC (rev 1722)
+@@ -47,6 +47,9 @@
+ 	virtual void setLoadableModule ( const QString&amp; ) = 0;
+ 	virtual void addLoadableModule ( const QString&amp; ) = 0;
+ 	virtual void removeLoadableModule ( const QString&amp; ) = 0;
++	virtual void setDisableModule ( const QString&amp; ) = 0;
++	virtual void addDisableModule ( const QString&amp; ) = 0;
++	virtual void removeDisableModule ( const QString&amp; ) = 0;
+ 
+ 	public:
+ 	virtual void setServerFlag ( const QString&amp; ) = 0;
+@@ -126,6 +129,9 @@
+ 	void setLoadableModule ( const QString&amp; );
+ 	void addLoadableModule ( const QString&amp; );
+ 	void removeLoadableModule ( const QString&amp; );
++	void setDisableModule ( const QString&amp; );
++	void addDisableModule ( const QString&amp; );
++	void removeDisableModule ( const QString&amp; );
+ 
+ 	public:
+ 	void setServerFlag ( const QString&amp; );
+
+Modified: sax-head/modules/ImportAPI.pm
+===================================================================
+--- sax-head/modules/ImportAPI.pm	2008-09-23 14:32:54 UTC (rev 1721)
++++ sax-head/modules/ImportAPI.pm	2008-09-23 15:00:39 UTC (rev 1722)
+@@ -141,6 +141,11 @@
+ 		last SWITCH;
+ 		};
+ 
++		/^ModuleDisable/ &amp;&amp; do {
++		$var{Module}{0}{Disable} = $value;
++		last SWITCH;
++		};
++
+ 		/^Extmod/        &amp;&amp; do {
+ 		@list = split(/\\n/,$value);
+ 		foreach (@list) {
+
+Modified: sax-head/modules/ParseConfig.pm
+===================================================================
+--- sax-head/modules/ParseConfig.pm	2008-09-23 14:32:54 UTC (rev 1721)
++++ sax-head/modules/ParseConfig.pm	2008-09-23 15:00:39 UTC (rev 1722)
+@@ -142,6 +142,19 @@
+ 	}
+ 
+ 	#========================================
++	# Disable...
++	#----------------------------------------
++	$result = XFree::GetModuleDisableSpecs($ptr);
++	if (defined $result) {
++		$count  = 0;
++		@list   = split(/,/,$result);
++		foreach $i (@list) {
++			$parse{Disable}{$count} = $i;
++			$count++;
++		}
++	}
++
++	#========================================
+ 	# Subsection extmod....
+ 	#----------------------------------------
+ 	$result = XFree::GetModuleSubSpecs($ptr);
+
+Modified: sax-head/modules/create/module.pm
+===================================================================
+--- sax-head/modules/create/module.pm	2008-09-23 14:32:54 UTC (rev 1721)
++++ sax-head/modules/create/module.pm	2008-09-23 15:00:39 UTC (rev 1722)
+@@ -18,7 +18,7 @@
+ # extmod subsection...
+ #
+ 	my (%var)       = %{$_[0]};  # configuration hash (argument)
+-	my ($dlist)     = $_[1];     # do not set modules of this string (glx,dri,fgl1)
++	my ($dlist)     = $_[1];     # do not set modules part of dlist
+ 	my $setting;                 # member of hash element
+ 	my @result;                  # section result list
+ 	my $size;                    # sizeof list @list
+@@ -69,6 +69,26 @@
+ 				}
+ 				last SWITCH;
+ 			};
++			#===========================================
++			# Disable setting...
++			#-------------------------------------------
++			/^Disable/ &amp;&amp; do {
++				@critical = split(/,/,$dlist);
++				foreach $n (@list) {
++					$n =~ s/ +//g;
++					$notset = 0;
++					foreach $cm (@critical) {
++					if ($cm eq $n) {
++						$notset = 1; last;
++					}
++					}
++					if (($n ne &quot;&quot;) &amp;&amp; ($notset == 0)) {
++						$n =~ s/^ +//g; $n =~ s/ +$//g;
++						push(@result,PrintLine($i,&quot;\&quot;$n\&quot;&quot;));
++					}
++				}
++				last SWITCH;
++			};
+ 	 		#===========================================
+ 			# Subsection extmod setting...
+ 			#-------------------------------------------
+
+Modified: sax-head/modules/export/ExportAPI.pm
+===================================================================
+--- sax-head/modules/export/ExportAPI.pm	2008-09-23 14:32:54 UTC (rev 1721)
++++ sax-head/modules/export/ExportAPI.pm	2008-09-23 15:00:39 UTC (rev 1722)
+@@ -75,7 +75,6 @@
+ 	my $blue;
+ 	my $hashref;
+ 	my $idc;
+-	my @modlist;
+ 	my $rawcount;
+ 	my $newopt;
+ 	my $modelines;
+@@ -179,6 +178,7 @@
+ 	foreach $key (keys %module) {
+ 	SWITCH: for ($key) {
+ 	/^Load/i          &amp;&amp; do {
++		my @modlist = ();
+ 		foreach (keys %{$module{$key}}) {
+ 			push(@modlist,$module{$key}{$_});
+ 		}
+@@ -188,6 +188,17 @@
+ 		$result{Module}{0}{Load} = join(&quot;,&quot;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">, at modlist</A>);
+ 		last SWITCH;
+ 	};
++	/^Disable/i       &amp;&amp; do {
++		my @modlist = ();
++		foreach (keys %{$module{$key}}) {
++			push(@modlist,$module{$key}{$_});
++		}
++		$modstring = join(&quot;,&quot;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">, at modlist</A>);
++		$modstring =~ s/ +//g;
++		$modstring =~ s/^,//; $modstring =~ s/,$//;
++		$result{Module}{0}{Disable} = join(&quot;,&quot;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">, at modlist</A>);
++		last SWITCH;
++	};
+ 	/^extmod/i        &amp;&amp; do {
+ 		$setpath = &quot;&quot;; 
+ 		foreach $count (keys %{$module{$key}{Option}}) {
+@@ -1022,6 +1033,8 @@
+ 	}
+ 	$value = $dialog{Module}{0}{Load};
+ 	push(@result,DLine(&quot;0&quot;,&quot;ModuleLoad&quot;,$value));
++	$value = $dialog{Module}{0}{Disable};
++	push(@result,DLine(&quot;0&quot;,&quot;ModuleDisable&quot;,$value));
+ 	push(@result,&quot;}\n\n&quot;);
+ 	return(@result);
+ }
+
+Modified: sax-head/parse/XFree.h
+===================================================================
+--- sax-head/parse/XFree.h	2008-09-23 14:32:54 UTC (rev 1721)
++++ sax-head/parse/XFree.h	2008-09-23 15:00:39 UTC (rev 1722)
+@@ -14,6 +14,7 @@
+ 
+ /* Module Section... */
+ extern char* GetModuleSpecs (XF86ConfigPtr conf);
++extern char* GetModuleDisableSpecs (XF86ConfigPtr conf);
+ extern char* GetModuleSubSpecs (XF86ConfigPtr conf);
+ 
+ /* InputDevice Section... */
+
+Modified: sax-head/parse/parse.c
+===================================================================
+--- sax-head/parse/parse.c	2008-09-23 14:32:54 UTC (rev 1721)
++++ sax-head/parse/parse.c	2008-09-23 15:00:39 UTC (rev 1722)
+@@ -47,7 +47,9 @@
+ char* GetLogFile (XF86ConfigPtr conf);
+ 
+ /* Module Section... */
++char* GetModuleSpecsBase (XF86ConfigPtr conf,int t);
+ char* GetModuleSpecs (XF86ConfigPtr conf);
++char* GetModuleDisableSpecs (XF86ConfigPtr conf);
+ char* GetModuleSubSpecs (XF86ConfigPtr conf);
+ 
+ /* InputDevice Section... */
+@@ -152,6 +154,14 @@
+  Module Section... 
+ **********************/
+ char* GetModuleSpecs (XF86ConfigPtr conf) {
++	return GetModuleSpecsBase (conf,XF86_LOAD_MODULE);
++}
++
++char* GetModuleDisableSpecs (XF86ConfigPtr conf) {
++	return GetModuleSpecsBase (conf,XF86_DISABLE_MODULE);
++}
++
++char* GetModuleSpecsBase (XF86ConfigPtr conf,int t) {
+ 	int  count       = 0;
+ 	char *result     = NULL; 
+ 	char name[SIZE]  = &quot;&quot;;
+@@ -161,7 +171,11 @@
+ 	XF86LoadPtr       lp;
+ 
+ 	if (conf == NULL) return(&quot;null&quot;);
+-	lp = (XF86LoadPtr) conf-&gt;conf_modules-&gt;mod_load_lst;
++	if (t == XF86_DISABLE_MODULE) {
++		lp = (XF86LoadPtr) conf-&gt;conf_modules-&gt;mod_disable_lst;
++	} else {
++		lp = (XF86LoadPtr) conf-&gt;conf_modules-&gt;mod_load_lst;
++	}
+ 	if (lp == NULL) {
+ 		return (NULL);
+ 	}
+@@ -171,6 +185,9 @@
+ 
+ 	for (lp;lp;lp=lp-&gt;list.next) {
+ 		type = lp-&gt;load_type;
++		if (type != t) {
++			continue;
++		}
+ 		strcpy(name,lp-&gt;load_name);
+ 		if (count == 0) {
+ 			sprintf(line,&quot;%s&quot;,name);
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-09-23 14:32:54 UTC (rev 1721)
++++ sax-head/rpm/sax2.changes	2008-09-23 15:00:39 UTC (rev 1722)
+@@ -2,6 +2,8 @@
+ Tue Sep 23 16:32:03 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - fixed use of sux which was replaced by su (bnc #427753)
++- fixed deactivation of the 3D subsystem (bnc #427753)
++- fixed initial 3D (dri) setup (bnc #427753)
+ 
+ -------------------------------------------------------------------
+ Mon Sep 22 15:19:20 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000113.html">[Sax-devel] r1721 - in sax-head: rpm startup
+</A></li>
+	<LI>Next message: <A HREF="000115.html">[Sax-devel] r1723 - sax-head/startup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#114">[ date ]</a>
+              <a href="thread.html#114">[ thread ]</a>
+              <a href="subject.html#114">[ subject ]</a>
+              <a href="author.html#114">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1729 - in sax-head: rpm sysp/maps sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1729%20-%20in%20sax-head%3A%20rpm%20sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200810081658.m98Gwh5b011409%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000120.html">
+   <LINK REL="Next"  HREF="000122.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1729 - in sax-head: rpm sysp/maps sysp/maps/arch</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1729%20-%20in%20sax-head%3A%20rpm%20sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200810081658.m98Gwh5b011409%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1729 - in sax-head: rpm sysp/maps sysp/maps/arch">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Oct  8 18:58:43 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000120.html">[Sax-devel] r1728 - in sax-branches/SaX2-71-SuSE-10-1-Devel:	api/data rpm
+</A></li>
+        <LI>Next message: <A HREF="000122.html">[Sax-devel] r1730 - in sax-head: rpm sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#121">[ date ]</a>
+              <a href="thread.html#121">[ thread ]</a>
+              <a href="subject.html#121">[ subject ]</a>
+              <a href="author.html#121">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-10-08 18:58:30 +0200 (Wed, 08 Oct 2008)
+New Revision: 1729
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Identity.map
+   sax-head/sysp/maps/arch/Identity.map.i386
+Log:
+- use Noaccel,Swcursor for 855GM(IBM) (bnc #379946)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-10-08 13:55:22 UTC (rev 1728)
++++ sax-head/rpm/sax2.changes	2008-10-08 16:58:30 UTC (rev 1729)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Wed Oct  8 18:57:23 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- used Noaccel,Swcursor for 855GM(IBM) (bnc #379946) 
++
++-------------------------------------------------------------------
+ Tue Oct  7 21:28:50 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - use NoVirtual profile for ATI Radeon VE cards (bnc #433124)
+
+Modified: sax-head/sysp/maps/Identity.map
+===================================================================
+--- sax-head/sysp/maps/Identity.map	2008-10-08 13:55:22 UTC (rev 1728)
++++ sax-head/sysp/maps/Identity.map	2008-10-08 16:58:30 UTC (rev 1729)
+@@ -567,6 +567,7 @@
+ # IBM Cards
+ #-----------------------------------#
+ NAME=IBM&amp;DEVICE=855 GM&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=i810&amp;EXT=&amp;OPT=Noaccel,SWcursor&amp;RAW=&amp;PROFILE=DDC&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x8086&amp;SUBDEVICE=0x3582
++NAME=IBM&amp;DEVICE=855 GM (IBM)&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=intel&amp;EXT=&amp;OPT=Noaccel,SWcursor&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x8086&amp;SUBDEVICE=0x3582
+ 
+ #-----------------------------------#
+ # Imstt Cards
+
+Modified: sax-head/sysp/maps/arch/Identity.map.i386
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.i386	2008-10-08 13:55:22 UTC (rev 1728)
++++ sax-head/sysp/maps/arch/Identity.map.i386	2008-10-08 16:58:30 UTC (rev 1729)
+@@ -567,6 +567,7 @@
+ # IBM Cards
+ #-----------------------------------#
+ NAME=IBM&amp;DEVICE=855 GM&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=i810&amp;EXT=&amp;OPT=Noaccel,SWcursor&amp;RAW=&amp;PROFILE=DDC&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x8086&amp;SUBDEVICE=0x3582
++NAME=IBM&amp;DEVICE=855 GM (IBM)&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=intel&amp;EXT=&amp;OPT=Noaccel,SWcursor&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x8086&amp;SUBDEVICE=0x3582
+ 
+ #-----------------------------------#
+ # Imstt Cards
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000120.html">[Sax-devel] r1728 - in sax-branches/SaX2-71-SuSE-10-1-Devel:	api/data rpm
+</A></li>
+	<LI>Next message: <A HREF="000122.html">[Sax-devel] r1730 - in sax-head: rpm sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#121">[ date ]</a>
+              <a href="thread.html#121">[ thread ]</a>
+              <a href="subject.html#121">[ subject ]</a>
+              <a href="author.html#121">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

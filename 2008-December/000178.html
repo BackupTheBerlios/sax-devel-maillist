@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1786 - in sax-head: parse rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1786%20-%20in%20sax-head%3A%20parse%20rpm&In-Reply-To=%3C200812091549.mB9FnWJ9032056%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000177.html">
+   <LINK REL="Next"  HREF="000179.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1786 - in sax-head: parse rpm</H1>
+    <B>marcus_schaefer at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1786%20-%20in%20sax-head%3A%20parse%20rpm&In-Reply-To=%3C200812091549.mB9FnWJ9032056%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1786 - in sax-head: parse rpm">marcus_schaefer at mail.berlios.de
+       </A><BR>
+    <I>Tue Dec  9 16:49:32 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000177.html">[Sax-devel] r1785 - in sax-head: api api/data locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES locale/sax-template locale/si/LC_ME! SSAGES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES rpm
+</A></li>
+        <LI>Next message: <A HREF="000179.html">[Sax-devel] r1787 - sax-branches
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#178">[ date ]</a>
+              <a href="thread.html#178">[ thread ]</a>
+              <a href="subject.html#178">[ subject ]</a>
+              <a href="author.html#178">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: marcus_schaefer
+Date: 2008-12-09 16:49:28 +0100 (Tue, 09 Dec 2008)
+New Revision: 1786
+
+Modified:
+   sax-head/parse/parse.c
+   sax-head/rpm/sax2.changes
+   sax-head/rpm/sax2.spec
+Log:
+
+- added patch by mhopf to svn:
+  * fix build on s390, sax2-tools only.
+
+
+
+Modified: sax-head/parse/parse.c
+===================================================================
+--- sax-head/parse/parse.c	2008-12-04 10:24:27 UTC (rev 1785)
++++ sax-head/parse/parse.c	2008-12-09 15:49:28 UTC (rev 1786)
+@@ -23,6 +23,9 @@
+ #ifdef HAVE_XORG_SERVER_HEADER
+ #include &quot;xorg-server.h&quot;
+ #include &quot;xorgVersion.h&quot;
++#else
++#define XORG_VERSION_MAJOR 1
++#define XORG_VERSION_MINOR 5
+ #endif
+ 
+ #include &quot;xf86Parser.h&quot;
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-12-04 10:24:27 UTC (rev 1785)
++++ sax-head/rpm/sax2.changes	2008-12-09 15:49:28 UTC (rev 1786)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Mon Dec  8 16:56:23 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">mhopf at suse.de</A>
++
++- fix build on s390, sax2-tools only.
++
++-------------------------------------------------------------------
+ Thu Dec  4 12:23:26 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - added missing progress bar labels to be able to show them
+
+Modified: sax-head/rpm/sax2.spec
+===================================================================
+--- sax-head/rpm/sax2.spec	2008-12-04 10:24:27 UTC (rev 1785)
++++ sax-head/rpm/sax2.spec	2008-12-09 15:49:28 UTC (rev 1786)
+@@ -50,7 +50,7 @@
+ PreReq:         /bin/rm /bin/mkdir /usr/bin/chroot %fillup_prereq %insserv_prereq
+ Summary:        SuSE advanced X Window System-configuration
+ Version:        8.1
+-Release:        530
++Release:        545
+ Group:          System/X11/Utilities
+ License:        GPL v2 or later
+ Source:         sax2.tar.bz2
+@@ -97,6 +97,8 @@
+ --------
+     Marcus Schaefer &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>&gt;
+ 
++%ifnarch s390 s390x
++
+ %package -n sax2-ident
+ License:        LGPL v2.1 or later
+ Summary:        SaX2 identity and profile information
+@@ -225,6 +227,7 @@
+     Marcus Schaefer &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>&gt;
+ 
+ %endif
++%endif
+ 
+ %prep
+ %setup -n sax
+@@ -308,6 +311,7 @@
+ if [ ! -d /var/cache/xfine ];then
+ 	mkdir -p /var/cache/xfine
+ fi
++%ifnarch s390 s390x
+ 
+ %post -n sax2-ident
+ if ls var/lib/hardware/ids/* &amp;&gt; /dev/null; then
+@@ -333,8 +337,6 @@
+ 
+ %postun -n sax2-libsax -p /sbin/ldconfig
+ 
+-%ifnarch s390 s390x
+-
+ %files
+ %defattr(-,root,root)
+ #=================================================
+@@ -410,9 +412,7 @@
+ %{_sbindir}/xapi
+ %{_sbindir}/xfine
+ %{_datadir}/applications/sax2.desktop
+-
+ %endif
+-
+ #=================================================
+ # SaX-Tools file list...
+ # ------------------------------------------------
+@@ -437,9 +437,7 @@
+ %{_sbindir}/vncp
+ %{_sbindir}/xw
+ %{_sbindir}/getPrimary
+-
+ %ifnarch s390 s390x
+-
+ #=================================================
+ # SaX-Ident file list...
+ # ------------------------------------------------
+@@ -529,5 +527,5 @@
+ %{_datadir}/java/SaX.jar
+ %{_prefix}/%{_lib}/sax/plugins/SaX.so
+ %endif
+-
+ %endif
++
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000177.html">[Sax-devel] r1785 - in sax-head: api api/data locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES locale/sax-template locale/si/LC_ME! SSAGES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES rpm
+</A></li>
+	<LI>Next message: <A HREF="000179.html">[Sax-devel] r1787 - sax-branches
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#178">[ date ]</a>
+              <a href="thread.html#178">[ thread ]</a>
+              <a href="subject.html#178">[ subject ]</a>
+              <a href="author.html#178">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

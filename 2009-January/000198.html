@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1810 - in sax-branches/SaX2-81-SuSE-11-1-Devel: parse	rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1810%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20parse%0A%09rpm&In-Reply-To=%3C200901091718.n09HIeYN025127%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000197.html">
+   <LINK REL="Next"  HREF="000199.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1810 - in sax-branches/SaX2-81-SuSE-11-1-Devel: parse	rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1810%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20parse%0A%09rpm&In-Reply-To=%3C200901091718.n09HIeYN025127%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1810 - in sax-branches/SaX2-81-SuSE-11-1-Devel: parse	rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri Jan  9 18:18:40 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000197.html">[Sax-devel] r1809 - in sax-branches/SaX2-81-SuSE-11-1-Devel: api	api/macros rpm
+</A></li>
+        <LI>Next message: <A HREF="000199.html">[Sax-devel] r1811 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#198">[ date ]</a>
+              <a href="thread.html#198">[ thread ]</a>
+              <a href="subject.html#198">[ subject ]</a>
+              <a href="author.html#198">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-01-09 18:18:38 +0100 (Fri, 09 Jan 2009)
+New Revision: 1810
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/parse/XFree.h
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+Log:
+- fixed parser version check
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/parse/XFree.h
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/parse/XFree.h	2009-01-09 17:17:18 UTC (rev 1809)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/parse/XFree.h	2009-01-09 17:18:38 UTC (rev 1810)
+@@ -24,7 +24,7 @@
+ /* Files Section... */
+ extern char* GetModulePath (XF86ConfigPtr conf);
+ extern char* GetFontPath (XF86ConfigPtr conf);
+-#if XORG_VERSION_MINOR &lt;= 4
++#if PARSER_VERSION &lt;= 4
+ extern char* GetRgbPath (XF86ConfigPtr conf);
+ #endif
+ extern char* GetLogFile (XF86ConfigPtr conf);
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-01-09 17:17:18 UTC (rev 1809)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-01-09 17:18:38 UTC (rev 1810)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Wed Jan  7 11:20:25 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
++
++- fixed parser version check
++
++-------------------------------------------------------------------
+ Mon Jan  5 15:15:11 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - consider also variant when setting console keyboard; required
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000197.html">[Sax-devel] r1809 - in sax-branches/SaX2-81-SuSE-11-1-Devel: api	api/macros rpm
+</A></li>
+	<LI>Next message: <A HREF="000199.html">[Sax-devel] r1811 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#198">[ date ]</a>
+              <a href="thread.html#198">[ thread ]</a>
+              <a href="subject.html#198">[ subject ]</a>
+              <a href="author.html#198">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

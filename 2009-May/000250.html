@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1859 - in sax-head: api modules/create rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1859%20-%20in%20sax-head%3A%20api%20modules/create%20rpm&In-Reply-To=%3C200905272040.n4RKe58k014378%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000249.html">
+   <LINK REL="Next"  HREF="000251.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1859 - in sax-head: api modules/create rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1859%20-%20in%20sax-head%3A%20api%20modules/create%20rpm&In-Reply-To=%3C200905272040.n4RKe58k014378%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1859 - in sax-head: api modules/create rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed May 27 22:40:05 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000249.html">[Sax-devel] r1858 - in sax-head: rpm tools/getPrimary
+</A></li>
+        <LI>Next message: <A HREF="000251.html">[Sax-devel] r1860 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#250">[ date ]</a>
+              <a href="thread.html#250">[ thread ]</a>
+              <a href="subject.html#250">[ subject ]</a>
+              <a href="author.html#250">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-05-27 22:40:03 +0200 (Wed, 27 May 2009)
+New Revision: 1859
+
+Modified:
+   sax-head/api/frame.cpp
+   sax-head/modules/create/input.pm
+   sax-head/rpm/sax2.changes
+Log:
+- disabled mouse and keyboard module (bnc #483554)
+
+
+Modified: sax-head/api/frame.cpp
+===================================================================
+--- sax-head/api/frame.cpp	2009-05-27 15:07:42 UTC (rev 1858)
++++ sax-head/api/frame.cpp	2009-05-27 20:40:03 UTC (rev 1859)
+@@ -357,12 +357,14 @@
+ 	mModuleList -&gt; insertItem (
+ 		QPixmap(MONITORS_PIXMAP), mText[&quot;MonitorModule&quot;]
+ 	);
++#if 0
+ 	mModuleList -&gt; insertItem (
+ 		QPixmap(POINTERS_PIXMAP), mText[&quot;MouseModule&quot;]
+ 	);
+ 	mModuleList -&gt; insertItem (
+ 		QPixmap(KEYBOARD_PIXMAP), mText[&quot;KeyboardModule&quot;]
+ 	);
++#endif
+ 	mModuleList -&gt; insertItem (
+ 		QPixmap(XTABLETS_PIXMAP), mText[&quot;TabletModule&quot;]
+ 	);
+@@ -473,6 +475,7 @@
+ 			mMonitor -&gt; import();
+ 		}
+ 	}
++#if 0
+ 	if (selection == mText[&quot;MouseModule&quot;]) {
+ 		mDialogStack -&gt; raiseWidget ( mMouse -&gt; getDialogID() );
+ 		if ( mMouse -&gt; needInit() ) {
+@@ -491,6 +494,7 @@
+ 			mKeyboard -&gt; import();
+ 		}
+ 	}
++#endif
+ 	if (selection == mText[&quot;TabletModule&quot;]) {
+ 		mDialogStack -&gt; raiseWidget ( mTablet -&gt; getDialogID() );
+ 		if ( mTablet -&gt; needInit() ) {
+
+Modified: sax-head/modules/create/input.pm
+===================================================================
+--- sax-head/modules/create/input.pm	2009-05-27 15:07:42 UTC (rev 1858)
++++ sax-head/modules/create/input.pm	2009-05-27 20:40:03 UTC (rev 1859)
+@@ -81,6 +81,10 @@
+ 			/^Driver/    &amp;&amp; do {
+ 				foreach $n (@list) {
+ 				if ($n ne &quot;&quot;) {
++					if ($n eq &quot;kbd&quot; || $n eq &quot;mouse&quot; || $n eq &quot;vmmouse&quot;) {
++						push(@result,PrintLine(&quot;# Driver \&quot;$n\&quot; will be disabled unless 'Option \&quot;AutoAddDevices\&quot; \&quot;off\&quot;'&quot;));
++						push(@result,PrintLine(&quot;# is set in \&quot;ServerFlags\&quot; section.&quot;));
++					}
+ 					push(@result,PrintLine($i,&quot;\&quot;$n\&quot;&quot;));
+ 				}
+ 				}
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-05-27 15:07:42 UTC (rev 1858)
++++ sax-head/rpm/sax2.changes	2009-05-27 20:40:03 UTC (rev 1859)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Wed May 27 22:37:52 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- disabled mouse and keyboard module (bnc #483554)
++
++-------------------------------------------------------------------
+ Wed May 27 17:04:05 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - getPrimary.sh:
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000249.html">[Sax-devel] r1858 - in sax-head: rpm tools/getPrimary
+</A></li>
+	<LI>Next message: <A HREF="000251.html">[Sax-devel] r1860 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#250">[ date ]</a>
+              <a href="thread.html#250">[ thread ]</a>
+              <a href="subject.html#250">[ subject ]</a>
+              <a href="author.html#250">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

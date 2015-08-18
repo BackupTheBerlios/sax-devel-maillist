@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1930 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect profile/driver rpm sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2012-January/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1930%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09modules/detect%20profile/driver%20rpm%20sysp/maps&In-Reply-To=%3C20120125113415.5293F48104D%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1930 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect profile/driver rpm sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1930%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09modules/detect%20profile/driver%20rpm%20sysp/maps&In-Reply-To=%3C20120125113415.5293F48104D%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1930 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect profile/driver rpm sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Jan 25 12:34:15 CET 2012</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#319">[ date ]</a>
+              <a href="thread.html#319">[ thread ]</a>
+              <a href="subject.html#319">[ subject ]</a>
+              <a href="author.html#319">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2012-01-25 12:34:15 +0100 (Wed, 25 Jan 2012)
+New Revision: 1930
+
+Added:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/driver/NoModes
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Monitor.pm
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Driver.map
+Log:
+- No longer generate any modes and modelines for DRM based drivers
+  intel/radeon, since monitor detection via libhd is not expected
+  to work reliably with DRM active and the fallback to a low
+  resolution is not what we want with DRM drivers. The X driver
+  should use what has been detected already via DRM. (bnc#731866)
+- Use a wider range of hsync values for monitors, which could not
+  be detected by SaX2, so a resolution of 1024x768 is still
+  possible. (bnc#731866)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Monitor.pm
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Monitor.pm	2011-10-17 11:55:35 UTC (rev 1929)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Monitor.pm	2012-01-25 11:34:15 UTC (rev 1930)
+@@ -131,7 +131,7 @@
+ 		# sync ranges to save values to avoid any monitor damage
+ 		# ----------------------------------------------------------
+ 		$var{Monitor}{$i}{VertRefresh} = &quot;50-75&quot;;
+-		$var{Monitor}{$i}{HorizSync}   = &quot;30-40&quot;; 
++		$var{Monitor}{$i}{HorizSync}   = &quot;31-60&quot;;
+ 		$var{Monitor}{$i}{VendorName}  = &quot;Unknown&quot;;
+ 		$var{Monitor}{$i}{ModelName}   = &quot;Unknown&quot;;
+ 	}
+
+Added: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/driver/NoModes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/driver/NoModes	                        (rev 0)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/driver/NoModes	2012-01-25 11:34:15 UTC (rev 1930)
+@@ -0,0 +1,8 @@
++# /.../
++# Do not generate any Modes lines for DRM drivers
++# ----
++
++!remove Screen-&gt;[X]-&gt;Depth-&gt;8-&gt;Modes
++!remove Screen-&gt;[X]-&gt;Depth-&gt;15-&gt;Modes
++!remove Screen-&gt;[X]-&gt;Depth-&gt;16-&gt;Modes
++!remove Screen-&gt;[X]-&gt;Depth-&gt;24-&gt;Modes
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2011-10-17 11:55:35 UTC (rev 1929)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2012-01-25 11:34:15 UTC (rev 1930)
+@@ -1,4 +1,16 @@
+ -------------------------------------------------------------------
++Wed Jan 25 12:24:59 CET 2012 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- No longer generate any modes and modelines for DRM based drivers
++  intel/radeon, since monitor detection via libhd is not expected
++  to work reliably with DRM active and the fallback to a low
++  resolution is not what we want with DRM drivers. The X driver
++  should use what has been detected already via DRM. (bnc#731866)
++- Use a wider range of hsync values for monitors, which could not
++  be detected by SaX2, so a resolution of 1024x768 is still
++  possible. (bnc#731866)
++
++-------------------------------------------------------------------
+ Mon Oct 17 13:52:13 CEST 2011 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - enabled use of evdev driver for hyper-v guests; patch by Olaf
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Driver.map
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Driver.map	2011-10-17 11:55:35 UTC (rev 1929)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Driver.map	2012-01-25 11:34:15 UTC (rev 1930)
+@@ -5,11 +5,11 @@
+ # -----------------------------------------------------
+ nv       : Depth24,NVidia,NoModelines,NoComposite
+ nvidia   : Depth24,NVidia,NoModelines,Composite
+-radeon   : Depth24,Radeon,Virtual
++radeon   : Depth24,Radeon,Virtual,NoModelines,NoModes
+ i810     : Depth24,NoDDC,LinearAlloc
+ sis      : SiS,Depth24
+ fglrx    : FireGL,AIGLX,Composite
+ tseng    : VideoRAM
+-intel    : Depth24,Intel,AIGLX,Composite,Virtual2k
++intel    : Depth24,Intel,AIGLX,Composite,Virtual2k,NoModelines,NoModes
+ fbdev    : NoModelines
+ radeonhd : Depth24,RadeonHD,Virtual
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#319">[ date ]</a>
+              <a href="thread.html#319">[ thread ]</a>
+              <a href="subject.html#319">[ subject ]</a>
+              <a href="author.html#319">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1935 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm startup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2013-January/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1935%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/script%20rpm%20startup&In-Reply-To=%3C20130115144221.3CC3355B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000325.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1935 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm startup</H1>
+    <B>sndirsch at scm.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1935%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/script%20rpm%20startup&In-Reply-To=%3C20130115144221.3CC3355B0C%40scm.berlios.de%3E"
+       TITLE="[Sax-devel] r1935 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm startup">sndirsch at scm.berlios.de
+       </A><BR>
+    <I>Tue Jan 15 15:42:21 CET 2013</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000325.html">[Sax-devel] r1937 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#324">[ date ]</a>
+              <a href="thread.html#324">[ thread ]</a>
+              <a href="subject.html#324">[ subject ]</a>
+              <a href="author.html#324">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2013-01-15 15:42:20 +0100 (Tue, 15 Jan 2013)
+New Revision: 1935
+
+Added:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/KMSAndNotIntelOrAMD.sh
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/ModeSetting
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/ModeSetting.pl
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/startup/sax.sh
+Log:
+- prefer &quot;modesetting&quot; X driver when KMS is active and neither
+  Intel nor Radeon KMS driver is active; useful for secure boot
+  mode with Matrox, AST or Cirrus (Qemu) graphics (FATE#314488)
+
+
+Added: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/KMSAndNotIntelOrAMD.sh
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/KMSAndNotIntelOrAMD.sh	                        (rev 0)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/KMSAndNotIntelOrAMD.sh	2013-01-15 14:42:20 UTC (rev 1935)
+@@ -0,0 +1,39 @@
++#!/bin/bash
++#
++# KMSAndNotIntelOrAMD.sh
++#
++
++function No()
++{
++    echo &quot;no&quot;
++    exit 0
++}
++
++function Yes() 
++{
++    echo &quot;yes&quot;
++    exit 0
++}
++
++if [ -r /proc/fb ]; then
++    fb=$(cat /proc/fb)
++    ### for testing purposes
++    #fb=fb
++    #fb=&quot;0 radeondrmfb&quot;
++    #fb=&quot;0 inteldrmfb&quot;
++    #fb=&quot;0 mgadrmfb&quot;
++    if echo $fb | grep -q drmfb; then
++        case $fb in
++            *radeon*|\
++            *intel*) 
++                No 
++                ;;
++            *) 
++                Yes 
++                ;;
++        esac
++    else
++        No
++    fi
++fi
++No
+
+
+Property changes on: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/KMSAndNotIntelOrAMD.sh
+___________________________________________________________________
+Added: svn:executable
+   + *
+
+Added: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/ModeSetting
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/ModeSetting	                        (rev 0)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/ModeSetting	2013-01-15 14:42:20 UTC (rev 1935)
+@@ -0,0 +1,6 @@
++# /.../
++# Modesetting driver profile
++# ---- 
++# dynamic profile
++#
++
+
+Added: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/ModeSetting.pl
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/ModeSetting.pl	                        (rev 0)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/ModeSetting.pl	2013-01-15 14:42:20 UTC (rev 1935)
+@@ -0,0 +1,33 @@
++#!/usr/bin/perl
++
++use lib '/usr/share/sax/profile';
++
++use strict;
++use Profile;
++
++sub KMSAndNotIntelOrAMD {
++  my $ret = qx(/usr/share/sax/profile/KMSAndNotIntelOrAMD.sh);
++  chomp($ret);
++  return $ret;
++}
++
++#====================================
++# Init profile script
++#------------------------------------
++my $profile = ProfileInitScript();
++open (FD,&quot;&gt;&quot;,$profile) ||
++	die &quot;Modesetting: Can't open $profile: $!&quot;;
++
++#==========================================
++# Check if modesetting driver is neccessary
++#------------------------------------------
++if ( KMSAndNotIntelOrAMD() eq &quot;yes&quot;) {
++        print STDERR &quot;modesetting driver required\n&quot;;
++	print FD &quot;Device -&gt; [X] -&gt; Driver = modesetting\n&quot;;
++} else {
++	print STDERR &quot;modesetting driver not neccessary\n&quot;;
++        # just to make SaX happy and overwrite the possibly
++        # existing modesetting driver entry in the profile
++	print FD &quot;Device -&gt; [X] -&gt; Option -&gt; Dummy = yes&quot;;
++}
++close FD;
+
+
+Property changes on: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/ModeSetting.pl
+___________________________________________________________________
+Added: svn:executable
+   + *
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2012-03-19 18:07:27 UTC (rev 1934)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-01-15 14:42:20 UTC (rev 1935)
+@@ -1,4 +1,11 @@
+ -------------------------------------------------------------------
++Tue Jan 15 15:32:27 CET 2013 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- prefer &quot;modesetting&quot; X driver when KMS is active and neither
++  Intel nor Radeon KMS driver is active; useful for secure boot
++  mode with Matrox, AST or Cirrus (Qemu) graphics (FATE#314488)
++
++-------------------------------------------------------------------
+ Mon Mar 19 16:52:02 UTC 2012 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.com</A>
+ 
+ - fixed 16:9 displayratio setting (bnc#732732)
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/startup/sax.sh
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/startup/sax.sh	2012-03-19 18:07:27 UTC (rev 1934)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/startup/sax.sh	2013-01-15 14:42:20 UTC (rev 1935)
+@@ -31,9 +31,9 @@
+ ### no longer write BusID by default if there is only one possible
+ ### primary device
+ if [ $(/usr/sbin/sysp -c | wc -l) -lt 2 ]; then 
+-	BATCH_MODE=&quot;-b nobus&quot;
++	BATCH_MODE=&quot;-b nobus -b ModeSetting&quot;
+ else
+-	BATCH_MODE=&quot;&quot;
++	BATCH_MODE=&quot;-b Modesetting&quot;
+ fi
+ CMD_LINE=&quot;&quot;
+ AUTO_CONF=&quot;&quot;
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000325.html">[Sax-devel] r1937 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#324">[ date ]</a>
+              <a href="thread.html#324">[ thread ]</a>
+              <a href="subject.html#324">[ subject ]</a>
+              <a href="author.html#324">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

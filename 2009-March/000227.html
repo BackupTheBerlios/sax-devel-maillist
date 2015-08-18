@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1836 - in sax-head: profile/automatic/input rpm	sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1836%20-%20in%20sax-head%3A%20profile/automatic/input%20rpm%0A%09sysp/maps&In-Reply-To=%3C200903082007.n28K7t5H017667%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000226.html">
+   <LINK REL="Next"  HREF="000228.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1836 - in sax-head: profile/automatic/input rpm	sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1836%20-%20in%20sax-head%3A%20profile/automatic/input%20rpm%0A%09sysp/maps&In-Reply-To=%3C200903082007.n28K7t5H017667%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1836 - in sax-head: profile/automatic/input rpm	sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Sun Mar  8 21:07:55 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000226.html">[Sax-devel] r1835 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp
+</A></li>
+        <LI>Next message: <A HREF="000228.html">[Sax-devel] r1837 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#227">[ date ]</a>
+              <a href="thread.html#227">[ thread ]</a>
+              <a href="subject.html#227">[ subject ]</a>
+              <a href="author.html#227">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-03-08 21:07:53 +0100 (Sun, 08 Mar 2009)
+New Revision: 1836
+
+Modified:
+   sax-head/profile/automatic/input/alps
+   sax-head/profile/automatic/input/alps-macbook
+   sax-head/profile/automatic/input/synaptics
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Input.map
+Log:
+- removed invalid synaptics driver options (ZAxisMapping,
+  Emulate3Buttons) in alps/alps-macbook/synaptics profiles
+- no longer apply synaptics/mouse/evdev/vmmouse/kbd profiles via
+  Input.map (evdev/synaptics is now loaded via HAL; evdev
+  replaces mouse/kbd/vmmouse)
+
+
+Modified: sax-head/profile/automatic/input/alps
+===================================================================
+--- sax-head/profile/automatic/input/alps	2009-03-02 16:10:24 UTC (rev 1835)
++++ sax-head/profile/automatic/input/alps	2009-03-08 20:07:53 UTC (rev 1836)
+@@ -3,8 +3,6 @@
+ InputDevice -&gt; [X] -&gt; Option -&gt; InputFashion         = Mouse
+ InputDevice -&gt; [X] -&gt; Option -&gt; Name                 = ALPS;Touchpad
+ InputDevice -&gt; [X] -&gt; Option -&gt; Device               = /dev/input/mice
+-InputDevice -&gt; [X] -&gt; Option -&gt; ZAxisMapping         = 4 5
+-InputDevice -&gt; [X] -&gt; Option -&gt; Emulate3Buttons      = on
+ InputDevice -&gt; [X] -&gt; Option -&gt; SHMConfig            = on
+ InputDevice -&gt; [X] -&gt; Option -&gt; Protocol             = auto-dev
+ InputDevice -&gt; [X] -&gt; Option -&gt; LeftEdge             = 120
+
+Modified: sax-head/profile/automatic/input/alps-macbook
+===================================================================
+--- sax-head/profile/automatic/input/alps-macbook	2009-03-02 16:10:24 UTC (rev 1835)
++++ sax-head/profile/automatic/input/alps-macbook	2009-03-08 20:07:53 UTC (rev 1836)
+@@ -3,8 +3,6 @@
+ InputDevice -&gt; [X] -&gt; Option -&gt; InputFashion         = Mouse
+ InputDevice -&gt; [X] -&gt; Option -&gt; Name                 = ALPS;Touchpad
+ InputDevice -&gt; [X] -&gt; Option -&gt; Device               = /dev/input/mice
+-InputDevice -&gt; [X] -&gt; Option -&gt; ZAxisMapping         = 4 5
+-InputDevice -&gt; [X] -&gt; Option -&gt; Emulate3Buttons      = on
+ InputDevice -&gt; [X] -&gt; Option -&gt; SHMConfig            = on
+ InputDevice -&gt; [X] -&gt; Option -&gt; SendCoreEvents       = on
+ InputDevice -&gt; [X] -&gt; Option -&gt; Protocol             = auto-dev
+
+Modified: sax-head/profile/automatic/input/synaptics
+===================================================================
+--- sax-head/profile/automatic/input/synaptics	2009-03-02 16:10:24 UTC (rev 1835)
++++ sax-head/profile/automatic/input/synaptics	2009-03-08 20:07:53 UTC (rev 1836)
+@@ -3,7 +3,5 @@
+ InputDevice -&gt; [X] -&gt; Option -&gt; InputFashion         = Mouse
+ InputDevice -&gt; [X] -&gt; Option -&gt; Name                 = Synaptics;Touchpad
+ InputDevice -&gt; [X] -&gt; Option -&gt; Device               = /dev/input/mice
+-InputDevice -&gt; [X] -&gt; Option -&gt; ZAxisMapping         = 4 5
+-InputDevice -&gt; [X] -&gt; Option -&gt; Emulate3Buttons      = on
+ InputDevice -&gt; [X] -&gt; Option -&gt; SHMConfig            = on
+ InputDevice -&gt; [X] -&gt; Option -&gt; HorizScrollDelta     = 0
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-03-02 16:10:24 UTC (rev 1835)
++++ sax-head/rpm/sax2.changes	2009-03-08 20:07:53 UTC (rev 1836)
+@@ -1,4 +1,13 @@
+ -------------------------------------------------------------------
++Sun Mar  8 20:39:09 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- removed invalid synaptics driver options (ZAxisMapping,
++  Emulate3Buttons) in alps/alps-macbook/synaptics profiles
++- no longer apply synaptics/mouse/evdev/vmmouse/kbd profiles via
++  Input.map (evdev/synaptics is now loaded via HAL; evdev
++  replaces mouse/kbd/vmmouse)
++
++-------------------------------------------------------------------
+ Mon Mar  2 16:57:14 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - fixed panel detection for panels of 1366x768 (bnc #473910)
+
+Modified: sax-head/sysp/maps/Input.map
+===================================================================
+--- sax-head/sysp/maps/Input.map	2009-03-02 16:10:24 UTC (rev 1835)
++++ sax-head/sysp/maps/Input.map	2009-03-08 20:07:53 UTC (rev 1836)
+@@ -4,41 +4,41 @@
+ # Vendor ID | Device ID | Profile
+ # -----------------------------------------------------
+ # Mice
+-0x0212 : 0x0002 : synaptics : synaptics
+-0x0212 : 0x0001 : synaptics : synaptics
+-0x0002 : 0x0007 : synaptics : synaptics
+-0x046d : 0xc705 : logitech-MX900 : mouse
+-0x046d : 0xc50e : logitech-MediaPlay : evdev
+-0x046d : 0xc508 : logitech-TrackManOptical : mouse
+-0x046d : 0xc01b : logitech-MX310 : mouse
+-0x046d : 0xc041 : logitech-Gaming : evdev
+-0x0210 : 0x0028 : logitech-mxlaser : evdev
+-0x046d : 0xc521 : logitech-vxnano : evdev
+-0x045e : 0x0095 : microsoft-IntelliMouse-Explorer : evdev
+-0x046d : 0xc040 : logitech-optical : evdev
+-0x0210 : 0x0003 : ibm-trackpoint : mouse
+-0x0002 : 0x000a : ibm-trackpoint : mouse
+-0x04b3 : 0x300f : ibm-trackpoint : mouse
++#0x0212 : 0x0002 : synaptics : synaptics
++#0x0212 : 0x0001 : synaptics : synaptics
++#0x0002 : 0x0007 : synaptics : synaptics
++#0x046d : 0xc705 : logitech-MX900 : mouse
++#0x046d : 0xc50e : logitech-MediaPlay : evdev
++#0x046d : 0xc508 : logitech-TrackManOptical : mouse
++#0x046d : 0xc01b : logitech-MX310 : mouse
++#0x046d : 0xc041 : logitech-Gaming : evdev
++#0x0210 : 0x0028 : logitech-mxlaser : evdev
++#0x046d : 0xc521 : logitech-vxnano : evdev
++#0x045e : 0x0095 : microsoft-IntelliMouse-Explorer : evdev
++#0x046d : 0xc040 : logitech-optical : evdev
++#0x0210 : 0x0003 : ibm-trackpoint : mouse
++#0x0002 : 0x000a : ibm-trackpoint : mouse
++#0x04b3 : 0x300f : ibm-trackpoint : mouse
+ 0x056a : 0x0013 : wacom : wacom
+-0x05ac : 0x030b : synaptics : synaptics
+-0x05ac : 0x1000 : synaptics : synaptics
+-0x0002 : 0x0008 : synaptics : synaptics
++#0x05ac : 0x030b : synaptics : synaptics
++#0x05ac : 0x1000 : synaptics : synaptics
++#0x0002 : 0x0008 : synaptics : synaptics
+ 0x1943 : 0x5000 : fujitsu : fujitsu
+-0x5853 : 0xfffe : xen-mouse : evdev
+-0x03f0 : 0x1126 : hp-mouse : evdev
+-0x0029 : 0x0000 : touchscreen : evdev
+-0x0030 : 0x0000 : touchscreen : evdev
+-0x04e7 : 0x0030 : touchscreen : evdev
+-0x0596 : 0x0001 : touchscreen : evdev
++#0x5853 : 0xfffe : xen-mouse : evdev
++#0x03f0 : 0x1126 : hp-mouse : evdev
++#0x0029 : 0x0000 : touchscreen : evdev
++#0x0030 : 0x0000 : touchscreen : evdev
++#0x04e7 : 0x0030 : touchscreen : evdev
++#0x0596 : 0x0001 : touchscreen : evdev
+ 0x80ee : 0x0100 : vbox-mouse : vboxmouse
+-0x15ad : 0x0100 : vmware-mouse : vmmouse
++#0x15ad : 0x0100 : vmware-mouse : vmmouse
+ # Keyboards
+ # Microsoft Natural Ergonomic Keyboard 4000
+ # ---&gt; is profile: microsoft-natural
+-0x045e : 0x00db : microsoft-natural : evdev
++#0x045e : 0x00db : microsoft-natural : evdev
+ # Chicony Electronics USB Wireless HID Receiver
+ # ---&gt; is profile: no information yet
+-0x04f2 : 0x0200 : &lt;undefined&gt; : kbd
++#0x04f2 : 0x0200 : &lt;undefined&gt; : kbd
+ # Cherry Mikroschalter Keyboard
+ # ---&gt; is profile: no information yet
+-0x046a : 0x0023 : &lt;undefined&gt; : kbd
++#0x046a : 0x0023 : &lt;undefined&gt; : kbd
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000226.html">[Sax-devel] r1835 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp
+</A></li>
+	<LI>Next message: <A HREF="000228.html">[Sax-devel] r1837 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#227">[ date ]</a>
+              <a href="thread.html#227">[ thread ]</a>
+              <a href="subject.html#227">[ subject ]</a>
+              <a href="author.html#227">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

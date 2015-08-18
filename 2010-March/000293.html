@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1904 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/lib/common sysp/lib/hw tools/xwrapper
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1904%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/lib/common%20sysp/lib/hw%20tools/xwrapper&In-Reply-To=%3C201003160406.o2G4679v009751%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000292.html">
+   <LINK REL="Next"  HREF="000294.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1904 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/lib/common sysp/lib/hw tools/xwrapper</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1904%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/lib/common%20sysp/lib/hw%20tools/xwrapper&In-Reply-To=%3C201003160406.o2G4679v009751%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1904 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/lib/common sysp/lib/hw tools/xwrapper">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Tue Mar 16 05:06:07 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000292.html">[Sax-devel] r1903 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect rpm
+</A></li>
+        <LI>Next message: <A HREF="000294.html">[Sax-devel] r1905 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#293">[ date ]</a>
+              <a href="thread.html#293">[ thread ]</a>
+              <a href="subject.html#293">[ subject ]</a>
+              <a href="author.html#293">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2010-03-16 05:06:04 +0100 (Tue, 16 Mar 2010)
+New Revision: 1904
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/lib/common/qx.c
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/lib/hw/framebuffer.c
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/lib/hw/monitor.c
+   sax-branches/SaX2-81-SuSE-11-1-Devel/tools/xwrapper/xw.c
+Log:
+- buildfix: define new to new_protected before including linux/vt.h
+  when compiling with g++. might not be a really good idea to call
+  a structure member &quot;new&quot;.  (R?\195?\188diger Oertel)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2010-03-16 03:52:25 UTC (rev 1903)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2010-03-16 04:06:04 UTC (rev 1904)
+@@ -4,6 +4,12 @@
+ - specify domain in BusID if &gt; 0 (bnc #583359)
+ 
+ -------------------------------------------------------------------
++Tue Feb 23 00:58:10 CET 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ro at suse.de</A>
++- buildfix: define new to new_protected before including linux/vt.h
++  when compiling with g++. might not be a really good idea to call
++  a structure member &quot;new&quot;. 
++
++-------------------------------------------------------------------
+ Mon Feb 22 15:16:59 CET 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - no longer make use of evdev-driven input profiles due to radical
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/lib/common/qx.c
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/lib/common/qx.c	2010-03-16 03:52:25 UTC (rev 1903)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/lib/common/qx.c	2010-03-16 04:06:04 UTC (rev 1904)
+@@ -22,8 +22,11 @@
+ #include &lt;sys/ioctl.h&gt;
+ #include &lt;fcntl.h&gt;
+ #include &lt;errno.h&gt;
++/* workaround kernel headers using new as variable name */
++#define new new_protected
+ #include &lt;linux/vt.h&gt; 
+ #include &lt;linux/kd.h&gt;
++#undef new
+ #include &lt;string.h&gt;
+ 
+ #include &quot;../syslib.h&quot;
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/lib/hw/framebuffer.c
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/lib/hw/framebuffer.c	2010-03-16 03:52:25 UTC (rev 1903)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/lib/hw/framebuffer.c	2010-03-16 04:06:04 UTC (rev 1904)
+@@ -21,8 +21,11 @@
+ #include &lt;fcntl.h&gt;
+ #include &lt;errno.h&gt;
+ #include &lt;unistd.h&gt;
++/* workaround kernel headers using new as variable name */
++#define new new_protected
+ #include &lt;linux/vt.h&gt;
+ #include &lt;linux/kd.h&gt;
++#undef new
+ #include &lt;stdarg.h&gt;
+ #include &lt;dirent.h&gt;
+ #include &lt;math.h&gt;
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/lib/hw/monitor.c
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/lib/hw/monitor.c	2010-03-16 03:52:25 UTC (rev 1903)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/lib/hw/monitor.c	2010-03-16 04:06:04 UTC (rev 1904)
+@@ -21,8 +21,11 @@
+ #include &lt;fcntl.h&gt;
+ #include &lt;errno.h&gt;
+ #include &lt;unistd.h&gt;
++/* workaround kernel headers using new as variable name */
++#define new new_protected
+ #include &lt;linux/vt.h&gt;
+ #include &lt;linux/kd.h&gt;
++#undef new
+ #include &lt;stdarg.h&gt;
+ #include &lt;dirent.h&gt;
+ #include &lt;math.h&gt;
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/tools/xwrapper/xw.c
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/tools/xwrapper/xw.c	2010-03-16 03:52:25 UTC (rev 1903)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/tools/xwrapper/xw.c	2010-03-16 04:06:04 UTC (rev 1904)
+@@ -24,7 +24,10 @@
+ #include &lt;string.h&gt;
+ #include &lt;sys/types.h&gt;
+ #include &lt;sys/ioctl.h&gt;
++/* workaround kernel headers using new as variable name */
++#define new new_protected
+ #include &lt;linux/vt.h&gt;
++#undef new
+ #include &lt;stdlib.h&gt;
+ #include &lt;fcntl.h&gt;
+ #include &lt;errno.h&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000292.html">[Sax-devel] r1903 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect rpm
+</A></li>
+	<LI>Next message: <A HREF="000294.html">[Sax-devel] r1905 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#293">[ date ]</a>
+              <a href="thread.html#293">[ thread ]</a>
+              <a href="subject.html#293">[ subject ]</a>
+              <a href="author.html#293">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

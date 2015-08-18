@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1731 - in sax-head: api/data/cdb rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1731%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200810091405.m99E56hI000076%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000122.html">
+   <LINK REL="Next"  HREF="000124.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1731 - in sax-head: api/data/cdb rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1731%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200810091405.m99E56hI000076%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1731 - in sax-head: api/data/cdb rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Thu Oct  9 16:05:06 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000122.html">[Sax-devel] r1730 - in sax-head: rpm sysp/maps
+</A></li>
+        <LI>Next message: <A HREF="000124.html">[Sax-devel] r1732 - in sax-branches/SaX2-71-SuSE-10-1-Devel: rpm	sysp
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#123">[ date ]</a>
+              <a href="thread.html#123">[ thread ]</a>
+              <a href="subject.html#123">[ subject ]</a>
+              <a href="author.html#123">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-10-09 16:05:05 +0200 (Thu, 09 Oct 2008)
+New Revision: 1731
+
+Modified:
+   sax-head/api/data/cdb/Touchscreens
+   sax-head/rpm/sax2.changes
+Log:
+- fixed mixed up MinY/MaxY values for ELO 2300 touchscreen
+  (bnc #380278)
+
+
+Modified: sax-head/api/data/cdb/Touchscreens
+===================================================================
+--- sax-head/api/data/cdb/Touchscreens	2008-10-09 08:47:02 UTC (rev 1730)
++++ sax-head/api/data/cdb/Touchscreens	2008-10-09 14:05:05 UTC (rev 1731)
+@@ -74,8 +74,8 @@
+  Device               = /dev/ttyS0
+  MinX                 = 231
+  MaxX                 = 3868
+- MinY                 = 3858
+- MaxY                 = 272
++ MinY                 = 272
++ MaxY                 = 3858
+  ScreenNumber         = 0
+  ReportingMode        = Scaled
+  ButtonThreshold      = 17
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-10-09 08:47:02 UTC (rev 1730)
++++ sax-head/rpm/sax2.changes	2008-10-09 14:05:05 UTC (rev 1731)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Thu Oct  9 16:03:20 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- fixed mixed up MinY/MaxY values for ELO 2300 touchscreen
++  (bnc #380278)
++
++-------------------------------------------------------------------
+ Thu Oct  9 10:46:10 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - added kbd mapping for ruwin_alt-UTF-8 (bnc #432862)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000122.html">[Sax-devel] r1730 - in sax-head: rpm sysp/maps
+</A></li>
+	<LI>Next message: <A HREF="000124.html">[Sax-devel] r1732 - in sax-branches/SaX2-71-SuSE-10-1-Devel: rpm	sysp
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#123">[ date ]</a>
+              <a href="thread.html#123">[ thread ]</a>
+              <a href="subject.html#123">[ subject ]</a>
+              <a href="author.html#123">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

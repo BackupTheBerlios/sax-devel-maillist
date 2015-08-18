@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1903 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1903%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09modules/detect%20rpm&In-Reply-To=%3C201003160352.o2G3qSwu009086%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000293.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1903 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1903%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09modules/detect%20rpm&In-Reply-To=%3C201003160352.o2G3qSwu009086%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1903 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Tue Mar 16 04:52:28 CET 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000293.html">[Sax-devel] r1904 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/lib/common sysp/lib/hw tools/xwrapper
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#292">[ date ]</a>
+              <a href="thread.html#292">[ thread ]</a>
+              <a href="subject.html#292">[ subject ]</a>
+              <a href="author.html#292">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2010-03-16 04:52:25 +0100 (Tue, 16 Mar 2010)
+New Revision: 1903
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Card.pm
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+Log:
+- specify domain in BusID if &gt; 0 (bnc #583359)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Card.pm
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Card.pm	2010-02-22 14:20:16 UTC (rev 1902)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Card.pm	2010-03-16 03:52:25 UTC (rev 1903)
+@@ -61,7 +61,8 @@
+ 		$dom  = hex($dom_list[$i]);
+ 		$arch = qx(/bin/arch);
+ 		chomp $arch;
+-		if ($arch eq &quot;ia64&quot;) {
++		# specify domain if &gt; 0 (bnc #583359)
++		if ($dom &gt; 0) {
+ 			$busid = &quot;PCI:$bus\@$dom:$slot:$func&quot;;
+ 		} else {
+ 			$busid = &quot;$bus:$slot:$func&quot;;
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2010-02-22 14:20:16 UTC (rev 1902)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2010-03-16 03:52:25 UTC (rev 1903)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Tue Mar 16 04:50:51 CET 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- specify domain in BusID if &gt; 0 (bnc #583359)
++
++-------------------------------------------------------------------
+ Mon Feb 22 15:16:59 CET 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - no longer make use of evdev-driven input profiles due to radical
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000293.html">[Sax-devel] r1904 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/lib/common sysp/lib/hw tools/xwrapper
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#292">[ date ]</a>
+              <a href="thread.html#292">[ thread ]</a>
+              <a href="subject.html#292">[ subject ]</a>
+              <a href="author.html#292">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

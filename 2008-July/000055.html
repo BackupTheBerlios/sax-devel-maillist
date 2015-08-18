@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1659 - in sax-head: rpm startup tools tools/getPrimary
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1659%20-%20in%20sax-head%3A%20rpm%20startup%20tools%20tools/getPrimary&In-Reply-To=%3C200807151658.m6FGwPF4008281%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000054.html">
+   <LINK REL="Next"  HREF="000056.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1659 - in sax-head: rpm startup tools tools/getPrimary</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1659%20-%20in%20sax-head%3A%20rpm%20startup%20tools%20tools/getPrimary&In-Reply-To=%3C200807151658.m6FGwPF4008281%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1659 - in sax-head: rpm startup tools tools/getPrimary">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Tue Jul 15 18:58:25 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000054.html">[Sax-devel] r1658 - in sax-head: api rpm
+</A></li>
+        <LI>Next message: <A HREF="000056.html">[Sax-devel] r1660 - sax-head/tools/getPrimary
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#55">[ date ]</a>
+              <a href="thread.html#55">[ thread ]</a>
+              <a href="subject.html#55">[ subject ]</a>
+              <a href="author.html#55">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-07-15 18:58:18 +0200 (Tue, 15 Jul 2008)
+New Revision: 1659
+
+Added:
+   sax-head/tools/getPrimary/
+   sax-head/tools/getPrimary/Makefile.am
+   sax-head/tools/getPrimary/getPrimary.sh
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/rpm/sax2.spec
+   sax-head/startup/sax.sh
+   sax-head/tools/Makefile.am
+   sax-head/tools/configure.in
+Log:
+- configure only primary VGA card by default, i.e. no multicard
+  setups any more by default; you can still force SaX2 to create
+  a mulitcard setup with &quot;-c 0,1&quot; (bnc #381644)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-07-14 16:09:41 UTC (rev 1658)
++++ sax-head/rpm/sax2.changes	2008-07-15 16:58:18 UTC (rev 1659)
+@@ -1,4 +1,11 @@
+ -------------------------------------------------------------------
++Tue Jul 15 17:37:02 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- configure only primary VGA card by default, i.e. no multicard
++  setups any more by default; you can still force SaX2 to create
++  a mulitcard setup with &quot;-c 0,1&quot; (bnc #381644)
++
++-------------------------------------------------------------------
+ Mon Jul 14 18:08:54 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - fixed missing pad removal before writing new config (bnc #408737)
+
+Modified: sax-head/rpm/sax2.spec
+===================================================================
+--- sax-head/rpm/sax2.spec	2008-07-14 16:09:41 UTC (rev 1658)
++++ sax-head/rpm/sax2.spec	2008-07-15 16:58:18 UTC (rev 1659)
+@@ -324,6 +324,7 @@
+ %{_sbindir}/xquery
+ %{_sbindir}/vncp
+ %{_sbindir}/xw
++%{_sbindir}/getPrimary
+ #=================================================
+ # SaX-Ident file list...  
+ # ------------------------------------------------
+
+Modified: sax-head/startup/sax.sh
+===================================================================
+--- sax-head/startup/sax.sh	2008-07-14 16:09:41 UTC (rev 1658)
++++ sax-head/startup/sax.sh	2008-07-15 16:58:18 UTC (rev 1659)
+@@ -36,7 +36,8 @@
+ MODLIST=&quot;&quot;
+ VESA=&quot;&quot;
+ AUTOMODE=&quot;&quot;
+-CHIP=&quot;&quot;
++### single card setup by default now; use primary VGA card
++CHIP=&quot;-c $(/usr/sbin/getPrimary)&quot;
+ GPM=&quot;&quot;
+ NODE=&quot;&quot;
+ TYPE=&quot;&quot;
+
+Modified: sax-head/tools/Makefile.am
+===================================================================
+--- sax-head/tools/Makefile.am	2008-07-14 16:09:41 UTC (rev 1658)
++++ sax-head/tools/Makefile.am	2008-07-15 16:58:18 UTC (rev 1659)
+@@ -1,4 +1,4 @@
+ SUBDIRS = \
+ 	corner dots vncp whereiam xidle \
+ 	xlook xmode xquery xtest xwrapper \
+-	isax xkbctrl plog
++	isax xkbctrl plog getPrimary
+
+Modified: sax-head/tools/configure.in
+===================================================================
+--- sax-head/tools/configure.in	2008-07-14 16:09:41 UTC (rev 1658)
++++ sax-head/tools/configure.in	2008-07-15 16:58:18 UTC (rev 1659)
+@@ -38,5 +38,6 @@
+ 	xkbctrl/Makefile
+ 	plog/Makefile
+ 	plog/Makefile.PL
++	getPrimary/Makefile
+ ])
+ AC_OUTPUT
+
+Added: sax-head/tools/getPrimary/Makefile.am
+===================================================================
+--- sax-head/tools/getPrimary/Makefile.am	2008-07-14 16:09:41 UTC (rev 1658)
++++ sax-head/tools/getPrimary/Makefile.am	2008-07-15 16:58:18 UTC (rev 1659)
+@@ -0,0 +1,4 @@
++sbin_SCRIPTS = getPrimary.sh
++
++install:
++	install -m 755 getPrimary.sh $(sbindir)/getPrimary
+
+Added: sax-head/tools/getPrimary/getPrimary.sh
+===================================================================
+--- sax-head/tools/getPrimary/getPrimary.sh	2008-07-14 16:09:41 UTC (rev 1658)
++++ sax-head/tools/getPrimary/getPrimary.sh	2008-07-15 16:58:18 UTC (rev 1659)
+@@ -0,0 +1,42 @@
++#!/bin/sh
++
++################
++# FILE         : getPrimary
++################
++# PROJECT      : SaX2 ( SuSE advanced X11 configuration )
++#              :
++# DESCRIPTION  : figure out primary VGA card and print out
++#              : SaX2 ChipID as seen in 'sax2 -p' output
++#              :
++# AUTHOR       : Stefan Dirsch &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>&gt;
++#              :
++# STATUS       : quick &amp; dirty :-)
++################
++
++# last resort: let's assume first SaX2 ChipID is the primary device
++fallback() {
++  echo 0
++  exit
++}
++
++bus_slot_function=&quot;&quot;
++sax_id=&quot;&quot;
++
++# &quot;Luc told me how to figure out the primary gfx card. It's marked in 
++#  the PCI config space. You can see it in a &quot;lspci -v -v&quot; output. Check  
++#  for &quot;Control I/O+&quot; instead of &quot;Control I/O-&quot; for the VGA compatible
++#  devices.&quot;
++bus_slot_function=$(/sbin/lspci -vv | \
++                    grep -B2 &quot;Control: I/O+&quot; | \
++                    grep &quot;VGA compatible&quot; | \
++                    awk '{print $1}')
++test &quot;$bus_slot_function&quot; == &quot;&quot; &amp;&amp; fallback
++
++# search for SaX2 ChipID (&quot;sysp -c&quot; is the same as &quot;sax2 -p&quot;)
++sax_id=$(/usr/sbin/sysp -c | \
++         grep $bus_slot_function | \
++         awk '{print $2}')
++test &quot;$sax_id&quot; == &quot;&quot; &amp;&amp; fallback
++
++# SaX2 ChipID for primary device
++echo $sax_id
+
+
+Property changes on: sax-head/tools/getPrimary/getPrimary.sh
+___________________________________________________________________
+Name: svn:executable
+   + *
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000054.html">[Sax-devel] r1658 - in sax-head: api rpm
+</A></li>
+	<LI>Next message: <A HREF="000056.html">[Sax-devel] r1660 - sax-head/tools/getPrimary
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#55">[ date ]</a>
+              <a href="thread.html#55">[ thread ]</a>
+              <a href="subject.html#55">[ subject ]</a>
+              <a href="author.html#55">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

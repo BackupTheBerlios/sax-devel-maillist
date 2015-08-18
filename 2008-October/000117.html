@@ -1,0 +1,317 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1725 - in sax-head: rpm sysp/maps sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1725%20-%20in%20sax-head%3A%20rpm%20sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200810071932.m97JWpNe000173%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000116.html">
+   <LINK REL="Next"  HREF="000118.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1725 - in sax-head: rpm sysp/maps sysp/maps/arch</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1725%20-%20in%20sax-head%3A%20rpm%20sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200810071932.m97JWpNe000173%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1725 - in sax-head: rpm sysp/maps sysp/maps/arch">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Tue Oct  7 21:32:51 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000116.html">[Sax-devel] r1724 - in sax-head: profile/driver rpm sysp/maps	sysp/maps/arch
+</A></li>
+        <LI>Next message: <A HREF="000118.html">[Sax-devel] r1726 - in sax-branches/SaX2-71-SuSE-10-1-Devel: rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#117">[ date ]</a>
+              <a href="thread.html#117">[ thread ]</a>
+              <a href="subject.html#117">[ subject ]</a>
+              <a href="author.html#117">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-10-07 21:32:47 +0200 (Tue, 07 Oct 2008)
+New Revision: 1725
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Identity.map
+   sax-head/sysp/maps/Keyboard.map
+   sax-head/sysp/maps/arch/Identity.map.i386
+   sax-head/sysp/maps/arch/Identity.map.ia64
+   sax-head/sysp/maps/arch/Identity.map.ppc
+   sax-head/sysp/maps/arch/Identity.map.x86_64
+Log:
+- use NoVirtual profile for ATI Radeon VE cards (bnc #433124)
+- change the default from caps:shiftlock to caps:capslock for
+  french/belgian keyboards (bnc #432682)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-10-07 14:36:37 UTC (rev 1724)
++++ sax-head/rpm/sax2.changes	2008-10-07 19:32:47 UTC (rev 1725)
+@@ -1,4 +1,11 @@
+ -------------------------------------------------------------------
++Tue Oct  7 21:28:50 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- use NoVirtual profile for ATI Radeon VE cards (bnc #433124)
++- change the default from caps:shiftlock to caps:capslock for
++  french/belgian keyboards (bnc #432682)
++
++-------------------------------------------------------------------
+ Mon Oct  6 21:02:42 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - added NoVirtual profile, which can be used for graphics cards
+
+Modified: sax-head/sysp/maps/Identity.map
+===================================================================
+--- sax-head/sysp/maps/Identity.map	2008-10-07 14:36:37 UTC (rev 1724)
++++ sax-head/sysp/maps/Identity.map	2008-10-07 19:32:47 UTC (rev 1725)
+@@ -199,8 +199,8 @@
+ NAME=ATI&amp;DEVICE=264VT3 &amp;VID=0x1002&amp;DID=0x5655&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Rage 128 Ultra TF&amp;VID=0x1002&amp;DID=0x5446&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Rage 128 Ultra TF&amp;VID=0x1002&amp;DID=0x5446&amp;SERVER=ati&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=ATI&amp;DEVICE=Radeon VE&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=ATI&amp;DEVICE=Radeon VE&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=ATI&amp;DEVICE=Radeon VE&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=Radeon VE&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=ATI&amp;DEVICE=264VT4 &amp;VID=0x1002&amp;DID=0x5656&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage LT-G 215LG&amp;VID=0x1002&amp;DID=0x4c47&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage II+ 215GTB &amp;VID=0x1002&amp;DID=0x4755&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+@@ -552,30 +552,6 @@
+ NAME=Cyrix Corporation&amp;DEVICE=5510&amp;VID=0x1078&amp;DID=0x0000&amp;SERVER=cyrix&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ 
+ #-----------------------------------#
+-# Dell Computer Corporation Cards
+-#-----------------------------------#
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016e)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016e
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016e)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016e
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016f)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016f
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016f)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016f
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 0170)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x0170
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 0170)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x0170
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 017d)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x017d
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 017d)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x017d
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 017e)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x017e
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 017e)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x017e
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 0183)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x0183
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 0183)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x0183
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 018a)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x018a
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 018a)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x018a
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 019a)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x019a
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 019a)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x019a
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016c)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016c
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016c)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016c
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016d)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016d
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016d)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016d
+-
+-#-----------------------------------#
+ # EVGA Corporation Cards
+ #-----------------------------------#
+ NAME=EVGA Corporation&amp;DEVICE=GeForce 7300 GS&amp;VID=0x10de&amp;DID=0x01df&amp;SERVER=fbdev&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x3842&amp;SUBDEVICE=0xc436
+
+Modified: sax-head/sysp/maps/Keyboard.map
+===================================================================
+--- sax-head/sysp/maps/Keyboard.map	2008-10-07 14:36:37 UTC (rev 1724)
++++ sax-head/sysp/maps/Keyboard.map	2008-10-07 19:32:47 UTC (rev 1725)
+@@ -12,8 +12,8 @@
+ atari-uk-falcon : microsoftpro : gb           : x            : xfree86 : x : x : x : x : x
+ atari-us        : microsoftpro : us           : x            : xfree86 : x : x : x : x : x
+ azerty          : microsoftpro : us           : x            : xfree86 : x : x : x : x : x
+-be-latin1       : microsoftpro : be           : x            : xfree86 : x : x : x : x : caps:shiftlock
+-be2-latin1      : microsoftpro : be           : x            : xfree86 : x : x : x : x : caps:shiftlock
++be-latin1       : microsoftpro : be           : x            : xfree86 : x : x : x : x : caps:capslock
++be2-latin1      : microsoftpro : be           : x            : xfree86 : x : x : x : x : caps:capslock
+ bg              : microsoftpro : bg           : x            : xfree86 : x : x : x : x : x
+ cf              : microsoftpro : ca           : fr           : xfree86 : x : x : x : x : x
+ croat           : microsoftpro : hr           : x            : xfree86 : x : x : x : x : x
+@@ -38,9 +38,9 @@
+ es              : microsoftpro : es           : x            : xfree86 : x : x : x : x : x
+ fi-latin1       : microsoftpro : fi           : x            : xfree86 : x : x : x : x : x
+ fi              : microsoftpro : fi           : x            : xfree86 : x : x : x : x : x
+-fr-latin1       : microsoftpro : fr           : x            : xfree86 : x : x : x : x : caps:shiftlock
+-fr-pc           : microsoftpro : fr           : x            : xfree86 : x : x : x : x : caps:shiftlock
+-fr              : microsoftpro : fr           : x            : xfree86 : x : x : x : x : caps:shiftlock
++fr-latin1       : microsoftpro : fr           : x            : xfree86 : x : x : x : x : caps:capslock
++fr-pc           : microsoftpro : fr           : x            : xfree86 : x : x : x : x : caps:capslock
++fr              : microsoftpro : fr           : x            : xfree86 : x : x : x : x : caps:capslock
+ fr_CH-latin1    : microsoftpro : ch           : fr           : xfree86 : x : x : x : x : x
+ fr_CH           : microsoftpro : ch           : fr           : xfree86 : x : x : x : x : x
+ gr-pc           : microsoftpro : us,gr        : ,extended    : xfree86 : x : x : x : x : grp:alt_shift_toggle,grp_led:scroll
+
+Modified: sax-head/sysp/maps/arch/Identity.map.i386
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.i386	2008-10-07 14:36:37 UTC (rev 1724)
++++ sax-head/sysp/maps/arch/Identity.map.i386	2008-10-07 19:32:47 UTC (rev 1725)
+@@ -199,8 +199,8 @@
+ NAME=ATI&amp;DEVICE=264VT3 &amp;VID=0x1002&amp;DID=0x5655&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Rage 128 Ultra TF&amp;VID=0x1002&amp;DID=0x5446&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Rage 128 Ultra TF&amp;VID=0x1002&amp;DID=0x5446&amp;SERVER=ati&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=ATI&amp;DEVICE=Radeon VE&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=ATI&amp;DEVICE=Radeon VE&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=ATI&amp;DEVICE=Radeon VE&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=Radeon VE&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=ATI&amp;DEVICE=264VT4 &amp;VID=0x1002&amp;DID=0x5656&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage LT-G 215LG&amp;VID=0x1002&amp;DID=0x4c47&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage II+ 215GTB &amp;VID=0x1002&amp;DID=0x4755&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+@@ -552,30 +552,6 @@
+ NAME=Cyrix Corporation&amp;DEVICE=5510&amp;VID=0x1078&amp;DID=0x0000&amp;SERVER=cyrix&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ 
+ #-----------------------------------#
+-# Dell Computer Corporation Cards
+-#-----------------------------------#
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016e)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016e
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016e)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016e
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016f)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016f
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016f)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016f
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 0170)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x0170
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 0170)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x0170
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 017d)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x017d
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 017d)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x017d
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 017e)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x017e
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 017e)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x017e
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 0183)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x0183
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 0183)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x0183
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 018a)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x018a
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 018a)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x018a
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 019a)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x019a
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 019a)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x019a
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016c)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016c
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016c)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016c
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016d)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016d
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016d)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016d
+-
+-#-----------------------------------#
+ # EVGA Corporation Cards
+ #-----------------------------------#
+ NAME=EVGA Corporation&amp;DEVICE=GeForce 7300 GS&amp;VID=0x10de&amp;DID=0x01df&amp;SERVER=fbdev&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x3842&amp;SUBDEVICE=0xc436
+
+Modified: sax-head/sysp/maps/arch/Identity.map.ia64
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.ia64	2008-10-07 14:36:37 UTC (rev 1724)
++++ sax-head/sysp/maps/arch/Identity.map.ia64	2008-10-07 19:32:47 UTC (rev 1725)
+@@ -147,7 +147,7 @@
+ NAME=ATI&amp;DEVICE=215CT &amp;VID=0x1002&amp;DID=0x4354&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=264VT3 &amp;VID=0x1002&amp;DID=0x5655&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Rage 128 Ultra TF&amp;VID=0x1002&amp;DID=0x5446&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=ATI&amp;DEVICE=Radeon VE&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=Radeon VE&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=264VT4 &amp;VID=0x1002&amp;DID=0x5656&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage LT-G 215LG&amp;VID=0x1002&amp;DID=0x4c47&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage II+ 215GTB &amp;VID=0x1002&amp;DID=0x4755&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+@@ -355,20 +355,6 @@
+ NAME=Cyrix Corporation&amp;DEVICE=5510&amp;VID=0x1078&amp;DID=0x0000&amp;SERVER=cyrix&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ 
+ #-----------------------------------#
+-# Dell Computer Corporation Cards
+-#-----------------------------------#
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016e)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016e
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016f)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016f
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 0170)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x0170
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 017d)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x017d
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 017e)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x017e
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 0183)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x0183
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 018a)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x018a
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 019a)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x019a
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016c)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016c
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016d)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016d
+-
+-#-----------------------------------#
+ # EVGA Corporation Cards
+ #-----------------------------------#
+ NAME=EVGA Corporation&amp;DEVICE=GeForce 7300 GS&amp;VID=0x10de&amp;DID=0x01df&amp;SERVER=fbdev&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x3842&amp;SUBDEVICE=0xc436
+
+Modified: sax-head/sysp/maps/arch/Identity.map.ppc
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.ppc	2008-10-07 14:36:37 UTC (rev 1724)
++++ sax-head/sysp/maps/arch/Identity.map.ppc	2008-10-07 19:32:47 UTC (rev 1725)
+@@ -346,10 +346,6 @@
+ NAME=Cyrix Corporation&amp;DEVICE=5510&amp;VID=0x1078&amp;DID=0x0000&amp;SERVER=cyrix&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ 
+ #-----------------------------------#
+-# Dell Computer Corporation Cards
+-#-----------------------------------#
+-
+-#-----------------------------------#
+ # EVGA Corporation Cards
+ #-----------------------------------#
+ NAME=EVGA Corporation&amp;DEVICE=GeForce 7300 GS&amp;VID=0x10de&amp;DID=0x01df&amp;SERVER=fbdev&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x3842&amp;SUBDEVICE=0xc436
+
+Modified: sax-head/sysp/maps/arch/Identity.map.x86_64
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.x86_64	2008-10-07 14:36:37 UTC (rev 1724)
++++ sax-head/sysp/maps/arch/Identity.map.x86_64	2008-10-07 19:32:47 UTC (rev 1725)
+@@ -194,8 +194,8 @@
+ NAME=ATI&amp;DEVICE=264VT3 &amp;VID=0x1002&amp;DID=0x5655&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Rage 128 Ultra TF&amp;VID=0x1002&amp;DID=0x5446&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Rage 128 Ultra TF&amp;VID=0x1002&amp;DID=0x5446&amp;SERVER=ati&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=ATI&amp;DEVICE=Radeon VE&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=ATI&amp;DEVICE=Radeon VE&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=ATI&amp;DEVICE=Radeon VE&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=Radeon VE&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=ATI&amp;DEVICE=264VT4 &amp;VID=0x1002&amp;DID=0x5656&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage LT-G 215LG&amp;VID=0x1002&amp;DID=0x4c47&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=3D Rage II+ 215GTB &amp;VID=0x1002&amp;DID=0x4755&amp;SERVER=ati&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+@@ -547,30 +547,6 @@
+ NAME=Cyrix Corporation&amp;DEVICE=5510&amp;VID=0x1078&amp;DID=0x0000&amp;SERVER=cyrix&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ 
+ #-----------------------------------#
+-# Dell Computer Corporation Cards
+-#-----------------------------------#
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016e)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016e
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016e)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016e
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016f)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016f
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016f)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016f
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 0170)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x0170
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 0170)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x0170
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 017d)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x017d
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 017d)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x017d
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 017e)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x017e
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 017e)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x017e
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 0183)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x0183
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 0183)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x0183
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 018a)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x018a
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 018a)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x018a
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 019a)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x019a
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 019a)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x019a
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016c)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016c
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016c)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016c
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016d)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016d
+-NAME=Dell Computer Corporation&amp;DEVICE=ATI Radeon VE (device 016d)&amp;VID=0x1002&amp;DID=0x5159&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1028&amp;SUBDEVICE=0x016d
+-
+-#-----------------------------------#
+ # EVGA Corporation Cards
+ #-----------------------------------#
+ NAME=EVGA Corporation&amp;DEVICE=GeForce 7300 GS&amp;VID=0x10de&amp;DID=0x01df&amp;SERVER=fbdev&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x3842&amp;SUBDEVICE=0xc436
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000116.html">[Sax-devel] r1724 - in sax-head: profile/driver rpm sysp/maps	sysp/maps/arch
+</A></li>
+	<LI>Next message: <A HREF="000118.html">[Sax-devel] r1726 - in sax-branches/SaX2-71-SuSE-10-1-Devel: rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#117">[ date ]</a>
+              <a href="thread.html#117">[ thread ]</a>
+              <a href="subject.html#117">[ subject ]</a>
+              <a href="author.html#117">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

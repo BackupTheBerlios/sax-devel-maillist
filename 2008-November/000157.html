@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1767 - in sax-head: api/data/cdb rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1767%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200811111638.mABGcUns015079%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000156.html">
+   <LINK REL="Next"  HREF="000158.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1767 - in sax-head: api/data/cdb rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1767%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200811111638.mABGcUns015079%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1767 - in sax-head: api/data/cdb rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Tue Nov 11 17:38:30 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000156.html">[Sax-devel] r1766 - sax-head
+</A></li>
+        <LI>Next message: <A HREF="000158.html">[Sax-devel] r1768 - in sax-head: rpm sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#157">[ date ]</a>
+              <a href="thread.html#157">[ thread ]</a>
+              <a href="subject.html#157">[ subject ]</a>
+              <a href="author.html#157">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-11-11 17:38:28 +0100 (Tue, 11 Nov 2008)
+New Revision: 1767
+
+Modified:
+   sax-head/api/data/cdb/Monitors
+   sax-head/rpm/sax2.changes
+Log:
+- added monitor data for 
+  * HP LP2275w
+  * Samsung Syncmaster 245B/245BW/245BPlus 
+  (bnc #443761)
+
+
+Modified: sax-head/api/data/cdb/Monitors
+===================================================================
+--- sax-head/api/data/cdb/Monitors	2008-11-10 15:47:29 UTC (rev 1766)
++++ sax-head/api/data/cdb/Monitors	2008-11-11 16:38:28 UTC (rev 1767)
+@@ -16627,6 +16627,39 @@
+ }
+ 
+ #==============================================
++# LP2275w (Analog)
++#----------------------------------------------
++HP:LP2275w (ANALOG) {
++ DDC=HWP2806
++ Option=DPMS
++ Hsync=30-93
++ Resolution=1680x1050
++ Vsync=48-85
++}
++
++#==============================================
++# LP2275w (Digital)
++#----------------------------------------------
++HP:LP2275w (DIGITAL) {
++ DDC=HWP2807
++ Option=DPMS
++ Hsync=30-93
++ Resolution=1680x1050
++ Vsync=48-85
++}
++
++#==============================================
++# LP2275w (DisplayPort)
++#----------------------------------------------
++HP:LP2275w (DISPLAYPORT) {
++ DDC=HWP2808
++ Option=DPMS
++ Hsync=30-93
++ Resolution=1680x1050
++ Vsync=48-85
++}
++
++#==============================================
+ # 1024ESMS
+ #----------------------------------------------
+ HIGHSCREEN:1024ESMS  {
+@@ -33147,6 +33180,28 @@
+ }
+ 
+ #==============================================
++# SyncMaster 245B/245BW/245BPlus (Analog)
++#----------------------------------------------
++SAMSUNG:SYNCMASTER 245B/245BW/245BPlus (ANALOG) {
++ DDC=SAM02B5
++ Option=DPMS
++ Hsync=30-81
++ Resolution=1920x1200
++ Vsync=56-75
++}
++
++#==============================================
++# SyncMaster 245B/245BW/245BPlus (Digital)
++#----------------------------------------------
++SAMSUNG:SYNCMASTER 245B/245BW/245BPlus (DIGITAL) {
++ DDC=SAM02B6
++ Option=DPMS
++ Hsync=30-81
++ Resolution=1920x1200
++ Vsync=56-75
++}
++
++#==============================================
+ # 210P(T)
+ #----------------------------------------------
+ SAMTRON:210P(T)  {
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-11-10 15:47:29 UTC (rev 1766)
++++ sax-head/rpm/sax2.changes	2008-11-11 16:38:28 UTC (rev 1767)
+@@ -1,4 +1,12 @@
+ -------------------------------------------------------------------
++Tue Nov 11 17:35:44 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- added monitor data for 
++  * HP LP2275w
++  * Samsung Syncmaster 245B/245BW/245BPlus 
++  (bnc #443761)
++
++-------------------------------------------------------------------
+ Mon Nov 10 15:06:44 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - fixed standard mouse detection (bnc #433339)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000156.html">[Sax-devel] r1766 - sax-head
+</A></li>
+	<LI>Next message: <A HREF="000158.html">[Sax-devel] r1768 - in sax-head: rpm sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#157">[ date ]</a>
+              <a href="thread.html#157">[ thread ]</a>
+              <a href="subject.html#157">[ subject ]</a>
+              <a href="author.html#157">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

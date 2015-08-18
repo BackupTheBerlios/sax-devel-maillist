@@ -1,0 +1,47 @@
+From sndirsch at scm.berlios.de  Wed Oct 30 12:54:11 2013
+From: sndirsch at scm.berlios.de (sndirsch at scm.berlios.de)
+Date: Wed, 30 Oct 2013 12:54:11 +0100
+Subject: [Sax-devel] r1949 - sax-branches/SaX2-81-SuSE-11-1-Devel/rpm
+Message-ID: <20131030115411.5FFD755B10@scm.berlios.de>
+
+Author: sndirsch
+Date: 2013-10-30 12:54:10 +0100 (Wed, 30 Oct 2013)
+New Revision: 1949
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.spec
+Log:
+- specfile: no longer let sax2-ident require sax2 (bnc#848165)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-06-20 13:46:01 UTC (rev 1948)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-10-30 11:54:10 UTC (rev 1949)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Wed Oct 30 12:53:08 CET 2013 - sndirsch at suse.de
++
++- no longer let sax2-ident require sax2 (bnc#848165) 
++
++-------------------------------------------------------------------
+ Thu Apr 18 04:35:52 CEST 2013 - sndirsch at suse.de
+ 
+ - limit hsync max to 94kHz to avoid 1024x768 doublescan mode, 
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.spec
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.spec	2013-06-20 13:46:01 UTC (rev 1948)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.spec	2013-10-30 11:54:10 UTC (rev 1949)
+@@ -107,7 +107,7 @@
+ Provides:       sax2-tools:/usr/share/sax/sysp/maps/Identity.map
+ Provides:       saxident
+ Obsoletes:      saxident
+-Requires:       sax2 sax2-libsax-perl
++Requires:       sax2-libsax-perl
+ 
+ %description -n sax2-ident
+ This package contains information about the supported graphics hardware
+
+

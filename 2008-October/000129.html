@@ -1,0 +1,1198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1737 - in sax-head: api api/data api/tablet api/touchscreen locale locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES l! ocale/sax-template locale/si/LC_MESSAGES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1737%20-%20in%20sax-head%3A%20api%20api/data%20api/tablet%0A%20api/touchscreen%20locale%20locale/af/LC_MESSAGES%20locale/ar/LC_MESSAGES%0A%20locale/bg/LC_MESSAGES%20locale/bn/LC_MESSAGES%20locale/bs/LC_MESSAGES%0A%20locale/ca/LC_MESSAGES%20locale/cs/LC_MESSAGES%20locale/cy/LC_MESSAGES%0A%20locale/da/LC_MESSAGES%20locale/de/LC_MESSAGES%20locale/el/LC_MESSAGES%0A%20locale/en_GB/LC_MESSAGES%20locale/en_US/LC_MESSAGES%20locale/es/LC_MESSAGES%0A%20locale/et/LC_MESSAGES%20locale/fi/LC_MESSAGES%20locale/fr/LC_MESSAGES%0A%20locale/gl/LC_MESSAGES%20locale/gu/LC_MESSAGES%20locale/he/LC_MESSAGES%0A%20locale/hi/LC_MESSAGES%20locale/hr/LC_MESSAGES%20locale/hu/LC_MESSAGES%0A%20locale/id/LC_MESSAGES%20locale/it/LC_MESSAGES%20locale/ja/LC_MESSAGES%0A%20locale/ka/LC_MESSAGES%20locale/km/LC_MESSAGES%20locale/ko/LC_MESSAGES%0A%20locale/lo/LC_MESSAGES%20locale/lt/LC_MESSAGES%20locale/mk/LC_MESSAGES%0A%20locale/mr/LC_MESSAGES%20locale/nb/LC_MESSAGES%20locale/nl/LC_MESSAGES%0A%20locale/pa/LC_MESSAGES%20locale/pl/LC_MESSAGES%20locale/pt/LC_MESSAGES%0A%20locale/pt_BR/LC_MESSAGES%20locale/ro/LC_MESSAGES%20locale/ru/LC_MESSAGES%20l%21%0A%20ocale/sax-template%20locale/si/LC_MESSAGES%20locale/sk/LC_MESSAGES%0A%20locale/sl/LC_MESSAGES%20locale/sr/LC_MESSAGES%20locale/sv/LC_MESSAGES%0A%20locale/ta/LC_MESSAGES%20locale/th/LC_MESSAGES%20locale/tr/LC_MESSAGES%0A%20locale/uk/LC_MESSAGES%20locale/vi/LC_MESSAGES%20locale/wa/LC_MESSAGES%0A%20locale/xh/LC_MESSAGES%20locale/zh_CN/LC_MESSAGES%20locale/zh_TW/LC_MESSAGES%0A%20locale/zu/LC_MESSAGES&In-Reply-To=%3C200810151027.m9FAR75C020057%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000128.html">
+   <LINK REL="Next"  HREF="000130.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1737 - in sax-head: api api/data api/tablet api/touchscreen locale locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES l! ocale/sax-template locale/si/LC_MESSAGES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1737%20-%20in%20sax-head%3A%20api%20api/data%20api/tablet%0A%20api/touchscreen%20locale%20locale/af/LC_MESSAGES%20locale/ar/LC_MESSAGES%0A%20locale/bg/LC_MESSAGES%20locale/bn/LC_MESSAGES%20locale/bs/LC_MESSAGES%0A%20locale/ca/LC_MESSAGES%20locale/cs/LC_MESSAGES%20locale/cy/LC_MESSAGES%0A%20locale/da/LC_MESSAGES%20locale/de/LC_MESSAGES%20locale/el/LC_MESSAGES%0A%20locale/en_GB/LC_MESSAGES%20locale/en_US/LC_MESSAGES%20locale/es/LC_MESSAGES%0A%20locale/et/LC_MESSAGES%20locale/fi/LC_MESSAGES%20locale/fr/LC_MESSAGES%0A%20locale/gl/LC_MESSAGES%20locale/gu/LC_MESSAGES%20locale/he/LC_MESSAGES%0A%20locale/hi/LC_MESSAGES%20locale/hr/LC_MESSAGES%20locale/hu/LC_MESSAGES%0A%20locale/id/LC_MESSAGES%20locale/it/LC_MESSAGES%20locale/ja/LC_MESSAGES%0A%20locale/ka/LC_MESSAGES%20locale/km/LC_MESSAGES%20locale/ko/LC_MESSAGES%0A%20locale/lo/LC_MESSAGES%20locale/lt/LC_MESSAGES%20locale/mk/LC_MESSAGES%0A%20locale/mr/LC_MESSAGES%20locale/nb/LC_MESSAGES%20locale/nl/LC_MESSAGES%0A%20locale/pa/LC_MESSAGES%20locale/pl/LC_MESSAGES%20locale/pt/LC_MESSAGES%0A%20locale/pt_BR/LC_MESSAGES%20locale/ro/LC_MESSAGES%20locale/ru/LC_MESSAGES%20l%21%0A%20ocale/sax-template%20locale/si/LC_MESSAGES%20locale/sk/LC_MESSAGES%0A%20locale/sl/LC_MESSAGES%20locale/sr/LC_MESSAGES%20locale/sv/LC_MESSAGES%0A%20locale/ta/LC_MESSAGES%20locale/th/LC_MESSAGES%20locale/tr/LC_MESSAGES%0A%20locale/uk/LC_MESSAGES%20locale/vi/LC_MESSAGES%20locale/wa/LC_MESSAGES%0A%20locale/xh/LC_MESSAGES%20locale/zh_CN/LC_MESSAGES%20locale/zh_TW/LC_MESSAGES%0A%20locale/zu/LC_MESSAGES&In-Reply-To=%3C200810151027.m9FAR75C020057%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1737 - in sax-head: api api/data api/tablet api/touchscreen locale locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES l! ocale/sax-template locale/si/LC_MESSAGES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Oct 15 12:27:07 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000128.html">[Sax-devel] r1736 - in sax-head: rpm sysp
+</A></li>
+        <LI>Next message: <A HREF="000130.html">[Sax-devel] r1738 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#129">[ date ]</a>
+              <a href="thread.html#129">[ thread ]</a>
+              <a href="subject.html#129">[ subject ]</a>
+              <a href="author.html#129">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-10-15 12:26:45 +0200 (Wed, 15 Oct 2008)
+New Revision: 1737
+
+Modified:
+   sax-head/api/data/xapi.gtx
+   sax-head/api/tablet.cpp
+   sax-head/api/tablet/tabletconnection.cpp
+   sax-head/api/touchscreen.cpp
+   sax-head/api/touchscreen/touchselection.cpp
+   sax-head/locale/af/LC_MESSAGES/sax.po
+   sax-head/locale/ar/LC_MESSAGES/sax.po
+   sax-head/locale/bg/LC_MESSAGES/sax.po
+   sax-head/locale/bn/LC_MESSAGES/sax.po
+   sax-head/locale/bs/LC_MESSAGES/sax.po
+   sax-head/locale/ca/LC_MESSAGES/sax.po
+   sax-head/locale/cs/LC_MESSAGES/sax.po
+   sax-head/locale/cy/LC_MESSAGES/sax.po
+   sax-head/locale/da/LC_MESSAGES/sax.po
+   sax-head/locale/de/LC_MESSAGES/sax.po
+   sax-head/locale/el/LC_MESSAGES/sax.po
+   sax-head/locale/en_GB/LC_MESSAGES/sax.po
+   sax-head/locale/en_US/LC_MESSAGES/sax.po
+   sax-head/locale/es/LC_MESSAGES/sax.po
+   sax-head/locale/et/LC_MESSAGES/sax.po
+   sax-head/locale/fi/LC_MESSAGES/sax.po
+   sax-head/locale/fr/LC_MESSAGES/sax.po
+   sax-head/locale/gl/LC_MESSAGES/sax.po
+   sax-head/locale/gu/LC_MESSAGES/sax.po
+   sax-head/locale/he/LC_MESSAGES/sax.po
+   sax-head/locale/hi/LC_MESSAGES/sax.po
+   sax-head/locale/hr/LC_MESSAGES/sax.po
+   sax-head/locale/hu/LC_MESSAGES/sax.po
+   sax-head/locale/id/LC_MESSAGES/sax.po
+   sax-head/locale/it/LC_MESSAGES/sax.po
+   sax-head/locale/ja/LC_MESSAGES/sax.po
+   sax-head/locale/ka/LC_MESSAGES/sax.po
+   sax-head/locale/km/LC_MESSAGES/sax.po
+   sax-head/locale/ko/LC_MESSAGES/sax.po
+   sax-head/locale/lo/LC_MESSAGES/sax.po
+   sax-head/locale/lt/LC_MESSAGES/sax.po
+   sax-head/locale/mk/LC_MESSAGES/sax.po
+   sax-head/locale/mr/LC_MESSAGES/sax.po
+   sax-head/locale/nb/LC_MESSAGES/sax.po
+   sax-head/locale/nl/LC_MESSAGES/sax.po
+   sax-head/locale/pa/LC_MESSAGES/sax.po
+   sax-head/locale/pl/LC_MESSAGES/sax.po
+   sax-head/locale/pt/LC_MESSAGES/sax.po
+   sax-head/locale/pt_BR/LC_MESSAGES/sax.po
+   sax-head/locale/ro/LC_MESSAGES/sax.po
+   sax-head/locale/ru/LC_MESSAGES/sax.po
+   sax-head/locale/sax-template/sax.pot
+   sax-head/locale/sax.changes
+   sax-head/locale/si/LC_MESSAGES/sax.po
+   sax-head/locale/sk/LC_MESSAGES/sax.po
+   sax-head/locale/sl/LC_MESSAGES/sax.po
+   sax-head/locale/sr/LC_MESSAGES/sax.po
+   sax-head/locale/sv/LC_MESSAGES/sax.po
+   sax-head/locale/ta/LC_MESSAGES/sax.po
+   sax-head/locale/th/LC_MESSAGES/sax.po
+   sax-head/locale/tr/LC_MESSAGES/sax.po
+   sax-head/locale/uk/LC_MESSAGES/sax.po
+   sax-head/locale/vi/LC_MESSAGES/sax.po
+   sax-head/locale/wa/LC_MESSAGES/sax.po
+   sax-head/locale/xh/LC_MESSAGES/sax.po
+   sax-head/locale/zh_CN/LC_MESSAGES/sax.po
+   sax-head/locale/zh_TW/LC_MESSAGES/sax.po
+   sax-head/locale/zu/LC_MESSAGES/sax.po
+Log:
+- allow to select also COM5 (ttyS4) as device for tablets/touchscreens (bnc #432350)
+
+
+Modified: sax-head/api/data/xapi.gtx
+===================================================================
+--- sax-head/api/data/xapi.gtx	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/api/data/xapi.gtx	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -943,6 +943,9 @@
+ # Combobox item text for tablet port: ttyS3
+ Serial4=COM-4 [ /dev/ttyS3 ]
+ 
++# Combobox item text for tablet port: ttyS4
++Serial5=COM-5 [ /dev/ttyS4 ]
++
+ # Group box title for the tablet tools (pen/eraser)
+ TabletTools=Tools
+ 
+
+Modified: sax-head/api/tablet/tabletconnection.cpp
+===================================================================
+--- sax-head/api/tablet/tabletconnection.cpp	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/api/tablet/tabletconnection.cpp	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -183,6 +183,9 @@
+ 	if (device == &quot;/dev/ttyS3&quot;) {
+ 		mPortBox -&gt; setCurrentItem ( 4 );
+ 	}
++	if (device == &quot;/dev/ttyS4&quot;) {
++		mPortBox -&gt; setCurrentItem ( 5 );
++	}
+ }
+ //====================================
+ // setOptions
+@@ -345,6 +348,9 @@
+ 		if (device == &quot;/dev/ttyS3&quot;) {
+ 			mPortBox -&gt; setCurrentItem ( 4 );
+ 		}
++		if (device == &quot;/dev/ttyS4&quot;) {
++			mPortBox -&gt; setCurrentItem ( 5 );
++		}
+ 	}
+ 	//====================================
+ 	// set tablet driver specific options
+
+Modified: sax-head/api/tablet.cpp
+===================================================================
+--- sax-head/api/tablet.cpp	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/api/tablet.cpp	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -230,6 +230,9 @@
+ 				if (port.contains (&quot;ttyS3&quot;)) {
+ 					saxTablet.setDevice ( &quot;/dev/ttyS3&quot; );
+ 				}
++				if (port.contains (&quot;ttyS4&quot;)) {
++					saxTablet.setDevice ( &quot;/dev/ttyS4&quot; );
++				}
+ 				if (port.contains (&quot;USB&quot;)) {
+ 					QString _device = *tabletDict[&quot;Device&quot;];
+ 					if (! _device.isEmpty()) {
+
+Modified: sax-head/api/touchscreen/touchselection.cpp
+===================================================================
+--- sax-head/api/touchscreen/touchselection.cpp	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/api/touchscreen/touchselection.cpp	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -196,6 +196,9 @@
+ 	if (device == &quot;/dev/ttyS3&quot;) {
+ 		mPortBox -&gt; setCurrentItem ( 4 );
+ 	} 
++	if (device == &quot;/dev/ttyS4&quot;) {
++		mPortBox -&gt; setCurrentItem ( 5 );
++	} 
+ 
+ 	//=====================================
+ 	// setup touchscreen display state
+@@ -275,6 +278,9 @@
+ 		if (device == &quot;/dev/ttyS3&quot;) {
+ 			mPortBox -&gt; setCurrentItem ( 4 );
+ 		} 
++		if (device == &quot;/dev/ttyS4&quot;) {
++			mPortBox -&gt; setCurrentItem ( 5 );
++		} 
+ 	}
+ }
+ //====================================
+
+Modified: sax-head/api/touchscreen.cpp
+===================================================================
+--- sax-head/api/touchscreen.cpp	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/api/touchscreen.cpp	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -145,6 +145,9 @@
+ 			if (port.contains (&quot;ttyS3&quot;)) {
+ 				saxToucher.setDevice ( &quot;/dev/ttyS3&quot; );
+ 			}
++			if (port.contains (&quot;ttyS4&quot;)) {
++				saxToucher.setDevice ( &quot;/dev/ttyS4&quot; );
++			}
+ 			if (port.contains (&quot;USB&quot;)) {
+ 				QString _device = *touchDict[&quot;Device&quot;];
+ 				if (! _device.isEmpty()) {
+
+Modified: sax-head/locale/af/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/af/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/af/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1343,6 +1343,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Gereedskap&quot;
+
+Modified: sax-head/locale/ar/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ar/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/ar/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1335,6 +1335,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#1575;&#1604;&#1571;&#1583;&#1608;&#1575;&#1578;&quot;
+
+Modified: sax-head/locale/bg/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/bg/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/bg/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1319,6 +1319,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#1048;&#1085;&#1089;&#1090;&#1088;&#1091;&#1084;&#1077;&#1085;&#1090;&#1080;&quot;
+
+Modified: sax-head/locale/bn/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/bn/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/bn/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1287,6 +1287,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#2463;&#2497;&#2482;&quot;
+
+Modified: sax-head/locale/bs/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/bs/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/bs/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1288,6 +1288,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/ca/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ca/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/ca/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1348,6 +1348,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Eines&quot;
+
+Modified: sax-head/locale/cs/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/cs/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/cs/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1315,6 +1315,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;N&#225;stroje&quot;
+
+Modified: sax-head/locale/cy/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/cy/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/cy/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1282,6 +1282,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/da/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/da/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/da/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1317,6 +1317,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;V&#230;rkt&#248;jer&quot;
+
+Modified: sax-head/locale/de/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/de/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/de/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1346,6 +1346,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Werkzeuge&quot;
+
+Modified: sax-head/locale/el/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/el/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/el/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1395,6 +1395,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#917;&#961;&#947;&#945;&#955;&#949;&#943;&#945;&quot;
+
+Modified: sax-head/locale/en_GB/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/en_GB/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/en_GB/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1304,6 +1304,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Tools&quot;
+
+Modified: sax-head/locale/en_US/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/en_US/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/en_US/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1265,6 +1265,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/es/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/es/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/es/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1360,6 +1360,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Herramientas&quot;
+
+Modified: sax-head/locale/et/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/et/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/et/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1271,6 +1271,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;T&#246;&#246;riistad&quot;
+
+Modified: sax-head/locale/fi/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/fi/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/fi/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1322,6 +1322,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Ty&#246;kalut&quot;
+
+Modified: sax-head/locale/fr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/fr/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/fr/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1322,6 +1322,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS4 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Outils&quot;
+
+Modified: sax-head/locale/gl/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/gl/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/gl/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1279,6 +1279,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/gu/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/gu/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/gu/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1290,6 +1290,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot; COM-1 [ /dev/ttyS0 ] &quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot; &#2719;&#2754;&#2738;&#2765;&#2744; &quot;
+
+Modified: sax-head/locale/he/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/he/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/he/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1279,6 +1279,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/hi/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/hi/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/hi/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1285,6 +1285,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&#2325;&#2377;&#2350;-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#2335;&#2370;&#2354;&#2381;&#2360;&quot;
+
+Modified: sax-head/locale/hr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/hr/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/hr/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1270,6 +1270,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Alati&quot;
+
+Modified: sax-head/locale/hu/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/hu/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/hu/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1406,6 +1406,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Eszk&#246;z&#246;k&quot;
+
+Modified: sax-head/locale/id/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/id/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/id/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1279,6 +1279,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/it/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/it/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/it/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1344,6 +1344,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Strumenti&quot;
+
+Modified: sax-head/locale/ja/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ja/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/ja/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1316,6 +1316,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#12484;&#12540;&#12523;&quot;
+
+Modified: sax-head/locale/ka/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ka/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/ka/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1262,6 +1262,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/km/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/km/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/km/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1302,6 +1302,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#6055;&#6036;&#6016;&#6042;&#6030;&#6093;&quot;
+
+Modified: sax-head/locale/ko/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ko/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/ko/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1309,6 +1309,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#46020;&#44396;&quot;
+
+Modified: sax-head/locale/lo/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/lo/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/lo/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1259,6 +1259,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/lt/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/lt/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/lt/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1323,6 +1323,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#302;rankiai&quot;
+
+Modified: sax-head/locale/mk/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/mk/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/mk/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1269,6 +1269,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/mr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/mr/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/mr/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1286,6 +1286,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&#2360;&#2368;&#2323;&#2319;&#2350;-&#2407; [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#2335;&#2370;&#2354;&#2381;&#2360;&quot;
+
+Modified: sax-head/locale/nb/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/nb/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/nb/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1328,6 +1328,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Verkt&#248;y&quot;
+
+Modified: sax-head/locale/nl/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/nl/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/nl/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1320,6 +1320,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Gereedschappen&quot;
+
+Modified: sax-head/locale/pa/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/pa/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/pa/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1289,6 +1289,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#2591;&#2626;&#2610;&quot;
+
+Modified: sax-head/locale/pl/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/pl/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/pl/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1322,6 +1322,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Narz&#281;dzia&quot;
+
+Modified: sax-head/locale/pt/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/pt/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/pt/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1316,6 +1316,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Ferramentas&quot;
+
+Modified: sax-head/locale/pt_BR/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/pt_BR/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/pt_BR/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1321,6 +1321,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Ferramentas&quot;
+
+Modified: sax-head/locale/ro/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ro/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/ro/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1330,6 +1330,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Unelte&quot;
+
+Modified: sax-head/locale/ru/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ru/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/ru/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1332,6 +1332,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [/dev/ttys0] &quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#1048;&#1085;&#1089;&#1090;&#1088;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1083;&#1100;&#1085;&#1099;&#1077; &#1089;&#1088;&#1077;&#1076;&#1089;&#1090;&#1074;&#1072;&quot;
+
+Modified: sax-head/locale/sax-template/sax.pot
+===================================================================
+--- sax-head/locale/sax-template/sax.pot	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/sax-template/sax.pot	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1261,6 +1261,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/sax.changes
+===================================================================
+--- sax-head/locale/sax.changes	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/sax.changes	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1,4 +1,9 @@
+-----------------------------------------------------------
++---------------------------------------------------------
++Wed Oct 15 12:09:59 CEST 2008
++
++- new string for ttyS4 (bnc #432350)
++
++---------------------------------------------------------
+ Thu Jul 31 16:49:26 CEST 2008
+ 
+ - new strings for Add Touch Checkbox / Touch properties
+
+Modified: sax-head/locale/si/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/si/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/si/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1259,6 +1259,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/sk/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/sk/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/sk/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1329,6 +1329,12 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#  Maximum length: 20  characters
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;N&#225;stroje&quot;
+
+Modified: sax-head/locale/sl/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/sl/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/sl/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1375,6 +1375,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Orodja&quot;
+
+Modified: sax-head/locale/sr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/sr/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/sr/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1290,6 +1290,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ #, fuzzy
+ msgid &quot;Tools&quot;
+
+Modified: sax-head/locale/sv/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/sv/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/sv/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1315,6 +1315,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [/dev/ttyS3]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [/dev/ttyS0]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Verktyg&quot;
+
+Modified: sax-head/locale/ta/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ta/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/ta/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1295,6 +1295,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#2965;&#2992;&#3009;&#2997;&#3007;&#2965;&#2995;&#3021;&quot;
+
+Modified: sax-head/locale/th/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/th/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/th/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1330,6 +1330,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/tr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/tr/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/tr/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1310,6 +1310,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/uk/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/uk/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/uk/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1320,6 +1320,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#1030;&#1085;&#1089;&#1090;&#1088;&#1091;&#1084;&#1077;&#1085;&#1090;&#1080;&quot;
+
+Modified: sax-head/locale/vi/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/vi/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/vi/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1262,6 +1262,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/wa/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/wa/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/wa/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1308,6 +1308,10 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&quot;
+
+Modified: sax-head/locale/xh/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/xh/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/xh/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1374,6 +1374,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;i-COM-1 [ /iphuhlisa/ttyS0 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;i-COM-1 [ /iphuhlisa/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Izixhobo zokusebenza&quot;
+
+Modified: sax-head/locale/zh_CN/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/zh_CN/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/zh_CN/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1282,6 +1282,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#24037;&#20855;&quot;
+
+Modified: sax-head/locale/zh_TW/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/zh_TW/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/zh_TW/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1282,6 +1282,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;&#24037;&#20855;&quot;
+
+Modified: sax-head/locale/zu/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/zu/LC_MESSAGES/sax.po	2008-10-14 20:39:20 UTC (rev 1736)
++++ sax-head/locale/zu/LC_MESSAGES/sax.po	2008-10-15 10:26:45 UTC (rev 1737)
+@@ -1342,6 +1342,11 @@
+ msgid &quot;COM-4 [ /dev/ttyS3 ]&quot;
+ msgstr &quot;&quot;
+ 
++#. Combobox item text for tablet port: ttyS4
++#, fuzzy
++msgid &quot;COM-5 [ /dev/ttyS4 ]&quot;
++msgstr &quot;COM-1 [ /dev/ttyS0 ]&quot;
++
+ #. Group box title for the tablet tools (pen/eraser)
+ msgid &quot;Tools&quot;
+ msgstr &quot;Amathuluzi&quot;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000128.html">[Sax-devel] r1736 - in sax-head: rpm sysp
+</A></li>
+	<LI>Next message: <A HREF="000130.html">[Sax-devel] r1738 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#129">[ date ]</a>
+              <a href="thread.html#129">[ thread ]</a>
+              <a href="subject.html#129">[ subject ]</a>
+              <a href="author.html#129">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

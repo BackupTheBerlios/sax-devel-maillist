@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] [SVN:SaX-Team] r1646 - in	sax-branches/SaX2-71-SuSE-10-1-Devel: api api/touchscreen	profile/automatic/monitor rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20%5BSVN%3ASaX-Team%5D%20r1646%20-%20in%0A%09sax-branches/SaX2-71-SuSE-10-1-Devel%3A%20api%20api/touchscreen%0A%09profile/automatic/monitor%20rpm&In-Reply-To=%3C200807021857.m62Iv9fQ011798%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000045.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] [SVN:SaX-Team] r1646 - in	sax-branches/SaX2-71-SuSE-10-1-Devel: api api/touchscreen	profile/automatic/monitor rpm</H1>
+    <B>sndirsch at BerliOS</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20%5BSVN%3ASaX-Team%5D%20r1646%20-%20in%0A%09sax-branches/SaX2-71-SuSE-10-1-Devel%3A%20api%20api/touchscreen%0A%09profile/automatic/monitor%20rpm&In-Reply-To=%3C200807021857.m62Iv9fQ011798%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] [SVN:SaX-Team] r1646 - in	sax-branches/SaX2-71-SuSE-10-1-Devel: api api/touchscreen	profile/automatic/monitor rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Jul  2 20:57:09 CEST 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000045.html">[Sax-devel] [SVN:SaX-Team] r1647 - in sax-head: rpm sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#44">[ date ]</a>
+              <a href="thread.html#44">[ thread ]</a>
+              <a href="subject.html#44">[ subject ]</a>
+              <a href="author.html#44">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: Wed Jul  2 20:57:04 2008
+New Revision: 1646
+
+Added:
+   sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/monitor/AUO10C2
+   sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/monitor/CMO0800
+Modified:
+   sax-branches/SaX2-71-SuSE-10-1-Devel/api/data/cdb/Monitors
+   sax-branches/SaX2-71-SuSE-10-1-Devel/api/touchscreen.cpp
+   sax-branches/SaX2-71-SuSE-10-1-Devel/api/touchscreen/touchselection.cpp
+   sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes
+
+Log:
+- allow also Com2/Com3 for the serial touch configuration
+  (bnc #381319)
+- added two monitor entries and profiles for HP Preload
+
+
+Modified: sax-branches/SaX2-71-SuSE-10-1-Devel/api/data/cdb/Monitors
+==============================================================================
+--- sax-branches/SaX2-71-SuSE-10-1-Devel/api/data/cdb/Monitors	(original)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/api/data/cdb/Monitors	Wed Jul  2 20:57:04 2008
+@@ -41101,3 +41101,20 @@
+  Vsync=50-100
+ }
+ 
++#==============================================
++# AUO LCD MONITOR
++#----------------------------------------------
++AUO:AUO LCD MONITOR {
++ DDC=AUO10C2
++ Resolution=1024x600
++ Profile=AUO10C2
++}
++
++#==============================================
++# CMO LCD Monitor
++#----------------------------------------------
++CMO:CMO LCD Monitor {
++ DDC=CMO0800
++ Resolution=1280x768
++ Profile=CMO0800
++}
+
+Modified: sax-branches/SaX2-71-SuSE-10-1-Devel/api/touchscreen.cpp
+==============================================================================
+--- sax-branches/SaX2-71-SuSE-10-1-Devel/api/touchscreen.cpp	(original)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/api/touchscreen.cpp	Wed Jul  2 20:57:04 2008
+@@ -132,6 +132,12 @@
+ 			if (port.contains (&quot;ttyS1&quot;)) {
+ 				saxToucher.setDevice ( &quot;/dev/ttyS1&quot; );
+ 			}
++			if (port.contains (&quot;ttyS2&quot;)) {
++				saxToucher.setDevice ( &quot;/dev/ttyS2&quot; );
++			}
++			if (port.contains (&quot;ttyS3&quot;)) {
++				saxToucher.setDevice ( &quot;/dev/ttyS3&quot; );
++			}
+ 			if (port.contains (&quot;USB&quot;)) {
+ 				saxToucher.setDevice ( &quot;/dev/input/mice&quot; );
+ 			}			
+
+Modified: sax-branches/SaX2-71-SuSE-10-1-Devel/api/touchscreen/touchselection.cpp
+==============================================================================
+--- sax-branches/SaX2-71-SuSE-10-1-Devel/api/touchscreen/touchselection.cpp	(original)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/api/touchscreen/touchselection.cpp	Wed Jul  2 20:57:04 2008
+@@ -116,6 +116,8 @@
+ 	mPortBox -&gt; insertItem ( mText[&quot;USB&quot;] );
+ 	mPortBox -&gt; insertItem ( mText[&quot;Serial1&quot;] );
+ 	mPortBox -&gt; insertItem ( mText[&quot;Serial2&quot;] );
++	mPortBox -&gt; insertItem ( mText[&quot;Serial3&quot;] );
++	mPortBox -&gt; insertItem ( mText[&quot;Serial4&quot;] );
+ 
+ 	//====================================
+ 	// update widget status...
+
+Added: sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/monitor/AUO10C2
+==============================================================================
+--- (empty file)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/monitor/AUO10C2	Wed Jul  2 20:57:04 2008
+@@ -0,0 +1,2 @@
++Monitor-&gt;[X]-&gt;DisplaySize = 195 113
++Device-&gt;[X]-&gt;Raw-&gt;21-&gt;Option = &quot;PanelID&quot; &quot;17&quot;
+
+Added: sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/monitor/CMO0800
+==============================================================================
+--- (empty file)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/monitor/CMO0800	Wed Jul  2 20:57:04 2008
+@@ -0,0 +1,2 @@
++Monitor-&gt;[X]-&gt;DisplaySize = 190 120
++Device-&gt;[X]-&gt;Raw-&gt;21-&gt;Option = &quot;PanelID&quot; &quot;3&quot;
+
+Modified: sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes
+==============================================================================
+--- sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes	(original)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes	Wed Jul  2 20:57:04 2008
+@@ -1,4 +1,11 @@
+ -------------------------------------------------------------------
++Wed Jul  2 20:11:01 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- allow also Com2/Com3 for the serial touch configuration
++  (bnc #381319)
++- added two monitor entries and profiles for HP Preload
++
++-------------------------------------------------------------------
+ Tue Apr 29 13:27:41 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - added the ~ sign to be allowed in profiles (bnc #356036)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000045.html">[Sax-devel] [SVN:SaX-Team] r1647 - in sax-head: rpm sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#44">[ date ]</a>
+              <a href="thread.html#44">[ thread ]</a>
+              <a href="subject.html#44">[ subject ]</a>
+              <a href="author.html#44">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

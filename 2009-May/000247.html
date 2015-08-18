@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1856 - in sax-head: profile/automatic/monitor rpm	sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1856%20-%20in%20sax-head%3A%20profile/automatic/monitor%20rpm%0A%09sysp/maps&In-Reply-To=%3C200905210309.n4L39c07010914%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000246.html">
+   <LINK REL="Next"  HREF="000248.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1856 - in sax-head: profile/automatic/monitor rpm	sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1856%20-%20in%20sax-head%3A%20profile/automatic/monitor%20rpm%0A%09sysp/maps&In-Reply-To=%3C200905210309.n4L39c07010914%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1856 - in sax-head: profile/automatic/monitor rpm	sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Thu May 21 05:09:38 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000246.html">[Sax-devel] r1855 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm sysp/maps
+</A></li>
+        <LI>Next message: <A HREF="000248.html">[Sax-devel] r1857 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	tools/getPrimary
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#247">[ date ]</a>
+              <a href="thread.html#247">[ thread ]</a>
+              <a href="subject.html#247">[ subject ]</a>
+              <a href="author.html#247">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-05-21 05:09:36 +0200 (Thu, 21 May 2009)
+New Revision: 1856
+
+Added:
+   sax-head/profile/automatic/monitor/ACER-EZ1600
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Identity.map
+Log:
+- use special profile for ACER-EZ1600 (bnc #504710)
+
+
+Added: sax-head/profile/automatic/monitor/ACER-EZ1600
+===================================================================
+--- sax-head/profile/automatic/monitor/ACER-EZ1600	2009-05-21 03:06:36 UTC (rev 1855)
++++ sax-head/profile/automatic/monitor/ACER-EZ1600	2009-05-21 03:09:36 UTC (rev 1856)
+@@ -0,0 +1,13 @@
++# /.../
++# ACER EZ1600 (LVDS-1) monitor profile
++# ----
++
++Monitor-&gt;[X]-&gt;HorizSync = 30-48
++Monitor-&gt;[X]-&gt;VertRefresh = 59-61
++Monitor-&gt;[X]-&gt;DisplaySize = 305 230
++Monitor-&gt;[X]-&gt;PreferredMode = 1366x768
++Screen-&gt;[X]-&gt;Depth-&gt;8-&gt;Modes = 1366x768
++Screen-&gt;[X]-&gt;Depth-&gt;15-&gt;Modes = 1366x768
++Screen-&gt;[X]-&gt;Depth-&gt;16-&gt;Modes = 1366x768
++Screen-&gt;[X]-&gt;Depth-&gt;24-&gt;Modes = 1366x768
++Device-&gt;[X]-&gt;Raw-&gt;11-&gt;Option = &quot;monitor-LVDS-1&quot; &quot;Monitor[[X]]&quot;
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-05-21 03:06:36 UTC (rev 1855)
++++ sax-head/rpm/sax2.changes	2009-05-21 03:09:36 UTC (rev 1856)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Thu May 21 05:08:27 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- use special profile for ACER-EZ1600 (bnc #504710) 
++
++-------------------------------------------------------------------
+ Tue May 19 19:09:14 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - added required geometry options for HP Compaq 2710p/2730p Tablet
+
+Modified: sax-head/sysp/maps/Identity.map
+===================================================================
+--- sax-head/sysp/maps/Identity.map	2009-05-21 03:06:36 UTC (rev 1855)
++++ sax-head/sysp/maps/Identity.map	2009-05-21 03:09:36 UTC (rev 1856)
+@@ -608,6 +608,8 @@
+ NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=945 GME ACER-EZ1600&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=ACER-EZ1600&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1025&amp;SUBDEVICE=0x025A
++NAME=Intel&amp;DEVICE=945 GME ACER-EZ1600&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=ACER-EZ1600&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1025&amp;SUBDEVICE=0x025A
+ NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=G33&amp;VID=0x8086&amp;DID=0x29C2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000246.html">[Sax-devel] r1855 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm sysp/maps
+</A></li>
+	<LI>Next message: <A HREF="000248.html">[Sax-devel] r1857 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	tools/getPrimary
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#247">[ date ]</a>
+              <a href="thread.html#247">[ thread ]</a>
+              <a href="subject.html#247">[ subject ]</a>
+              <a href="author.html#247">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1756 - in sax-head: rpm sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1756%20-%20in%20sax-head%3A%20rpm%20sysp/maps&In-Reply-To=%3C200811041223.mA4CNtwF031743%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000146.html">
+   <LINK REL="Next"  HREF="000175.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1756 - in sax-head: rpm sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1756%20-%20in%20sax-head%3A%20rpm%20sysp/maps&In-Reply-To=%3C200811041223.mA4CNtwF031743%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1756 - in sax-head: rpm sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Tue Nov  4 13:23:55 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000146.html">[Sax-devel] r1755 - in sax-head: api/data/cdb rpm
+</A></li>
+        <LI>Next message: <A HREF="000175.html">[Sax-devel] r1757 - in sax-head: locale/da/LC_MESSAGES	locale/de/LC_MESSAGES locale/es/LC_MESSAGES	locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES	locale/hu/LC_MESSAGES locale/it/LC_MESSAGES	locale/ja/LC_MESSAGES locale/km/LC_MESSAGES	locale/ko/LC_MESSAGES locale/nb/LC_MESSAGES	locale/nl/LC_MESSAGES locale/pl/LC_MESSAGES	locale/pt_BR/LC_MESSAGES locale/th/LC_MESSAGES	locale/uk/LC_MESSAGES rpm sysp
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#147">[ date ]</a>
+              <a href="thread.html#147">[ thread ]</a>
+              <a href="subject.html#147">[ subject ]</a>
+              <a href="author.html#147">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-11-04 13:23:53 +0100 (Tue, 04 Nov 2008)
+New Revision: 1756
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Keyboard.map
+Log:
+- added arabic keyboard mapping (bnc #429430)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-11-03 22:59:16 UTC (rev 1755)
++++ sax-head/rpm/sax2.changes	2008-11-04 12:23:53 UTC (rev 1756)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Tue Nov  4 13:22:52 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- added arabic keyboard mapping (bnc #429430)
++
++-------------------------------------------------------------------
+ Mon Nov  3 23:57:27 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - frequencies for monitors need to specified as integers
+
+Modified: sax-head/sysp/maps/Keyboard.map
+===================================================================
+--- sax-head/sysp/maps/Keyboard.map	2008-11-03 22:59:16 UTC (rev 1755)
++++ sax-head/sysp/maps/Keyboard.map	2008-11-04 12:23:53 UTC (rev 1756)
+@@ -7,6 +7,7 @@
+ de_CH-latin1    : microsoftpro : ch           : de_nodeadkeys: xfree86 : x : x : x : x : x
+ amiga-de        : microsoftpro : de           : nodeadkeys   : xfree86 : x : x : x : x : x
+ amiga-us        : microsoftpro : us           : x            : xfree86 : x : x : x : x : x
++arabic          : microsoftpro : ara,us       : x            : xfree86 : x : x : x : x : grp:shift_toggle
+ atari-de        : microsoftpro : de           : nodeadkeys   : xfree86 : x : x : x : x : x
+ atari-se        : microsoftpro : se           : x            : xfree86 : x : x : x : x : x
+ atari-uk-falcon : microsoftpro : gb           : x            : xfree86 : x : x : x : x : x
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000146.html">[Sax-devel] r1755 - in sax-head: api/data/cdb rpm
+</A></li>
+	<LI>Next message: <A HREF="000175.html">[Sax-devel] r1757 - in sax-head: locale/da/LC_MESSAGES	locale/de/LC_MESSAGES locale/es/LC_MESSAGES	locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES	locale/hu/LC_MESSAGES locale/it/LC_MESSAGES	locale/ja/LC_MESSAGES locale/km/LC_MESSAGES	locale/ko/LC_MESSAGES locale/nb/LC_MESSAGES	locale/nl/LC_MESSAGES locale/pl/LC_MESSAGES	locale/pt_BR/LC_MESSAGES locale/th/LC_MESSAGES	locale/uk/LC_MESSAGES rpm sysp
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#147">[ date ]</a>
+              <a href="thread.html#147">[ thread ]</a>
+              <a href="subject.html#147">[ subject ]</a>
+              <a href="author.html#147">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

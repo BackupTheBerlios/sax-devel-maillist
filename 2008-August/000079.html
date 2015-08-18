@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1687 - in sax-head: profile/script rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-August/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1687%20-%20in%20sax-head%3A%20profile/script%20rpm&In-Reply-To=%3C200808270151.m7R1pAJI018615%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000078.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1687 - in sax-head: profile/script rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1687%20-%20in%20sax-head%3A%20profile/script%20rpm&In-Reply-To=%3C200808270151.m7R1pAJI018615%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1687 - in sax-head: profile/script rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Aug 27 03:51:10 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000078.html">[Sax-devel] r1686 - in sax-branches/SaX2-48-SuSE-91-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#79">[ date ]</a>
+              <a href="thread.html#79">[ thread ]</a>
+              <a href="subject.html#79">[ subject ]</a>
+              <a href="author.html#79">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-08-27 03:51:08 +0200 (Wed, 27 Aug 2008)
+New Revision: 1687
+
+Modified:
+   sax-head/profile/script/Radeon.pl
+   sax-head/rpm/sax2.changes
+Log:
+- the logic in existing dynamic Radeon.pl profile was obsolete since
+  a long time - AFAIK; replaced with the logic also used by Intel.pl,
+  RadeonHD.pl, which make sure that 'Option &quot;monitor-&lt;output&gt;&quot;' is
+  used (bnc #420124)
+
+
+Modified: sax-head/profile/script/Radeon.pl
+===================================================================
+--- sax-head/profile/script/Radeon.pl	2008-08-22 21:20:20 UTC (rev 1686)
++++ sax-head/profile/script/Radeon.pl	2008-08-27 01:51:08 UTC (rev 1687)
+@@ -10,10 +10,39 @@
+ #------------------------------------
+ my $profile = ProfileInitScript();
+ 
++#=====================================
++# get SYSP xstuff data
++#-------------------------------------
++my $outputName;
++my $xstuff = new SaX::SaXImportSysp ($SaX::SYSP_DESKTOP);
++$xstuff-&gt;doImport();
++my $rroutput = $xstuff-&gt;getItem(&quot;RandR&quot;);
++my $randrok  = 1;
++if ((! defined $rroutput) || ($rroutput eq &quot;&lt;undefined&gt;&quot;)) {
++	$randrok = 0;
++}
++if ($randrok) {
++	#=====================================
++	# use first randr plugin as primary
++	#-------------------------------------
++	my @channels = split (&quot;%&quot;,$rroutput);
++	foreach my $channel (@channels) {
++		my @data = split (&quot; &quot;,$channel);
++		my $outputState = $data[1];
++		if ($outputState ne &quot;connected&quot;) {
++			next;
++		}
++		$outputName = $data[0];
++		last;
++	}
++}
+ #====================================
+ # Do the profile adaptions...
+ #------------------------------------
+-my $fglrx=&quot;/usr/share/sax/profile/FireGL&quot;;
+-if (! ProfileIsXOrgVendor (&quot;fglrx&quot;)) {
+-	qx (cp $fglrx $profile);
++open (FD,&quot;&gt;&quot;,$profile) ||
++	die &quot;Radeon: Can't open $profile: $!&quot;;
++if (defined $outputName) {
++	print FD &quot;Device -&gt; [X] -&gt; Raw -&gt; 18 -&gt; Option = &quot;;
++	print FD &quot;\&quot;monitor-$outputName\&quot; \&quot;Monitor[0]\&quot;\n&quot;;
+ }
++close FD;
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-08-22 21:20:20 UTC (rev 1686)
++++ sax-head/rpm/sax2.changes	2008-08-27 01:51:08 UTC (rev 1687)
+@@ -1,4 +1,12 @@
+ -------------------------------------------------------------------
++Wed Aug 27 03:44:28 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- the logic in existing dynamic Radeon.pl profile was obsolete since
++  a long time - AFAIK; replaced with the logic also used by Intel.pl,
++  RadeonHD.pl, which make sure that 'Option &quot;monitor-&lt;output&gt;&quot;' is
++  used (bnc #420124)
++
++-------------------------------------------------------------------
+ Fri Aug 22 22:11:03 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - Extended existing serial 'Wacom ISDV4 TabletPC' entry with Touch
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000078.html">[Sax-devel] r1686 - in sax-branches/SaX2-48-SuSE-91-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#79">[ date ]</a>
+              <a href="thread.html#79">[ thread ]</a>
+              <a href="subject.html#79">[ subject ]</a>
+              <a href="author.html#79">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1711 - in sax-head: api api/touchscreen rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1711%20-%20in%20sax-head%3A%20api%20api/touchscreen%20rpm&In-Reply-To=%3C200809101337.m8ADbO9l024833%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000102.html">
+   <LINK REL="Next"  HREF="000104.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1711 - in sax-head: api api/touchscreen rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1711%20-%20in%20sax-head%3A%20api%20api/touchscreen%20rpm&In-Reply-To=%3C200809101337.m8ADbO9l024833%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1711 - in sax-head: api api/touchscreen rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Sep 10 15:37:24 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000102.html">[Sax-devel] r1710 - in sax-head: api/data/cdb rpm
+</A></li>
+        <LI>Next message: <A HREF="000104.html">[Sax-devel] r1712 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#103">[ date ]</a>
+              <a href="thread.html#103">[ thread ]</a>
+              <a href="subject.html#103">[ subject ]</a>
+              <a href="author.html#103">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-09-10 15:37:22 +0200 (Wed, 10 Sep 2008)
+New Revision: 1711
+
+Modified:
+   sax-head/api/touchscreen.cpp
+   sax-head/api/touchscreen/touchselection.cpp
+   sax-head/rpm/sax2.changes
+Log:
+- fixed port handling for Touchscreens. Enable also ttyS2/ttyS3
+  and allow also /dev/input/(elo|evtouch_event|touchscreen)
+  (Danny Kukawka &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">dkukawka at suse.de</A>&gt;)
+
+
+Modified: sax-head/api/touchscreen/touchselection.cpp
+===================================================================
+--- sax-head/api/touchscreen/touchselection.cpp	2008-09-10 13:36:05 UTC (rev 1710)
++++ sax-head/api/touchscreen/touchselection.cpp	2008-09-10 13:37:22 UTC (rev 1711)
+@@ -178,7 +178,8 @@
+ 	// setup port
+ 	//-------------------------------------
+ 	QString device = mSaxToucher -&gt; getDevice();
+-	QRegExp identifier (&quot;/dev/input/mice&quot;);
++
++	QRegExp identifier (&quot;/dev/input/(elo|evtouch_event|mice|touchscreen)&quot;);
+ 	if (identifier.search (device) &gt;= 0) {
+ 		mPortBox -&gt; setCurrentItem ( 0 );
+ 		mPortBox -&gt; setCurrentText (device);
+@@ -189,6 +190,12 @@
+ 	if (device == &quot;/dev/ttyS1&quot;) {
+ 		mPortBox -&gt; setCurrentItem ( 2 );
+ 	}
++	if (device == &quot;/dev/ttyS2&quot;) {
++		mPortBox -&gt; setCurrentItem ( 3 );
++	}
++	if (device == &quot;/dev/ttyS3&quot;) {
++		mPortBox -&gt; setCurrentItem ( 4 );
++	} 
+ 
+ 	//=====================================
+ 	// setup touchscreen display state
+@@ -251,9 +258,10 @@
+ 	);
+ 	if (dataDict[&quot;Device&quot;]) {
+ 		QString device = *dataDict[&quot;Device&quot;];
+-		QRegExp identifier (&quot;/dev/input/event&quot;);
++		QRegExp identifier (&quot;/dev/input/(elo|evtouch_event|mice|touchscreen)&quot;);
+ 		if (identifier.search (device) &gt;= 0) {
+ 			mPortBox -&gt; setCurrentItem ( 0 );
++			mPortBox -&gt; setCurrentText (device);
+ 		}
+ 		if (device == &quot;/dev/ttyS0&quot;) {
+ 			mPortBox -&gt; setCurrentItem ( 1 );
+@@ -261,6 +269,12 @@
+ 		if (device == &quot;/dev/ttyS1&quot;) {
+ 			mPortBox -&gt; setCurrentItem ( 2 );
+ 		}
++		if (device == &quot;/dev/ttyS2&quot;) {
++			mPortBox -&gt; setCurrentItem ( 3 );
++		}
++		if (device == &quot;/dev/ttyS3&quot;) {
++			mPortBox -&gt; setCurrentItem ( 4 );
++		} 
+ 	}
+ }
+ //====================================
+
+Modified: sax-head/api/touchscreen.cpp
+===================================================================
+--- sax-head/api/touchscreen.cpp	2008-09-10 13:36:05 UTC (rev 1710)
++++ sax-head/api/touchscreen.cpp	2008-09-10 13:37:22 UTC (rev 1711)
+@@ -126,6 +126,9 @@
+ 			int touchID = saxDevice.addInputDevice (SAX_INPUT_TOUCHPANEL);
+ 			saxToucher.selectPointer ( touchID );
+ 			saxToucher.setTouchPanel ( vendor,model );
++			Q3Dict&lt;QString&gt; touchDict = saxToucher.getPanelData (
++                                vendor,model
++                        );
+ 			//====================================
+ 			// save touchpanel connection port
+ 			//------------------------------------
+@@ -143,7 +146,12 @@
+ 				saxToucher.setDevice ( &quot;/dev/ttyS3&quot; );
+ 			}
+ 			if (port.contains (&quot;USB&quot;)) {
+-				saxToucher.setDevice ( &quot;/dev/input/mice&quot; );
++				QString _device = *touchDict[&quot;Device&quot;];
++				if (! _device.isEmpty()) {
++					saxToucher.setDevice ( _device );
++				} else {
++					saxToucher.setDevice ( &quot;/dev/input/mice&quot; );
++				}
+ 			}			
+ 		}
+ 	}
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-09-10 13:36:05 UTC (rev 1710)
++++ sax-head/rpm/sax2.changes	2008-09-10 13:37:22 UTC (rev 1711)
+@@ -1,4 +1,11 @@
+ -------------------------------------------------------------------
++Wed Sep 10 15:36:25 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- fixed port handling for Touchscreens. Enable also ttyS2/ttyS3
++  and allow also /dev/input/(elo|evtouch_event|touchscreen)
++  (Danny Kukawka &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">dkukawka at suse.de</A>&gt;)
++
++-------------------------------------------------------------------
+ Wed Sep 10 15:35:12 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - set the stylus/pen button for all Wacom TabletPC devices to the 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000102.html">[Sax-devel] r1710 - in sax-head: api/data/cdb rpm
+</A></li>
+	<LI>Next message: <A HREF="000104.html">[Sax-devel] r1712 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#103">[ date ]</a>
+              <a href="thread.html#103">[ thread ]</a>
+              <a href="subject.html#103">[ subject ]</a>
+              <a href="author.html#103">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

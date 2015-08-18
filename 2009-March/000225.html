@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1834 - in sax-head: rpm sysp
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1834%20-%20in%20sax-head%3A%20rpm%20sysp&In-Reply-To=%3C200903021558.n22FwRus009884%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000224.html">
+   <LINK REL="Next"  HREF="000226.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1834 - in sax-head: rpm sysp</H1>
+    <B>marcus_schaefer at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1834%20-%20in%20sax-head%3A%20rpm%20sysp&In-Reply-To=%3C200903021558.n22FwRus009884%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1834 - in sax-head: rpm sysp">marcus_schaefer at mail.berlios.de
+       </A><BR>
+    <I>Mon Mar  2 16:58:27 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000224.html">[Sax-devel] r1833 - in sax-head: . profile/driver rpm
+</A></li>
+        <LI>Next message: <A HREF="000226.html">[Sax-devel] r1835 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#225">[ date ]</a>
+              <a href="thread.html#225">[ thread ]</a>
+              <a href="subject.html#225">[ subject ]</a>
+              <a href="author.html#225">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: marcus_schaefer
+Date: 2009-03-02 16:58:17 +0100 (Mon, 02 Mar 2009)
+New Revision: 1834
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/xstuff.c
+Log:
+
+- fixed panel detection for panels of 1366x768 (bnc #473910)
+
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-03-01 20:43:35 UTC (rev 1833)
++++ sax-head/rpm/sax2.changes	2009-03-02 15:58:17 UTC (rev 1834)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Mon Mar  2 16:57:14 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
++
++- fixed panel detection for panels of 1366x768 (bnc #473910)
++
++-------------------------------------------------------------------
+ Sun Mar  1 21:38:36 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - freetype module no longer a seperate server plugin
+
+Modified: sax-head/sysp/xstuff.c
+===================================================================
+--- sax-head/sysp/xstuff.c	2009-03-01 20:43:35 UTC (rev 1833)
++++ sax-head/sysp/xstuff.c	2009-03-02 15:58:17 UTC (rev 1834)
+@@ -20,7 +20,7 @@
+ #include &quot;mouse.h&quot;
+ #include &quot;xstuff.h&quot;
+ 
+-#define VESA_LIST 23
++#define VESA_LIST 24
+ 
+ //======================================
+ // ScanXStuff: constructor...
+@@ -194,22 +194,23 @@
+ 	vesaStandard[4].x  = 1280; vesaStandard[4].y  = 800;
+ 	vesaStandard[5].x  = 1280; vesaStandard[5].y  = 960;
+ 	vesaStandard[6].x  = 1280; vesaStandard[6].y  = 1024;
+-	vesaStandard[7].x  = 1440; vesaStandard[7].y  = 900;
+-	vesaStandard[8].x  = 1400; vesaStandard[8].y  = 1050;
+-	vesaStandard[9].x  = 1600; vesaStandard[9].y  = 1000;
+-	vesaStandard[10].x = 1600; vesaStandard[10].y = 1024;
+-	vesaStandard[11].x = 1600; vesaStandard[11].y = 1200;
+-	vesaStandard[12].x = 1680; vesaStandard[12].y = 1050;
+-	vesaStandard[13].x = 1900; vesaStandard[13].y = 1200;
+-	vesaStandard[14].x = 1920; vesaStandard[14].y = 1200;
+-	vesaStandard[15].x = 1920; vesaStandard[15].y = 1440;
+-	vesaStandard[16].x = 2048; vesaStandard[16].y = 1536;
+-	vesaStandard[17].x = 2560; vesaStandard[17].y = 1600;
+-	vesaStandard[18].x = 2560; vesaStandard[18].y = 2048;
+-	vesaStandard[19].x = 2800; vesaStandard[19].y = 2100;
+-	vesaStandard[20].x = 3200; vesaStandard[20].y = 2400;
+-	vesaStandard[21].x = 1024; vesaStandard[21].y = 600;
+-	vesaStandard[22].x = 1024; vesaStandard[22].y = 576;
++	vesaStandard[7].x  = 1366; vesaStandard[7].y  = 768;
++	vesaStandard[8].x  = 1440; vesaStandard[8].y  = 900;
++	vesaStandard[9].x  = 1400; vesaStandard[9].y  = 1050;
++	vesaStandard[10].x = 1600; vesaStandard[10].y = 1000;
++	vesaStandard[11].x = 1600; vesaStandard[11].y = 1024;
++	vesaStandard[12].x = 1600; vesaStandard[12].y = 1200;
++	vesaStandard[13].x = 1680; vesaStandard[13].y = 1050;
++	vesaStandard[14].x = 1900; vesaStandard[14].y = 1200;
++	vesaStandard[15].x = 1920; vesaStandard[15].y = 1200;
++	vesaStandard[16].x = 1920; vesaStandard[16].y = 1440;
++	vesaStandard[17].x = 2048; vesaStandard[17].y = 1536;
++	vesaStandard[18].x = 2560; vesaStandard[18].y = 1600;
++	vesaStandard[19].x = 2560; vesaStandard[19].y = 2048;
++	vesaStandard[20].x = 2800; vesaStandard[20].y = 2100;
++	vesaStandard[21].x = 3200; vesaStandard[21].y = 2400;
++	vesaStandard[22].x = 1024; vesaStandard[22].y = 600;
++	vesaStandard[23].x = 1024; vesaStandard[23].y = 576;
+ 
+ 	//======================================
+ 	// lookup framebuffer timing
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000224.html">[Sax-devel] r1833 - in sax-head: . profile/driver rpm
+</A></li>
+	<LI>Next message: <A HREF="000226.html">[Sax-devel] r1835 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#225">[ date ]</a>
+              <a href="thread.html#225">[ thread ]</a>
+              <a href="subject.html#225">[ subject ]</a>
+              <a href="author.html#225">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

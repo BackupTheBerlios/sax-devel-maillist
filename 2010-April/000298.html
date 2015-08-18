@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1912 - sax-head/rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1912%20-%20sax-head/rpm&In-Reply-To=%3C201004140729.o3E7T4LF030717%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000297.html">
+   <LINK REL="Next"  HREF="000299.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1912 - sax-head/rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1912%20-%20sax-head/rpm&In-Reply-To=%3C201004140729.o3E7T4LF030717%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1912 - sax-head/rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Apr 14 09:29:04 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000297.html">[Sax-devel] r1911 - in sax-head: rpm sysp/lib/hw
+</A></li>
+        <LI>Next message: <A HREF="000299.html">[Sax-devel] r1913 - in sax-head: modules profile/script rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#298">[ date ]</a>
+              <a href="thread.html#298">[ thread ]</a>
+              <a href="subject.html#298">[ subject ]</a>
+              <a href="author.html#298">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2010-04-14 09:29:02 +0200 (Wed, 14 Apr 2010)
+New Revision: 1912
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/rpm/sax2.spec
+Log:
+- let sax2-tools supplement yast2-installation (bnc#585432)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2010-04-06 22:03:26 UTC (rev 1911)
++++ sax-head/rpm/sax2.changes	2010-04-14 07:29:02 UTC (rev 1912)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Tue Apr 13 07:53:43 UTC 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">coolo at novell.com</A>
++
++- let sax2-tools supplement yast2-installation (bnc#585432)
++
++-------------------------------------------------------------------
+ Wed Apr  7 00:02:38 CEST 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - likely fixed buffer overflow in sysp (bnc #586112) 
+
+Modified: sax-head/rpm/sax2.spec
+===================================================================
+--- sax-head/rpm/sax2.spec	2010-04-06 22:03:26 UTC (rev 1911)
++++ sax-head/rpm/sax2.spec	2010-04-14 07:29:02 UTC (rev 1912)
+@@ -31,7 +31,7 @@
+ BuildRequires:  fdupes
+ %endif
+ %if %{suse_version} &gt; 1120
+-BuildRequires:  gcc43 gcc43-c++ -gcc45 -gcc45-c++
++BuildRequires:  -gcc45 -gcc45-c++ gcc43 gcc43-c++
+ %endif
+ %if %{build_java}
+ BuildRequires:  java-1_4_2-gcj-compat-devel
+@@ -54,7 +54,7 @@
+ PreReq:         /bin/rm /bin/mkdir /usr/bin/chroot %fillup_prereq %insserv_prereq
+ Summary:        SuSE advanced X Window System-configuration
+ Version:        8.1
+-Release:        588
++Release:        591
+ Group:          System/X11/Utilities
+ License:        GPLv2+
+ Source:         sax2.tar.bz2
+@@ -81,6 +81,7 @@
+ Requires:       coreutils
+ Provides:       saxtools
+ Obsoletes:      saxtools
++Supplements:    packageand(yast2-installation:xorg-x11)
+ %ifarch s390x
+ Provides:       sax2
+ Obsoletes:      sax2
+@@ -546,4 +547,5 @@
+ %endif
+ %endif
+ 
++
+ %changelog
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000297.html">[Sax-devel] r1911 - in sax-head: rpm sysp/lib/hw
+</A></li>
+	<LI>Next message: <A HREF="000299.html">[Sax-devel] r1913 - in sax-head: modules profile/script rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#298">[ date ]</a>
+              <a href="thread.html#298">[ thread ]</a>
+              <a href="subject.html#298">[ subject ]</a>
+              <a href="author.html#298">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1920 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1920%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps&In-Reply-To=%3C201005041454.o44EslDW001660%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000307.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1920 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1920%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps&In-Reply-To=%3C201005041454.o44EslDW001660%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1920 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Tue May  4 16:54:47 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000307.html">[Sax-devel] r1921 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#306">[ date ]</a>
+              <a href="thread.html#306">[ thread ]</a>
+              <a href="subject.html#306">[ subject ]</a>
+              <a href="author.html#306">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2010-05-04 16:54:45 +0200 (Tue, 04 May 2010)
+New Revision: 1920
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Keyboard.map
+Log:
+- use inet:media_nav_acpi_common instead of inet:microsoftpro
+  for brazilian/japanes keyboard layouts (bnc #602129)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2010-04-15 15:02:45 UTC (rev 1919)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2010-05-04 14:54:45 UTC (rev 1920)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Tue May  4 16:42:03 CEST 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- use inet:media_nav_acpi_common instead of inet:microsoftpro
++  for brazilian/japanes keyboard layouts (bnc #602129)
++
++-------------------------------------------------------------------
+ Thu Apr 15 15:51:14 CEST 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - %post/%postun
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Keyboard.map
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Keyboard.map	2010-04-15 15:02:45 UTC (rev 1919)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Keyboard.map	2010-05-04 14:54:45 UTC (rev 1920)
+@@ -53,7 +53,7 @@
+ it-ibm          : microsoftpro : it           : x            : xfree86 : x : x : x : x : x
+ it              : microsoftpro : it           : x            : xfree86 : x : x : x : x : x
+ it2             : microsoftpro : it           : x            : xfree86 : x : x : x : x : x
+-jp106           : jp106        : jp           : x            : xfree86 : x : x : x : x : inet:microsoftpro
++jp106           : jp106        : jp           : x            : xfree86 : x : x : x : x : inet:media_nav_acpi_common
+ la-latin1       : microsoftpro : latam        : x            : xfree86 : x : x : x : x : x
+ es-cp850        : microsoftpro : es           : x            : xfree86 : x : x : x : x : x
+ lt.l4           : microsoftpro : us           : x            : xfree86 : x : x : x : x : x
+@@ -126,11 +126,11 @@
+ uk              : microsoftpro : gb           : x            : xfree86 : x : x : x : x : x
+ us              : microsoftpro : us           : x            : xfree86 : x : x : x : x : x
+ wangbe          : microsoftpro : us           : x            : xfree86 : x : x : x : x : x
+-br-abnt-alt     : abnt2 : br           : x            : xfree86 : x : x : x : x : inet:microsoftpro
+-br-abnt         : abnt2 : br           : x            : xfree86 : x : x : x : x : inet:microsoftpro
+-br-abnt2        : abnt2 : br           : x            : xfree86 : x : x : x : x : inet:microsoftpro
+-br-latin1-abnt2 : abnt2 : br           : x            : xfree86 : x : x : x : x : inet:microsoftpro
+-br-latin1-us    : abnt2 : br           : x            : xfree86 : x : x : x : x : inet:microsoftpro
++br-abnt-alt     : abnt2 : br           : x            : xfree86 : x : x : x : x : inet:media_nav_acpi_common
++br-abnt         : abnt2 : br           : x            : xfree86 : x : x : x : x : inet:media_nav_acpi_common
++br-abnt2        : abnt2 : br           : x            : xfree86 : x : x : x : x : inet:media_nav_acpi_common
++br-latin1-abnt2 : abnt2 : br           : x            : xfree86 : x : x : x : x : inet:media_nav_acpi_common
++br-latin1-us    : abnt2 : br           : x            : xfree86 : x : x : x : x : inet:media_nav_acpi_common
+ us-acentos      : microsoftpro : us_intl      : x            : xfree86 : x : x : x : x : x
+ et              : microsoftpro : ee           : x            : xfree86 : x : x : x : x : x
+ et-nodeadkeys   : microsoftpro : ee           : nodeadkeys   : xfree86 : x : x : x : x : x
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000307.html">[Sax-devel] r1921 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#306">[ date ]</a>
+              <a href="thread.html#306">[ thread ]</a>
+              <a href="subject.html#306">[ subject ]</a>
+              <a href="author.html#306">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

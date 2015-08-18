@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1917 - sax-head/rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1917%20-%20sax-head/rpm&In-Reply-To=%3C201004141319.o3EDJxPU009474%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000302.html">
+   <LINK REL="Next"  HREF="000304.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1917 - sax-head/rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1917%20-%20sax-head/rpm&In-Reply-To=%3C201004141319.o3EDJxPU009474%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1917 - sax-head/rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Apr 14 15:19:59 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000302.html">[Sax-devel] r1916 - sax-head/rpm
+</A></li>
+        <LI>Next message: <A HREF="000304.html">[Sax-devel] r1918 - sax-branches/SaX2-81-SuSE-11-1-Devel/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#303">[ date ]</a>
+              <a href="thread.html#303">[ thread ]</a>
+              <a href="subject.html#303">[ subject ]</a>
+              <a href="author.html#303">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2010-04-14 15:19:58 +0200 (Wed, 14 Apr 2010)
+New Revision: 1917
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/rpm/sax2.spec
+Log:
+- back to gcc 4.5, since we see meanwhile the same problems with
+  gcc 4.3 and 4.5
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2010-04-14 09:55:13 UTC (rev 1916)
++++ sax-head/rpm/sax2.changes	2010-04-14 13:19:58 UTC (rev 1917)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Wed Apr 14 15:12:56 CEST 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- back to gcc 4.5, since we see meanwhile the same problems with
++  gcc 4.3 and 4.5
++
++-------------------------------------------------------------------
+ Wed Apr 14 11:52:34 CEST 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - specfile: introduce use_gcc43 macro
+
+Modified: sax-head/rpm/sax2.spec
+===================================================================
+--- sax-head/rpm/sax2.spec	2010-04-14 09:55:13 UTC (rev 1916)
++++ sax-head/rpm/sax2.spec	2010-04-14 13:19:58 UTC (rev 1917)
+@@ -18,7 +18,7 @@
+ # norootforbuild
+ 
+ %if %{suse_version} &gt; 1120
+-%define use_gcc43 1
++%define use_gcc43 0
+ %else
+ %define use_gcc43 0
+ %endif
+@@ -36,7 +36,7 @@
+ BuildRequires:  fdupes
+ %endif
+ %if %use_gcc43
+-BuildRequires:  -gcc45 -gcc45-c++ gcc43 gcc43-c++
++BuildRequires:  gcc43 gcc43-c++ -gcc
+ %endif
+ %if %{build_java}
+ BuildRequires:  java-1_4_2-gcj-compat-devel
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000302.html">[Sax-devel] r1916 - sax-head/rpm
+</A></li>
+	<LI>Next message: <A HREF="000304.html">[Sax-devel] r1918 - sax-branches/SaX2-81-SuSE-11-1-Devel/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#303">[ date ]</a>
+              <a href="thread.html#303">[ thread ]</a>
+              <a href="subject.html#303">[ subject ]</a>
+              <a href="author.html#303">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

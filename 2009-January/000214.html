@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1824 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1824%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200901291053.n0TArbWd017447%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000213.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1824 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1824%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200901291053.n0TArbWd017447%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1824 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Thu Jan 29 11:53:37 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000213.html">[Sax-devel] r1823 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#214">[ date ]</a>
+              <a href="thread.html#214">[ thread ]</a>
+              <a href="subject.html#214">[ subject ]</a>
+              <a href="author.html#214">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-01-29 11:53:36 +0100 (Thu, 29 Jan 2009)
+New Revision: 1824
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386
+Log:
+- Identity.map:
+  * IBM's 855GM/915G no longer need vesa driver; use intel driver
+    instead (bnc #448656)
+  * fixed typo in vendor name for 845 (Intec --&gt; Intel)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-01-29 10:51:11 UTC (rev 1823)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-01-29 10:53:36 UTC (rev 1824)
+@@ -1,4 +1,12 @@
+ -------------------------------------------------------------------
++Thu Jan 29 11:53:02 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- Identity.map:
++  * IBM's 855GM/915G no longer need vesa driver; use intel driver
++    instead (bnc #448656)
++  * fixed typo in vendor name for 845 (Intec --&gt; Intel)
++
++-------------------------------------------------------------------
+ Fri Jan 23 14:16:43 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - updated translations from LCN SVN (20090123)
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map	2009-01-29 10:51:11 UTC (rev 1823)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map	2009-01-29 10:53:36 UTC (rev 1824)
+@@ -558,8 +558,6 @@
+ # IBM Cards
+ #-----------------------------------#
+ NAME=IBM&amp;DEVICE=i845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x8086&amp;SUBDEVICE=0x2562
+-NAME=IBM&amp;DEVICE=915 G&amp;VID=0x8086&amp;DID=0x2582&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x8086&amp;SUBDEVICE=0x2582
+-NAME=IBM&amp;DEVICE=855 GM (POS)&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x8086&amp;SUBDEVICE=0x3582
+ 
+ #-----------------------------------#
+ # Imstt Cards
+@@ -568,12 +566,6 @@
+ NAME=Imstt&amp;DEVICE=Imstt3D&amp;VID=0x10e0&amp;DID=0x9135&amp;SERVER=imstt&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ 
+ #-----------------------------------#
+-# Intec Cards
+-#-----------------------------------#
+-NAME=Intec&amp;DEVICE=845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intec&amp;DEVICE=845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-
+-#-----------------------------------#
+ # Intel Corporation Cards
+ #-----------------------------------#
+ NAME=Intel&amp;DEVICE=82810 CGC &amp;VID=0x8086&amp;DID=0x7121&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+@@ -622,6 +614,8 @@
+ NAME=Intel&amp;DEVICE=Q35&amp;VID=0x8086&amp;DID=0x29B2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=Q33&amp;VID=0x8086&amp;DID=0x29D2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=Q33&amp;VID=0x8086&amp;DID=0x29D2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ 
+ #-----------------------------------#
+ # Intergraphics Systems Cards
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386	2009-01-29 10:51:11 UTC (rev 1823)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386	2009-01-29 10:53:36 UTC (rev 1824)
+@@ -558,8 +558,6 @@
+ # IBM Cards
+ #-----------------------------------#
+ NAME=IBM&amp;DEVICE=i845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x8086&amp;SUBDEVICE=0x2562
+-NAME=IBM&amp;DEVICE=915 G&amp;VID=0x8086&amp;DID=0x2582&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x8086&amp;SUBDEVICE=0x2582
+-NAME=IBM&amp;DEVICE=855 GM (POS)&amp;VID=0x8086&amp;DID=0x3582&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x8086&amp;SUBDEVICE=0x3582
+ 
+ #-----------------------------------#
+ # Imstt Cards
+@@ -568,12 +566,6 @@
+ NAME=Imstt&amp;DEVICE=Imstt3D&amp;VID=0x10e0&amp;DID=0x9135&amp;SERVER=imstt&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ 
+ #-----------------------------------#
+-# Intec Cards
+-#-----------------------------------#
+-NAME=Intec&amp;DEVICE=845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intec&amp;DEVICE=845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-
+-#-----------------------------------#
+ # Intel Corporation Cards
+ #-----------------------------------#
+ NAME=Intel&amp;DEVICE=82810 CGC &amp;VID=0x8086&amp;DID=0x7121&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+@@ -622,6 +614,8 @@
+ NAME=Intel&amp;DEVICE=Q35&amp;VID=0x8086&amp;DID=0x29B2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=Q33&amp;VID=0x8086&amp;DID=0x29D2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=Q33&amp;VID=0x8086&amp;DID=0x29D2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=845&amp;VID=0x8086&amp;DID=0x2562&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ 
+ #-----------------------------------#
+ # Intergraphics Systems Cards
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000213.html">[Sax-devel] r1823 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#214">[ date ]</a>
+              <a href="thread.html#214">[ thread ]</a>
+              <a href="subject.html#214">[ subject ]</a>
+              <a href="author.html#214">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

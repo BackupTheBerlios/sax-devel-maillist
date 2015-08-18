@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1872 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	api/data/cdb rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1872%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09api/data/cdb%20rpm&In-Reply-To=%3C200907021650.n62GoTo6007779%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000263.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1872 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	api/data/cdb rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1872%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09api/data/cdb%20rpm&In-Reply-To=%3C200907021650.n62GoTo6007779%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1872 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	api/data/cdb rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Thu Jul  2 18:50:29 CEST 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000263.html">[Sax-devel] r1873 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#262">[ date ]</a>
+              <a href="thread.html#262">[ thread ]</a>
+              <a href="subject.html#262">[ subject ]</a>
+              <a href="author.html#262">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-07-02 18:50:23 +0200 (Thu, 02 Jul 2009)
+New Revision: 1872
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/api/data/cdb/Monitors
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+Log:
+- added special profile for CMO N156O6-L01 monitor (Bug #518206)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/api/data/cdb/Monitors
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/api/data/cdb/Monitors	2009-06-24 14:31:43 UTC (rev 1871)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/api/data/cdb/Monitors	2009-07-02 16:50:23 UTC (rev 1872)
+@@ -42363,3 +42363,14 @@
+  Resolution=1920x1080
+  Vsync=56-76
+ }
++
++#==============================================
++# CMO N156O6-L01 LCD Monitor
++#----------------------------------------------
++CMO:N156O6-L01 {
++ DDC=CMO1574
++ Hsync=54-57
++ Vsync=59-61
++ Resolution=1600x900
++ Modeline &quot;1600x900&quot;  97.50 1600 1648 1680 1760 900 903 908 926 +hsync -vsync
++}
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-06-24 14:31:43 UTC (rev 1871)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-07-02 16:50:23 UTC (rev 1872)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Thu Jul  2 18:49:29 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- added special profile for CMO N156O6-L01 monitor (Bug #518206)
++
++-------------------------------------------------------------------
+ Fri Jun 19 11:55:50 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - redo VT_ACTIVATE until it succeeds (bnc #504728)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000263.html">[Sax-devel] r1873 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#262">[ date ]</a>
+              <a href="thread.html#262">[ thread ]</a>
+              <a href="subject.html#262">[ subject ]</a>
+              <a href="author.html#262">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

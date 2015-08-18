@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1864 - in sax-head: profile/automatic/monitor rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1864%20-%20in%20sax-head%3A%20profile/automatic/monitor%20rpm&In-Reply-To=%3C200905300935.n4U9ZdsI022242%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000254.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1864 - in sax-head: profile/automatic/monitor rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1864%20-%20in%20sax-head%3A%20profile/automatic/monitor%20rpm&In-Reply-To=%3C200905300935.n4U9ZdsI022242%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1864 - in sax-head: profile/automatic/monitor rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Sat May 30 11:35:39 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000254.html">[Sax-devel] r1863 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#255">[ date ]</a>
+              <a href="thread.html#255">[ thread ]</a>
+              <a href="subject.html#255">[ subject ]</a>
+              <a href="author.html#255">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-05-30 11:35:38 +0200 (Sat, 30 May 2009)
+New Revision: 1864
+
+Modified:
+   sax-head/profile/automatic/monitor/MSI-AE1900
+   sax-head/rpm/sax2.changes
+Log:
+- MSI-AE1900 profile
+  * added monitor-&lt;output&gt; options, which are still required by
+    KMS at least (bnc #507437)
+
+
+Modified: sax-head/profile/automatic/monitor/MSI-AE1900
+===================================================================
+--- sax-head/profile/automatic/monitor/MSI-AE1900	2009-05-30 09:25:10 UTC (rev 1863)
++++ sax-head/profile/automatic/monitor/MSI-AE1900	2009-05-30 09:35:38 UTC (rev 1864)
+@@ -1,5 +1,5 @@
+ # /.../
+-# MSI AE1900AE (LVDS-1) monitor profile
++# MSI AE1900 (LVDS1/LVDS-1) monitor profile
+ # ----
+ 
+ Monitor-&gt;[X]-&gt;HorizSync = 30-48
+@@ -10,3 +10,5 @@
+ Screen-&gt;[X]-&gt;Depth-&gt;15-&gt;Modes = 1366x768
+ Screen-&gt;[X]-&gt;Depth-&gt;16-&gt;Modes = 1366x768
+ Screen-&gt;[X]-&gt;Depth-&gt;24-&gt;Modes = 1366x768
++Device-&gt;[X]-&gt;Raw-&gt;11-&gt;Option = &quot;monitor-LVDS&quot; &quot;Monitor[[X]]&quot;
++Device-&gt;[X]-&gt;Raw-&gt;11-&gt;Option = &quot;monitor-LVDS-1&quot; &quot;Monitor[[X]]&quot;
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-05-30 09:25:10 UTC (rev 1863)
++++ sax-head/rpm/sax2.changes	2009-05-30 09:35:38 UTC (rev 1864)
+@@ -1,4 +1,11 @@
+ -------------------------------------------------------------------
++Sat May 30 11:34:52 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- MSI-AE1900 profile
++  * added monitor-&lt;output&gt; options, which are still required by
++    KMS at least (bnc #507437)
++
++-------------------------------------------------------------------
+ Fri May 29 16:28:03 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - use special profile for MSI-N011 (bnc #499110) 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000254.html">[Sax-devel] r1863 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#255">[ date ]</a>
+              <a href="thread.html#255">[ thread ]</a>
+              <a href="subject.html#255">[ subject ]</a>
+              <a href="author.html#255">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

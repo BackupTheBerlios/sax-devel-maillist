@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1653 - in sax-head: api libsax/tools rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1653%20-%20in%20sax-head%3A%20api%20libsax/tools%20rpm&In-Reply-To=%3C200807090157.m691v9om031361%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000048.html">
+   <LINK REL="Next"  HREF="000050.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1653 - in sax-head: api libsax/tools rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1653%20-%20in%20sax-head%3A%20api%20libsax/tools%20rpm&In-Reply-To=%3C200807090157.m691v9om031361%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1653 - in sax-head: api libsax/tools rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Jul  9 03:57:09 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000048.html">[Sax-devel] r1652 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+        <LI>Next message: <A HREF="000050.html">[Sax-devel] r1654 - in sax-head: api api/macros libsax/tools rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#49">[ date ]</a>
+              <a href="thread.html#49">[ thread ]</a>
+              <a href="subject.html#49">[ subject ]</a>
+              <a href="author.html#49">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-07-09 03:57:05 +0200 (Wed, 09 Jul 2008)
+New Revision: 1653
+
+Added:
+   sax-head/libsax/tools/setconsolekeyboard.sh
+Modified:
+   sax-head/api/keyboard.cpp
+   sax-head/rpm/sax2.changes
+Log:
+- set console keyboard using YaST keyboard module (FATE #302925,
+  bnc #306269)
+
+
+Modified: sax-head/api/keyboard.cpp
+===================================================================
+--- sax-head/api/keyboard.cpp	2008-07-08 01:43:58 UTC (rev 1652)
++++ sax-head/api/keyboard.cpp	2008-07-09 01:57:05 UTC (rev 1653)
+@@ -216,6 +216,25 @@
+ 	if ((kbcnt &gt; 1) &amp;&amp; (option.isEmpty())) {
+ 		saxKeyboard.setXKBOption ( &quot;grp:alt_shift_toggle&quot; );
+ 	}
++	//====================================
++	// run yast keyboard module 
++	//------------------------------------
++	{ 
++	    // the base layout is this one:
++	    QString layout = *layouts.begin();
++	    //printf (&quot;layout: %s\n&quot;,layout.toLatin1().data());
++	    QString complete = &quot;/usr/share/sax/libsax/setconsolekeyboard.sh &quot; 
++                               + layout;
++	    log (L_INFO,&quot;Run YaST keyboard module (console keyboard)\n&quot;);
++	    Q3Process* proc = new Q3Process ();
++	    proc -&gt; addArgument (&quot;/bin/bash&quot;);
++	    proc -&gt; addArgument (&quot;-c&quot;);
++	    proc -&gt; addArgument (complete);
++	    proc -&gt; start();
++	    while (proc-&gt;isRunning()) {
++		usleep (1000);
++	    }
++	}
+ 	return true;
+ }
+ } // end namespace
+
+Added: sax-head/libsax/tools/setconsolekeyboard.sh
+===================================================================
+--- sax-head/libsax/tools/setconsolekeyboard.sh	2008-07-08 01:43:58 UTC (rev 1652)
++++ sax-head/libsax/tools/setconsolekeyboard.sh	2008-07-09 01:57:05 UTC (rev 1653)
+@@ -0,0 +1,18 @@
++#!/bin/sh
++
++if [ $# -ne 1 ]; then
++  echo &quot;Usage: $(basename $0) &lt;xkb_layout&gt;&quot;
++  exit 1
++fi
++
++layout=&quot;&quot;
++layout=$(grep -E \&quot;${1}\&quot; /usr/share/YaST2/data/xkblayout2keyboard.ycp | \
++         cut -d &quot;:&quot; -f 2 | sed -e 's/\&quot;//g' -e 's/,//g' -e 's/ //g')
++
++if [ &quot;$layout&quot; == &quot;&quot; ]; then
++  echo &quot;No appropriate console keyboard layout found for $1&quot;
++  exit 1
++else
++  echo &quot;Setting console keyboard layout to $layout (xkb-layout: $1)&quot;
++  yast keyboard set layout=${layout}
++fi
+
+
+Property changes on: sax-head/libsax/tools/setconsolekeyboard.sh
+___________________________________________________________________
+Name: svn:executable
+   + *
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-07-08 01:43:58 UTC (rev 1652)
++++ sax-head/rpm/sax2.changes	2008-07-09 01:57:05 UTC (rev 1653)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Wed Jul  9 03:50:18 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- set console keyboard using YaST keyboard module (FATE #302925,
++  bnc #306269)
++
++-------------------------------------------------------------------
+ Tue Jul  8 03:42:20 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - fix driver entry for Quadro FX 360M (bnc #406960) 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000048.html">[Sax-devel] r1652 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+	<LI>Next message: <A HREF="000050.html">[Sax-devel] r1654 - in sax-head: api api/macros libsax/tools rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#49">[ date ]</a>
+              <a href="thread.html#49">[ thread ]</a>
+              <a href="subject.html#49">[ subject ]</a>
+              <a href="author.html#49">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

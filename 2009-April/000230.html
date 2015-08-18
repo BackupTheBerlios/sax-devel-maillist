@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1839 - in sax-head: rpm sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1839%20-%20in%20sax-head%3A%20rpm%20sysp/maps&In-Reply-To=%3C200904241918.n3OJI2eR031225%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000231.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1839 - in sax-head: rpm sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1839%20-%20in%20sax-head%3A%20rpm%20sysp/maps&In-Reply-To=%3C200904241918.n3OJI2eR031225%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1839 - in sax-head: rpm sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri Apr 24 21:18:02 CEST 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000231.html">[Sax-devel] r1840 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#230">[ date ]</a>
+              <a href="thread.html#230">[ thread ]</a>
+              <a href="subject.html#230">[ subject ]</a>
+              <a href="author.html#230">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-04-24 21:17:59 +0200 (Fri, 24 Apr 2009)
+New Revision: 1839
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Keyboard.map
+Log:
+- Keyboard.map: use 'microsoftpro' also for br and jp layouts
+  (bnc #497647)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-03-25 16:26:33 UTC (rev 1838)
++++ sax-head/rpm/sax2.changes	2009-04-24 19:17:59 UTC (rev 1839)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Fri Apr 24 21:13:32 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- Keyboard.map: use 'microsoftpro' also for br and jp layouts
++  (bnc #497647)
++
++-------------------------------------------------------------------
+ Wed Mar 25 17:25:39 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - fixed panel detection for panels of 800x480, 1024x480, 1280x720
+
+Modified: sax-head/sysp/maps/Keyboard.map
+===================================================================
+--- sax-head/sysp/maps/Keyboard.map	2009-03-25 16:26:33 UTC (rev 1838)
++++ sax-head/sysp/maps/Keyboard.map	2009-04-24 19:17:59 UTC (rev 1839)
+@@ -53,7 +53,7 @@
+ it-ibm          : microsoftpro : it           : x            : xfree86 : x : x : x : x : x
+ it              : microsoftpro : it           : x            : xfree86 : x : x : x : x : x
+ it2             : microsoftpro : it           : x            : xfree86 : x : x : x : x : x
+-jp106           : jp106 : jp           : x            : xfree86 : x : x : x : x : x
++jp106           : microsoftpro : jp           : x            : xfree86 : x : x : x : x : x
+ la-latin1       : microsoftpro : latam        : x            : xfree86 : x : x : x : x : x
+ es-cp850        : microsoftpro : es           : x            : xfree86 : x : x : x : x : x
+ lt.l4           : microsoftpro : us           : x            : xfree86 : x : x : x : x : x
+@@ -126,11 +126,11 @@
+ uk              : microsoftpro : gb           : x            : xfree86 : x : x : x : x : x
+ us              : microsoftpro : us           : x            : xfree86 : x : x : x : x : x
+ wangbe          : microsoftpro : us           : x            : xfree86 : x : x : x : x : x
+-br-abnt-alt     : abnt2 : br           : x            : xfree86 : x : x : x : x : x
+-br-abnt         : abnt2 : br           : x            : xfree86 : x : x : x : x : x
+-br-abnt2        : abnt2 : br           : x            : xfree86 : x : x : x : x : x
+-br-latin1-abnt2 : abnt2 : br           : x            : xfree86 : x : x : x : x : x
+-br-latin1-us    : abnt2 : br           : x            : xfree86 : x : x : x : x : x
++br-abnt-alt     : microsoftpro : br           : abnt2        : xfree86 : x : x : x : x : x
++br-abnt         : microsoftpro : br           : abnt2        : xfree86 : x : x : x : x : x
++br-abnt2        : microsoftpro : br           : abnt2        : xfree86 : x : x : x : x : x
++br-latin1-abnt2 : microsoftpro : br           : abnt2        : xfree86 : x : x : x : x : x
++br-latin1-us    : microsoftpro : br           : abnt2        : xfree86 : x : x : x : x : x
+ us-acentos      : microsoftpro : us_intl      : x            : xfree86 : x : x : x : x : x
+ et              : microsoftpro : ee           : x            : xfree86 : x : x : x : x : x
+ et-nodeadkeys   : microsoftpro : ee           : nodeadkeys   : xfree86 : x : x : x : x : x
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000231.html">[Sax-devel] r1840 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#230">[ date ]</a>
+              <a href="thread.html#230">[ thread ]</a>
+              <a href="subject.html#230">[ subject ]</a>
+              <a href="author.html#230">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

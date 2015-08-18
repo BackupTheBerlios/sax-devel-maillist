@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1813 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1813%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200901121721.n0CHL47F018577%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000200.html">
+   <LINK REL="Next"  HREF="000202.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1813 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1813%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200901121721.n0CHL47F018577%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1813 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Mon Jan 12 18:21:04 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000200.html">[Sax-devel] r1812 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+        <LI>Next message: <A HREF="000202.html">[Sax-devel] r1814 - in sax-head: api api/data rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-01-12 18:21:02 +0100 (Mon, 12 Jan 2009)
+New Revision: 1813
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.x86_64
+Log:
+- Identity.map: 
+  * use &quot;EXANoComposite&quot; option for Intel 965/965GM; fixes various
+    Xserver crashes and shouldn't harm desktop performance
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-01-12 17:18:40 UTC (rev 1812)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-01-12 17:21:02 UTC (rev 1813)
+@@ -1,4 +1,11 @@
+ -------------------------------------------------------------------
++Mon Jan 12 18:16:29 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- Identity.map: 
++  * use &quot;EXANoComposite&quot; option for Intel 965/965GM; fixes various
++    Xserver crashes and shouldn't harm desktop performance
++
++-------------------------------------------------------------------
+ Fri Jan  9 17:02:00 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - Input.map: added another device (0x04b3:0x300f) to use
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map	2009-01-12 17:18:40 UTC (rev 1812)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map	2009-01-12 17:21:02 UTC (rev 1813)
+@@ -603,20 +603,20 @@
+ NAME=Intel&amp;DEVICE=945G&amp;VID=0x8086&amp;DID=0x2772&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=i915G&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945 GM&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945 GM&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=G33&amp;VID=0x8086&amp;DID=0x29C2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=G33&amp;VID=0x8086&amp;DID=0x29C2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=Q35&amp;VID=0x8086&amp;DID=0x29B2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386	2009-01-12 17:18:40 UTC (rev 1812)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386	2009-01-12 17:21:02 UTC (rev 1813)
+@@ -603,20 +603,20 @@
+ NAME=Intel&amp;DEVICE=945G&amp;VID=0x8086&amp;DID=0x2772&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=i915G&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945 GM&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945 GM&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=G33&amp;VID=0x8086&amp;DID=0x29C2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=G33&amp;VID=0x8086&amp;DID=0x29C2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=Q35&amp;VID=0x8086&amp;DID=0x29B2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.x86_64
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.x86_64	2009-01-12 17:18:40 UTC (rev 1812)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.x86_64	2009-01-12 17:21:02 UTC (rev 1813)
+@@ -589,20 +589,20 @@
+ NAME=Intel&amp;DEVICE=945G&amp;VID=0x8086&amp;DID=0x2772&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=i915G&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945 GM&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945 GM&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965G-1&amp;VID=0x8086&amp;DID=0x2982&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965Q&amp;VID=0x8086&amp;DID=0x2992&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=965G&amp;VID=0x8086&amp;DID=0x29A2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965 GM&amp;VID=0x8086&amp;DID=0x2A02&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=G33&amp;VID=0x8086&amp;DID=0x29C2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=G33&amp;VID=0x8086&amp;DID=0x29C2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=Q35&amp;VID=0x8086&amp;DID=0x29B2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000200.html">[Sax-devel] r1812 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+	<LI>Next message: <A HREF="000202.html">[Sax-devel] r1814 - in sax-head: api api/data rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

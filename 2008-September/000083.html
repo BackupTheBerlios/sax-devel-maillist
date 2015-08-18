@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1691 - sax-head/libsax
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1691%20-%20sax-head/libsax&In-Reply-To=%3C200809041303.m84D3TSA027789%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000082.html">
+   <LINK REL="Next"  HREF="000084.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1691 - sax-head/libsax</H1>
+    <B>marcus_schaefer at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1691%20-%20sax-head/libsax&In-Reply-To=%3C200809041303.m84D3TSA027789%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1691 - sax-head/libsax">marcus_schaefer at mail.berlios.de
+       </A><BR>
+    <I>Thu Sep  4 15:03:29 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000082.html">[Sax-devel] r1690 - in sax-head: libsax rpm
+</A></li>
+        <LI>Next message: <A HREF="000084.html">[Sax-devel] r1692 - in sax-branches/SaX2-71-SuSE-10-1-Devel: rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#83">[ date ]</a>
+              <a href="thread.html#83">[ thread ]</a>
+              <a href="subject.html#83">[ subject ]</a>
+              <a href="author.html#83">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: marcus_schaefer
+Date: 2008-09-04 15:03:25 +0200 (Thu, 04 Sep 2008)
+New Revision: 1691
+
+Modified:
+   sax-head/libsax/init.cpp
+   sax-head/libsax/init.h
+Log:
+
+- added setValidBusID function which sets the nobus profile
+  if only one card exists
+
+
+
+Modified: sax-head/libsax/init.cpp
+===================================================================
+--- sax-head/libsax/init.cpp	2008-09-04 10:27:07 UTC (rev 1690)
++++ sax-head/libsax/init.cpp	2008-09-04 13:03:25 UTC (rev 1691)
+@@ -86,6 +86,33 @@
+ }
+ 
+ //====================================
++// setValidBusID...
++//------------------------------------
++void SaXInit::setValidBusID (void) {
++	// .../
++	//! apply the nobus profile if only one card has been
++	//! detected. For single card configurations the busID
++	//! should not be set
++	// ----
++	SaXProcessCall* proc = new SaXProcessCall ();
++	QString sysp = &quot;/usr/sbin/sysp -c | wc -l&quot;;
++	proc -&gt; addArgument ( GET_BASH );
++	proc -&gt; addArgument ( &quot;-c&quot; );
++	proc -&gt; addArgument ( sysp.ascii() );
++	if ( ! proc -&gt; start() ) {
++		excProcessFailed();
++		qError (errorString(),EXC_PROCESSFAILED);
++		return;
++	}
++	QString optc;
++	QString data = proc-&gt;readStdout().at(0);
++	int count = data.toInt();
++	if (count &lt; 2) {
++		mOptions.append ((const char*)&quot;-b nobus&quot;);
++	}
++}
++
++//====================================
+ // setPrimaryChip...
+ //------------------------------------
+ void SaXInit::setPrimaryChip (void) {
+@@ -107,7 +134,7 @@
+ 	int id = data.toInt();
+ 	QTextOStream (&amp;optc) &lt;&lt; &quot;-c &quot; &lt;&lt; id;
+ 	mOptions.append ((const char*)optc.ascii());
+-	mOptions.append ((const char*)&quot;-b nobus&quot;);
++	setValidBusID();
+ }
+ 
+ //====================================
+
+Modified: sax-head/libsax/init.h
+===================================================================
+--- sax-head/libsax/init.h	2008-09-04 10:27:07 UTC (rev 1690)
++++ sax-head/libsax/init.h	2008-09-04 13:03:25 UTC (rev 1691)
+@@ -38,6 +38,7 @@
+ #define SAX_INIT        &quot;/usr/share/sax/init.pl&quot;
+ #define CACHE_CONFIG    &quot;/var/cache/sax/files/config&quot;
+ #define GET_PRIMARY     &quot;/usr/sbin/getPrimary&quot;
++#define GET_BASH        &quot;/bin/bash&quot;
+ 
+ //====================================
+ // Interface class for dlopen ability
+@@ -54,6 +55,7 @@
+ 	virtual bool needInit (void) = 0;
+ 	virtual void ignoreProfile (void) = 0;
+ 	virtual void setPrimaryChip (void) = 0;
++	virtual void setValidBusID (void) = 0;
+ 
+ 	public:
+ 	virtual void doInit (void) = 0;
+@@ -89,8 +91,9 @@
+ 
+ 	public:
+ 	bool needInit (void);
+-	void ignoreProfile (void);
++	void ignoreProfile  (void);
+ 	void setPrimaryChip (void);
++	void setValidBusID  (void);
+ 
+ 	public:
+ 	void doInit (void);
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000082.html">[Sax-devel] r1690 - in sax-head: libsax rpm
+</A></li>
+	<LI>Next message: <A HREF="000084.html">[Sax-devel] r1692 - in sax-branches/SaX2-71-SuSE-10-1-Devel: rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#83">[ date ]</a>
+              <a href="thread.html#83">[ thread ]</a>
+              <a href="subject.html#83">[ subject ]</a>
+              <a href="author.html#83">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

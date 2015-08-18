@@ -1,0 +1,463 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1763 - in sax-head: . modules parse rpm udev
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1763%20-%20in%20sax-head%3A%20.%20modules%20parse%20rpm%20udev&In-Reply-To=%3C200811101517.mAAFHi2a031840%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000152.html">
+   <LINK REL="Next"  HREF="000154.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1763 - in sax-head: . modules parse rpm udev</H1>
+    <B>marcus_schaefer at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1763%20-%20in%20sax-head%3A%20.%20modules%20parse%20rpm%20udev&In-Reply-To=%3C200811101517.mAAFHi2a031840%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1763 - in sax-head: . modules parse rpm udev">marcus_schaefer at mail.berlios.de
+       </A><BR>
+    <I>Mon Nov 10 16:17:44 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000152.html">[Sax-devel] r1762 - in sax-head: rpm sysp
+</A></li>
+        <LI>Next message: <A HREF="000154.html">[Sax-devel] r1764 - sax-head
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: marcus_schaefer
+Date: 2008-11-10 16:17:34 +0100 (Mon, 10 Nov 2008)
+New Revision: 1763
+
+Added:
+   sax-head/udev/
+   sax-head/udev/66-elo.rules
+Removed:
+   sax-head/rpm/66-elo.rules
+   sax-head/rpm/xorg-server-1_5.diff
+Modified:
+   sax-head/Makefile
+   sax-head/modules/ParseConfig.pm
+   sax-head/parse/Makefile.Linux
+   sax-head/parse/Makefile.PL
+   sax-head/parse/XFree.h
+   sax-head/parse/XFree.i
+   sax-head/parse/parse.c
+   sax-head/parse/parse.pl
+   sax-head/rpm/sax2.changes
+   sax-head/rpm/sax2.spec
+Log:
+
+- removed xorg-server-1_5.diff, added check for XORG_VERSION_MINOR
+- created udev directory in svn, moved udev rule to that
+  directory instead of maintaining it as source
+
+
+
+Modified: sax-head/Makefile
+===================================================================
+--- sax-head/Makefile	2008-11-10 14:09:56 UTC (rev 1762)
++++ sax-head/Makefile	2008-11-10 15:17:34 UTC (rev 1763)
+@@ -22,6 +22,7 @@
+ #============================================
+ # Prefixs...
+ #--------------------------------------------
++etc_prefix     = ${buildroot}/etc
+ usr_prefix     = ${buildroot}/usr
+ sax_prefix     = ${buildroot}/usr/share/sax
+ xfi_prefix     = ${buildroot}/usr/share/xfine
+@@ -63,6 +64,8 @@
+ XFINEPIXMAPS   = ${xfi_prefix}/figures
+ LIBDOCDIR      = ${doc_prefix}/libsax
+ LIBTOOLDIR     = ${sax_prefix}/libsax
++UDEVDIR        = ${etc_prefix}/etc/udev/rules.d
++HWIDSDIR       = ${buildroot}/var/lib/hardware/ids 
+ 
+ #============================================
+ # Helpers
+@@ -142,8 +145,23 @@
+ 	install -d -m 755 ${PROFILE} ${SBINVZ} ${SAXCACHEVZ} ${XFICACHEVZ}
+ 	install -d -m 755 ${CREATEVZ} ${APITOOLS} ${XFINEBINVZ} ${XFINEPIXMAPS}
+ 	install -d -m 755 ${LIBDOCDIR} ${LIBTOOLDIR} ${LIBSAXVZ}
++	install -d -m 755 ${UDEVDIR} ${HWIDSDIR}
+ 
+ 	#============================================
++	# hwinfo data
++	#--------------------------------------------
++	cat &gt; ${HWIDSDIR}/sax2-ident &lt;&lt;- EOF
++		vendor.id         usb 0x04e7
++		&amp;device.id        usb 0x0030
++		+hwclass          mouse
++	EOF
++
++	#============================================
++	# udev rules
++	#--------------------------------------------
++	install -m 644 udev/* ${UDEVDIR}
++
++	#============================================
+ 	# install X11 parser...
+ 	#--------------------------------------------
+ 	( cd parse &amp;&amp; make DESTDIR=${buildroot} install_vendor )
+
+Modified: sax-head/modules/ParseConfig.pm
+===================================================================
+--- sax-head/modules/ParseConfig.pm	2008-11-10 14:09:56 UTC (rev 1762)
++++ sax-head/modules/ParseConfig.pm	2008-11-10 15:17:34 UTC (rev 1763)
+@@ -95,13 +95,15 @@
+ 	#========================================
+ 	# RgbPath...
+ 	#---------------------------------------
+-	$result = XFree::GetRgbPath($ptr);
+-	if (defined $result) {
+-		$count  = 0;
+-		@list   = split(/,/,$result);
+-		foreach $i (@list) {
+-			$parse{RgbPath}{$count} = $i;
+-			$count++;
++	if (XFree::GetParserVersion() &lt;= 4) {
++		$result = XFree::GetRgbPath($ptr);
++		if (defined $result) {
++			$count  = 0;
++			@list   = split(/,/,$result);
++			foreach $i (@list) {
++				$parse{RgbPath}{$count} = $i;
++				$count++;
++			}
+ 		}
+ 	}
+ 	#========================================
+
+Modified: sax-head/parse/Makefile.Linux
+===================================================================
+--- sax-head/parse/Makefile.Linux	2008-11-10 14:09:56 UTC (rev 1762)
++++ sax-head/parse/Makefile.Linux	2008-11-10 15:17:34 UTC (rev 1763)
+@@ -10,16 +10,16 @@
+ # Status: Up-to-date
+ #
+ EXTSEC = HAVE_EXTENSIONS_SECTION
++XORGHD = `test -f &quot;/usr/include/xorg/xorg-server.h&quot; &amp;&amp; echo HAVE_XORG_SERVER_HEADER || echo NO_XORG_SERVER_HEADER`
+ 
+ all:
+-	swig -D${EXTSEC} -perl5 XFree.i
++	swig -D${EXTSEC} -D${XORGHD} -perl5 XFree.i
+ 	perl Makefile.PL
+ 
+ test:
+ 	gcc -O2 parse.c -o parse -L/usr/X11R6/lib -L/usr/X11R6/lib64 \
+ 		-iquote /usr/X11R6/include -iquote /usr/include/xorg -I. \
+-		-DX_BYTE_ORDER=X_LITTLE_ENDIAN \
+-		-DNEW_INPUT -DNDEBUG -D${EXTSEC} \
++		-DNEW_INPUT -DNDEBUG -D${EXTSEC} -D${XORGHD} \
+ 		-lxf86config -lm
+ 
+ clean:
+
+Modified: sax-head/parse/Makefile.PL
+===================================================================
+--- sax-head/parse/Makefile.PL	2008-11-10 14:09:56 UTC (rev 1762)
++++ sax-head/parse/Makefile.PL	2008-11-10 15:17:34 UTC (rev 1763)
+@@ -3,13 +3,19 @@
+ $CFLAGS = $ENV{RPM_OPT_FLAGS};
+ $CFLAGS =~ s/-Wall//;
+ 
+-$FLAG=&quot;HAVE_EXTENSIONS_SECTION&quot;;
++$XORGHD = &quot;NO_XORG_SERVER_HEADER&quot;;
++if (-f &quot;/usr/include/xorg/xorg-server.h&quot;) {
++	$XORGHD=&quot;HAVE_XORG_SERVER_HEADER&quot;;
++}
+ 
++$FLAG1=&quot;HAVE_EXTENSIONS_SECTION&quot;;
++$FLAG2=$XORGHD;
++
+ WriteMakefile(
+   'NAME'     =&gt; 'XFree',
+   'LIBS'     =&gt; ['-L/usr/X11R6/lib -L/usr/X11R6/lib64 -lm -lxf86config'],
+   'OBJECT'   =&gt; 'parse.o XFree_wrap.o',
+-  'DEFINE'   =&gt; &quot;-DX_BYTE_ORDER=X_LITTLE_ENDIAN -DNEW_INPUT -DNDEBUG -D$FLAG&quot;,
++  'DEFINE'   =&gt; &quot;-DNEW_INPUT -DNDEBUG -D$FLAG1 -D$FLAG2&quot;,
+   'INC'      =&gt; '-iquote /usr/X11R6/include -iquote /usr/include/xorg -I.',
+   'OPTIMIZE' =&gt; &quot;-O2 $CFLAGS&quot;
+ ); 
+
+Modified: sax-head/parse/XFree.h
+===================================================================
+--- sax-head/parse/XFree.h	2008-11-10 14:09:56 UTC (rev 1762)
++++ sax-head/parse/XFree.h	2008-11-10 15:17:34 UTC (rev 1763)
+@@ -2,14 +2,31 @@
+ #include &lt;stdlib.h&gt;
+ #include &lt;stdarg.h&gt;
+ #include &lt;ctype.h&gt;
++
++#ifdef HAVE_XORG_SERVER_HEADER
++#undef HAS_SHM
++#include &quot;xorg-server.h&quot;
++#include &quot;xorgVersion.h&quot;
++#define PARSER_VERSION XORG_VERSION_MINOR
++#else
++#define PARSER_VERSION 3
++#endif
++
+ #include &quot;xf86Parser.h&quot;
+ 
+ extern XF86ConfigPtr ReadConfigFile (char *filename);
+ 
++/* Parser Version... */
++extern int GetParserVersion (void) {
++	return PARSER_VERSION;
++}
++
+ /* Files Section... */
+ extern char* GetModulePath (XF86ConfigPtr conf);
+ extern char* GetFontPath (XF86ConfigPtr conf);
++#if XORG_VERSION_MINOR &lt;= 4
+ extern char* GetRgbPath (XF86ConfigPtr conf);
++#endif
+ extern char* GetLogFile (XF86ConfigPtr conf);
+ 
+ /* Module Section... */
+
+Modified: sax-head/parse/XFree.i
+===================================================================
+--- sax-head/parse/XFree.i	2008-11-10 14:09:56 UTC (rev 1762)
++++ sax-head/parse/XFree.i	2008-11-10 15:17:34 UTC (rev 1763)
+@@ -3,4 +3,3 @@
+ #include &quot;XFree.h&quot;
+ %}
+ %include XFree.h
+-
+
+Modified: sax-head/parse/parse.c
+===================================================================
+--- sax-head/parse/parse.c	2008-11-10 14:09:56 UTC (rev 1762)
++++ sax-head/parse/parse.c	2008-11-10 15:17:34 UTC (rev 1763)
+@@ -18,9 +18,15 @@
+ #include &lt;stdlib.h&gt;
+ #include &lt;stdarg.h&gt;
+ #include &lt;ctype.h&gt;
+-#include &quot;xf86Parser.h&quot;
+ #include &lt;string.h&gt;
+ 
++#ifdef HAVE_XORG_SERVER_HEADER
++#include &quot;xorg-server.h&quot;
++#include &quot;xorgVersion.h&quot;
++#endif
++
++#include &quot;xf86Parser.h&quot;
++
+ #define XF86CONF_PHSYNC    0x0001
+ #define XF86CONF_NHSYNC    0x0002
+ #define XF86CONF_PVSYNC    0x0004
+@@ -43,7 +49,9 @@
+ /* Files Section... */
+ char* GetModulePath (XF86ConfigPtr conf);
+ char* GetFontPath (XF86ConfigPtr conf);
++#if XORG_VERSION_MINOR &lt;= 4
+ char* GetRgbPath (XF86ConfigPtr conf);
++#endif
+ char* GetLogFile (XF86ConfigPtr conf);
+ 
+ /* Module Section... */
+@@ -139,10 +147,12 @@
+ 	return(conf-&gt;conf_files-&gt;file_fontpath);
+ }
+ 
++#if XORG_VERSION_MINOR &lt;= 4
+ char* GetRgbPath (XF86ConfigPtr conf) {
+ 	if (conf == NULL) return(&quot;null&quot;);
+ 	return(conf-&gt;conf_files-&gt;file_rgbpath);
+ }
++#endif
+ 
+ char* GetLogFile (XF86ConfigPtr conf) {
+ 	if (conf == NULL) return(&quot;null&quot;);
+
+Modified: sax-head/parse/parse.pl
+===================================================================
+--- sax-head/parse/parse.pl	2008-11-10 14:09:56 UTC (rev 1762)
++++ sax-head/parse/parse.pl	2008-11-10 15:17:34 UTC (rev 1763)
+@@ -26,6 +26,9 @@
+ 
+ # print &quot;+++ $ptr\n&quot;;
+ 
++$ver = XFree::GetParserVersion();
++print &quot;Parser Version: $ver\n&quot;;
++
+ #$erg = XFree::GetModulePath($ptr);
+ #print &quot;$erg\n&quot;;
+ 
+
+Deleted: sax-head/rpm/66-elo.rules
+===================================================================
+--- sax-head/rpm/66-elo.rules	2008-11-10 14:09:56 UTC (rev 1762)
++++ sax-head/rpm/66-elo.rules	2008-11-10 15:17:34 UTC (rev 1763)
+@@ -1 +0,0 @@
+-KERNEL==&quot;event[0-9]*&quot;, SYSFS{idVendor}==&quot;04e7&quot;, SYSFS{idProduct}==&quot;0030&quot;, SYMLINK+=&quot;input/elo&quot;
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-11-10 14:09:56 UTC (rev 1762)
++++ sax-head/rpm/sax2.changes	2008-11-10 15:17:34 UTC (rev 1763)
+@@ -2,6 +2,9 @@
+ Mon Nov 10 15:06:44 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - fixed standard mouse detection (bnc #433339)
++- removed xorg-server-1_5.diff, added check for XORG_VERSION_MINOR
++- created udev directory in svn, moved udev rule to that
++  directory instead of maintaining it as source
+ 
+ -------------------------------------------------------------------
+ Mon Nov 10 14:28:38 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+
+Modified: sax-head/rpm/sax2.spec
+===================================================================
+--- sax-head/rpm/sax2.spec	2008-11-10 14:09:56 UTC (rev 1762)
++++ sax-head/rpm/sax2.spec	2008-11-10 15:17:34 UTC (rev 1763)
+@@ -55,10 +55,8 @@
+ License:        GPL v2 or later
+ Source:         sax2.tar.bz2
+ Source1:        sax2.desktop
+-Source2:        66-elo.rules
+-Source3:        sax2-rpmlintrc
++Source2:        sax2-rpmlintrc
+ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+-Patch:          xorg-server-1_5.diff
+ 
+ %description
+ This package contains the SuSE Advanced X-Configuration
+@@ -230,9 +228,6 @@
+ 
+ %prep
+ %setup -n sax
+-%if %{suse_version} &gt; 1100
+-%patch
+-%endif
+ 
+ %build
+ test -e /.buildenv &amp;&amp; . /.buildenv
+@@ -280,20 +275,8 @@
+ #-------------------------------------------------
+ %suse_update_desktop_file -i %name System SystemSetup
+ #=================================================
+-# hwinfo data (bnc #408436)
++# file duplicates
+ #-------------------------------------------------
+-mkdir -p $RPM_BUILD_ROOT/var/lib/hardware/ids
+-cat &gt; $RPM_BUILD_ROOT/var/lib/hardware/ids/sax2-ident &lt;&lt; EOF
+- vendor.id              usb 0x04e7
+-&amp;device.id              usb 0x0030
+- +hwclass                mouse
+-EOF
+-#=================================================
+-# udev rule for creating /dev/input/elo symlink (Bug #410315)
+-#-------------------------------------------------
+-mkdir -p $RPM_BUILD_ROOT/etc/udev/rules.d
+-install -m 644 $RPM_SOURCE_DIR/66-elo.rules \
+-               $RPM_BUILD_ROOT/etc/udev/rules.d
+ %if %{suse_version} &gt; 1020
+ %fdupes $RPM_BUILD_ROOT/usr/share/sax/api/figures
+ %endif
+
+Deleted: sax-head/rpm/xorg-server-1_5.diff
+===================================================================
+--- sax-head/rpm/xorg-server-1_5.diff	2008-11-10 14:09:56 UTC (rev 1762)
++++ sax-head/rpm/xorg-server-1_5.diff	2008-11-10 15:17:34 UTC (rev 1763)
+@@ -1,55 +0,0 @@
+---- ../sax.orig/parse/XFree.h	2008-07-04 15:42:05.000000000 +0000
+-+++ parse/XFree.h	2008-07-04 15:48:06.000000000 +0000
+-@@ -9,7 +9,6 @@
+- /* Files Section... */
+- extern char* GetModulePath (XF86ConfigPtr conf);
+- extern char* GetFontPath (XF86ConfigPtr conf);
+--extern char* GetRgbPath (XF86ConfigPtr conf);
+- extern char* GetLogFile (XF86ConfigPtr conf);
+- 
+- /* Module Section... */
+---- ../sax.orig/parse/parse.c	2008-07-04 15:42:05.000000000 +0000
+-+++ parse/parse.c	2008-07-04 15:48:24.000000000 +0000
+-@@ -43,7 +43,6 @@
+- /* Files Section... */
+- char* GetModulePath (XF86ConfigPtr conf);
+- char* GetFontPath (XF86ConfigPtr conf);
+--char* GetRgbPath (XF86ConfigPtr conf);
+- char* GetLogFile (XF86ConfigPtr conf);
+- 
+- /* Module Section... */
+-@@ -137,11 +136,6 @@
+- 	return(conf-&gt;conf_files-&gt;file_fontpath);
+- }
+- 
+--char* GetRgbPath (XF86ConfigPtr conf) {
+--	if (conf == NULL) return(&quot;null&quot;);
+--	return(conf-&gt;conf_files-&gt;file_rgbpath);
+--}
+--
+- char* GetLogFile (XF86ConfigPtr conf) {
+- 	if (conf == NULL) return(&quot;null&quot;);
+- 	return(conf-&gt;conf_files-&gt;file_logfile);
+-Index: modules/ParseConfig.pm
+-===================================================================
+---- modules/ParseConfig.pm	(revision 1651)
+-+++ modules/ParseConfig.pm	(working copy)
+-@@ -93,18 +93,6 @@
+- 		}
+- 	}
+- 	#========================================
+--	# RgbPath...
+--	#---------------------------------------
+--	$result = XFree::GetRgbPath($ptr);
+--	if (defined $result) {
+--		$count  = 0;
+--		@list   = split(/,/,$result);
+--		foreach $i (@list) {
+--			$parse{RgbPath}{$count} = $i;
+--			$count++;
+--		}
+--	}
+--	#========================================
+- 	# LogFile...
+- 	#----------------------------------------
+- 	$result = XFree::GetLogFile($ptr);
+
+Copied: sax-head/udev/66-elo.rules (from rev 1761, sax-head/rpm/66-elo.rules)
+
+
+Property changes on: sax-head/udev/66-elo.rules
+___________________________________________________________________
+Name: svn:mergeinfo
+   + 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000152.html">[Sax-devel] r1762 - in sax-head: rpm sysp
+</A></li>
+	<LI>Next message: <A HREF="000154.html">[Sax-devel] r1764 - sax-head
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

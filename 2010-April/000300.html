@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1914 - in sax-head: . rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1914%20-%20in%20sax-head%3A%20.%20rpm&In-Reply-To=%3C201004140752.o3E7qojD032618%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000299.html">
+   <LINK REL="Next"  HREF="000301.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1914 - in sax-head: . rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1914%20-%20in%20sax-head%3A%20.%20rpm&In-Reply-To=%3C201004140752.o3E7qojD032618%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1914 - in sax-head: . rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Apr 14 09:52:50 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000299.html">[Sax-devel] r1913 - in sax-head: modules profile/script rpm
+</A></li>
+        <LI>Next message: <A HREF="000301.html">[Sax-devel] r1915 - in sax-head: parse rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#300">[ date ]</a>
+              <a href="thread.html#300">[ thread ]</a>
+              <a href="subject.html#300">[ subject ]</a>
+              <a href="author.html#300">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2010-04-14 09:52:49 +0200 (Wed, 14 Apr 2010)
+New Revision: 1914
+
+Modified:
+   sax-head/.doit
+   sax-head/rpm/sax2.changes
+Log:
+- .doit: no longer create %changelog entries
+
+
+Modified: sax-head/.doit
+===================================================================
+--- sax-head/.doit	2010-04-14 07:32:43 UTC (rev 1913)
++++ sax-head/.doit	2010-04-14 07:52:49 UTC (rev 1914)
+@@ -97,19 +97,19 @@
+ 	#==============================================
+ 	# Add %changelog
+ 	#----------------------------------------------
+-	my $bin = &quot;/suse/ms/bin/convert_changes_to_rpm_changelog&quot;;
+-	if (open (FD,&quot;&gt;&gt;$pacdir/sax2.spec&quot;)) {
+-		print FD &quot;\n&quot;;
+-		print FD '%changelog -n sax2';
+-		print FD &quot;\n&quot;;
+-		if (open (LG,&quot;$bin $pacdir/sax2.changes|&quot;)) {
+-			while (&lt;LG&gt;) {
+-				print FD $_;
+-			}
+-		}
+-		close FD;
+-		close LG;
+-	}
++	#my $bin = &quot;/suse/ms/bin/convert_changes_to_rpm_changelog&quot;;
++	#if (open (FD,&quot;&gt;&gt;$pacdir/sax2.spec&quot;)) {
++	#	print FD &quot;\n&quot;;
++	#	print FD '%changelog -n sax2';
++	#	print FD &quot;\n&quot;;
++	#	if (open (LG,&quot;$bin $pacdir/sax2.changes|&quot;)) {
++	#		while (&lt;LG&gt;) {
++	#			print FD $_;
++	#		}
++	#	}
++	#	close FD;
++	#	close LG;
++	#}
+ 	#==============================================
+ 	# Creating Patches...
+ 	#----------------------------------------------
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2010-04-14 07:32:43 UTC (rev 1913)
++++ sax-head/rpm/sax2.changes	2010-04-14 07:52:49 UTC (rev 1914)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Wed Apr 14 09:50:36 CEST 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- .doit: no longer create %changelog entries
++
++-------------------------------------------------------------------
+ Wed Apr 14 09:31:39 CEST 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - defined(%hash) is deprecated (bnc #596454)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000299.html">[Sax-devel] r1913 - in sax-head: modules profile/script rpm
+</A></li>
+	<LI>Next message: <A HREF="000301.html">[Sax-devel] r1915 - in sax-head: parse rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#300">[ date ]</a>
+              <a href="thread.html#300">[ thread ]</a>
+              <a href="subject.html#300">[ subject ]</a>
+              <a href="author.html#300">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

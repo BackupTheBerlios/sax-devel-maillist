@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Sax2 cannot compile
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile&In-Reply-To=%3C200608311320.23721.aj%40getopenlab.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000010.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Sax2 cannot compile</H1>
+    <B>A.J. Venter</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile&In-Reply-To=%3C200608311320.23721.aj%40getopenlab.com%3E"
+       TITLE="[Sax-devel] Sax2 cannot compile">aj at getopenlab.com
+       </A><BR>
+    <I>Thu Aug 31 13:20:22 CEST 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000010.html">[Sax-devel] Sax2 cannot compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#9">[ date ]</a>
+              <a href="thread.html#9">[ thread ]</a>
+              <a href="subject.html#9">[ subject ]</a>
+              <a href="author.html#9">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hiya,
+I'm having real difficulty compile sax2 under slackware/OpenLab. I
+have all the dependencies but when I try to run make I get:
+
+spp.l:38: error: redefinition of `int yylineno'
+lex.yy.c:334: error: `int yylineno' previously defined here
+lex.yy.c:1238: warning: 'void yyunput(int, char*)' defined but not used
+
+So I comment out:
+int yylineno = 1;
+
+On line 334 of lex.yy:
+//int yylineno = 1;
+
+Now it gets a little further but dies once more with these errors:
+edd.c: In function `get_edd_info':
+edd.c:64: warning: implicit declaration of function `sysfs_open_directory'
+edd.c:64: warning: assignment makes pointer from integer without a cast
+edd.c:67: warning: implicit declaration of function `sysfs_read_all_subdirs'
+edd.c:68: error: dereferencing pointer to incomplete type
+edd.c:69: error: dereferencing pointer to incomplete type
+edd.c:69: error: dereferencing pointer to incomplete type
+edd.c:69: error: dereferencing pointer to incomplete type
+edd.c:69: error: dereferencing pointer to incomplete type
+edd.c:69: error: dereferencing pointer to incomplete type
+edd.c:72: error: dereferencing pointer to incomplete type
+edd.c:82: warning: implicit declaration of function
+`sysfs_get_directory_attribute'
+edd.c:82: warning: passing arg 1 of `hd_attr_uint' makes pointer from
+integer without a cast
+edd.c:86: warning: passing arg 1 of `hd_attr_uint' makes pointer from
+integer without a cast
+edd.c:90: warning: passing arg 1 of `hd_attr_uint' makes pointer from
+integer without a cast
+edd.c:94: warning: passing arg 1 of `hd_attr_uint' makes pointer from
+integer without a cast
+edd.c:98: warning: passing arg 1 of `hd_attr_uint' makes pointer from
+integer without a cast
+edd.c:102: warning: passing arg 1 of `hd_attr_uint' makes pointer from
+integer without a cast
+edd.c:106: warning: passing arg 1 of `hd_attr_uint' makes pointer from
+integer without a cast
+edd.c:114: warning: implicit declaration of function 
+`sysfs_get_directory_link'
+edd.c:114: warning: assignment makes pointer from integer without a cast
+edd.c:116: error: dereferencing pointer to incomplete type
+edd.c:122: warning: passing arg 1 of `hd_attr_list' makes pointer from
+integer without a cast
+edd.c:151: warning: implicit declaration of function `sysfs_close_directory'
+make[4]: *** [edd.o] Error 1
+make[4]: Leaving directory `/home/silentcoder/sax/sysp/lib/libhd/hd'
+make[3]: *** [subdirs] Error 2
+make[3]: Leaving directory `/home/silentcoder/sax/sysp/lib/libhd'
+make[2]: *** [libsysp.a] Error 2
+make[2]: Leaving directory `/home/silentcoder/sax/sysp/lib'
+make[1]: *** [sysp] Error 2
+make[1]: Leaving directory `/home/silentcoder/sax/sysp'
+make: *** [all] Error 2
+
+My limited skills with c is just not good enoug to solve those...
+
+My best guess is that the code uses some tricks specific to another
+version of gcc - since I am synced to slack-current I know I have the
+latest available stable release - so I am guessing it must be
+requiring some syntax that was allowed by an older version but not by
+the current. Or perhaps there is some gcc parameter / environment
+variable which needs to be set ?
+...
+This is where I miss autoconf :)
+
+Any advice will be greatly appreciated.
+
+Yours truly
+A.J. Venter
+-- 
+&quot;80% Of a hardware engineer's job is application of the uncertainty principle.
+80% of a software engineer's job is pretending this isn't so.&quot;
+A.J. Venter
+Chief Software Architect
+OpenLab International           | +27 83 455 99 78 (South Africa) 
+<A HREF="http://www.getopenlab.com">http://www.getopenlab.com</A>       | 086 654 2898 (Fax)
+<A HREF="http://www.silentcoder.co.za">http://www.silentcoder.co.za</A>    | +55 118 162 2079 (Brazil)
+GPG Key: <A HREF="http://pgp.mit.edu:11371/pks/lookup?op=get&amp;search=0x27CFFE5A">http://pgp.mit.edu:11371/pks/lookup?op=get&amp;search=0x27CFFE5A</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/sax-devel/attachments/20060831/57023067/attachment.pgp">https://lists.berlios.de/pipermail/sax-devel/attachments/20060831/57023067/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000010.html">[Sax-devel] Sax2 cannot compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#9">[ date ]</a>
+              <a href="thread.html#9">[ thread ]</a>
+              <a href="subject.html#9">[ subject ]</a>
+              <a href="author.html#9">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

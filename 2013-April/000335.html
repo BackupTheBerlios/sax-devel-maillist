@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1947 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1947%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09modules/detect%20rpm&In-Reply-To=%3C20130418024120.F2F3B55B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000334.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1947 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect rpm</H1>
+    <B>sndirsch at scm.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1947%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09modules/detect%20rpm&In-Reply-To=%3C20130418024120.F2F3B55B0C%40scm.berlios.de%3E"
+       TITLE="[Sax-devel] r1947 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules/detect rpm">sndirsch at scm.berlios.de
+       </A><BR>
+    <I>Thu Apr 18 04:41:20 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000334.html">[Sax-devel] r1946 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm sysp/maps sysp/maps/arch
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#335">[ date ]</a>
+              <a href="thread.html#335">[ thread ]</a>
+              <a href="subject.html#335">[ subject ]</a>
+              <a href="author.html#335">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2013-04-18 04:41:20 +0200 (Thu, 18 Apr 2013)
+New Revision: 1947
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Monitor.pm
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+Log:
+- limit hsync max to 94kHz to avoid 1024x768 doublescan mode, 
+  which confuses HP iLO consoles (bnc#810193)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Monitor.pm
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Monitor.pm	2013-04-16 10:42:14 UTC (rev 1946)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/modules/detect/Monitor.pm	2013-04-18 02:41:20 UTC (rev 1947)
+@@ -107,7 +107,7 @@
+ 	for($i=0;$i&lt;@hsync_list;$i++) {
+ 		$hsmax = int($hsync_list[$i]);
+ 		$hsmin = 15;
+-		$var{Monitor}{$i}{HorizSync}  = &quot;31-100&quot;;
++		$var{Monitor}{$i}{HorizSync}  = &quot;31-94&quot;;
+ 	}
+  
+ 	# set detected monitor VertRefresh setting...
+@@ -131,7 +131,7 @@
+ 		# sync ranges to save values to avoid any monitor damage
+ 		# ----------------------------------------------------------
+ 		$var{Monitor}{$i}{VertRefresh} = &quot;50-75&quot;;
+-		$var{Monitor}{$i}{HorizSync}   = &quot;31-100&quot;;
++		$var{Monitor}{$i}{HorizSync}   = &quot;31-94&quot;;
+ 		$var{Monitor}{$i}{VendorName}  = &quot;Unknown&quot;;
+ 		$var{Monitor}{$i}{ModelName}   = &quot;Unknown&quot;;
+ 	}
+@@ -163,7 +163,7 @@
+ 		# ------------------------------------------------------- 
+ 		$var{Monitor}{$i}{VendorName}  = &quot;$record[0]&quot;;
+ 		$var{Monitor}{$i}{ModelName}   = &quot;$record[1]&quot;; 
+-		$var{Monitor}{$i}{HorizSync}   = &quot;31-100&quot;;
++		$var{Monitor}{$i}{HorizSync}   = &quot;31-94&quot;;
+ 		$var{Monitor}{$i}{VertRefresh} = &quot;50-75&quot;;
+ 		if ($record[8] ne &quot;&quot;) {
+ 		foreach my $bpp (8,15,16,24) {
+@@ -205,7 +205,7 @@
+ 		if ($rsize &gt; 0) {
+ 			$var{Monitor}{$i}{VendorName}  = &quot;$record[0]&quot;;
+ 			$var{Monitor}{$i}{ModelName}   = &quot;$record[1]&quot;;
+-			$var{Monitor}{$i}{HorizSync}   = &quot;31-100&quot;;
++			$var{Monitor}{$i}{HorizSync}   = &quot;31-94&quot;;
+ 			$var{Monitor}{$i}{VertRefresh} = &quot;50-75&quot;;
+ 			# /.../
+ 			# look for modeline defined...
+@@ -221,7 +221,7 @@
+ 		if ($rsize &gt; 0) {
+ 			$var{Monitor}{$i}{VendorName}  = &quot;$record[0]&quot;;
+ 			$var{Monitor}{$i}{ModelName}   = &quot;$record[1]&quot;;
+-			$var{Monitor}{$i}{HorizSync}   = &quot;31-100&quot;;
++			$var{Monitor}{$i}{HorizSync}   = &quot;31-94&quot;;
+ 			$var{Monitor}{$i}{VertRefresh} = &quot;50-75&quot;;
+ 			# /.../
+ 			# look for modeline defined...
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-04-16 10:42:14 UTC (rev 1946)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-04-18 02:41:20 UTC (rev 1947)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Thu Apr 18 04:35:52 CEST 2013 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- limit hsync max to 94kHz to avoid 1024x768 doublescan mode, 
++  which confuses HP iLO consoles (bnc#810193)
++
++-------------------------------------------------------------------
+ Tue Apr 16 12:40:16 CEST 2013 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - added iLO profile
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000334.html">[Sax-devel] r1946 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm sysp/maps sysp/maps/arch
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#335">[ date ]</a>
+              <a href="thread.html#335">[ thread ]</a>
+              <a href="subject.html#335">[ subject ]</a>
+              <a href="author.html#335">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

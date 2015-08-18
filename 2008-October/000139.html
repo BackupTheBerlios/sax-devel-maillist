@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1748 - in sax-head: libsax rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1748%20-%20in%20sax-head%3A%20libsax%20rpm&In-Reply-To=%3C200810231507.m9NF76Qt014557%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000138.html">
+   <LINK REL="Next"  HREF="000140.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1748 - in sax-head: libsax rpm</H1>
+    <B>marcus_schaefer at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1748%20-%20in%20sax-head%3A%20libsax%20rpm&In-Reply-To=%3C200810231507.m9NF76Qt014557%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1748 - in sax-head: libsax rpm">marcus_schaefer at mail.berlios.de
+       </A><BR>
+    <I>Thu Oct 23 17:07:06 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000138.html">[Sax-devel] r1747 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+        <LI>Next message: <A HREF="000140.html">[Sax-devel] r1749 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#139">[ date ]</a>
+              <a href="thread.html#139">[ thread ]</a>
+              <a href="subject.html#139">[ subject ]</a>
+              <a href="author.html#139">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: marcus_schaefer
+Date: 2008-10-23 17:06:58 +0200 (Thu, 23 Oct 2008)
+New Revision: 1748
+
+Modified:
+   sax-head/libsax/init.cpp
+   sax-head/libsax/processcall.cpp
+   sax-head/rpm/sax2.changes
+Log:
+
+- fixed setPrimaryChip option setup (bnc #432732)
+
+
+
+Modified: sax-head/libsax/init.cpp
+===================================================================
+--- sax-head/libsax/init.cpp	2008-10-23 04:52:27 UTC (rev 1747)
++++ sax-head/libsax/init.cpp	2008-10-23 15:06:58 UTC (rev 1748)
+@@ -130,12 +130,12 @@
+ 		qError (errorString(),EXC_PROCESSFAILED);
+ 		return;
+ 	}
+-	QString optc;
++	QString* optc = new QString;
+ 	QString data = proc-&gt;readStdout().at(0);
+ 	int id = data.toInt();
+-	QTextOStream (&amp;optc) &lt;&lt; id;
++	QTextOStream (optc) &lt;&lt; id;
+ 	mOptions.append ((const char*)&quot;-c&quot;);
+-	mOptions.append ((const char*)optc.ascii());
++	mOptions.append ((const char*)optc-&gt;ascii());
+ 	setValidBusID();
+ }
+ 
+
+Modified: sax-head/libsax/processcall.cpp
+===================================================================
+--- sax-head/libsax/processcall.cpp	2008-10-23 04:52:27 UTC (rev 1747)
++++ sax-head/libsax/processcall.cpp	2008-10-23 15:06:58 UTC (rev 1748)
+@@ -78,13 +78,15 @@
+ 	// start program and connect stream
+ 	//------------------------------------
+ 	char buf[LINESIZE];
++	//fprintf (stderr,&quot;++++ DEBUG: %s\n&quot;,program.ascii());
+ 	FILE* fp = popen (program.ascii(),&quot;r&quot;);
+ 	if ( ! fp ) {
+ 		return false;
+ 	}
+-	while (NULL != (fgets(buf,sizeof(buf)-1,fp))) {
+-		int line = strlen(buf)-1;
+-		buf[line] = 0;
++	while (NULL != (fgets(buf,sizeof(buf),fp))) {
++		int line = strlen(buf);
++		buf[line-1] = '\0';
++		//fprintf (stderr,&quot;__%s__\n&quot;,buf);
+ 		mData.append (QString(buf));
+ 	}
+ 	mExitCode = pclose(fp);
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-10-23 04:52:27 UTC (rev 1747)
++++ sax-head/rpm/sax2.changes	2008-10-23 15:06:58 UTC (rev 1748)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Thu Oct 23 17:06:10 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
++
++- fixed setPrimaryChip option setup (bnc #432732)
++
++-------------------------------------------------------------------
+ Thu Oct 23 06:49:23 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - Identity.map: remove fglrx driver entries (bnc #436727, #437935)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000138.html">[Sax-devel] r1747 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+	<LI>Next message: <A HREF="000140.html">[Sax-devel] r1749 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#139">[ date ]</a>
+              <a href="thread.html#139">[ thread ]</a>
+              <a href="subject.html#139">[ subject ]</a>
+              <a href="author.html#139">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

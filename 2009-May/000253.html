@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1862 - in sax-head: profile/automatic/monitor rpm	sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1862%20-%20in%20sax-head%3A%20profile/automatic/monitor%20rpm%0A%09sysp/maps&In-Reply-To=%3C200905291429.n4TETQDP017725%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000252.html">
+   <LINK REL="Next"  HREF="000254.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1862 - in sax-head: profile/automatic/monitor rpm	sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1862%20-%20in%20sax-head%3A%20profile/automatic/monitor%20rpm%0A%09sysp/maps&In-Reply-To=%3C200905291429.n4TETQDP017725%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1862 - in sax-head: profile/automatic/monitor rpm	sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri May 29 16:29:26 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000252.html">[Sax-devel] r1861 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm sysp/maps
+</A></li>
+        <LI>Next message: <A HREF="000254.html">[Sax-devel] r1863 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#253">[ date ]</a>
+              <a href="thread.html#253">[ thread ]</a>
+              <a href="subject.html#253">[ subject ]</a>
+              <a href="author.html#253">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-05-29 16:29:25 +0200 (Fri, 29 May 2009)
+New Revision: 1862
+
+Added:
+   sax-head/profile/automatic/monitor/MSI-N011
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Identity.map
+Log:
+- use special profile for MSI-N011 (bnc #499110) 
+
+
+Added: sax-head/profile/automatic/monitor/MSI-N011
+===================================================================
+--- sax-head/profile/automatic/monitor/MSI-N011	2009-05-29 14:25:36 UTC (rev 1861)
++++ sax-head/profile/automatic/monitor/MSI-N011	2009-05-29 14:29:25 UTC (rev 1862)
+@@ -0,0 +1,6 @@
++# /.../
++# MSI-N011 monitor profile
++# ----
++
++Monitor-&gt;[X]-&gt;HorizSync = 30-48
++Monitor-&gt;[X]-&gt;VertRefresh = 59-61
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-05-29 14:25:36 UTC (rev 1861)
++++ sax-head/rpm/sax2.changes	2009-05-29 14:29:25 UTC (rev 1862)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Fri May 29 16:28:03 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- use special profile for MSI-N011 (bnc #499110) 
++
++-------------------------------------------------------------------
+ Thu May 28 13:04:32 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - sysfsutils no longer required in BuildRequires
+
+Modified: sax-head/sysp/maps/Identity.map
+===================================================================
+--- sax-head/sysp/maps/Identity.map	2009-05-29 14:25:36 UTC (rev 1861)
++++ sax-head/sysp/maps/Identity.map	2009-05-29 14:29:25 UTC (rev 1862)
+@@ -610,6 +610,8 @@
+ NAME=Intel&amp;DEVICE=945 GME&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945 GME ACER-EZ1600&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=ACER-EZ1600&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1025&amp;SUBDEVICE=0x025A
+ NAME=Intel&amp;DEVICE=945 GME ACER-EZ1600&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=ACER-EZ1600&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1025&amp;SUBDEVICE=0x025A
++NAME=Intel&amp;DEVICE=945 GME MSI-N011&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=MSI-N011&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1462&amp;SUBDEVICE=0x0110
++NAME=Intel&amp;DEVICE=945 GME MSI-N011&amp;VID=0x8086&amp;DID=0x27AE&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=MSI-N011&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1462&amp;SUBDEVICE=0x0110
+ NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=965 GME/GLE&amp;VID=0x8086&amp;DID=0x2A12&amp;SERVER=intel&amp;EXT=dri&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=G33&amp;VID=0x8086&amp;DID=0x29C2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000252.html">[Sax-devel] r1861 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm sysp/maps
+</A></li>
+	<LI>Next message: <A HREF="000254.html">[Sax-devel] r1863 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#253">[ date ]</a>
+              <a href="thread.html#253">[ thread ]</a>
+              <a href="subject.html#253">[ subject ]</a>
+              <a href="author.html#253">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

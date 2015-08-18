@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1814 - in sax-head: api api/data rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1814%20-%20in%20sax-head%3A%20api%20api/data%20rpm&In-Reply-To=%3C200901131055.n0DAtV7i021740%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000201.html">
+   <LINK REL="Next"  HREF="000203.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1814 - in sax-head: api api/data rpm</H1>
+    <B>marcus_schaefer at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1814%20-%20in%20sax-head%3A%20api%20api/data%20rpm&In-Reply-To=%3C200901131055.n0DAtV7i021740%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1814 - in sax-head: api api/data rpm">marcus_schaefer at mail.berlios.de
+       </A><BR>
+    <I>Tue Jan 13 11:55:31 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000201.html">[Sax-devel] r1813 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+        <LI>Next message: <A HREF="000203.html">[Sax-devel] r1815 - in sax-head/locale: . af/LC_MESSAGES	ar/LC_MESSAGES bg/LC_MESSAGES bn/LC_MESSAGES bs/LC_MESSAGES	ca/LC_MESSAGES cs/LC_MESSAGES cy/LC_MESSAGES da/LC_MESSAGES	de/LC_MESSAGES el/LC_MESSAGES en_GB/LC_MESSAGES	en_US/LC_MESSAGES es/LC_MESSAGES et/LC_MESSAGES	fi/LC_MESSAGES fr/LC_MESSAGES gl/LC_MESSAGES gu/LC_MESSAGES	he/LC_MESSAGES hi/LC_MESSAGES hr/LC_MESSAGES hu/LC_MESSAGES	id/LC_MESSAGES it/LC_MESSAGES ja/LC_MESSAGES ka/LC_MESSAGES	km/LC_MESSAGES ko/LC_MESSAGES lo/LC_MESSAGES lt/LC_MESSAGES	mk/LC_MESSAGES mr/LC_MESSAGES nb/LC_MESSAGES nl/LC_MESSAGES	pa/LC_MESSAGES pl/LC_MESSAGES pt/LC_MESSAGES	pt_BR/LC_MESSAGES ro/LC_MESSAGES ru/LC_MESSAGES sax-template	si/LC_MESSAGES sk/LC_MESSAGES sl/LC_MESSAGES sr/LC_MESSAGES	sv/LC_MESSAGES ta/LC_MESSAGES th/LC_MESSAGES tr/LC_MESSAGES	uk/LC_MESSAGES vi/LC_MESSAGES wa/LC_MESSAGES xh/LC_MESSAGES	zh_CN/LC_MESSAGES zh_TW/LC_MESSAGES zu/LC_MESSAGES
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#202">[ date ]</a>
+              <a href="thread.html#202">[ thread ]</a>
+              <a href="subject.html#202">[ subject ]</a>
+              <a href="author.html#202">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: marcus_schaefer
+Date: 2009-01-13 11:55:25 +0100 (Tue, 13 Jan 2009)
+New Revision: 1814
+
+Modified:
+   sax-head/api/data/xapi.gtx
+   sax-head/api/frame.cpp
+   sax-head/api/message.cpp
+   sax-head/api/message.h
+   sax-head/rpm/sax2.changes
+Log:
+
+- don't display a test button when a special configuration
+  dialog was requested (bnc #464487)
+
+
+
+Modified: sax-head/api/data/xapi.gtx
+===================================================================
+--- sax-head/api/data/xapi.gtx	2009-01-12 17:21:02 UTC (rev 1813)
++++ sax-head/api/data/xapi.gtx	2009-01-13 10:55:25 UTC (rev 1814)
+@@ -1006,6 +1006,9 @@
+ # Finish configuration message box
+ FinalSaX=&lt;b&gt;Final Steps&lt;/b&gt;&lt;hr&gt;The last step is saving your new configuration. It is recommended to test the new configuration before saving it. If the test server shows a corrupted desktop, press &lt;b&gt;[ Ctrl+Alt+Backspace ]&lt;/b&gt; and &lt;b&gt;[ Ctrl+Alt+Backspace ]&lt;/b&gt; shortly after a loud warning (beep) to kill the server.
+ 
++# Finish configuration message box (without test)
++FinalSaXNoTest=&lt;b&gt;Saving the configuration&lt;/b&gt;&lt;hr&gt;Click on Save to store the configuration. Your changes will become effective on next X-Server restart.
++
+ # Tab title: VNC Server configuration
+ VNC=X Server Remote Control
+ 
+
+Modified: sax-head/api/frame.cpp
+===================================================================
+--- sax-head/api/frame.cpp	2009-01-12 17:21:02 UTC (rev 1813)
++++ sax-head/api/frame.cpp	2009-01-13 10:55:25 UTC (rev 1814)
+@@ -669,9 +669,14 @@
+ //-------------------------------------
+ void SCCFrame::slotFinish ( void ) {
+ 	SCCWrapPointer&lt; Q3Dict&lt;QString&gt; &gt; mText (getTextPtr());
++	QString messageText = &quot;FinalSaX&quot;;
++	if (mRequestedDialog) {
++		messageText = &quot;FinalSaXNoTest&quot;;
++	}
+ 	SCCMessage* mMessageBox = new SCCMessage (
+ 		this, getTextPtr(), SaXMessage::FINISH,
+-		&quot;FinalSaX&quot;,&quot;MessageCaption&quot;
++		messageText,&quot;MessageCaption&quot;,SaXMessage::Information,
++		mRequestedDialog
+ 	);
+ 	QString result = mMessageBox -&gt; showMessage();
+ 	if (result == mText[&quot;FinalSave&quot;]) {
+
+Modified: sax-head/api/message.cpp
+===================================================================
+--- sax-head/api/message.cpp	2009-01-12 17:21:02 UTC (rev 1813)
++++ sax-head/api/message.cpp	2009-01-13 10:55:25 UTC (rev 1814)
+@@ -178,7 +178,7 @@
+ SCCMessage::SCCMessage (
+ 	QWidget* parent, Q3Dict&lt;QString&gt;* textPtr, SaXMessage::Type type,
+ 	const QString&amp; message, const QString&amp; caption, SaXMessage::Icon icon,
+-	bool modal, const char* name
++	QString* requestedDialog, bool modal, const char* name
+ ) : QDialog (
+ 	parent,name,modal,
+ 	Qt::WStyle_Customize | Qt::WStyle_DialogBorder | Qt::WStyle_Title | Qt::WStyle_SysMenu
+@@ -242,7 +242,7 @@
+ 			createIntroBox();
+ 		break;
+ 		case SaXMessage::FINISH:
+-			createFinishBox();
++			createFinishBox (requestedDialog);
+ 		break;
+ 		default:
+ 			log (L_ERROR,&quot;No such message box&quot;);
+@@ -489,7 +489,7 @@
+ //=====================================
+ // createFinishBox
+ //-------------------------------------
+-void SCCMessage::createFinishBox ( void ) {
++void SCCMessage::createFinishBox ( QString* requestedDialog ) {
+ 	//=====================================
+ 	// create layout add Icon and Text
+ 	//-------------------------------------
+@@ -502,7 +502,7 @@
+ 	//-------------------------------------
+ 	SCCWrapPointer&lt; Q3Dict&lt;QString&gt; &gt; mText (mTextPtr);
+ 	mDoneLayout -&gt; addStretch ( 5 );
+-	SCCButton* mButtonTest = new SCCButton   (mText[&quot;FinalTest&quot;],mMainFrame);
++	SCCButton* mButtonTest = new SCCButton (mText[&quot;FinalTest&quot;],mMainFrame);
+ 	mDoneLayout -&gt; addWidget  ( mButtonTest );
+ 	mDoneLayout -&gt; addSpacing ( 10 );
+ 	SCCButton* mButtonSave = new SCCButton   (mText[&quot;FinalSave&quot;],mMainFrame);
+@@ -527,6 +527,13 @@
+ 		mButtonCancel , SIGNAL ( clickedButton (QPushButton*) ),
+ 		this          , SLOT   ( slotButton    (QPushButton*) )
+ 	);
++
++	//=====================================
++	// hide test button in dialog mode 
++	//-------------------------------------
++	if (requestedDialog) {
++		mButtonTest -&gt; hide();
++	}
+ 	adjustSize();
+ }
+ 
+
+Modified: sax-head/api/message.h
+===================================================================
+--- sax-head/api/message.h	2009-01-12 17:21:02 UTC (rev 1813)
++++ sax-head/api/message.h	2009-01-13 10:55:25 UTC (rev 1814)
+@@ -136,7 +136,7 @@
+ 	void createOptionIntBox ( void );
+ 	void createOptionStringBox ( void );
+ 	void createIntroBox  ( void );
+-	void createFinishBox ( void );
++	void createFinishBox ( QString* );
+ 
+ 	private:
+ 	void setIcon ( SaXMessage::Icon );
+@@ -168,7 +168,7 @@
+ 	SCCMessage (
+ 		QWidget*, Q3Dict&lt;QString&gt;*, SaXMessage::Type, const QString&amp;,
+ 		const QString&amp; = 0, SaXMessage::Icon = SaXMessage::Information,
+-		bool =true, const char* =0
++		QString* = 0, bool =true, const char* =0
+ 	);
+ };
+ } // end namespace
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-01-12 17:21:02 UTC (rev 1813)
++++ sax-head/rpm/sax2.changes	2009-01-13 10:55:25 UTC (rev 1814)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Tue Jan 13 11:54:25 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
++
++- don't display a test button when a special configuration
++  dialog was requested (bnc #464487)
++
++-------------------------------------------------------------------
+ Mon Jan 12 18:16:29 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - Identity.map: 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000201.html">[Sax-devel] r1813 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+	<LI>Next message: <A HREF="000203.html">[Sax-devel] r1815 - in sax-head/locale: . af/LC_MESSAGES	ar/LC_MESSAGES bg/LC_MESSAGES bn/LC_MESSAGES bs/LC_MESSAGES	ca/LC_MESSAGES cs/LC_MESSAGES cy/LC_MESSAGES da/LC_MESSAGES	de/LC_MESSAGES el/LC_MESSAGES en_GB/LC_MESSAGES	en_US/LC_MESSAGES es/LC_MESSAGES et/LC_MESSAGES	fi/LC_MESSAGES fr/LC_MESSAGES gl/LC_MESSAGES gu/LC_MESSAGES	he/LC_MESSAGES hi/LC_MESSAGES hr/LC_MESSAGES hu/LC_MESSAGES	id/LC_MESSAGES it/LC_MESSAGES ja/LC_MESSAGES ka/LC_MESSAGES	km/LC_MESSAGES ko/LC_MESSAGES lo/LC_MESSAGES lt/LC_MESSAGES	mk/LC_MESSAGES mr/LC_MESSAGES nb/LC_MESSAGES nl/LC_MESSAGES	pa/LC_MESSAGES pl/LC_MESSAGES pt/LC_MESSAGES	pt_BR/LC_MESSAGES ro/LC_MESSAGES ru/LC_MESSAGES sax-template	si/LC_MESSAGES sk/LC_MESSAGES sl/LC_MESSAGES sr/LC_MESSAGES	sv/LC_MESSAGES ta/LC_MESSAGES th/LC_MESSAGES tr/LC_MESSAGES	uk/LC_MESSAGES vi/LC_MESSAGES wa/LC_MESSAGES xh/LC_MESSAGES	zh_CN/LC_MESSAGES zh_TW/LC_MESSAGES zu/LC_MESSAGES
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#202">[ date ]</a>
+              <a href="thread.html#202">[ thread ]</a>
+              <a href="subject.html#202">[ subject ]</a>
+              <a href="author.html#202">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

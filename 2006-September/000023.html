@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Sax2 cannot compile - ALL SOLVED
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile%20-%20ALL%20SOLVED&In-Reply-To=%3C20060911172408.GA19169%40D7.ddts.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000022.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Sax2 cannot compile - ALL SOLVED</H1>
+    <B>Marcus Sch&#228;fer</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile%20-%20ALL%20SOLVED&In-Reply-To=%3C20060911172408.GA19169%40D7.ddts.net%3E"
+       TITLE="[Sax-devel] Sax2 cannot compile - ALL SOLVED">ms at suse.de
+       </A><BR>
+    <I>Mon Sep 11 19:24:08 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000022.html">[Sax-devel] Sax2 cannot compile - ALL SOLVED
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#23">[ date ]</a>
+              <a href="thread.html#23">[ thread ]</a>
+              <a href="subject.html#23">[ subject ]</a>
+              <a href="author.html#23">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> &gt; you can check if the X-Server still runs with the current config or not.
+</I>&gt;<i> &gt; That is easy to implement I think. Problematic is if there are changes
+</I>&gt;<i> &gt; which requires a config change but the X-Server still runs with that
+</I>&gt;<i> &gt; config. For example somebody changes its mouse from one without a wheel
+</I>&gt;<i> &gt; to one with a wheel. The server runs but the wheel may not work if
+</I>&gt;<i> &gt; the ZAxisMapping is missing. There are more than such cases and the worst
+</I>&gt;<i> &gt; case is if the X-Server runs but the screen stays black. There is no
+</I>&gt;<i> &gt; possibility to check that. I spent some time to think of a clean concept
+</I>&gt;<i> &gt; how to recognize environment changes and I must admit I wasn't able
+</I>&gt;<i> &gt; to find a good solution.
+</I>&gt;<i> I did ;)
+</I>&gt;<i> Well partially - my install setup uses a &quot;click here&quot; with a two-layer 
+</I>&gt;<i> time-out, one is inside the GUI itself, no input after 20 -seconds die and 
+</I>&gt;<i> flag the config as bad.
+</I>&gt;<i> For those cases where X stalls halfway through and the program would never 
+</I>&gt;<i> run, I start a script called xcatch BEFOREHAND in the background. 
+</I>&gt;<i> Xcatch sleeps for 30 seconds, if it finds X in the process table at that 
+</I>&gt;<i> time -we KNOW something is  broken, so kill it off, chvt 1 and mark config as 
+</I>&gt;<i> bad.
+</I>&gt;<i> If we DO get a click from the GUI, then we mark the config as good, and kill 
+</I>&gt;<i> xcatch instead.
+</I>&gt;<i> This works for initial setup.
+</I>&gt;<i> 
+</I>&gt;<i> I have a variant which is NON-interactive for post-install testing, but this 
+</I>&gt;<i> will ONLY catch a config where X fails to start at all :S
+</I>&gt;<i>
+</I>&gt;<i> Seems there is no way to do this check without having SOME sort of user input 
+</I>&gt;<i> validation.
+</I>
+yes I agree completely
+
+&gt;<i> One possibility may be a patch to KDM - which will flag the config as good as 
+</I>&gt;<i> soon as KDM gets any kind of sensible input- but that has it's own 
+</I>&gt;<i> drawbacks  - like having your config marked bad if a power outage reboots 
+</I>&gt;<i> your box while you're at work. 
+</I>
+:<i>-) some weird scenario here always could break the rule 
+</I>
+&gt;<i> I had to do some more patches to the sax2 code to get proper work b.t.w. most 
+</I>&gt;<i> notably two functions that use rpm to check for dependencies - this is a 
+</I>&gt;<i> problem on slack/OL - although both CAN install rpm they usually don't - so 
+</I>&gt;<i> the checks would fail - ditto for debian derivatives.
+</I>&gt;<i> 
+</I>&gt;<i> For now I simply disabled the checks and made them return true in all cases. I 
+</I>yes, I should take care for something like that but it seems
+hard because there are many package manager around. Best solution would
+be to not need any of these checks. 
+
+&gt;<i> As it stands, out of my test boxes, I got amazing results on some, and bad 
+</I>&gt;<i> results on others and one where the sax2  config is COMPLETELY beserk - it 
+</I>&gt;<i> half starts and then locks up all input on a screen with apparently CGA 
+</I>&gt;<i> colors only (it's an i855 card, though the ONLY driver I have had sensible 
+</I>&gt;<i> results with was vesa - fbdev freaks out on this one, some BIOS issue I 
+</I>&gt;<i> think - 855resolution MIGHT help on this - though I don't exactly understand 
+</I>&gt;<i> how to make 855resolution and sax2 play nicely together - haven't had time to 
+</I>&gt;<i> study 855 yet).
+</I>
+sax already makes use of 855resolution. It writes the parmaters to
+/etc/sysconfig/videobios and calls it every time you save the configuration.
+There are some problems around this so I will change some things here.
+
+&gt;<i> I'll send you the code once I sign off on OL4.1B - maybe some of the ideas 
+</I>&gt;<i> will be usefull to sax2.
+</I>
+Would be great thanks
+
+&gt;<i> This is what I love about free software. Coopetition :)
+</I>
+*yeah* open source... open communication ;)
+
+Best Regards
+Marcus
+-- 
+ Public Key available
+ -------------------------------------------------------
+ Marcus Sch&#228;fer (Res. &amp; Dev.)   SUSE LINUX Products GmbH
+ Tel: 07562-905437              Unter&#246;sch 9
+ FAX: 07562-905438              D-88316 Isny / Rohrdorf
+ <A HREF="http://www.suse.de">http://www.suse.de</A>             Germany [ HomeOffice ]
+ -------------------------------------------------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000022.html">[Sax-devel] Sax2 cannot compile - ALL SOLVED
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#23">[ date ]</a>
+              <a href="thread.html#23">[ thread ]</a>
+              <a href="subject.html#23">[ subject ]</a>
+              <a href="author.html#23">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

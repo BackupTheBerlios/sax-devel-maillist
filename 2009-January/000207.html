@@ -1,0 +1,2045 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1803 - in sax-branches/SaX2-81-SuSE-11-1-Devel: api/data locale locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES loca! le/sax-template locale/si/LC_MESSAGES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1803%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%20api/data%20locale%20locale/af/LC_MESSAGES%20locale/ar/LC_MESSAGES%0A%20locale/bg/LC_MESSAGES%20locale/bn/LC_MESSAGES%20locale/bs/LC_MESSAGES%0A%20locale/ca/LC_MESSAGES%20locale/cs/LC_MESSAGES%20locale/cy/LC_MESSAGES%0A%20locale/da/LC_MESSAGES%20locale/de/LC_MESSAGES%20locale/el/LC_MESSAGES%0A%20locale/en_GB/LC_MESSAGES%20locale/en_US/LC_MESSAGES%20locale/es/LC_MESSAGES%0A%20locale/et/LC_MESSAGES%20locale/fi/LC_MESSAGES%20locale/fr/LC_MESSAGES%0A%20locale/gl/LC_MESSAGES%20locale/gu/LC_MESSAGES%20locale/he/LC_MESSAGES%0A%20locale/hi/LC_MESSAGES%20locale/hr/LC_MESSAGES%20locale/hu/LC_MESSAGES%0A%20locale/id/LC_MESSAGES%20locale/it/LC_MESSAGES%20locale/ja/LC_MESSAGES%0A%20locale/ka/LC_MESSAGES%20locale/km/LC_MESSAGES%20locale/ko/LC_MESSAGES%0A%20locale/lo/LC_MESSAGES%20locale/lt/LC_MESSAGES%20locale/mk/LC_MESSAGES%0A%20locale/mr/LC_MESSAGES%20locale/nb/LC_MESSAGES%20locale/nl/LC_MESSAGES%0A%20locale/pa/LC_MESSAGES%20locale/pl/LC_MESSAGES%20locale/pt/LC_MESSAGES%0A%20locale/pt_BR/LC_MESSAGES%20locale/ro/LC_MESSAGES%20locale/ru/LC_MESSAGES%20loca%21%0A%20le/sax-template%20locale/si/LC_MESSAGES%20locale/sk/LC_MESSAGES%0A%20locale/sl/LC_MESSAGES%20locale/sr/LC_MESSAGES%20locale/sv/LC_MESSAGES%0A%20locale/ta/LC_MESSAGES%20locale/th/LC_MESSAGES%20locale/tr/LC_MESSAGES%0A%20locale/uk/LC_MESSAGES%20locale/vi/LC_MESSAGES%20locale/wa/LC_MESSAGES%0A%20locale/xh/LC_MESSAGES%20locale/zh_CN/LC_MESSAGES%20locale/zh_TW/LC_MESSAGES%0A%20locale/zu/LC_MESSAGES%20rpm&In-Reply-To=%3C200901091711.n09HBZIQ024734%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000206.html">
+   <LINK REL="Next"  HREF="000192.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1803 - in sax-branches/SaX2-81-SuSE-11-1-Devel: api/data locale locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES loca! le/sax-template locale/si/LC_MESSAGES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1803%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%20api/data%20locale%20locale/af/LC_MESSAGES%20locale/ar/LC_MESSAGES%0A%20locale/bg/LC_MESSAGES%20locale/bn/LC_MESSAGES%20locale/bs/LC_MESSAGES%0A%20locale/ca/LC_MESSAGES%20locale/cs/LC_MESSAGES%20locale/cy/LC_MESSAGES%0A%20locale/da/LC_MESSAGES%20locale/de/LC_MESSAGES%20locale/el/LC_MESSAGES%0A%20locale/en_GB/LC_MESSAGES%20locale/en_US/LC_MESSAGES%20locale/es/LC_MESSAGES%0A%20locale/et/LC_MESSAGES%20locale/fi/LC_MESSAGES%20locale/fr/LC_MESSAGES%0A%20locale/gl/LC_MESSAGES%20locale/gu/LC_MESSAGES%20locale/he/LC_MESSAGES%0A%20locale/hi/LC_MESSAGES%20locale/hr/LC_MESSAGES%20locale/hu/LC_MESSAGES%0A%20locale/id/LC_MESSAGES%20locale/it/LC_MESSAGES%20locale/ja/LC_MESSAGES%0A%20locale/ka/LC_MESSAGES%20locale/km/LC_MESSAGES%20locale/ko/LC_MESSAGES%0A%20locale/lo/LC_MESSAGES%20locale/lt/LC_MESSAGES%20locale/mk/LC_MESSAGES%0A%20locale/mr/LC_MESSAGES%20locale/nb/LC_MESSAGES%20locale/nl/LC_MESSAGES%0A%20locale/pa/LC_MESSAGES%20locale/pl/LC_MESSAGES%20locale/pt/LC_MESSAGES%0A%20locale/pt_BR/LC_MESSAGES%20locale/ro/LC_MESSAGES%20locale/ru/LC_MESSAGES%20loca%21%0A%20le/sax-template%20locale/si/LC_MESSAGES%20locale/sk/LC_MESSAGES%0A%20locale/sl/LC_MESSAGES%20locale/sr/LC_MESSAGES%20locale/sv/LC_MESSAGES%0A%20locale/ta/LC_MESSAGES%20locale/th/LC_MESSAGES%20locale/tr/LC_MESSAGES%0A%20locale/uk/LC_MESSAGES%20locale/vi/LC_MESSAGES%20locale/wa/LC_MESSAGES%0A%20locale/xh/LC_MESSAGES%20locale/zh_CN/LC_MESSAGES%20locale/zh_TW/LC_MESSAGES%0A%20locale/zu/LC_MESSAGES%20rpm&In-Reply-To=%3C200901091711.n09HBZIQ024734%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1803 - in sax-branches/SaX2-81-SuSE-11-1-Devel: api/data locale locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES loca! le/sax-template locale/si/LC_MESSAGES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri Jan  9 18:11:35 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000206.html">[Sax-devel] r1802 - in sax-branches/SaX2-81-SuSE-11-1-Devel: api/data locale locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES loca! le/sax-template locale/si/LC_MESSAGES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES rpm
+</A></li>
+        <LI>Next message: <A HREF="000192.html">[Sax-devel] r1804 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#207">[ date ]</a>
+              <a href="thread.html#207">[ thread ]</a>
+              <a href="subject.html#207">[ subject ]</a>
+              <a href="author.html#207">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-01-09 18:11:20 +0100 (Fri, 09 Jan 2009)
+New Revision: 1803
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/api/data/xapi.gtx
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/af/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ar/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/bg/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/bn/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/bs/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ca/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/cs/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/cy/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/da/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/de/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/el/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/en_GB/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/en_US/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/es/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/et/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/fi/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/fr/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/gl/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/gu/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/he/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/hi/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/hr/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/hu/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/id/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/it/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ja/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ka/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/km/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ko/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/lo/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/lt/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/mk/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/mr/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/nb/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/nl/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pa/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pl/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pt/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pt_BR/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ro/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ru/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sax-template/sax.pot
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sax.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/si/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sk/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sl/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sr/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sv/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ta/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/th/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/tr/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/uk/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/vi/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/wa/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/xh/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/zh_CN/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/zh_TW/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/locale/zu/LC_MESSAGES/sax.po
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+Log:
+- xapi.gtx: added missig XKB keys (bnc #450851)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/api/data/xapi.gtx
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/api/data/xapi.gtx	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/api/data/xapi.gtx	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1390,3 +1390,14 @@
+ # XKBFile extension text
+ Esperanto=Esperanto
+ 
++# XKBFile extension text
++CapsLock key switches layout while pressed, Alt+CapsLock does the original capslock action.=CapsLock key switches layout while pressed, Alt+CapsLock does the original capslock action.
++
++# XKBFile extension text
++CapsLock switch to first layout, Shift+CapsLock switch to last layout.=CapsLock switch to first layout, Shift+CapsLock switch to last layout.
++
++# XKBFile extension text
++Less-than/Greater-than is Compose.=Less-than/Greater-than is Compose.
++
++# XKBFile extension text
++Space key outputs non-breakable space character at fourth level, thin non-breakable space character at sixth level (via Ctrl+Shift=Space key outputs non-breakable space character at fourth level, thin non-breakable space character at sixth level (via Ctrl+Shift
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/af/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/af/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/af/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1965,6 +1965,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turkye&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ar/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ar/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ar/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1944,6 +1944,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#1578;&#1585;&#1603;&#1610;&#1575;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/bg/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/bg/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/bg/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1961,6 +1961,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#1058;&#1091;&#1088;&#1094;&#1080;&#1103;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&#1048;&#1085;&#1090;&#1077;&#1088;&#1074;&#1072;&#1083;&#1098;&#1090; &#1080;&#1076;&#1074;&#1077;&#1078;&#1076;&#1072; &#1085;&#1077; &#1088;&#1072;&#1079;&#1076;&#1077;&#1083;&#1080;&#1084; &#1089;&#1080;&#1084;&#1074;&#1086;&#1083; &#1079;&#1072; &#1080;&#1085;&#1090;&#1077;&#1088;&#1074;&#1072;&#1083; &#1087;&#1088;&#1080; &#1095;&#1077;&#1090;&#1074;&#1098;&#1088;&#1090;&#1086; &#1085;&#1080;&#1074;&#1086;.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/bn/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/bn/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/bn/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1894,6 +1894,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#2468;&#2497;&#2480;&#2509;&#2453;&#2496;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/bs/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/bs/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/bs/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1908,6 +1908,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turska&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ca/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ca/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ca/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -2031,6 +2031,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turquia&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/cs/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/cs/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/cs/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1932,6 +1932,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turecko&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;Mezern&#237;k d&#283;l&#225; na &#269;tvrt&#233; &#250;rovni ned&#283;liteln&#233; mezery.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/cy/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/cy/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/cy/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1876,6 +1876,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Twrci&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/da/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/da/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/da/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1960,6 +1960,28 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Tyrkiet&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++&quot;Mellemrumstasten producerer mellemrum uden linjeskift p&#229; fjerde niveau.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/de/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/de/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/de/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1963,6 +1963,29 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;T&#252;rkei&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++&quot;Space-Taste gibt nicht-zerbrechliches Leerzeichen (nobreakspace) in der &quot;
++&quot;vierten Ebene aus.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/el/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/el/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/el/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -2016,6 +2016,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#932;&#959;&#965;&#961;&#954;&#943;&#945;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&#932;&#959; &#960;&#955;&#942;&#954;&#964;&#961;&#959; Space &#945;&#960;&#959;&#948;&#943;&#948;&#949;&#953; nobreakspace &#963;&#964;&#959; &#964;&#941;&#964;&#945;&#961;&#964;&#959; &#949;&#960;&#943;&#960;&#949;&#948;&#959;.&quot;
++
+ # /tmp/xapi:514#
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/en_GB/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/en_GB/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/en_GB/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1921,6 +1921,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turkey&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;Space key outputs non-breakable space character at fourth level.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/en_US/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/en_US/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/en_US/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1860,6 +1860,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/es/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/es/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/es/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1978,6 +1978,29 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turqu&#237;a&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++&quot;La barra espaciadora crea un car&#225;cter de espacio irrompible en el cuarto &quot;
++&quot;nivel.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/et/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/et/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/et/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1863,6 +1863,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;T&#252;rgi&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;T&#252;hikuklahv sisestab neljandal tasemel siset&#252;hiku m&#228;rgi.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/fi/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/fi/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/fi/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1978,6 +1978,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turkki&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;Nelj&#228;nnell&#228; tasolla v&#228;lily&#246;nti lis&#228;&#228; sitovan v&#228;lin.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/fr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/fr/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/fr/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1942,6 +1942,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turquie&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;La touche espace produit un espace ins&#233;cable au quatri&#232;me niveau&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/gl/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/gl/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/gl/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1956,6 +1956,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turqu&#237;a&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/gu/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/gu/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/gu/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1893,6 +1893,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#2719;&#2736;&#2765;&#2709;&#2752;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/he/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/he/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/he/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1917,6 +1917,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#1496;&#1493;&#1512;&#1511;&#1497;&#1492;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/hi/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/hi/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/hi/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1887,6 +1887,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#2335;&#2352;&#2381;&#2325;&#2368;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/hr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/hr/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/hr/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1884,6 +1884,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turska&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/hu/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/hu/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/hu/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -2039,6 +2039,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;T&#246;r&#246;korsz&#225;g&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;A sz&#243;k&#246;z nem t&#246;rhet&#337; sz&#243;k&#246;z karaktert ad a negyedik szinten.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/id/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/id/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/id/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1943,6 +1943,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turki&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/it/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/it/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/it/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1962,6 +1962,29 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turchia&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++&quot;La barra spaziatrice restituisce un carattere di spaziatura non &quot;
++&quot;interrompibile al quarto livello.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ja/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ja/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ja/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1932,6 +1932,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#12488;&#12523;&#12467;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;4 &#30058;&#30446;&#12398;&#12524;&#12505;&#12523;&#12398;&#38555;&#12289;&#12473;&#12506;&#12540;&#12473;&#12461;&#12540;&#12391;&#25913;&#34892;&#19981;&#35377;&#21487;&#12398;&#12473;&#12506;&#12540;&#12473;&#12434;&#20837;&#21147;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ka/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ka/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ka/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1852,6 +1852,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/km/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/km/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/km/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1914,6 +1914,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#6033;&#6077;&#6042;&#6018;&#6072;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&#6018;&#6098;&#6042;&#6070;&#6036;&#6091;&#8203;&#6021;&#6075;&#6021;&#8203;&#6021;&#6035;&#6098;&#6043;&#6084;&#6087;&#6040;&#6071;&#6035;&#6019;&#6078;&#6025;(Space) &#6036;&#6020;&#6098;&#6048;&#6070;&#6025;&#8203;&#6031;&#6077;&#6050;&#6016;&#6098;&#6047;&#6042;&#8203;&#6021;&#6035;&#6098;&#6043;&#6084;&#6087;&#8203;&#8203;&#6040;&#6071;&#6035;&#8203;&#6019;&#6078;&#6025;&#8203;&#6035;&#6085;&#8203;&#6016;&#6040;&#6098;&#6042;&#6071;&#8203;&#6031;&#6033;&#6072; &#6116;&#160;&#6100;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ko/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ko/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ko/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1942,6 +1942,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#53552;&#53412;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&#45348;&#48264;&#51704; &#47112;&#48296;&#46412;, &#49828;&#54168;&#51060;&#49828; &#53412;&#47196; &#44060;&#54665; &#48520;&#54728;&#51032; &#49828;&#54168;&#51060;&#49828;&#47484; &#51077;&#47141;&#54633;&#45768;&#45796;.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/lo/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/lo/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/lo/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1848,6 +1848,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/lt/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/lt/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/lt/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1964,6 +1964,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turkija&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;Tarpo klavi&#353;as i&#353;veda neperkeliam&#261; tarp&#261; ketvirtame lygyje.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/mk/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/mk/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/mk/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1940,6 +1940,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#1058;&#1091;&#1088;&#1094;&#1080;&#1112;&#1072;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/mr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/mr/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/mr/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1892,6 +1892,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#2335;&#2352;&#2381;&#2325;&#2368;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/nb/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/nb/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/nb/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1952,6 +1952,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Tyrkia&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;Mellomromstasten skriver hardt mellomrom p&#229; fjerdeniv&#229;.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/nl/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/nl/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/nl/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1937,6 +1937,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turkije&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;Spatietoets geeft vast spatieteken op vierde niveau.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pa/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pa/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pa/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1890,6 +1890,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#2596;&#2625;&#2608;&#2581;&#2624;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pl/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pl/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pl/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1948,6 +1948,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turcja&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;Klawisz spacja wstawia znak \&quot;twardej\&quot; spacji w czwartym poziomie&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pt/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pt/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pt/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1950,6 +1950,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turquia&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;Tecla espa&#231;o retorna catect&#233;r non-breakspace no quarto n&#237;vel.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pt_BR/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pt_BR/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/pt_BR/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1934,6 +1934,29 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turquia&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++&quot;Tecla de espa&#231;o retorna caractere de espa&#231;o sem quebra de linha no quarto &quot;
++&quot;n&#237;vel.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ro/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ro/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ro/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1942,6 +1942,28 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turcia&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++&quot;Tasta spa&#539;iu furnizeaz&#259; caracterul spa&#539;iu indivizibil pe al patrulea nivel.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ru/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ru/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ru/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1971,6 +1971,28 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#1058;&#1091;&#1088;&#1094;&#1080;&#1103;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++&quot;&#1050;&#1083;&#1072;&#1074;&#1080;&#1096;&#1072; &#1087;&#1088;&#1086;&#1073;&#1077;&#1083;&#1072; &#1074;&#1099;&#1074;&#1086;&#1076;&#1080;&#1090; &#1089;&#1080;&#1084;&#1074;&#1086;&#1083; &#1085;&#1077;&#1087;&#1088;&#1077;&#1088;&#1099;&#1074;&#1085;&#1086;&#1075;&#1086; &#1087;&#1088;&#1086;&#1073;&#1077;&#1083;&#1072; &#1085;&#1072; &#1095;&#1077;&#1090;&#1074;&#1105;&#1088;&#1090;&#1086;&#1084; &#1091;&#1088;&#1086;&#1074;&#1085;&#1077;.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sax-template/sax.pot
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sax-template/sax.pot	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sax-template/sax.pot	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1850,6 +1850,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sax.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sax.changes	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sax.changes	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1,4 +1,9 @@
+ ---------------------------------------------------------
++Fri Dec 19 14:15:29 CET 2008
++
++- added missing XKB keys (bnc #450851)
++
++---------------------------------------------------------
+ Fri Dec 19 13:18:44 CET 2008
+ 
+ - quote double quotes (bnc #447492)
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/si/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/si/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/si/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1854,6 +1854,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#3501;&#3540;&#3515;&#3530;&#3482;&#3538;&#3514;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sk/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sk/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sk/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1984,6 +1984,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Tureck&#233;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;Medzern&#237;k generuje nedelite&#318;n&#250; medzeru vo &#353;tvrtej &#250;rovni.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sl/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sl/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sl/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -2045,6 +2045,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Tur&#269;ija&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sr/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sr/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1902,6 +1902,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turska&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sv/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sv/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/sv/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1959,6 +1959,29 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turkiet&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++&quot;Mellanslagstangenten ger ett icke-brytbart mellanslagstecken p&#229; den fj&#228;rde &quot;
++&quot;niv&#229;n.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ta/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ta/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/ta/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1912,6 +1912,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#208;&#213;&#236;&#184;&#162;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/th/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/th/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/th/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1894,6 +1894,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#3605;&#3640;&#3619;&#3585;&#3637;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/tr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/tr/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/tr/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1950,6 +1950,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;T&#252;rkiye&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/uk/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/uk/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/uk/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1958,6 +1958,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#1058;&#1091;&#1088;&#1077;&#1095;&#1095;&#1080;&#1085;&#1072;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&#1050;&#1083;&#1072;&#1074;&#1110;&#1096;&#1072; &#1087;&#1088;&#1086;&#1073;&#1110;&#1083;&#1091; &#1074;&#1080;&#1076;&#1072;&#1108; &#1089;&#1080;&#1084;&#1074;&#1086;&#1083; &#1085;&#1077;&#1088;&#1086;&#1079;&#1088;&#1080;&#1074;&#1085;&#1086;&#1075;&#1086; &#1087;&#1088;&#1086;&#1073;&#1110;&#1083;&#1091; &#1074; &#1095;&#1077;&#1090;&#1074;&#1077;&#1088;&#1090;&#1086;&#1084;&#1091; &#1088;&#1110;&#1074;&#1085;&#1110;.&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/vi/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/vi/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/vi/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1851,6 +1851,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/wa/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/wa/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/wa/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1920,6 +1920,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turkeye&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/xh/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/xh/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/xh/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1999,6 +1999,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;i-Turkey&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/zh_CN/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/zh_CN/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/zh_CN/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1884,6 +1884,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#22303;&#32819;&#20854;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&#22312;&#31532;4&#32423;&#65292;&#31354;&#26684;&#38190;&#36755;&#20986;&#19981;&#38388;&#26029;&#30340;&#31354;&#26684;&#23383;&#31526;&#12290;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/zh_TW/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/zh_TW/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/zh_TW/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1887,6 +1887,27 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;&#22303;&#32819;&#20854;&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++#, fuzzy
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&#31354;&#30333;&#37749;&#36664;&#20986;&#19981;&#26039;&#34892;&#30340;&#31354;&#30333;&#23383;&#20803;&#22312;&#31532;&#22235;&#32026;&#12290;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/locale/zu/LC_MESSAGES/sax.po
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/locale/zu/LC_MESSAGES/sax.po	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/locale/zu/LC_MESSAGES/sax.po	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1957,6 +1957,26 @@
+ msgid &quot;Turkey&quot;
+ msgstr &quot;Turkey&quot;
+ 
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;CapsLock key switches layout while pressed, Alt+CapsLock does the original &quot;
++&quot;capslock action.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;CapsLock switch to first layout, Shift+CapsLock switch to last layout.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;Less-than/Greater-than is Compose.&quot;
++msgstr &quot;&quot;
++
++#. XKBFile extension text
++msgid &quot;&quot;
++&quot;Space key outputs non-breakable space character at fourth level, thin non-&quot;
++&quot;breakable space character at sixth level (via Ctrl+Shift&quot;
++msgstr &quot;&quot;
++
+ #. /.../
+ #. Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+ #. This file contains the gettext keys used within a gettext call in the
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-01-09 17:08:58 UTC (rev 1802)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-01-09 17:11:20 UTC (rev 1803)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Fri Dec 19 14:18:30 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- xapi.gtx: added missig XKB keys (bnc #450851) 
++
++-------------------------------------------------------------------
+ Fri Dec 19 13:26:27 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - xapi.gtx: double quotes needs to be quoted, otherwise string in
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000206.html">[Sax-devel] r1802 - in sax-branches/SaX2-81-SuSE-11-1-Devel: api/data locale locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES loca! le/sax-template locale/si/LC_MESSAGES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES rpm
+</A></li>
+	<LI>Next message: <A HREF="000192.html">[Sax-devel] r1804 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#207">[ date ]</a>
+              <a href="thread.html#207">[ thread ]</a>
+              <a href="subject.html#207">[ subject ]</a>
+              <a href="author.html#207">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

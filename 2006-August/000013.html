@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Sax2 cannot compile
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile&In-Reply-To=%3C20060831125709.GA11885%40suse.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000012.html">
+   <LINK REL="Next"  HREF="000014.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Sax2 cannot compile</H1>
+    <B>Marcus Sch&#228;fer</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile&In-Reply-To=%3C20060831125709.GA11885%40suse.de%3E"
+       TITLE="[Sax-devel] Sax2 cannot compile">ms at suse.de
+       </A><BR>
+    <I>Thu Aug 31 14:57:09 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000012.html">[Sax-devel] Sax2 cannot compile
+</A></li>
+        <LI>Next message: <A HREF="000014.html">[Sax-devel] Sax2 cannot compile - SOLVED - new problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> Hold on, I checked again - this is dying differently. In wlan.c actually - 
+</I>&gt;<i> well I do have wpa and wlan support on my system, so I am not sure WHY that 
+</I>&gt;<i> dies, but it does bring up the interesting question of why an X tool needs to 
+</I>&gt;<i> handle wifi cards ? Can you suggest a work-around ?
+</I>
+The problem is that sax is using a hardware library named hwinfo.
+This library is able to detect all kind of hardware which includes
+wlan cards as well. The source for this library is open source but
+the Author didn't had the time to establish an open connection for
+the source. According to this reason there is a copy of the source
+maintained in the sax2 code as long as the hwinfo source code
+is not public accessable.
+
+
+&gt;<i> wlan.c: In function `wpa_driver_wext_set_wpa':
+</I>&gt;<i> wlan.c:1065: error: `SIOCSIWAUTH' undeclared (first use in this function)
+</I>
+These defines are part of:
+
+	/usr/include/linux/wireless.h
+
+I assume your glibc-devel library headers are too old to be able
+to build the wpa support. sax2 doesn't make use of this code so
+a very nasty workaround could be to define the missing symbols
+
+Regards
+Marcus
+-- 
+ Public Key available
+ -------------------------------------------------------
+ Marcus Sch&#228;fer (Res. &amp; Dev.)   SUSE LINUX Products GmbH
+ Tel: 0911-740 53 0             Maxfeldstrasse 5
+ FAX: 0911-740 53 479           D-90409 N&#252;rnberg
+ <A HREF="http://www.suse.de">http://www.suse.de</A>             Germany
+ -------------------------------------------------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000012.html">[Sax-devel] Sax2 cannot compile
+</A></li>
+	<LI>Next message: <A HREF="000014.html">[Sax-devel] Sax2 cannot compile - SOLVED - new problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1893 - in sax-head: rpm sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1893%20-%20in%20sax-head%3A%20rpm%20sysp/maps&In-Reply-To=%3C200910192035.n9JKZ5X0013952%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000281.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1893 - in sax-head: rpm sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1893%20-%20in%20sax-head%3A%20rpm%20sysp/maps&In-Reply-To=%3C200910192035.n9JKZ5X0013952%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1893 - in sax-head: rpm sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Mon Oct 19 22:35:05 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000281.html">[Sax-devel] r1892 - in sax-head: rpm sysp/lib/hw
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#282">[ date ]</a>
+              <a href="thread.html#282">[ thread ]</a>
+              <a href="subject.html#282">[ subject ]</a>
+              <a href="author.html#282">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-10-19 22:35:02 +0200 (Mon, 19 Oct 2009)
+New Revision: 1893
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Keyboard.map
+Log:
+- back to &quot;us,ru&quot; keyboard combination (bnc #540494)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-10-01 15:26:18 UTC (rev 1892)
++++ sax-head/rpm/sax2.changes	2009-10-19 20:35:02 UTC (rev 1893)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Mon Oct 19 22:31:51 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- back to &quot;us,ru&quot; keyboard combination (bnc #540494)
++
++-------------------------------------------------------------------
+ Thu Oct  1 16:28:37 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - fixed memory leak (bnc #542345)
+
+Modified: sax-head/sysp/maps/Keyboard.map
+===================================================================
+--- sax-head/sysp/maps/Keyboard.map	2009-10-01 15:26:18 UTC (rev 1892)
++++ sax-head/sysp/maps/Keyboard.map	2009-10-19 20:35:02 UTC (rev 1893)
+@@ -94,13 +94,13 @@
+ pt2             : microsoftpro : pt           : x            : xfree86 : x : x : x : x : x
+ pt-latin9       : microsoftpro : pt           : x            : xfree86 : x : x : x : x : x
+ pt-latin1       : microsoftpro : pt           : x            : xfree86 : x : x : x : x : x
+-ru-cp1251       : microsoftpro : ru,us        : winkeys,     : xfree86 : x : x : x : x : grp:ctrl_shift_toggle,grp_led:scroll
+-ru              : microsoftpro : ru,us        : winkeys,     : xfree86 : x : x : x : x : grp:ctrl_shift_toggle,grp_led:scroll
+-ru1             : microsoftpro : ru,us        : winkeys,     : xfree86 : x : x : x : x : grp:ctrl_shift_toggle,grp_led:scroll
+-ru2             : microsoftpro : ru,us        : winkeys,     : xfree86 : x : x : x : x : grp:ctrl_shift_toggle,grp_led:scroll
+-ru_win          : microsoftpro : ru,us        : winkeys,     : xfree86 : x : x : x : x : grp:ctrl_shift_toggle,grp_led:scroll
+-russian         : microsoftpro : ru,us        : winkeys,     : xfree86 : x : x : x : x : grp:ctrl_shift_toggle,grp_led:scroll
+-ruwin_alt-UTF-8 : microsoftpro : ru,us        : winkeys,     : xfree86 : x : x : x : x : grp:ctrl_shift_toggle,grp_led:scroll
++ru-cp1251       : microsoftpro : us,ru        : ,winkeys     : xfree86 : x : x : x : x : grp:ctrl_shift_toggle,grp_led:scroll
++ru              : microsoftpro : us,ru        : ,winkeys     : xfree86 : x : x : x : x : grp:ctrl_shift_toggle,grp_led:scroll
++ru1             : microsoftpro : us,ru        : ,winkeys     : xfree86 : x : x : x : x : grp:ctrl_shift_toggle,grp_led:scroll
++ru2             : microsoftpro : us,ru        : ,winkeys     : xfree86 : x : x : x : x : grp:ctrl_shift_toggle,grp_led:scroll
++ru_win          : microsoftpro : us,ru        : ,winkeys     : xfree86 : x : x : x : x : grp:ctrl_shift_toggle,grp_led:scroll
++russian         : microsoftpro : us,ru        : ,winkeys     : xfree86 : x : x : x : x : grp:ctrl_shift_toggle,grp_led:scroll
++ruwin_alt-UTF-8 : microsoftpro : us,ru        : ,winkeys     : xfree86 : x : x : x : x : grp:ctrl_shift_toggle,grp_led:scroll
+ sv-latin1       : microsoftpro : se           : x            : xfree86 : x : x : x : x : x
+ se-latin1       : microsoftpro : se           : x            : xfree86 : x : x : x : x : x
+ sg-l1-lk450     : microsoftpro : ch           : de           : xfree86 : x : x : x : x : x
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000281.html">[Sax-devel] r1892 - in sax-head: rpm sysp/lib/hw
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#282">[ date ]</a>
+              <a href="thread.html#282">[ thread ]</a>
+              <a href="subject.html#282">[ subject ]</a>
+              <a href="author.html#282">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1719 - in sax-head: rpm sysp/maps sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1719%20-%20in%20sax-head%3A%20rpm%20sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200809190945.m8J9jgmq006534%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000110.html">
+   <LINK REL="Next"  HREF="000112.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1719 - in sax-head: rpm sysp/maps sysp/maps/arch</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1719%20-%20in%20sax-head%3A%20rpm%20sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200809190945.m8J9jgmq006534%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1719 - in sax-head: rpm sysp/maps sysp/maps/arch">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri Sep 19 11:45:42 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000110.html">[Sax-devel] r1718 - sax-branches/SaX2-71-SuSE-10-1-Devel/rpm
+</A></li>
+        <LI>Next message: <A HREF="000112.html">[Sax-devel] r1720 - in sax-head: libsax rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#111">[ date ]</a>
+              <a href="thread.html#111">[ thread ]</a>
+              <a href="subject.html#111">[ subject ]</a>
+              <a href="author.html#111">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-09-19 11:45:40 +0200 (Fri, 19 Sep 2008)
+New Revision: 1719
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Identity.map
+   sax-head/sysp/maps/arch/Identity.map.i386
+   sax-head/sysp/maps/arch/Identity.map.x86_64
+Log:
+- Identity.map: sw_cursor no longer required for GeForce 2 MX 
+  (bnc #427640)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-09-16 12:37:02 UTC (rev 1718)
++++ sax-head/rpm/sax2.changes	2008-09-19 09:45:40 UTC (rev 1719)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Fri Sep 19 11:43:52 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- Identity.map: sw_cursor no longer required for GeForce 2 MX 
++  (bnc #427640)
++
++-------------------------------------------------------------------
+ Wed Sep 10 15:44:19 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - added new entry for Wacom based OQO 02. This machine use ttyS1
+
+Modified: sax-head/sysp/maps/Identity.map
+===================================================================
+--- sax-head/sysp/maps/Identity.map	2008-09-16 12:37:02 UTC (rev 1718)
++++ sax-head/sysp/maps/Identity.map	2008-09-19 09:45:40 UTC (rev 1719)
+@@ -748,7 +748,7 @@
+ NAME=NVidia&amp;DEVICE=GeForce DDR&amp;VID=0x10de&amp;DID=0x0101&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce2 MX/MX 400&amp;VID=0x10de&amp;DID=0x0110&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce2 MX/MX 400&amp;VID=0x10de&amp;DID=0x0110&amp;SERVER=nvidia&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=NVidia&amp;DEVICE=GeForce2 MX 100/200&amp;VID=0x10de&amp;DID=0x0111&amp;SERVER=nv&amp;EXT=&amp;OPT=sw_cursor&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=NVidia&amp;DEVICE=GeForce2 MX 100/200&amp;VID=0x10de&amp;DID=0x0111&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce2 MX 100/200&amp;VID=0x10de&amp;DID=0x0111&amp;SERVER=nvidia&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=NVidia&amp;DEVICE=Quadro2 MXR/EX/Go&amp;VID=0x10de&amp;DID=0x0113&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=Quadro2 MXR/EX/Go&amp;VID=0x10de&amp;DID=0x0113&amp;SERVER=nvidia&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+
+Modified: sax-head/sysp/maps/arch/Identity.map.i386
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.i386	2008-09-16 12:37:02 UTC (rev 1718)
++++ sax-head/sysp/maps/arch/Identity.map.i386	2008-09-19 09:45:40 UTC (rev 1719)
+@@ -748,7 +748,7 @@
+ NAME=NVidia&amp;DEVICE=GeForce DDR&amp;VID=0x10de&amp;DID=0x0101&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce2 MX/MX 400&amp;VID=0x10de&amp;DID=0x0110&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce2 MX/MX 400&amp;VID=0x10de&amp;DID=0x0110&amp;SERVER=nvidia&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=NVidia&amp;DEVICE=GeForce2 MX 100/200&amp;VID=0x10de&amp;DID=0x0111&amp;SERVER=nv&amp;EXT=&amp;OPT=sw_cursor&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=NVidia&amp;DEVICE=GeForce2 MX 100/200&amp;VID=0x10de&amp;DID=0x0111&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce2 MX 100/200&amp;VID=0x10de&amp;DID=0x0111&amp;SERVER=nvidia&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=NVidia&amp;DEVICE=Quadro2 MXR/EX/Go&amp;VID=0x10de&amp;DID=0x0113&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=Quadro2 MXR/EX/Go&amp;VID=0x10de&amp;DID=0x0113&amp;SERVER=nvidia&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+
+Modified: sax-head/sysp/maps/arch/Identity.map.x86_64
+===================================================================
+--- sax-head/sysp/maps/arch/Identity.map.x86_64	2008-09-16 12:37:02 UTC (rev 1718)
++++ sax-head/sysp/maps/arch/Identity.map.x86_64	2008-09-19 09:45:40 UTC (rev 1719)
+@@ -742,7 +742,7 @@
+ NAME=NVidia&amp;DEVICE=GeForce DDR&amp;VID=0x10de&amp;DID=0x0101&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce2 MX/MX 400&amp;VID=0x10de&amp;DID=0x0110&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce2 MX/MX 400&amp;VID=0x10de&amp;DID=0x0110&amp;SERVER=nvidia&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=NVidia&amp;DEVICE=GeForce2 MX 100/200&amp;VID=0x10de&amp;DID=0x0111&amp;SERVER=nv&amp;EXT=&amp;OPT=sw_cursor&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=NVidia&amp;DEVICE=GeForce2 MX 100/200&amp;VID=0x10de&amp;DID=0x0111&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=GeForce2 MX 100/200&amp;VID=0x10de&amp;DID=0x0111&amp;SERVER=nvidia&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=NVidia&amp;DEVICE=Quadro2 MXR/EX/Go&amp;VID=0x10de&amp;DID=0x0113&amp;SERVER=nv&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=NVidia&amp;DEVICE=Quadro2 MXR/EX/Go&amp;VID=0x10de&amp;DID=0x0113&amp;SERVER=nvidia&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000110.html">[Sax-devel] r1718 - sax-branches/SaX2-71-SuSE-10-1-Devel/rpm
+</A></li>
+	<LI>Next message: <A HREF="000112.html">[Sax-devel] r1720 - in sax-head: libsax rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#111">[ date ]</a>
+              <a href="thread.html#111">[ thread ]</a>
+              <a href="subject.html#111">[ subject ]</a>
+              <a href="author.html#111">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

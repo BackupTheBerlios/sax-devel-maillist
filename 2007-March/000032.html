@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Compiling sax2 for Debian Etch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Compiling%20sax2%20for%20Debian%20Etch&In-Reply-To=%3C200703161740.51382.dieter%40linuxjaeger.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000031.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Compiling sax2 for Debian Etch</H1>
+    <B>Dieter J&#228;ger</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Compiling%20sax2%20for%20Debian%20Etch&In-Reply-To=%3C200703161740.51382.dieter%40linuxjaeger.de%3E"
+       TITLE="[Sax-devel] Compiling sax2 for Debian Etch">dieter at linuxjaeger.de
+       </A><BR>
+    <I>Fri Mar 16 17:40:47 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000031.html">[Sax-devel] Compiling sax2 for Debian Etch
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#32">[ date ]</a>
+              <a href="thread.html#32">[ thread ]</a>
+              <a href="subject.html#32">[ subject ]</a>
+              <a href="author.html#32">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi again,
+
+After looking in Debian's hwinfo patches I found some hints and simply removed 
+the following lines (145ff).
+
+/* TIOCGDEV is not support by the main kernel line
+    if(ioctl(fd, TIOCGDEV, &amp;u) != -1) {
+      tty_major = (u &gt;&gt; 8) &amp; 0xfff;
+      tty_minor = (u &amp; 0xff) | ((u &gt;&gt; 12) &amp; 0xfff00);
+      ADD2LOG(DEV_CONSOLE &quot;: major %u, minor %u\n&quot;, tty_major, tty_minor);
+    }
+*/
+
+Please tell me if I am messing things up!
+
+After installing some missing dependenies sax2 compiled cleanly :-)))
+
+A first test start did not work, but that may simply be because I was working 
+out of a chroot.
+
+I will now create a debian style package. I think there will still several 
+adoptions to be made, like sysconfig stuff and other.
+
+So far thanks for your help, guys
+
+Dieter
+
+
+Am Freitag, 16. M&#228;rz 2007 15:51 schrieb Dieter J&#228;ger:
+&gt;<i> Hi Stefan,
+</I>&gt;<i>
+</I>&gt;<i> Today I had some free time to go on. The -fPIC patch you send worked after
+</I>&gt;<i> I applied it to the Makefile.in, too. Compilation gets a bit further, but
+</I>&gt;<i> unfortunatly another error pops up:
+</I>&gt;<i>
+</I>&gt;<i> gcc -c -O2 -Wall -Wno-pointer-sign -pipe -g -fPIC  -I../hd -I
+</I>&gt;<i> /usr/include/dbus-1.0 -I /usr/lib64/dbus-1.0/include -I
+</I>&gt;<i> /usr/lib/dbus-1.0/include kbd.c
+</I>&gt;<i> kbd.c: In function &#8216;add_serial_console&#8217;:
+</I>&gt;<i> kbd.c:145: error: &#8216;TIOCGDEV&#8217; undeclared (first use in this function)
+</I>&gt;<i> kbd.c:145: error: (Each undeclared identifier is reported only once
+</I>&gt;<i> kbd.c:145: error: for each function it appears in.)
+</I>&gt;<i> make[4]: *** [kbd.o] Fehler 1
+</I>&gt;<i> make[4]: Leaving directory `/root/sax/sysp/lib/libhd/hd'
+</I>&gt;<i> make[3]: *** [subdirs] Fehler 2
+</I>&gt;<i> make[3]: Leaving directory `/root/sax/sysp/lib/libhd'
+</I>&gt;<i> make[2]: *** [libsysp.a] Fehler 2
+</I>&gt;<i> make[2]: Leaving directory `/root/sax/sysp/lib'
+</I>&gt;<i> make[1]: *** [sysp] Fehler 2
+</I>&gt;<i> make[1]: Leaving directory `/root/sax/sysp'
+</I>&gt;<i> make: *** [all] Fehler 2
+</I>&gt;<i>
+</I>&gt;<i> Looks like sax is still using TIOCGDEV, isn't it? What can I do?
+</I>&gt;<i>
+</I>&gt;<i> Thanks in advance
+</I>&gt;<i>
+</I>&gt;<i> Dieter
+</I>&gt;<i>
+</I>&gt;<i> Am Montag, 26. Februar 2007 23:16 schrieb Stefan Dirsch:
+</I>&gt;<i> &gt; On Mon, Feb 26, 2007 at 09:04:38PM +0100, Dieter J&#228;ger wrote:
+</I>&gt;<i> &gt; &gt; Hi friends,
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; So far I managed to create libxf86config.a and the parser header files
+</I>&gt;<i> &gt; &gt; from the debian package and put them into two small packages. After
+</I>&gt;<i> &gt; &gt; installation, when compiling sax2 I get the following error:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; $ make
+</I>&gt;<i> &gt; &gt; ...
+</I>&gt;<i> &gt; &gt; cc -c  -iquote /usr/X11R6/include -iquote /usr/include/xorg -I.
+</I>&gt;<i> &gt; &gt; -D_REENTRANT -D_ GNU_SOURCE -DTHREADS_HAVE_PIDS -DDEBIAN
+</I>&gt;<i> &gt; &gt; -fno-strict-aliasing -pipe -I/usr/local/ include -D_LARGEFILE_SOURCE
+</I>&gt;<i> &gt; &gt; -D_FILE_OFFSET_BITS=64 -O2    -DVERSION=\&quot;\&quot; -DXS_VE RSION=\&quot;\&quot; -fPIC
+</I>&gt;<i> &gt; &gt; &quot;-I/usr/lib/perl/5.8/CORE&quot;  -DX_BYTE_ORDER=X_LITTLE_ENDIAN -DNE W_INPUT
+</I>&gt;<i> &gt; &gt; -DNDEBUG -DHAVE_EXTENSIONS_SECTION parse.c
+</I>&gt;<i> &gt; &gt; cc -c  -iquote /usr/X11R6/include -iquote /usr/include/xorg -I.
+</I>&gt;<i> &gt; &gt; -D_REENTRANT -D_ GNU_SOURCE -DTHREADS_HAVE_PIDS -DDEBIAN
+</I>&gt;<i> &gt; &gt; -fno-strict-aliasing -pipe -I/usr/local/ include -D_LARGEFILE_SOURCE
+</I>&gt;<i> &gt; &gt; -D_FILE_OFFSET_BITS=64 -O2    -DVERSION=\&quot;\&quot; -DXS_VE RSION=\&quot;\&quot; -fPIC
+</I>&gt;<i> &gt; &gt; &quot;-I/usr/lib/perl/5.8/CORE&quot;  -DX_BYTE_ORDER=X_LITTLE_ENDIAN -DNE W_INPUT
+</I>&gt;<i> &gt; &gt; -DNDEBUG -DHAVE_EXTENSIONS_SECTION XFree_wrap.c
+</I>&gt;<i> &gt; &gt; Running Mkbootstrap for XFree ()
+</I>&gt;<i> &gt; &gt; chmod 644 XFree.bs
+</I>&gt;<i> &gt; &gt; rm -f blib/arch/auto/XFree/XFree.so
+</I>&gt;<i> &gt; &gt; cc  -shared -L/usr/local/lib parse.o XFree_wrap.o  -o
+</I>&gt;<i> &gt; &gt; blib/arch/auto/XFree/XFree
+</I>&gt;<i> &gt; &gt;                                                   .so \
+</I>&gt;<i> &gt; &gt;            -L/usr/X11R6/lib -lm -lxf86config    \
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; /usr/bin/ld:
+</I>&gt;<i> &gt; &gt; /usr/lib/gcc/x86_64-linux-gnu/4.1.2/../../../../lib64/libxf86config
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;                  .a(read.o): relocation R_X86_64_32 against `a local
+</I>&gt;<i> &gt; &gt; symbol' can not be used when making a shared object; recompile with
+</I>&gt;<i> &gt; &gt; -fPIC
+</I>&gt;<i> &gt; &gt; /usr/lib/gcc/x86_64-linux-gnu/4.1.2/../../../../lib64/libxf86config.a:
+</I>&gt;<i> &gt; &gt; could not
+</I>&gt;<i> &gt; &gt; read symbols: Bad value
+</I>&gt;<i> &gt; &gt; collect2: ld returned 1 exit status
+</I>&gt;<i> &gt; &gt; make[1]: *** [blib/arch/auto/XFree/XFree.so] Fehler 1
+</I>&gt;<i> &gt; &gt; make[1]: Leaving directory `/root/sax/parse'
+</I>&gt;<i> &gt; &gt; make: *** [all] Fehler 2
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; I compiled the xserver with the following flags:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; --disable-static \
+</I>&gt;<i> &gt; &gt;              --enable-xorg \
+</I>&gt;<i> &gt; &gt;              --with-mesa-source=/usr/share/mesa-source \
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; --with-default-font-path=&quot;/usr/share/fonts/X11/misc,/usr/X11R6/lib/X11/
+</I>&gt;<i> &gt; &gt;fo
+</I>&gt;<i> &gt; &gt; nts/misc,/usr/share/fonts/X11/cyrillic,/usr/share/fonts/X11/100dpi/:uns
+</I>&gt;<i> &gt; &gt;cal ed,/usr/share/
+</I>&gt;<i> &gt; &gt; fonts/X11/75dpi/:unscaled,/usr/share/fonts/X11/Type1,/usr/X11R6/lib/
+</I>&gt;<i> &gt; &gt; X11/fonts/Type1,/usr/share/fonts/X11/100dpi,/usr/share/fonts/X11/75dpi,
+</I>&gt;<i> &gt; &gt;/v ar/lib/defoma/x-ttcidfont-conf.d/di rs/TrueType&quot; \
+</I>&gt;<i> &gt; &gt;                  --with-serverconfig-path=/etc/X11/xserver \
+</I>&gt;<i> &gt; &gt;                  --with-rgb-path=/etc/X11/rgb \
+</I>&gt;<i> &gt; &gt;              --enable-xtrap \
+</I>&gt;<i> &gt; &gt;              --enable-dmx \
+</I>&gt;<i> &gt; &gt;              --enable-vfb \
+</I>&gt;<i> &gt; &gt;              --enable-install-libxf86config \
+</I>&gt;<i> &gt; &gt;                  --enable-kdrive \
+</I>&gt;<i> &gt; &gt;                  --enable-xephyr \
+</I>&gt;<i> &gt; &gt;              --enable-pic \
+</I>&gt;<i> &gt; &gt;              --disable-lbx \
+</I>&gt;<i> &gt; &gt;              --disable-xprint \
+</I>&gt;<i> &gt; &gt;                  --disable-xorgconfig \
+</I>&gt;<i> &gt; &gt;                  --disable-xorgcfg \
+</I>&gt;<i> &gt; &gt;                  --with-xkb-path=/usr/share/X11/xkb \
+</I>&gt;<i> &gt; &gt;                  --with-xkb-output=/var/lib/xkb \
+</I>&gt;<i> &gt; &gt;              --disable-misc-utils
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; I used the Debian defaults and
+</I>&gt;<i> &gt; &gt; added --enable-install-libxf86config --enable-pic.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Can you help me on?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Add the attached patch.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Stefan
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Public Key available
+</I>&gt;<i> &gt; ------------------------------------------------------
+</I>&gt;<i> &gt; Stefan Dirsch (Res. &amp; Dev.)   SUSE LINUX Products GmbH
+</I>&gt;<i> &gt; Tel: 0911-740 53 0            Maxfeldstra&#223;e 5
+</I>&gt;<i> &gt; FAX: 0911-740 53 479          D-90409 N&#252;rnberg
+</I>&gt;<i> &gt; <A HREF="http://www.suse.de">http://www.suse.de</A>            Germany
+</I>&gt;<i> &gt; -----------------------------------------------------------------
+</I>&gt;<i> &gt; SUSE LINUX Products GmbH, GF: Markus Rex, HRB 16746 (AG N&#252;rnberg)
+</I>&gt;<i> &gt; -----------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Sax-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">Sax-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">https://lists.berlios.de/mailman/listinfo/sax-devel</A>
+</I>-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/sax-devel/attachments/20070316/2477a945/attachment.pgp">https://lists.berlios.de/pipermail/sax-devel/attachments/20070316/2477a945/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000031.html">[Sax-devel] Compiling sax2 for Debian Etch
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#32">[ date ]</a>
+              <a href="thread.html#32">[ thread ]</a>
+              <a href="subject.html#32">[ subject ]</a>
+              <a href="author.html#32">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

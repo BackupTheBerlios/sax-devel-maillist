@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1937 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2013-January/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1937%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps%20sysp/maps/arch&In-Reply-To=%3C20130128100638.DCCCC55B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000324.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1937 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch</H1>
+    <B>sndirsch at scm.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1937%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps%20sysp/maps/arch&In-Reply-To=%3C20130128100638.DCCCC55B0C%40scm.berlios.de%3E"
+       TITLE="[Sax-devel] r1937 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch">sndirsch at scm.berlios.de
+       </A><BR>
+    <I>Mon Jan 28 11:06:38 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000324.html">[Sax-devel] r1935 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm startup
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#325">[ date ]</a>
+              <a href="thread.html#325">[ thread ]</a>
+              <a href="subject.html#325">[ subject ]</a>
+              <a href="author.html#325">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2013-01-28 11:06:38 +0100 (Mon, 28 Jan 2013)
+New Revision: 1937
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.ia64
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.ppc
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.x86_64
+Log:
+- switch back from &quot;vesa&quot; to &quot;radeon&quot; driver for ES1000 (bnc#746526)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-01-15 15:14:03 UTC (rev 1936)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-01-28 10:06:38 UTC (rev 1937)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Mon Jan 28 11:04:17 CET 2013 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- switch back from &quot;vesa&quot; to &quot;radeon&quot; driver for ES1000
++  (bnc#746526)
++
++-------------------------------------------------------------------
+ Tue Jan 15 15:32:27 CET 2013 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - prefer &quot;modesetting&quot; X driver when KMS is active and neither
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map	2013-01-15 15:14:03 UTC (rev 1936)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map	2013-01-28 10:06:38 UTC (rev 1937)
+@@ -414,8 +414,8 @@
+ NAME=ATI&amp;DEVICE=Radeon Mobility 9200 IGP 7835&amp;VID=0x1002&amp;DID=0x7835&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=ATI&amp;DEVICE=Radeon X800LE (R423) UJ (PCIE)&amp;VID=0x1002&amp;DID=0x554A&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Radeon X800LE (R423) UJ (PCIE)&amp;VID=0x1002&amp;DID=0x554A&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=ATI&amp;DEVICE=ES1000 5969&amp;VID=0x1002&amp;DID=0x5969&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=ATI&amp;DEVICE=ES1000 515E&amp;VID=0x1002&amp;DID=0x515E&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=ES1000 5969&amp;VID=0x1002&amp;DID=0x5969&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=ES1000 515E&amp;VID=0x1002&amp;DID=0x515E&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=FireMV 2200 (PCI)&amp;VID=0x1002&amp;DID=0x5965&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=FireMV 2200 (PCI)&amp;VID=0x1002&amp;DID=0x5965&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=ATI&amp;DEVICE=Radeon 9650&amp;VID=0x1002&amp;DID=0x4155&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386	2013-01-15 15:14:03 UTC (rev 1936)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.i386	2013-01-28 10:06:38 UTC (rev 1937)
+@@ -414,8 +414,8 @@
+ NAME=ATI&amp;DEVICE=Radeon Mobility 9200 IGP 7835&amp;VID=0x1002&amp;DID=0x7835&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=ATI&amp;DEVICE=Radeon X800LE (R423) UJ (PCIE)&amp;VID=0x1002&amp;DID=0x554A&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Radeon X800LE (R423) UJ (PCIE)&amp;VID=0x1002&amp;DID=0x554A&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=ATI&amp;DEVICE=ES1000 5969&amp;VID=0x1002&amp;DID=0x5969&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=ATI&amp;DEVICE=ES1000 515E&amp;VID=0x1002&amp;DID=0x515E&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=ES1000 5969&amp;VID=0x1002&amp;DID=0x5969&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=ES1000 515E&amp;VID=0x1002&amp;DID=0x515E&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=FireMV 2200 (PCI)&amp;VID=0x1002&amp;DID=0x5965&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=FireMV 2200 (PCI)&amp;VID=0x1002&amp;DID=0x5965&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=ATI&amp;DEVICE=Radeon 9650&amp;VID=0x1002&amp;DID=0x4155&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.ia64
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.ia64	2013-01-15 15:14:03 UTC (rev 1936)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.ia64	2013-01-28 10:06:38 UTC (rev 1937)
+@@ -262,8 +262,8 @@
+ NAME=ATI&amp;DEVICE=Radeon 9100 PRO IGP 7834&amp;VID=0x1002&amp;DID=0x7834&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Radeon Mobility 9200 IGP 7835&amp;VID=0x1002&amp;DID=0x7835&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Radeon X800LE (R423) UJ (PCIE)&amp;VID=0x1002&amp;DID=0x554A&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=ATI&amp;DEVICE=ES1000 5969&amp;VID=0x1002&amp;DID=0x5969&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=ATI&amp;DEVICE=ES1000 515E&amp;VID=0x1002&amp;DID=0x515E&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=ES1000 5969&amp;VID=0x1002&amp;DID=0x5969&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=ES1000 515E&amp;VID=0x1002&amp;DID=0x515E&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=FireMV 2200 (PCI)&amp;VID=0x1002&amp;DID=0x5965&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Radeon 9650&amp;VID=0x1002&amp;DID=0x4155&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Radeon XPRESS 200 5A41 (PCIE)&amp;VID=0x1002&amp;DID=0x5A41&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.ppc
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.ppc	2013-01-15 15:14:03 UTC (rev 1936)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.ppc	2013-01-28 10:06:38 UTC (rev 1937)
+@@ -257,8 +257,8 @@
+ NAME=ATI&amp;DEVICE=Radeon 9100 PRO IGP 7834&amp;VID=0x1002&amp;DID=0x7834&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Radeon Mobility 9200 IGP 7835&amp;VID=0x1002&amp;DID=0x7835&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Radeon X800LE (R423) UJ (PCIE)&amp;VID=0x1002&amp;DID=0x554A&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=ATI&amp;DEVICE=ES1000 5969&amp;VID=0x1002&amp;DID=0x5969&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=ATI&amp;DEVICE=ES1000 515E&amp;VID=0x1002&amp;DID=0x515E&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=ES1000 5969&amp;VID=0x1002&amp;DID=0x5969&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=ES1000 515E&amp;VID=0x1002&amp;DID=0x515E&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=FireMV 2200 (PCI)&amp;VID=0x1002&amp;DID=0x5965&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Radeon 9650&amp;VID=0x1002&amp;DID=0x4155&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Radeon XPRESS 200 5A41 (PCIE)&amp;VID=0x1002&amp;DID=0x5A41&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.x86_64
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.x86_64	2013-01-15 15:14:03 UTC (rev 1936)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/arch/Identity.map.x86_64	2013-01-28 10:06:38 UTC (rev 1937)
+@@ -410,8 +410,8 @@
+ NAME=ATI&amp;DEVICE=Radeon Mobility 9200 IGP 7835&amp;VID=0x1002&amp;DID=0x7835&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=ATI&amp;DEVICE=Radeon X800LE (R423) UJ (PCIE)&amp;VID=0x1002&amp;DID=0x554A&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Radeon X800LE (R423) UJ (PCIE)&amp;VID=0x1002&amp;DID=0x554A&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=ATI&amp;DEVICE=ES1000 5969&amp;VID=0x1002&amp;DID=0x5969&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=ATI&amp;DEVICE=ES1000 515E&amp;VID=0x1002&amp;DID=0x515E&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=ES1000 5969&amp;VID=0x1002&amp;DID=0x5969&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=ES1000 515E&amp;VID=0x1002&amp;DID=0x515E&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=FireMV 2200 (PCI)&amp;VID=0x1002&amp;DID=0x5965&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=FireMV 2200 (PCI)&amp;VID=0x1002&amp;DID=0x5965&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=ATI&amp;DEVICE=Radeon 9650&amp;VID=0x1002&amp;DID=0x4155&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000324.html">[Sax-devel] r1935 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm startup
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#325">[ date ]</a>
+              <a href="thread.html#325">[ thread ]</a>
+              <a href="subject.html#325">[ subject ]</a>
+              <a href="author.html#325">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

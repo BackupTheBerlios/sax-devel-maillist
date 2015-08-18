@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1752 - sax-head/rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1752%20-%20sax-head/rpm&In-Reply-To=%3C200810272021.m9RKLHLE030953%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000142.html">
+   <LINK REL="Next"  HREF="000144.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1752 - sax-head/rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1752%20-%20sax-head/rpm&In-Reply-To=%3C200810272021.m9RKLHLE030953%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1752 - sax-head/rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Mon Oct 27 21:21:17 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000142.html">[Sax-devel] r1751 - sax-head/rpm
+</A></li>
+        <LI>Next message: <A HREF="000144.html">[Sax-devel] r1753 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#141">[ date ]</a>
+              <a href="thread.html#141">[ thread ]</a>
+              <a href="subject.html#141">[ subject ]</a>
+              <a href="author.html#141">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-10-27 21:21:14 +0100 (Mon, 27 Oct 2008)
+New Revision: 1752
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/rpm/sax2.spec
+Log:
+- no longer exclude s390 from building (bnc #432738)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-10-27 16:55:50 UTC (rev 1751)
++++ sax-head/rpm/sax2.changes	2008-10-27 20:21:14 UTC (rev 1752)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Mon Oct 27 21:18:58 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- no longer exclude s390 from building (bnc #432738) 
++
++-------------------------------------------------------------------
+ Mon Oct 27 17:25:25 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - prepared for building on s390x, not completed (bnc #432738)
+
+Modified: sax-head/rpm/sax2.spec
+===================================================================
+--- sax-head/rpm/sax2.spec	2008-10-27 16:55:50 UTC (rev 1751)
++++ sax-head/rpm/sax2.spec	2008-10-27 20:21:14 UTC (rev 1752)
+@@ -49,7 +49,6 @@
+ Source1:        sax2.desktop
+ Source2:        66-elo.rules
+ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+-ExcludeArch:    s390
+ Patch:          xorg-server-1_5.diff
+ 
+ %description
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000142.html">[Sax-devel] r1751 - sax-head/rpm
+</A></li>
+	<LI>Next message: <A HREF="000144.html">[Sax-devel] r1753 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#141">[ date ]</a>
+              <a href="thread.html#141">[ thread ]</a>
+              <a href="subject.html#141">[ subject ]</a>
+              <a href="author.html#141">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

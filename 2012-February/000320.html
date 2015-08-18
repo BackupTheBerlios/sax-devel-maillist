@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1931 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2012-February/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1931%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps&In-Reply-To=%3C20120215112247.C1DD148254B%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000321.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1931 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1931%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps&In-Reply-To=%3C20120215112247.C1DD148254B%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1931 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Feb 15 12:22:47 CET 2012</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000321.html">[Sax-devel] r1932 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#320">[ date ]</a>
+              <a href="thread.html#320">[ thread ]</a>
+              <a href="subject.html#320">[ subject ]</a>
+              <a href="author.html#320">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2012-02-15 12:22:47 +0100 (Wed, 15 Feb 2012)
+New Revision: 1931
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map
+Log:
+- switched from &quot;radeon(KMS)&quot; to &quot;vesa&quot; driver for ATI ES1000 GPUs
+  since &quot;radeon(UMS)&quot; is not working either (bnc #746526)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2012-01-25 11:34:15 UTC (rev 1930)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2012-02-15 11:22:47 UTC (rev 1931)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Wed Feb 15 12:15:39 CET 2012 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- switched from &quot;radeon(KMS)&quot; to &quot;vesa&quot; driver for ATI ES1000 GPUs
++  since &quot;radeon(UMS)&quot; is not working either (bnc #746526)
++
++-------------------------------------------------------------------
+ Wed Jan 25 12:24:59 CET 2012 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - No longer generate any modes and modelines for DRM based drivers
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map	2012-01-25 11:34:15 UTC (rev 1930)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map	2012-02-15 11:22:47 UTC (rev 1931)
+@@ -414,8 +414,8 @@
+ NAME=ATI&amp;DEVICE=Radeon Mobility 9200 IGP 7835&amp;VID=0x1002&amp;DID=0x7835&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=ATI&amp;DEVICE=Radeon X800LE (R423) UJ (PCIE)&amp;VID=0x1002&amp;DID=0x554A&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=Radeon X800LE (R423) UJ (PCIE)&amp;VID=0x1002&amp;DID=0x554A&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+-NAME=ATI&amp;DEVICE=ES1000 5969&amp;VID=0x1002&amp;DID=0x5969&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+-NAME=ATI&amp;DEVICE=ES1000 515E&amp;VID=0x1002&amp;DID=0x515E&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=ES1000 5969&amp;VID=0x1002&amp;DID=0x5969&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
++NAME=ATI&amp;DEVICE=ES1000 515E&amp;VID=0x1002&amp;DID=0x515E&amp;SERVER=vesa&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=Depth16,NoVirtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=FireMV 2200 (PCI)&amp;VID=0x1002&amp;DID=0x5965&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=ATI&amp;DEVICE=FireMV 2200 (PCI)&amp;VID=0x1002&amp;DID=0x5965&amp;SERVER=radeon&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=ATI&amp;DEVICE=Radeon 9650&amp;VID=0x1002&amp;DID=0x4155&amp;SERVER=radeon&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000321.html">[Sax-devel] r1932 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#320">[ date ]</a>
+              <a href="thread.html#320">[ thread ]</a>
+              <a href="subject.html#320">[ subject ]</a>
+              <a href="author.html#320">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

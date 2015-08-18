@@ -1,0 +1,543 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1668 - in sax-head: . api/macros libsax/bindings/perl	libsax/tools modules parse profile/script rpm spp startup	sysp/lib/cvt sysp/lib/fbset sysp/script tools/isax tools/plog
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1668%20-%20in%20sax-head%3A%20.%20api/macros%20libsax/bindings/perl%0A%09libsax/tools%20modules%20parse%20profile/script%20rpm%20spp%20startup%0A%09sysp/lib/cvt%20sysp/lib/fbset%20sysp/script%20tools/isax%20tools/plog&In-Reply-To=%3C200807241545.m6OFjuV4001064%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000062.html">
+   <LINK REL="Next"  HREF="000064.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1668 - in sax-head: . api/macros libsax/bindings/perl	libsax/tools modules parse profile/script rpm spp startup	sysp/lib/cvt sysp/lib/fbset sysp/script tools/isax tools/plog</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1668%20-%20in%20sax-head%3A%20.%20api/macros%20libsax/bindings/perl%0A%09libsax/tools%20modules%20parse%20profile/script%20rpm%20spp%20startup%0A%09sysp/lib/cvt%20sysp/lib/fbset%20sysp/script%20tools/isax%20tools/plog&In-Reply-To=%3C200807241545.m6OFjuV4001064%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1668 - in sax-head: . api/macros libsax/bindings/perl	libsax/tools modules parse profile/script rpm spp startup	sysp/lib/cvt sysp/lib/fbset sysp/script tools/isax tools/plog">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Thu Jul 24 17:45:57 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000062.html">[Sax-devel] r1667 - in sax-head: rpm sysp/lib/hw sysp/maps
+</A></li>
+        <LI>Next message: <A HREF="000064.html">[Sax-devel] r1669 - in sax-branches/SaX2-71-SuSE-10-1-Devel:	api/data/cdb rpm sysp
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#63">[ date ]</a>
+              <a href="thread.html#63">[ thread ]</a>
+              <a href="subject.html#63">[ subject ]</a>
+              <a href="author.html#63">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-07-24 17:45:42 +0200 (Thu, 24 Jul 2008)
+New Revision: 1668
+
+Modified:
+   sax-head/.doit
+   sax-head/api/macros/get3D
+   sax-head/api/macros/getINF
+   sax-head/api/macros/getInstalled
+   sax-head/init.pl
+   sax-head/libsax/bindings/perl/Makefile.PL
+   sax-head/libsax/tools/createAPI.pl
+   sax-head/libsax/tools/createGRB.pl
+   sax-head/libsax/tools/createTST.pl
+   sax-head/modules/CheckServer.pm
+   sax-head/modules/CreateSections.pm
+   sax-head/parse/Makefile.PL
+   sax-head/profile/script/Profile.pm
+   sax-head/rpm/sax2.changes
+   sax-head/spp/Makefile.PL
+   sax-head/startup/pci.pl
+   sax-head/sysp/lib/cvt/Makefile.PL
+   sax-head/sysp/lib/fbset/Makefile.PL
+   sax-head/sysp/script/checkmap.pl
+   sax-head/sysp/script/installed.pl
+   sax-head/sysp/script/killdot.pl
+   sax-head/sysp/script/machine.pl
+   sax-head/sysp/script/memory.pl
+   sax-head/sysp/script/preparelog.pl
+   sax-head/sysp/script/profilecount.pl
+   sax-head/sysp/script/psection.pl
+   sax-head/sysp/script/vendor.pl
+   sax-head/tools/isax/isax.pl
+   sax-head/tools/plog/Makefile.PL.in
+   sax-head/xc.pl
+Log:
+- remove &quot;Use vnc&quot; to reduce dependancies (bnc #411766)
+- replace qx(whoami) with $UID (bnc #411766)
+
+
+Modified: sax-head/.doit
+===================================================================
+--- sax-head/.doit	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/.doit	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -18,7 +18,7 @@
+ #
+ use strict;
+ use Getopt::Long;
+-use Env;
++use English;
+ 
+ #=====================================
+ # Globals...
+@@ -69,8 +69,7 @@
+ 	#==============================================
+ 	# Check user privileges...
+ 	#----------------------------------------------
+-	my $user = qx(whoami);
+-	if ((defined $Build) &amp;&amp; ($user !~ /root/i)) {
++	if ((defined $Build) &amp;&amp; ($UID != 0)) {
+ 		die &quot;Only root can do this... abort&quot;;
+ 	}
+ 	if ((! defined $Build) &amp;&amp; (! defined $Prepare)) {
+
+Modified: sax-head/api/macros/get3D
+===================================================================
+--- sax-head/api/macros/get3D	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/api/macros/get3D	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -10,7 +10,6 @@
+ # Status: Up-to-date
+ #
+ use strict;
+-use Env;
+ 
+ #---[ get3DPackages ]-----#
+ sub get3DPackages {
+
+Modified: sax-head/api/macros/getINF
+===================================================================
+--- sax-head/api/macros/getINF	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/api/macros/getINF	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -11,7 +11,6 @@
+ #
+ use lib '/usr/share/sax/modules';
+ use strict;
+-use Env;
+ 
+ use WinINF;
+ 
+
+Modified: sax-head/api/macros/getInstalled
+===================================================================
+--- sax-head/api/macros/getInstalled	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/api/macros/getInstalled	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -10,7 +10,6 @@
+ # Status: Up-to-date
+ #
+ use strict;
+-use Env;
+ 
+ #=====================================
+ # Globals 
+
+Modified: sax-head/init.pl
+===================================================================
+--- sax-head/init.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/init.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -10,7 +10,6 @@
+ #
+ use lib   '/usr/share/sax/modules';
+ use strict;
+-use Env;
+ 
+ use Getopt::Long;
+ use Storable;
+
+Modified: sax-head/libsax/bindings/perl/Makefile.PL
+===================================================================
+--- sax-head/libsax/bindings/perl/Makefile.PL	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/libsax/bindings/perl/Makefile.PL	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -1,5 +1,4 @@
+ use ExtUtils::MakeMaker;
+-use Env;
+ 
+ #$QTDIR=$ENV{QTDIR};
+ 
+
+Modified: sax-head/libsax/tools/createAPI.pl
+===================================================================
+--- sax-head/libsax/tools/createAPI.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/libsax/tools/createAPI.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -7,7 +7,6 @@
+ # Status: Development
+ #
+ use strict;
+-use Env;
+ use FileHandle;
+ use SaX;
+ 
+
+Modified: sax-head/libsax/tools/createGRB.pl
+===================================================================
+--- sax-head/libsax/tools/createGRB.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/libsax/tools/createGRB.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -7,7 +7,6 @@
+ # Status: Development
+ #
+ use strict;
+-use Env;
+ 
+ #---[ setupBootLoaderVGA ]----#
+ sub setupBootLoaderVGA {
+
+Modified: sax-head/libsax/tools/createTST.pl
+===================================================================
+--- sax-head/libsax/tools/createTST.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/libsax/tools/createTST.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -12,11 +12,11 @@
+ # Status: Up-to-date
+ #
+ use strict;
+-use Env;
+ 
+ use Getopt::Long;
+ use FileHandle;
+ use POSIX;
++use English;
+ 
+ #=========================
+ # Globals...
+@@ -54,8 +54,7 @@
+ 	if ($Display eq &quot;&quot;) {
+ 		$Display = &quot;:2.0&quot;;
+ 	}
+-	my $user = qx(whoami);
+-	if ($user !~ /root/i) {
++	if ($UID != 0) {
+ 		die &quot;createTST: only root can do this&quot;;
+ 	}
+ 	#========================================
+
+Modified: sax-head/modules/CheckServer.pm
+===================================================================
+--- sax-head/modules/CheckServer.pm	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/modules/CheckServer.pm	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -12,7 +12,6 @@
+ # --------
+ # Status: Up-to-date
+ #
+-use Env;
+ 
+ #---[ GetDisplay ]-----#
+ sub GetDisplay {
+
+Modified: sax-head/modules/CreateSections.pm
+===================================================================
+--- sax-head/modules/CreateSections.pm	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/modules/CreateSections.pm	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -13,7 +13,6 @@
+ #
+ use lib '/usr/share/sax/modules/create';
+ 
+-use Env;
+ use device;
+ use dri;
+ use files;
+
+Modified: sax-head/parse/Makefile.PL
+===================================================================
+--- sax-head/parse/Makefile.PL	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/parse/Makefile.PL	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -1,5 +1,4 @@
+ use ExtUtils::MakeMaker;
+-use Env;
+ 
+ $CFLAGS = $ENV{RPM_OPT_FLAGS};
+ $CFLAGS =~ s/-Wall//;
+
+Modified: sax-head/profile/script/Profile.pm
+===================================================================
+--- sax-head/profile/script/Profile.pm	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/profile/script/Profile.pm	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -3,7 +3,6 @@
+ use lib   '/usr/share/sax/modules';
+ 
+ use strict;
+-use Env;
+ use CreateSections;
+ use Storable;
+ use SaX;
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/rpm/sax2.changes	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Thu Jul 24 16:41:12 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- remove &quot;Use vnc&quot; to reduce dependancies (bnc #411766)
++- replace qx(whoami) with $UID (bnc #411766)
++
++-------------------------------------------------------------------
+ Wed Jul 23 16:22:19 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - new Ids for Xen mouse; use &quot;event&quot; instead of &quot;by-id&quot; (again) to
+
+Modified: sax-head/spp/Makefile.PL
+===================================================================
+--- sax-head/spp/Makefile.PL	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/spp/Makefile.PL	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -1,5 +1,4 @@
+ use ExtUtils::MakeMaker;
+-use Env;
+ 
+ #$QTDIR=$ENV{QTDIR};
+ #$QTDIR='/usr/include/Qt';
+
+Modified: sax-head/startup/pci.pl
+===================================================================
+--- sax-head/startup/pci.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/startup/pci.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -10,7 +10,6 @@
+ # Status: Up-to-date
+ #
+ use Getopt::Long;
+-use Env;
+ 
+ #---[ lets start :-) ]----#
+ init(); main();
+
+Modified: sax-head/sysp/lib/cvt/Makefile.PL
+===================================================================
+--- sax-head/sysp/lib/cvt/Makefile.PL	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/sysp/lib/cvt/Makefile.PL	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -1,5 +1,4 @@
+ use ExtUtils::MakeMaker;
+-use Env;
+ 
+ $CFLAGS = $ENV{RPM_OPT_FLAGS};
+ $CFLAGS =~ s/-Wall//;
+
+Modified: sax-head/sysp/lib/fbset/Makefile.PL
+===================================================================
+--- sax-head/sysp/lib/fbset/Makefile.PL	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/sysp/lib/fbset/Makefile.PL	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -1,5 +1,4 @@
+ use ExtUtils::MakeMaker;
+-use Env;
+ 
+ $CFLAGS = $ENV{RPM_OPT_FLAGS};
+ $CFLAGS =~ s/-Wall//;
+
+Modified: sax-head/sysp/script/checkmap.pl
+===================================================================
+--- sax-head/sysp/script/checkmap.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/sysp/script/checkmap.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -12,7 +12,6 @@
+ #
+ use strict;
+ use FileHandle;
+-use Env;
+ 
+ #----[ CheckMap ]----------#
+ sub CheckMap {
+
+Modified: sax-head/sysp/script/installed.pl
+===================================================================
+--- sax-head/sysp/script/installed.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/sysp/script/installed.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -12,7 +12,6 @@
+ # Status: Up-to-date
+ #
+ use strict;
+-use Env;
+ 
+ #----[ CheckPackage ]----------#
+ sub CheckPackage {
+
+Modified: sax-head/sysp/script/killdot.pl
+===================================================================
+--- sax-head/sysp/script/killdot.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/sysp/script/killdot.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -12,7 +12,6 @@
+ # Status: Up-to-date
+ #
+ use strict;
+-use Env;
+ 
+ #----[ KillDots ]-----#
+ sub KillDots {
+
+Modified: sax-head/sysp/script/machine.pl
+===================================================================
+--- sax-head/sysp/script/machine.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/sysp/script/machine.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -12,7 +12,6 @@
+ # Status: Up-to-date
+ #
+ use strict;
+-use Env;
+ 
+ my $machine = qx(awk '/^machine/ { print $3 }' &lt; /proc/cpuinfo);
+ SWITCH: for ($machine) {
+
+Modified: sax-head/sysp/script/memory.pl
+===================================================================
+--- sax-head/sysp/script/memory.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/sysp/script/memory.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -12,7 +12,6 @@
+ # Status: Up-to-date
+ #
+ use strict;
+-use Env;
+ 
+ my $code = 0;
+ my $logs = &quot;/var/log/Xorg.99.log&quot;;
+
+Modified: sax-head/sysp/script/preparelog.pl
+===================================================================
+--- sax-head/sysp/script/preparelog.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/sysp/script/preparelog.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -12,7 +12,6 @@
+ # Status: Up-to-date
+ #
+ use strict;
+-use Env;
+ 
+ #----[ PrepareLog ]-----#
+ sub PrepareLog {
+
+Modified: sax-head/sysp/script/profilecount.pl
+===================================================================
+--- sax-head/sysp/script/profilecount.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/sysp/script/profilecount.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -14,7 +14,6 @@
+ # Status: Up-to-date
+ #
+ use strict;
+-use Env;
+ 
+ sub profileCount {
+ 	my $profile = $_[0];
+
+Modified: sax-head/sysp/script/psection.pl
+===================================================================
+--- sax-head/sysp/script/psection.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/sysp/script/psection.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -11,7 +11,6 @@
+ # Status: Up-to-date
+ #
+ use strict;
+-use Env;
+ 
+ #---[ CountSections ]-----#
+ sub CountSections {
+
+Modified: sax-head/sysp/script/vendor.pl
+===================================================================
+--- sax-head/sysp/script/vendor.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/sysp/script/vendor.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -11,7 +11,6 @@
+ # Status: Up-to-date
+ #
+ use strict;
+-use Env;
+ 
+ #---[ vendorName ]----#
+ sub vendorName {
+
+Modified: sax-head/tools/isax/isax.pl
+===================================================================
+--- sax-head/tools/isax/isax.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/tools/isax/isax.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -14,7 +14,6 @@
+ 
+ use lib '/usr/share/sax/modules';
+ 
+-use Env;
+ use XFree;
+ use FBSet;
+ use ParseConfig;
+@@ -24,6 +23,7 @@
+ use Storable;
+ use ExportAPI;
+ use Getopt::Long;
++use English;
+ 
+ use Storable qw(freeze thaw);
+ 
+@@ -74,7 +74,7 @@
+ 		usage();
+ 	}
+ 	if ( ! defined $ListSection ) {
+-	if (qx(whoami) !~ /root/) {
++	if ($UID != 0) {
+ 		die &quot;ISaX: only root can do this&quot;;
+ 	}
+ 	}
+
+Modified: sax-head/tools/plog/Makefile.PL.in
+===================================================================
+--- sax-head/tools/plog/Makefile.PL.in	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/tools/plog/Makefile.PL.in	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -1,5 +1,4 @@
+ use ExtUtils::MakeMaker;
+-use Env;
+ 
+ $CFLAGS = $ENV{RPM_OPT_FLAGS};
+ $CFLAGS =~ s/-Wall//;
+
+Modified: sax-head/xc.pl
+===================================================================
+--- sax-head/xc.pl	2008-07-23 14:25:40 UTC (rev 1667)
++++ sax-head/xc.pl	2008-07-24 15:45:42 UTC (rev 1668)
+@@ -10,7 +10,6 @@
+ #
+ use lib   '/usr/share/sax/modules';
+ use strict;
+-use Env;
+ 
+ use FileHandle;
+ use CreateSections;
+@@ -20,6 +19,7 @@
+ use Storable;
+ use XFree; 
+ use SaX;
++use English;
+ 
+ #==========================================
+ # Globals
+@@ -526,8 +526,7 @@
+ 	#==========================================
+ 	# Test for root privileges
+ 	#------------------------------------------
+-	my $user = qx (whoami);
+-	if ($user !~ /root/i) {
++	if ($UID != 0) {
+ 		print &quot;xc: only root can do this\n&quot;;
+ 		exit(0);
+ 	}
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000062.html">[Sax-devel] r1667 - in sax-head: rpm sysp/lib/hw sysp/maps
+</A></li>
+	<LI>Next message: <A HREF="000064.html">[Sax-devel] r1669 - in sax-branches/SaX2-71-SuSE-10-1-Devel:	api/data/cdb rpm sysp
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#63">[ date ]</a>
+              <a href="thread.html#63">[ thread ]</a>
+              <a href="subject.html#63">[ subject ]</a>
+              <a href="author.html#63">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

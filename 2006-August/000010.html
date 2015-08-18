@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Sax2 cannot compile
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile&In-Reply-To=%3C20060831114111.GA11252%40suse.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000009.html">
+   <LINK REL="Next"  HREF="000011.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Sax2 cannot compile</H1>
+    <B>Marcus Sch&#228;fer</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile&In-Reply-To=%3C20060831114111.GA11252%40suse.de%3E"
+       TITLE="[Sax-devel] Sax2 cannot compile">ms at suse.de
+       </A><BR>
+    <I>Thu Aug 31 13:41:11 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000009.html">[Sax-devel] Sax2 cannot compile
+</A></li>
+        <LI>Next message: <A HREF="000011.html">[Sax-devel] Sax2 cannot compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> I'm having real difficulty compile sax2 under slackware/OpenLab. I
+</I>&gt;<i> have all the dependencies but when I try to run make I get:
+</I>
+*Hui* I never tried it on slackware... :-)
+
+&gt;<i> spp.l:38: error: redefinition of `int yylineno'
+</I>&gt;<i> lex.yy.c:334: error: `int yylineno' previously defined here
+</I>&gt;<i> lex.yy.c:1238: warning: 'void yyunput(int, char*)' defined but not used
+</I>
+Newer versions of lex doesn't define yylineno. I think the lex
+version you are using is an older one. You can update the lex or
+remove the yylineno definition in spp.l
+
+&gt;<i> So I comment out:
+</I>&gt;<i> int yylineno = 1;
+</I>
+ok,
+
+&gt;<i> Now it gets a little further but dies once more with these errors:
+</I>&gt;<i> edd.c: In function `get_edd_info':
+</I>&gt;<i> edd.c:64: warning: implicit declaration of function `sysfs_open_directory'
+</I>&gt;<i> edd.c:64: warning: assignment makes pointer from integer without a cast
+</I>&gt;<i> edd.c:67: warning: implicit declaration of function `sysfs_read_all_subdirs'
+</I>
+This sounds like your system doesn't provide the libsysfs headers
+I would suggest to use the current SVN head version of sax2 which
+doesn't make use of libsysfs any longer. If you don't mind refer
+to the SVN repository or use the src.rpm from here:
+
+	 <A HREF="http://ftp.opensuse.org/pub/opensuse/repositories/SaX2/SL10.2/src/">http://ftp.opensuse.org/pub/opensuse/repositories/SaX2/SL10.2/src/</A>
+
+&gt;<i> My best guess is that the code uses some tricks specific to another
+</I>&gt;<i> version of gcc - since I am synced to slack-current I know I have the
+</I>&gt;<i> latest available stable release - so I am guessing it must be
+</I>&gt;<i> requiring some syntax that was allowed by an older version but not by
+</I>&gt;<i> the current. Or perhaps there is some gcc parameter / environment
+</I>&gt;<i> variable which needs to be set ?
+</I>&gt;<i> ...
+</I>&gt;<i> This is where I miss autoconf :)
+</I>
+yes that's true :) I wasn't aware of the autotools when I start
+building it some years ago... should be fixed
+
+Regards
+Marcus
+-- 
+ Public Key available
+ -------------------------------------------------------
+ Marcus Sch&#228;fer (Res. &amp; Dev.)   SUSE LINUX Products GmbH
+ Tel: 0911-740 53 0             Maxfeldstrasse 5
+ FAX: 0911-740 53 479           D-90409 N&#252;rnberg
+ <A HREF="http://www.suse.de">http://www.suse.de</A>             Germany
+ -------------------------------------------------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000009.html">[Sax-devel] Sax2 cannot compile
+</A></li>
+	<LI>Next message: <A HREF="000011.html">[Sax-devel] Sax2 cannot compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

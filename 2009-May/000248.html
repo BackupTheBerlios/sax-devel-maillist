@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1857 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	tools/getPrimary
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1857%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09tools/getPrimary&In-Reply-To=%3C200905271501.n4RF1J02026132%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000247.html">
+   <LINK REL="Next"  HREF="000249.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1857 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	tools/getPrimary</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1857%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09tools/getPrimary&In-Reply-To=%3C200905271501.n4RF1J02026132%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1857 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	tools/getPrimary">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed May 27 17:01:19 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000247.html">[Sax-devel] r1856 - in sax-head: profile/automatic/monitor rpm	sysp/maps
+</A></li>
+        <LI>Next message: <A HREF="000249.html">[Sax-devel] r1858 - in sax-head: rpm tools/getPrimary
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#248">[ date ]</a>
+              <a href="thread.html#248">[ thread ]</a>
+              <a href="subject.html#248">[ subject ]</a>
+              <a href="author.html#248">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-05-27 17:01:17 +0200 (Wed, 27 May 2009)
+New Revision: 1857
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/tools/getPrimary/getPrimary.sh
+Log:
+- getPrimary.sh:
+  * only run 'lspci -vv' for VGA devices (bnc #478164)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-05-21 03:09:36 UTC (rev 1856)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-05-27 15:01:17 UTC (rev 1857)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Wed May 27 16:58:29 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- getPrimary.sh:
++  * only run 'lspci -vv' for VGA devices (bnc #478164)
++
++-------------------------------------------------------------------
+ Thu May 21 05:02:57 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - use special profile for ACER-EZ1600 (bnc #504710) 
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/tools/getPrimary/getPrimary.sh
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/tools/getPrimary/getPrimary.sh	2009-05-21 03:09:36 UTC (rev 1856)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/tools/getPrimary/getPrimary.sh	2009-05-27 15:01:17 UTC (rev 1857)
+@@ -26,10 +26,14 @@
+ #  the PCI config space. You can see it in a &quot;lspci -v -v&quot; output. Check  
+ #  for &quot;Control I/O+&quot; instead of &quot;Control I/O-&quot; for the VGA compatible
+ #  devices.&quot;
+-bus_slot_function=$(/sbin/lspci -vv | \
+-                    grep -B2 &quot;Control: I/O+&quot; | \
+-                    grep &quot;VGA compatible&quot; | \
+-                    awk '{print $1}' | head -n 1)
++for busid in $(/sbin/lspci -n | grep 0300 | cut -d &quot; &quot; -f 1); do
++  /sbin/lspci -s $busid -vv | grep -q &quot;Control: I/O+&quot;
++  if test $? -eq 0; then
++    bus_slot_function=$busid
++    break;
++  fi
++done
++
+ test &quot;$bus_slot_function&quot; == &quot;&quot; &amp;&amp; fallback
+ 
+ # search for SaX2 ChipID (&quot;sysp -c&quot; is the same as &quot;sax2 -p&quot;)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000247.html">[Sax-devel] r1856 - in sax-head: profile/automatic/monitor rpm	sysp/maps
+</A></li>
+	<LI>Next message: <A HREF="000249.html">[Sax-devel] r1858 - in sax-head: rpm tools/getPrimary
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#248">[ date ]</a>
+              <a href="thread.html#248">[ thread ]</a>
+              <a href="subject.html#248">[ subject ]</a>
+              <a href="author.html#248">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

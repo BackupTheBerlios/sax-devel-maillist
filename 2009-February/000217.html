@@ -1,0 +1,2286 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1825 - in sax-head: api/data locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES locale/sax-template locale/si/LC_MESSAG! ES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1825%20-%20in%20sax-head%3A%20api/data%20locale/af/LC_MESSAGES%0A%20locale/ar/LC_MESSAGES%20locale/bg/LC_MESSAGES%20locale/bn/LC_MESSAGES%0A%20locale/bs/LC_MESSAGES%20locale/ca/LC_MESSAGES%20locale/cs/LC_MESSAGES%0A%20locale/cy/LC_MESSAGES%20locale/da/LC_MESSAGES%20locale/de/LC_MESSAGES%0A%20locale/el/LC_MESSAGES%20locale/en_GB/LC_MESSAGES%20locale/en_US/LC_MESSAGES%0A%20locale/es/LC_MESSAGES%20locale/et/LC_MESSAGES%20locale/fi/LC_MESSAGES%0A%20locale/fr/LC_MESSAGES%20locale/gl/LC_MESSAGES%20locale/gu/LC_MESSAGES%0A%20locale/he/LC_MESSAGES%20locale/hi/LC_MESSAGES%20locale/hr/LC_MESSAGES%0A%20locale/hu/LC_MESSAGES%20locale/id/LC_MESSAGES%20locale/it/LC_MESSAGES%0A%20locale/ja/LC_MESSAGES%20locale/ka/LC_MESSAGES%20locale/km/LC_MESSAGES%0A%20locale/ko/LC_MESSAGES%20locale/lo/LC_MESSAGES%20locale/lt/LC_MESSAGES%0A%20locale/mk/LC_MESSAGES%20locale/mr/LC_MESSAGES%20locale/nb/LC_MESSAGES%0A%20locale/nl/LC_MESSAGES%20locale/pa/LC_MESSAGES%20locale/pl/LC_MESSAGES%0A%20locale/pt/LC_MESSAGES%20locale/pt_BR/LC_MESSAGES%20locale/ro/LC_MESSAGES%0A%20locale/ru/LC_MESSAGES%20locale/sax-template%20locale/si/LC_MESSAG%21%20ES%0A%20locale/sk/LC_MESSAGES%20locale/sl/LC_MESSAGES%20locale/sr/LC_MESSAGES%0A%20locale/sv/LC_MESSAGES%20locale/ta/LC_MESSAGES%20locale/th/LC_MESSAGES%0A%20locale/tr/LC_MESSAGES%20locale/uk/LC_MESSAGES%20locale/vi/LC_MESSAGES%0A%20locale/wa/LC_MESSAGES%20locale/xh/LC_MESSAGES%20locale/zh_CN/LC_MESSAGES%0A%20locale/zh_TW/LC_MESSAGES%20locale/zu/LC_MESSAGES%20rpm&In-Reply-To=%3C200902051603.n15G3w6T030906%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000218.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1825 - in sax-head: api/data locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES locale/sax-template locale/si/LC_MESSAG! ES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES rpm</H1>
+    <B>marcus_schaefer at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1825%20-%20in%20sax-head%3A%20api/data%20locale/af/LC_MESSAGES%0A%20locale/ar/LC_MESSAGES%20locale/bg/LC_MESSAGES%20locale/bn/LC_MESSAGES%0A%20locale/bs/LC_MESSAGES%20locale/ca/LC_MESSAGES%20locale/cs/LC_MESSAGES%0A%20locale/cy/LC_MESSAGES%20locale/da/LC_MESSAGES%20locale/de/LC_MESSAGES%0A%20locale/el/LC_MESSAGES%20locale/en_GB/LC_MESSAGES%20locale/en_US/LC_MESSAGES%0A%20locale/es/LC_MESSAGES%20locale/et/LC_MESSAGES%20locale/fi/LC_MESSAGES%0A%20locale/fr/LC_MESSAGES%20locale/gl/LC_MESSAGES%20locale/gu/LC_MESSAGES%0A%20locale/he/LC_MESSAGES%20locale/hi/LC_MESSAGES%20locale/hr/LC_MESSAGES%0A%20locale/hu/LC_MESSAGES%20locale/id/LC_MESSAGES%20locale/it/LC_MESSAGES%0A%20locale/ja/LC_MESSAGES%20locale/ka/LC_MESSAGES%20locale/km/LC_MESSAGES%0A%20locale/ko/LC_MESSAGES%20locale/lo/LC_MESSAGES%20locale/lt/LC_MESSAGES%0A%20locale/mk/LC_MESSAGES%20locale/mr/LC_MESSAGES%20locale/nb/LC_MESSAGES%0A%20locale/nl/LC_MESSAGES%20locale/pa/LC_MESSAGES%20locale/pl/LC_MESSAGES%0A%20locale/pt/LC_MESSAGES%20locale/pt_BR/LC_MESSAGES%20locale/ro/LC_MESSAGES%0A%20locale/ru/LC_MESSAGES%20locale/sax-template%20locale/si/LC_MESSAG%21%20ES%0A%20locale/sk/LC_MESSAGES%20locale/sl/LC_MESSAGES%20locale/sr/LC_MESSAGES%0A%20locale/sv/LC_MESSAGES%20locale/ta/LC_MESSAGES%20locale/th/LC_MESSAGES%0A%20locale/tr/LC_MESSAGES%20locale/uk/LC_MESSAGES%20locale/vi/LC_MESSAGES%0A%20locale/wa/LC_MESSAGES%20locale/xh/LC_MESSAGES%20locale/zh_CN/LC_MESSAGES%0A%20locale/zh_TW/LC_MESSAGES%20locale/zu/LC_MESSAGES%20rpm&In-Reply-To=%3C200902051603.n15G3w6T030906%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1825 - in sax-head: api/data locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES locale/sax-template locale/si/LC_MESSAG! ES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES rpm">marcus_schaefer at mail.berlios.de
+       </A><BR>
+    <I>Thu Feb  5 17:03:58 CET 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000218.html">[Sax-devel] r1826 - in sax-head: rpm sysp sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#217">[ date ]</a>
+              <a href="thread.html#217">[ thread ]</a>
+              <a href="subject.html#217">[ subject ]</a>
+              <a href="author.html#217">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: marcus_schaefer
+Date: 2009-02-05 17:03:13 +0100 (Thu, 05 Feb 2009)
+New Revision: 1825
+
+Modified:
+   sax-head/api/data/xapi.gtx
+   sax-head/locale/af/LC_MESSAGES/sax.po
+   sax-head/locale/ar/LC_MESSAGES/sax.po
+   sax-head/locale/bg/LC_MESSAGES/sax.po
+   sax-head/locale/bn/LC_MESSAGES/sax.po
+   sax-head/locale/bs/LC_MESSAGES/sax.po
+   sax-head/locale/ca/LC_MESSAGES/sax.po
+   sax-head/locale/cs/LC_MESSAGES/sax.po
+   sax-head/locale/cy/LC_MESSAGES/sax.po
+   sax-head/locale/da/LC_MESSAGES/sax.po
+   sax-head/locale/de/LC_MESSAGES/sax.po
+   sax-head/locale/el/LC_MESSAGES/sax.po
+   sax-head/locale/en_GB/LC_MESSAGES/sax.po
+   sax-head/locale/en_US/LC_MESSAGES/sax.po
+   sax-head/locale/es/LC_MESSAGES/sax.po
+   sax-head/locale/et/LC_MESSAGES/sax.po
+   sax-head/locale/fi/LC_MESSAGES/sax.po
+   sax-head/locale/fr/LC_MESSAGES/sax.po
+   sax-head/locale/gl/LC_MESSAGES/sax.po
+   sax-head/locale/gu/LC_MESSAGES/sax.po
+   sax-head/locale/he/LC_MESSAGES/sax.po
+   sax-head/locale/hi/LC_MESSAGES/sax.po
+   sax-head/locale/hr/LC_MESSAGES/sax.po
+   sax-head/locale/hu/LC_MESSAGES/sax.po
+   sax-head/locale/id/LC_MESSAGES/sax.po
+   sax-head/locale/it/LC_MESSAGES/sax.po
+   sax-head/locale/ja/LC_MESSAGES/sax.po
+   sax-head/locale/ka/LC_MESSAGES/sax.po
+   sax-head/locale/km/LC_MESSAGES/sax.po
+   sax-head/locale/ko/LC_MESSAGES/sax.po
+   sax-head/locale/lo/LC_MESSAGES/sax.po
+   sax-head/locale/lt/LC_MESSAGES/sax.po
+   sax-head/locale/mk/LC_MESSAGES/sax.po
+   sax-head/locale/mr/LC_MESSAGES/sax.po
+   sax-head/locale/nb/LC_MESSAGES/sax.po
+   sax-head/locale/nl/LC_MESSAGES/sax.po
+   sax-head/locale/pa/LC_MESSAGES/sax.po
+   sax-head/locale/pl/LC_MESSAGES/sax.po
+   sax-head/locale/pt/LC_MESSAGES/sax.po
+   sax-head/locale/pt_BR/LC_MESSAGES/sax.po
+   sax-head/locale/ro/LC_MESSAGES/sax.po
+   sax-head/locale/ru/LC_MESSAGES/sax.po
+   sax-head/locale/sax-template/sax.pot
+   sax-head/locale/si/LC_MESSAGES/sax.po
+   sax-head/locale/sk/LC_MESSAGES/sax.po
+   sax-head/locale/sl/LC_MESSAGES/sax.po
+   sax-head/locale/sr/LC_MESSAGES/sax.po
+   sax-head/locale/sv/LC_MESSAGES/sax.po
+   sax-head/locale/ta/LC_MESSAGES/sax.po
+   sax-head/locale/th/LC_MESSAGES/sax.po
+   sax-head/locale/tr/LC_MESSAGES/sax.po
+   sax-head/locale/uk/LC_MESSAGES/sax.po
+   sax-head/locale/vi/LC_MESSAGES/sax.po
+   sax-head/locale/wa/LC_MESSAGES/sax.po
+   sax-head/locale/xh/LC_MESSAGES/sax.po
+   sax-head/locale/zh_CN/LC_MESSAGES/sax.po
+   sax-head/locale/zh_TW/LC_MESSAGES/sax.po
+   sax-head/locale/zu/LC_MESSAGES/sax.po
+   sax-head/rpm/sax2.changes
+Log:
+
+- fixed xkb key quoting in xapi.gtx (bnc #447492)
+
+
+
+Modified: sax-head/api/data/xapi.gtx
+===================================================================
+--- sax-head/api/data/xapi.gtx	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/api/data/xapi.gtx	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -650,7 +650,7 @@
+ CapsLock acts as Shift with locking. Shift doesn't affect CapsLock.=CapsLock acts as Shift with locking. Shift doesn't affect CapsLock.
+ 
+ # XKBFile extension text
+-CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.=CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.
++CapsLock uses internal capitalization. Shift &quot;pauses&quot; CapsLock.=CapsLock uses internal capitalization. Shift &quot;pauses&quot; CapsLock.
+ 
+ # XKBFile extension text
+ Space key output nobreakspace at third level.=Space key output nobreakspace at third level.
+@@ -680,7 +680,7 @@
+ Japanese Keyboard Options=Japanese Keyboard Options
+ 
+ # XKBFile extension text
+-CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.=CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.
++CapsLock acts as Shift with locking. Shift &quot;pauses&quot; CapsLock.=CapsLock acts as Shift with locking. Shift &quot;pauses&quot; CapsLock.
+ 
+ # XKBFile extension text
+ CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.=CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.
+
+Modified: sax-head/locale/af/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/af/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/af/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -939,7 +939,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;CapsLock gebruik interne hoofletters. Shift kanselleer CapsLock.&quot;
+ 
+ #. XKBFile extension text
+@@ -984,7 +984,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;CapsLock tree op as Shift met sluiting. Shift kanselleer CapsLock.&quot;
+ 
+ #. XKBFile extension text
+@@ -2050,9 +2050,9 @@
+ msgstr &quot;Rustende tydhouer ...&quot;
+ 
+ #, fuzzy
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;CapsLock gebruik interne hoofletters. Shift kanselleer CapsLock.&quot;
+ 
+ #, fuzzy
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;CapsLock tree op as Shift met sluiting. Shift kanselleer CapsLock.&quot;
+
+Modified: sax-head/locale/ar/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ar/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/ar/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -928,7 +928,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;&#1610;&#1587;&#1578;&#1582;&#1583;&#1605; &#1575;&#1604;&#1605;&#1601;&#1578;&#1575;&#1581; CapsLock &#1575;&#1604;&#1603;&#1578;&#1575;&#1576;&#1577; &#1576;&#1575;&#1604;&#1581;&#1585;&#1608;&#1601; &#1575;&#1604;&#1603;&#1576;&#1610;&#1585;&#1577; &#1575;&#1604;&#1583;&#1575;&#1582;&#1604;&#1610;&#1577;. &#1610;&#1602;&#1608;&#1605; &#1575;&#1604;&#1605;&#1601;&#1578;&#1575;&#1581; Shift &quot;
+ &quot;&#1576;&#1573;&#1604;&#1594;&#1575;&#1569; &#1575;&#1604;&#1605;&#1601;&#1578;&#1575;&#1581; CapsLock.&quot;
+@@ -972,7 +972,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;&#1610;&#1593;&#1605;&#1604; &#1575;&#1604;&#1605;&#1601;&#1578;&#1575;&#1581; CapsLock &#1603;&#1575;&#1604;&#1605;&#1601;&#1578;&#1575;&#1581; Shift &#1605;&#1593; &#1575;&#1604;&#1602;&#1601;&#1604;. &#1610;&#1602;&#1608;&#1605; &#1575;&#1604;&#1605;&#1601;&#1578;&#1575;&#1581; Shift &#1576;&#1573;&#1604;&#1594;&#1575;&#1569; &quot;
+ &quot;&#1575;&#1604;&#1605;&#1601;&#1578;&#1575;&#1581; CapsLock.&quot;
+@@ -2027,3 +2027,15 @@
+ 
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#1605;&#1610;&#1602;&#1575;&#1578;&#1610; &#1582;&#1575;&#1605;&#1604;...&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;&#1610;&#1587;&#1578;&#1582;&#1583;&#1605; &#1575;&#1604;&#1605;&#1601;&#1578;&#1575;&#1581; CapsLock &#1575;&#1604;&#1603;&#1578;&#1575;&#1576;&#1577; &#1576;&#1575;&#1604;&#1581;&#1585;&#1608;&#1601; &#1575;&#1604;&#1603;&#1576;&#1610;&#1585;&#1577; &#1575;&#1604;&#1583;&#1575;&#1582;&#1604;&#1610;&#1577;. &#1610;&#1602;&#1608;&#1605; &#1575;&#1604;&#1605;&#1601;&#1578;&#1575;&#1581; &quot;
++#~ &quot;Shift &#1576;&#1573;&#1604;&#1594;&#1575;&#1569; &#1575;&#1604;&#1605;&#1601;&#1578;&#1575;&#1581; CapsLock.&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;&#1610;&#1593;&#1605;&#1604; &#1575;&#1604;&#1605;&#1601;&#1578;&#1575;&#1581; CapsLock &#1603;&#1575;&#1604;&#1605;&#1601;&#1578;&#1575;&#1581; Shift &#1605;&#1593; &#1575;&#1604;&#1602;&#1601;&#1604;. &#1610;&#1602;&#1608;&#1605; &#1575;&#1604;&#1605;&#1601;&#1578;&#1575;&#1581; Shift &#1576;&#1573;&#1604;&#1594;&#1575;&#1569; &quot;
++#~ &quot;&#1575;&#1604;&#1605;&#1601;&#1578;&#1575;&#1581; CapsLock.&quot;
+
+Modified: sax-head/locale/bg/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/bg/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/bg/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -912,8 +912,7 @@
+ msgstr &quot;CapsLock &#1088;&#1072;&#1073;&#1086;&#1090;&#1080; &#1082;&#1072;&#1090;&#1086; Shift &#1089;&#1098;&#1089; &#1079;&#1072;&#1082;&#1083;&#1102;&#1095;&#1074;&#1072;&#1085;&#1077;. Shift &#1085;&#1077; &#1074;&#1083;&#1080;&#1103;&#1077; &#1085;&#1072; CapsLock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;CapsLock &#1080;&#1079;&#1087;&#1086;&#1083;&#1079;&#1074;&#1072; &#1074;&#1098;&#1090;&#1088;&#1077;&#1096;&#1077;&#1085; &#1084;&#1077;&#1090;&#1086;&#1076; &#1079;&#1072; &#1075;&#1083;&#1072;&#1074;&#1085;&#1080;&#1090;&#1077; &#1073;&#1091;&#1082;&#1074;&#1080;. Shift &#1087;&#1088;&#1077;&#1082;&#1098;&#1089;&#1074;&#1072; CapsLock.&quot;
+ 
+@@ -959,8 +958,7 @@
+ msgstr &quot;&#1053;&#1072;&#1090;&#1088;&#1086;&#1081;&#1082;&#1072; &#1079;&#1072; &#1103;&#1087;&#1086;&#1085;&#1089;&#1082;&#1072; &#1082;&#1083;&#1072;&#1074;&#1080;&#1072;&#1090;&#1091;&#1088;&#1072;&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;CapsLock &#1088;&#1072;&#1073;&#1086;&#1090;&#1080; &#1082;&#1072;&#1090;&#1086; Shift &#1089;&#1098;&#1089; &#1079;&#1072;&#1082;&#1083;&#1102;&#1095;&#1074;&#1072;&#1085;&#1077;. Shift &#1087;&#1088;&#1077;&#1082;&#1098;&#1089;&#1074;&#1072; CapsLock.&quot;
+ 
+ #. XKBFile extension text
+@@ -2046,10 +2044,12 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#1042;&#1088;&#1077;&#1084;&#1077; &#1085;&#1072; &#1073;&#1077;&#1079;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1077;...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;&quot;
+ #~ &quot;CapsLock &#1080;&#1079;&#1087;&#1086;&#1083;&#1079;&#1074;&#1072; &#1074;&#1098;&#1090;&#1088;&#1077;&#1096;&#1077;&#1085; &#1084;&#1077;&#1090;&#1086;&#1076; &#1079;&#1072; &#1075;&#1083;&#1072;&#1074;&#1085;&#1080;&#1090;&#1077; &#1073;&#1091;&#1082;&#1074;&#1080;. Shift &#1087;&#1088;&#1077;&#1082;&#1098;&#1089;&#1074;&#1072; &quot;
+ #~ &quot;CapsLock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;CapsLock &#1088;&#1072;&#1073;&#1086;&#1090;&#1080; &#1082;&#1072;&#1090;&#1086; Shift &#1089;&#1098;&#1089; &#1079;&#1072;&#1082;&#1083;&#1102;&#1095;&#1074;&#1072;&#1085;&#1077;. Shift &#1087;&#1088;&#1077;&#1082;&#1098;&#1089;&#1074;&#1072; CapsLock.&quot;
+
+Modified: sax-head/locale/bn/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/bn/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/bn/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -888,7 +888,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;CapsLock &#2437;&#2477;&#2509;&#2479;&#2472;&#2509;&#2468;&#2480;&#2496;&#2467; &#2453;&#2509;&#2479;&#2494;&#2474;&#2495;&#2463;&#2494;&#2482;&#2494;&#2439;&#2460;&#2503;&#2486;&#2472; &#2476;&#2509;&#2479;&#2476;&#2489;&#2494;&#2480; &#2453;&#2480;&#2503;&#2404; Shift CapsLock-&#2453;&#2503; &#2476;&#2494;&#2468;&#2495;&#2482; &#2453;&#2480;&#2503;&#2404;&quot;
+ 
+@@ -931,7 +931,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;CapsLock &#2482;&#2453;&#2495;&#2434;&#2527;&#2503;&#2480; &#2488;&#2494;&#2469;&#2503; Shift &#2489;&#2495;&#2488;&#2494;&#2476;&#2503; &#2453;&#2494;&#2460; &#2453;&#2480;&#2503;&#2404; Shift CapsLock-&#2453;&#2503; &#2476;&#2494;&#2468;&#2495;&#2482; &#2453;&#2480;&#2503;&#2404;&quot;
+ 
+@@ -1977,3 +1977,13 @@
+ 
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#2437;&#2482;&#2488; &#2463;&#2494;&#2439;&#2478;&#2494;&#2480;...&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;CapsLock &#2437;&#2477;&#2509;&#2479;&#2472;&#2509;&#2468;&#2480;&#2496;&#2467; &#2453;&#2509;&#2479;&#2494;&#2474;&#2495;&#2463;&#2494;&#2482;&#2494;&#2439;&#2460;&#2503;&#2486;&#2472; &#2476;&#2509;&#2479;&#2476;&#2489;&#2494;&#2480; &#2453;&#2480;&#2503;&#2404; Shift CapsLock-&#2453;&#2503; &#2476;&#2494;&#2468;&#2495;&#2482; &#2453;&#2480;&#2503;&#2404;&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;CapsLock &#2482;&#2453;&#2495;&#2434;&#2527;&#2503;&#2480; &#2488;&#2494;&#2469;&#2503; Shift &#2489;&#2495;&#2488;&#2494;&#2476;&#2503; &#2453;&#2494;&#2460; &#2453;&#2480;&#2503;&#2404; Shift CapsLock-&#2453;&#2503; &#2476;&#2494;&#2468;&#2495;&#2482; &#2453;&#2480;&#2503;&#2404;&quot;
+
+Modified: sax-head/locale/bs/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/bs/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/bs/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -891,7 +891,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -932,7 +932,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/ca/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ca/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/ca/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -937,7 +937,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;Bloq Maj&#250;s utilitza les maj&#250;scules internes. La tecla Maj&#250;s cancel&#183;la Bloq &quot;
+ &quot;Maj&#250;s.&quot;
+@@ -982,7 +982,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;Bloq Maj&#250;s actua com a la tecla Maj&#250;s amb bloqueig. La tecla Maj&#250;s cancel&#183;la &quot;
+ &quot;Bloq Maj&#250;s.&quot;
+@@ -2114,3 +2114,15 @@
+ 
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Temporitzador inactiu...&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;Bloq Maj&#250;s utilitza les maj&#250;scules internes. La tecla Maj&#250;s cancel&#183;la &quot;
++#~ &quot;Bloq Maj&#250;s.&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;Bloq Maj&#250;s actua com a la tecla Maj&#250;s amb bloqueig. La tecla Maj&#250;s &quot;
++#~ &quot;cancel&#183;la Bloq Maj&#250;s.&quot;
+
+Modified: sax-head/locale/cs/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/cs/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/cs/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -913,9 +913,8 @@
+ msgstr &quot;CapsLock je jako Shift se z&#225;mkem. Shift neovliv&#328;uje CapsLock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;Caps Lock pou&#382;&#237;v&#225; intern&#237; nastaven&#237;. Shift vyru&#353;&#237; Caps Lock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock pou&#382;&#237;v&#225; intern&#237; kapitalizaci. Shift&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -960,9 +959,8 @@
+ msgstr &quot;Volby japonsk&#233; kl&#225;vesnice&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;Caps Lock je jako Shift se z&#225;mkem. Shift ru&#353;&#237; Caps Lock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;Caps Lock funguje jako Shift se z&#225;mkem. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2017,8 +2015,10 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#268;ek&#225;n&#237;...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;CapsLock pou&#382;&#237;v&#225; intern&#237; kapitalizaci. Shift&quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;Caps Lock pou&#382;&#237;v&#225; intern&#237; nastaven&#237;. Shift vyru&#353;&#237; Caps Lock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;Caps Lock funguje jako Shift se z&#225;mkem. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;Caps Lock je jako Shift se z&#225;mkem. Shift ru&#353;&#237; Caps Lock.&quot;
+
+Modified: sax-head/locale/cy/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/cy/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/cy/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -891,7 +891,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -932,7 +932,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/da/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/da/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/da/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -914,10 +914,9 @@
+ &quot;Caps Lock fungerer som Shift med l&#229;sning. Shift p&#229;virker ikke Caps Lock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+-&quot;Caps Lock anvender store bogstaver internt. Shift annullerer Caps Lock.&quot;
++&quot;Caps Lock anvender store bogstaver internt. Shift p&#229;virker ikke Caps Lock.&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -960,9 +959,8 @@
+ msgstr &quot;Japanske tastaturvalgmuligheder&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;Caps Lock opf&#248;rer sig som Shift med l&#229;s. Shift annullerer Caps Lock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;Caps Lock opf&#248;rer sig som Shift med l&#229;s. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2046,9 +2044,12 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Inaktivitetstimer...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;&quot;
+-#~ &quot;Caps Lock anvender store bogstaver internt. Shift p&#229;virker ikke Caps Lock.&quot;
++#~ &quot;Caps Lock anvender store bogstaver internt. Shift annullerer Caps Lock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;Caps Lock opf&#248;rer sig som Shift med l&#229;s. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;Caps Lock opf&#248;rer sig som Shift med l&#229;s. Shift annullerer Caps Lock.&quot;
+
+Modified: sax-head/locale/de/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/de/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/de/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -926,11 +926,8 @@
+ &quot;Umschalttaste behindert die Feststelltaste nicht.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;Feststelltaste verwendet interne Gro&#223;schreibung. Umschalttaste deaktiviert &quot;
+-&quot;Feststellung.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;Die Feststelltaste verwendet die interne Gro&#223;schreibung. Umschalttaste&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -978,11 +975,10 @@
+ msgstr &quot;Japanische Tastaturoptionen&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+-&quot;Die Feststelltaste funktioniert wie Umschalt mit Sperre. Umschalttaste &quot;
+-&quot;deaktiviert Feststellung.&quot;
++&quot;Die Feststelltaste verh&#228;lt sich wie die Umschalttaste mit Sperre. &quot;
++&quot;Umschalttaste&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2050,11 +2046,14 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Verbleibend...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;&quot;
+-#~ &quot;Die Feststelltaste verwendet die interne Gro&#223;schreibung. Umschalttaste&quot;
++#~ &quot;Feststelltaste verwendet interne Gro&#223;schreibung. Umschalttaste &quot;
++#~ &quot;deaktiviert Feststellung.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;&quot;
+-#~ &quot;Die Feststelltaste verh&#228;lt sich wie die Umschalttaste mit Sperre. &quot;
+-#~ &quot;Umschalttaste&quot;
++#~ &quot;Die Feststelltaste funktioniert wie Umschalt mit Sperre. Umschalttaste &quot;
++#~ &quot;deaktiviert Feststellung.&quot;
+
+Modified: sax-head/locale/el/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/el/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/el/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -971,11 +971,8 @@
+ &quot;CapsLock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;&#932;&#959; CapsLock &#967;&#961;&#951;&#963;&#953;&#956;&#959;&#960;&#959;&#953;&#949;&#943; &#949;&#963;&#969;&#964;&#949;&#961;&#953;&#954;&#942; &#954;&#949;&#966;&#945;&#955;&#945;&#953;&#959;&#960;&#959;&#943;&#951;&#963;&#951;. &#932;&#959; Shift &#945;&#954;&#965;&#961;&#974;&#957;&#949;&#953; &#964;&#959; &quot;
+-&quot;CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;&#932;&#959; CapsLock &#967;&#961;&#951;&#963;&#953;&#956;&#959;&#960;&#959;&#953;&#949;&#943; &#949;&#963;&#969;&#964;&#949;&#961;&#953;&#954;&#942; &#954;&#949;&#966;&#945;&#955;&#945;&#953;&#959;&#960;&#959;&#943;&#951;&#963;&#951;. Shift&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -1019,9 +1016,8 @@
+ msgstr &quot;&#917;&#960;&#953;&#955;&#959;&#947;&#941;&#962; &#921;&#945;&#960;&#969;&#957;&#953;&#954;&#959;&#973; &#928;&#955;&#951;&#954;&#964;&#961;&#959;&#955;&#959;&#947;&#943;&#959;&#965;&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&#932;&#959; CapsLock &#963;&#965;&#956;&#960;&#949;&#961;&#953;&#966;&#941;&#961;&#949;&#964;&#945;&#953; &#972;&#960;&#969;&#962; &#954;&#945;&#953; &#964;&#959; Shift &#956;&#949; &#964;&#959; &#954;&#955;&#949;&#943;&#948;&#969;&#956;&#945;. &quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;To CapsLock &#955;&#949;&#953;&#964;&#959;&#965;&#961;&#947;&#943;&#945; &#972;&#960;&#969;&#962; &#964;&#959; Shift &#956;&#949; &#964;&#959; &#954;&#955;&#949;&#943;&#948;&#969;&#956;&#945;. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2102,8 +2098,12 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#935;&#961;&#959;&#957;&#972;&#956;&#949;&#964;&#961;&#959; &#945;&#948;&#961;&#940;&#957;&#949;&#953;&#945;&#962;...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;&#932;&#959; CapsLock &#967;&#961;&#951;&#963;&#953;&#956;&#959;&#960;&#959;&#953;&#949;&#943; &#949;&#963;&#969;&#964;&#949;&#961;&#953;&#954;&#942; &#954;&#949;&#966;&#945;&#955;&#945;&#953;&#959;&#960;&#959;&#943;&#951;&#963;&#951;. Shift&quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;&#932;&#959; CapsLock &#967;&#961;&#951;&#963;&#953;&#956;&#959;&#960;&#959;&#953;&#949;&#943; &#949;&#963;&#969;&#964;&#949;&#961;&#953;&#954;&#942; &#954;&#949;&#966;&#945;&#955;&#945;&#953;&#959;&#960;&#959;&#943;&#951;&#963;&#951;. &#932;&#959; Shift &#945;&#954;&#965;&#961;&#974;&#957;&#949;&#953; &#964;&#959; &quot;
++#~ &quot;CapsLock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;To CapsLock &#955;&#949;&#953;&#964;&#959;&#965;&#961;&#947;&#943;&#945; &#972;&#960;&#969;&#962; &#964;&#959; Shift &#956;&#949; &#964;&#959; &#954;&#955;&#949;&#943;&#948;&#969;&#956;&#945;. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&#932;&#959; CapsLock &#963;&#965;&#956;&#960;&#949;&#961;&#953;&#966;&#941;&#961;&#949;&#964;&#945;&#953; &#972;&#960;&#969;&#962; &#954;&#945;&#953; &#964;&#959; Shift &#956;&#949; &#964;&#959; &#954;&#955;&#949;&#943;&#948;&#969;&#956;&#945;. &quot;
+
+Modified: sax-head/locale/en_GB/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/en_GB/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/en_GB/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -901,9 +901,8 @@
+ msgstr &quot;CapsLock acts as Shift with locking. Shift doesn't affect CapsLock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock uses internal capitalisation. Shift cancels CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock uses internal capitalisation. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -945,9 +944,8 @@
+ msgstr &quot;Japanese Keyboard Options&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock acts as Shift with locking. Shift cancels CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock acts as Shift with locking. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2006,8 +2004,10 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Idle timer...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;CapsLock uses internal capitalisation. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock uses internal capitalisation. Shift cancels CapsLock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;CapsLock acts as Shift with locking. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock acts as Shift with locking. Shift cancels CapsLock.&quot;
+
+Modified: sax-head/locale/en_US/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/en_US/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/en_US/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -875,7 +875,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -916,7 +916,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/es/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/es/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/es/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -937,11 +937,10 @@
+ &quot;desactiva Bloq May&#250;s.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;Bloq May&#250;s utiliza las may&#250;sculas internas. La tecla May&#250;s cancela la tecla &quot;
+-&quot;Bloq May&#250;s.&quot;
++&quot;Bloq May&#250;s&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -989,11 +988,10 @@
+ msgstr &quot;Opciones de teclado japon&#233;s&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;Bloq May&#250;s act&#250;a como la tecla May&#250;s con bloqueo. La tecla May&#250;s cancela la &quot;
+-&quot;tecla Bloq May&#250;s.&quot;
++&quot;tecla Bloq May&#250;s&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2065,12 +2063,14 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Temporizador inactivo...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;&quot;
+ #~ &quot;Bloq May&#250;s utiliza las may&#250;sculas internas. La tecla May&#250;s cancela la &quot;
+-#~ &quot;tecla Bloq May&#250;s&quot;
++#~ &quot;tecla Bloq May&#250;s.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;&quot;
+ #~ &quot;Bloq May&#250;s act&#250;a como la tecla May&#250;s con bloqueo. La tecla May&#250;s cancela &quot;
+-#~ &quot;la tecla Bloq May&#250;s&quot;
++#~ &quot;la tecla Bloq May&#250;s.&quot;
+
+Modified: sax-head/locale/et/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/et/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/et/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -876,7 +876,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -917,7 +917,7 @@
+ msgstr &quot;Jaapani klaviatuuri s&#228;tted&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/fi/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/fi/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/fi/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -916,10 +916,8 @@
+ msgstr &quot;CapsLock toimi kuten Vaihto lukituksella. Vaihto ei poista CapsLockia.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;CapsLock k&#228;ytt&#228;&#228; sis&#228;ist&#228; kapitalisointia. Vaihto ottaa CapsLockin pois.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock k&#228;ytt&#228;&#228; sis&#228;ist&#228; kapitalisointia. Vaihto&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -963,9 +961,8 @@
+ msgstr &quot;Japanilaisen n&#228;pp&#228;imist&#246;n valinnat&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock toimi kuten Shift lukituksella. Shift poistaa CapsLockin.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock toimi kuten Vaihto lukituksella. Vaihto poistaa CapsLockin.&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2063,9 +2060,11 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Aikalaskuri...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;CapsLock k&#228;ytt&#228;&#228; sis&#228;ist&#228; kapitalisointia. Vaihto&quot;
+-
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;&quot;
+-#~ &quot;CapsLock toimi kuten Vaihto lukituksella. Vaihto poistaa CapsLockin.&quot;
++#~ &quot;CapsLock k&#228;ytt&#228;&#228; sis&#228;ist&#228; kapitalisointia. Vaihto ottaa CapsLockin pois.&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock toimi kuten Shift lukituksella. Shift poistaa CapsLockin.&quot;
+
+Modified: sax-head/locale/fr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/fr/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/fr/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -919,10 +919,8 @@
+ &quot;VerrMaj agit comme Maj avec verrouillage. Maj n'annule pas le verrouillage.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;VerrMaj utilise la capitalisation interne. La touche Maj annule VerrMaj.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;VerrMaj (CapsLock) utilise la capitalisation interne. Maj (Shift) &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -966,10 +964,9 @@
+ msgstr &quot;Options de clavier Japonnais&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+-&quot;VerrMaj agit comme Maj avec verrouillage. La touche Maj annule CapsLock.&quot;
++&quot;VerrMaj (CapsLock) agit comme Maj (Shift) avec verrouillage. Maj (Shift) &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2027,9 +2024,12 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;D&#233;lai d'inactivit&#233;...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;VerrMaj (CapsLock) utilise la capitalisation interne. Maj (Shift) &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;VerrMaj utilise la capitalisation interne. La touche Maj annule VerrMaj.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;&quot;
+-#~ &quot;VerrMaj (CapsLock) agit comme Maj (Shift) avec verrouillage. Maj (Shift) &quot;
++#~ &quot;VerrMaj agit comme Maj avec verrouillage. La touche Maj annule CapsLock.&quot;
+
+Modified: sax-head/locale/gl/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/gl/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/gl/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -887,7 +887,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -928,7 +928,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/gu/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/gu/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/gu/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -894,7 +894,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot; CapsLock &#2694;&#2690;&#2724;&#2736;&#2751;&#2709; &#2709;&#2759;&#2730;&#2751;&#2719;&#2738;&#2750;&#2695;&#2717;&#2759;&#2742;&#2728;&#2728;&#2763; &#2697;&#2730;&#2735;&#2763;&#2711; &#2709;&#2736;&#2759; &#2715;&#2759;. &#2742;&#2751;&#2731;&#2765;&#2719; CapsLock &#2728;&#2759; &#2736;&#2726; &#2709;&#2736;&#2759; &#2715;&#2759;. &quot;
+ 
+ #. XKBFile extension text
+@@ -936,7 +936,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot; CapsLock &#2738;&#2763;&#2709; &#2744;&#2750;&#2725;&#2759; &#2742;&#2751;&#2731;&#2765;&#2719; &#2724;&#2736;&#2752;&#2709;&#2759; &#2741;&#2736;&#2765;&#2724;&#2759; &#2715;&#2759;. &#2742;&#2751;&#2731;&#2765;&#2719; CapsLock &#2728;&#2759; &#2736;&#2726; &#2709;&#2736;&#2759; &#2715;&#2759;. &quot;
+ 
+ #. XKBFile extension text
+@@ -1976,3 +1976,11 @@
+ 
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#2728;&#2741;&#2736;&#2753;&#2690; &#2719;&#2750;&#2695;&#2734;&#2736;...&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot; CapsLock &#2694;&#2690;&#2724;&#2736;&#2751;&#2709; &#2709;&#2759;&#2730;&#2751;&#2719;&#2738;&#2750;&#2695;&#2717;&#2759;&#2742;&#2728;&#2728;&#2763; &#2697;&#2730;&#2735;&#2763;&#2711; &#2709;&#2736;&#2759; &#2715;&#2759;. &#2742;&#2751;&#2731;&#2765;&#2719; CapsLock &#2728;&#2759; &#2736;&#2726; &#2709;&#2736;&#2759; &#2715;&#2759;. &quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot; CapsLock &#2738;&#2763;&#2709; &#2744;&#2750;&#2725;&#2759; &#2742;&#2751;&#2731;&#2765;&#2719; &#2724;&#2736;&#2752;&#2709;&#2759; &#2741;&#2736;&#2765;&#2724;&#2759; &#2715;&#2759;. &#2742;&#2751;&#2731;&#2765;&#2719; CapsLock &#2728;&#2759; &#2736;&#2726; &#2709;&#2736;&#2759; &#2715;&#2759;. &quot;
+
+Modified: sax-head/locale/he/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/he/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/he/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -887,7 +887,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -928,7 +928,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/hi/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/hi/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/hi/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -890,7 +890,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&#2325;&#2376;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2310;&#2306;&#2340;&#2352;&#2367;&#2325; &#2352;&#2370;&#2346; &#2360;&#2375; &#2348;&#2337;&#2364;&#2366; &#2325;&#2352;&#2340;&#2366; &#2361;&#2376;&#2404; &#2358;&#2367;&#2347;&#2381;&#2335; &#2325;&#2376;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2352;&#2342;&#2381;&#2342; &#2325;&#2352;&#2340;&#2366; &#2361;&#2376;&#2404;&quot;
+ 
+ #. XKBFile extension text
+@@ -932,7 +932,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&#2325;&#2376;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2354;&#2377;&#2325;&#2367;&#2306;&#2327; &#2325;&#2375; &#2360;&#2366;&#2341; &#2358;&#2367;&#2347;&#2381;&#2335; &#2325;&#2375; &#2352;&#2370;&#2346; &#2350;&#2375;&#2306; &#2325;&#2366;&#2352;&#2381;&#2351; &#2325;&#2352;&#2340;&#2366; &#2361;&#2376;&#2404; &#2358;&#2367;&#2347;&#2381;&#2335; &#2325;&#2376;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2352;&#2342;&#2381;&#2342; &#2325;&#2352;&#2340;&#2366; &#2361;&#2376;&#2404;&quot;
+ 
+ #. XKBFile extension text
+@@ -1970,3 +1970,11 @@
+ 
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#2310;&#2311;&#2337;&#2354; &#2335;&#2366;&#2311;&#2350;&#2352;&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&#2325;&#2376;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2310;&#2306;&#2340;&#2352;&#2367;&#2325; &#2352;&#2370;&#2346; &#2360;&#2375; &#2348;&#2337;&#2364;&#2366; &#2325;&#2352;&#2340;&#2366; &#2361;&#2376;&#2404; &#2358;&#2367;&#2347;&#2381;&#2335; &#2325;&#2376;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2352;&#2342;&#2381;&#2342; &#2325;&#2352;&#2340;&#2366; &#2361;&#2376;&#2404;&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&#2325;&#2376;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2354;&#2377;&#2325;&#2367;&#2306;&#2327; &#2325;&#2375; &#2360;&#2366;&#2341; &#2358;&#2367;&#2347;&#2381;&#2335; &#2325;&#2375; &#2352;&#2370;&#2346; &#2350;&#2375;&#2306; &#2325;&#2366;&#2352;&#2381;&#2351; &#2325;&#2352;&#2340;&#2366; &#2361;&#2376;&#2404; &#2358;&#2367;&#2347;&#2381;&#2335; &#2325;&#2376;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2352;&#2342;&#2381;&#2342; &#2325;&#2352;&#2340;&#2366; &#2361;&#2376;&#2404;&quot;
+
+Modified: sax-head/locale/hr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/hr/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/hr/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -879,7 +879,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -920,7 +920,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/hu/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/hu/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/hu/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -989,10 +989,8 @@
+ &quot;nagybet&#369;s&#237;t&#233;st.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;A CapsLock bels&#337; nagybet&#369;s&#237;t&#233;st haszn&#225;l. A Shift feloldja a nagybet&#369;s m&#243;dot.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;A CapsLock bels&#337; nagybet&#369;s&#237;t&#233;st haszn&#225;l. A Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -1037,11 +1035,8 @@
+ msgstr &quot;Jap&#225;n billenty&#369;zet be&#225;ll&#237;t&#225;sai&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;A CapsLock ugyan&#250;gy m&#369;k&#246;dik, mint egy lez&#225;rt Shift. A Shift feloldja a &quot;
+-&quot;CapsLock m&#243;dot.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;A CapsLock ugyan&#250;gy m&#369;k&#246;dik, mint egy lez&#225;rt Shift. A Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2131,8 +2126,14 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;T&#233;tlens&#233;gi id&#337;z&#237;t&#337;...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;A CapsLock bels&#337; nagybet&#369;s&#237;t&#233;st haszn&#225;l. A Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;A CapsLock bels&#337; nagybet&#369;s&#237;t&#233;st haszn&#225;l. A Shift feloldja a nagybet&#369;s &quot;
++#~ &quot;m&#243;dot.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;A CapsLock ugyan&#250;gy m&#369;k&#246;dik, mint egy lez&#225;rt Shift. A Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;A CapsLock ugyan&#250;gy m&#369;k&#246;dik, mint egy lez&#225;rt Shift. A Shift feloldja a &quot;
++#~ &quot;CapsLock m&#243;dot.&quot;
+
+Modified: sax-head/locale/id/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/id/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/id/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -884,7 +884,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -925,7 +925,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/it/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/it/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/it/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -931,10 +931,8 @@
+ &quot;BlocMaiusc.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;BlocMaiusc utilizza iniziale maiuscola interna. Maiusc annulla BlocMaiusc.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;BlocMaiusc utilizza iniziale maiuscola interna. Maiusc&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -982,9 +980,8 @@
+ msgstr &quot;Opzioni per la tastiera giapponese&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;BlocMaiusc funge da Maiusc con blocco. Maiusc annulla BlocMaiusc.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;BlocMaiusc funge da Maiusc con blocco. Maiusc&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2049,8 +2046,11 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Rimangono...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;BlocMaiusc utilizza iniziale maiuscola interna. Maiusc&quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;BlocMaiusc utilizza iniziale maiuscola interna. Maiusc annulla BlocMaiusc.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;BlocMaiusc funge da Maiusc con blocco. Maiusc&quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;BlocMaiusc funge da Maiusc con blocco. Maiusc annulla BlocMaiusc.&quot;
+
+Modified: sax-head/locale/ja/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ja/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/ja/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -908,11 +908,8 @@
+ &quot;&#12434;&#19982;&#12360;&#12394;&#12356;&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;CapsLock &#12395;&#12424;&#12426;&#12450;&#12523;&#12501;&#12449;&#12505;&#12483;&#12488;&#12434;&#22823;&#25991;&#23383;&#21270;&#12377;&#12427;&#12290; Shift &#12391; CapsLock &#12434;&#12461;&#12515;&#12531;&#12475;&#12523;&quot;
+-&quot;&#12377;&#12427;&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock &#12395;&#12424;&#12426;&#12450;&#12523;&#12501;&#12449;&#12505;&#12483;&#12488;&#12434;&#22823;&#25991;&#23383;&#21270;&#12377;&#12427;&#12290;Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -955,11 +952,8 @@
+ msgstr &quot;&#26085;&#26412;&#35486;&#12461;&#12540;&#12508;&#12540;&#12489;&#12398;&#12458;&#12503;&#12471;&#12519;&#12531;&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;CapsLock &#12399; Shift &#12461;&#12540;&#12398;&#12525;&#12483;&#12463;&#12392;&#12375;&#12390;&#27231;&#33021;&#12373;&#12379;&#12427;&#12290; Shift &#12391; CapsLock &#12434;&#12461;&#12515;&#12531;&#12475;&quot;
+-&quot;&#12523;&#12377;&#12427;&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock &#12399; Shift &#12461;&#12540;&#12398;&#12525;&#12483;&#12463;&#12392;&#12375;&#12390;&#27231;&#33021;&#12373;&#12379;&#12427;&#12290; Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2017,8 +2011,14 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#28961;&#25805;&#20316;&#12479;&#12452;&#12510;&#12540; ...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;CapsLock &#12395;&#12424;&#12426;&#12450;&#12523;&#12501;&#12449;&#12505;&#12483;&#12488;&#12434;&#22823;&#25991;&#23383;&#21270;&#12377;&#12427;&#12290;Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;CapsLock &#12395;&#12424;&#12426;&#12450;&#12523;&#12501;&#12449;&#12505;&#12483;&#12488;&#12434;&#22823;&#25991;&#23383;&#21270;&#12377;&#12427;&#12290; Shift &#12391; CapsLock &#12434;&#12461;&#12515;&#12531;&#12475;&quot;
++#~ &quot;&#12523;&#12377;&#12427;&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;CapsLock &#12399; Shift &#12461;&#12540;&#12398;&#12525;&#12483;&#12463;&#12392;&#12375;&#12390;&#27231;&#33021;&#12373;&#12379;&#12427;&#12290; Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;CapsLock &#12399; Shift &#12461;&#12540;&#12398;&#12525;&#12483;&#12463;&#12392;&#12375;&#12390;&#27231;&#33021;&#12373;&#12379;&#12427;&#12290; Shift &#12391; CapsLock &#12434;&#12461;&#12515;&quot;
++#~ &quot;&#12531;&#12475;&#12523;&#12377;&#12427;&quot;
+
+Modified: sax-head/locale/ka/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ka/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/ka/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -872,7 +872,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -913,7 +913,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/km/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/km/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/km/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -897,11 +897,8 @@
+ &quot;(CapsLock) &#6033;&#6081;&#160;&#6100;&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;\&quot;&#6036;&#6098;&#6026;&#6076;&#6042;&#8203;&#6023;&#6070;&#6036;&#6091;(CapsLock)\&quot; &#6036;&#6098;&#6026;&#6076;&#6042;&#8203;&#6016;&#6070;&#6042;&#8203;&#6047;&#6042;&#6047;&#6081;&#6042;&#8203;&#6023;&#6070;&#8203;&#6050;&#6016;&#6098;&#6047;&#6042;&#8203;&#6034;&#6086;&#8203;&#6017;&#6070;&#6020;&#8203;&#6016;&#6098;&#6035;&#6075;&#6020;&#160;&#6100; \&quot;&#6036;&#6098;&#6026;&#6076;&#6042;(Shift)\&quot; &#6036;&#6071;&#6033; \&quot;&#6036;&#6098;&#6026;&#6076;&#6042;&#8203;&#6023;&#6070;&#6036;&#6091;&quot;
+-&quot;(CapsLock)\&quot; &#6044;&#6071;&#6025;&#160;&#6100;&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;&#6036;&#6098;&#6026;&#6076;&#6042;&#6023;&#6070;&#6036;&#6091;&#8203;(CapsLock) &#6036;&#6098;&#6042;&#6078;&#8203;&#6016;&#6070;&#6042;&#8203;&#6047;&#6042;&#6047;&#6081;&#6042;&#8203;&#6050;&#6016;&#6098;&#6047;&#6042;&#8203;&#6034;&#6086;&#8203;&#6035;&#6085;&#6017;&#6070;&#6020;&#6016;&#6098;&#6035;&#6075;&#6020;&#160;&#6100; &#6036;&#6098;&#6026;&#6076;&#6042;&#8203;(Shift) &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -943,11 +940,8 @@
+ msgstr &quot;&#6023;&#6040;&#6098;&#6042;&#6078;&#6047;&#8203;&#6016;&#6098;&#6026;&#6070;&#6042;&#8203;&#6021;&#6075;&#6021; &#6023;&#6036;&#6089;&#6075;&#6035;&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;\&quot;&#6036;&#6098;&#6026;&#6076;&#6042;&#8203;&#6023;&#6070;&#6036;&#6091;(CapsLock)\&quot; &#6026;&#6078;&#6042;&#6031;&#6077;&#8203;&#6023;&#6070; \&quot;&#6036;&#6098;&#6026;&#6076;&#6042;(Shift)&#6026;&#6082;&#6043;&#8203;&#6023;&#6070;&#6036;&#6091;&#8203;&#6047;&#6084;\&quot;&#160;&#6100; \&quot;&#6036;&#6098;&#6026;&#6076;&#6042;(Shift)\&quot; &#6036;&#6071;&#6033; \&quot;&#6036;&#6098;&#6026;&#6076;&#6042;&#8203;&quot;
+-&quot;&#6023;&#6070;&#6036;&#6091;(CapsLock)\&quot; &#6044;&#6071;&#6025;&#160;&#6100;&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;&#6036;&#6098;&#6026;&#6076;&#6042;&#8203;&#6023;&#6070;&#6036;&#6091;&#8203;(CapsLock) &#6026;&#6078;&#6042;&#8203;&#6031;&#6077;&#6042;&#8203;&#6023;&#6070;&#8203; &#6036;&#6098;&#6026;&#6076;&#6042;&#8203;(Shift) &#6026;&#6082;&#6043;&#8203;&#6023;&#6070;&#6036;&#6091;&#8203;&#6047;&#6084;&#160;&#6100; &#6036;&#6098;&#6026;&#6076;&#6042;&#8203;(Shift) &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -1999,8 +1993,14 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#6038;&#6081;&#6043;&#8203;&#6033;&#6086;&#6035;&#6081;&#6042;...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;&#6036;&#6098;&#6026;&#6076;&#6042;&#6023;&#6070;&#6036;&#6091;&#8203;(CapsLock) &#6036;&#6098;&#6042;&#6078;&#8203;&#6016;&#6070;&#6042;&#8203;&#6047;&#6042;&#6047;&#6081;&#6042;&#8203;&#6050;&#6016;&#6098;&#6047;&#6042;&#8203;&#6034;&#6086;&#8203;&#6035;&#6085;&#6017;&#6070;&#6020;&#6016;&#6098;&#6035;&#6075;&#6020;&#160;&#6100; &#6036;&#6098;&#6026;&#6076;&#6042;&#8203;(Shift) &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;\&quot;&#6036;&#6098;&#6026;&#6076;&#6042;&#8203;&#6023;&#6070;&#6036;&#6091;(CapsLock)\&quot; &#6036;&#6098;&#6026;&#6076;&#6042;&#8203;&#6016;&#6070;&#6042;&#8203;&#6047;&#6042;&#6047;&#6081;&#6042;&#8203;&#6023;&#6070;&#8203;&#6050;&#6016;&#6098;&#6047;&#6042;&#8203;&#6034;&#6086;&#8203;&#6017;&#6070;&#6020;&#8203;&#6016;&#6098;&#6035;&#6075;&#6020;&#160;&#6100; \&quot;&#6036;&#6098;&#6026;&#6076;&#6042;(Shift)\&quot; &#6036;&#6071;&#6033; \&quot;&#6036;&#6098;&#6026;&#6076;&#6042;&#8203;&#6023;&#6070;&#6036;&#6091;&quot;
++#~ &quot;(CapsLock)\&quot; &#6044;&#6071;&#6025;&#160;&#6100;&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;&#6036;&#6098;&#6026;&#6076;&#6042;&#8203;&#6023;&#6070;&#6036;&#6091;&#8203;(CapsLock) &#6026;&#6078;&#6042;&#8203;&#6031;&#6077;&#6042;&#8203;&#6023;&#6070;&#8203; &#6036;&#6098;&#6026;&#6076;&#6042;&#8203;(Shift) &#6026;&#6082;&#6043;&#8203;&#6023;&#6070;&#6036;&#6091;&#8203;&#6047;&#6084;&#160;&#6100; &#6036;&#6098;&#6026;&#6076;&#6042;&#8203;(Shift) &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;\&quot;&#6036;&#6098;&#6026;&#6076;&#6042;&#8203;&#6023;&#6070;&#6036;&#6091;(CapsLock)\&quot; &#6026;&#6078;&#6042;&#6031;&#6077;&#8203;&#6023;&#6070; \&quot;&#6036;&#6098;&#6026;&#6076;&#6042;(Shift)&#6026;&#6082;&#6043;&#8203;&#6023;&#6070;&#6036;&#6091;&#8203;&#6047;&#6084;\&quot;&#160;&#6100; \&quot;&#6036;&#6098;&#6026;&#6076;&#6042;(Shift)\&quot; &#6036;&#6071;&#6033; &quot;
++#~ &quot;\&quot;&#6036;&#6098;&#6026;&#6076;&#6042;&#8203;&#6023;&#6070;&#6036;&#6091;(CapsLock)\&quot; &#6044;&#6071;&#6025;&#160;&#6100;&quot;
+
+Modified: sax-head/locale/ko/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ko/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/ko/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -906,9 +906,8 @@
+ &quot;&#51452;&#51648; &#50506;&#49845;&#45768;&#45796;.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock &#47196; &#50508;&#54028;&#48307;&#51012; &#45824;&#47928;&#51088;&#54868; &#54633;&#45768;&#45796;. Shift &#47196; CapsLock &#51012; &#52712;&#49548;&#54633;&#45768;&#45796;.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock &#50640;&#51032;&#54644; &#50508;&#54028;&#48307;&#51012; &#45824;&#47928;&#51088;&#54868; &#54633;&#45768;&#45796;. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -950,10 +949,8 @@
+ msgstr &quot;&#51068;&#48376;&#50612; &#53412;&#48372;&#46300; &#50741;&#49496;&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;CapsLock &#51008; Shitf &#51032; &#51104;&#44552;&#51004;&#47196; &#51089;&#46041; &#54633;&#45768;&#45796;. Shift &#47196; CapsLock &#51012; &#52712;&#49548; &#54633;&#45768;&#45796;.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock &#51008; Shift &#53412;&#51032; &#51104;&#44552;&#51004;&#47196; &#44592;&#45733; &#49884;&#53429;&#45768;&#45796;. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2027,8 +2024,13 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Idle &#53440;&#51060;&#47672;...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;CapsLock &#50640;&#51032;&#54644; &#50508;&#54028;&#48307;&#51012; &#45824;&#47928;&#51088;&#54868; &#54633;&#45768;&#45796;. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;CapsLock &#47196; &#50508;&#54028;&#48307;&#51012; &#45824;&#47928;&#51088;&#54868; &#54633;&#45768;&#45796;. Shift &#47196; CapsLock &#51012; &#52712;&#49548;&#54633;&#45768;&#45796;.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;CapsLock &#51008; Shift &#53412;&#51032; &#51104;&#44552;&#51004;&#47196; &#44592;&#45733; &#49884;&#53429;&#45768;&#45796;. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;CapsLock &#51008; Shitf &#51032; &#51104;&#44552;&#51004;&#47196; &#51089;&#46041; &#54633;&#45768;&#45796;. Shift &#47196; CapsLock &#51012; &#52712;&#49548; &#54633;&#45768;&quot;
++#~ &quot;&#45796;.&quot;
+
+Modified: sax-head/locale/lo/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/lo/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/lo/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -869,7 +869,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -910,7 +910,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/lt/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/lt/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/lt/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -928,9 +928,8 @@
+ msgstr &quot;CapsLock veikia kaip Shift su rakinimu. Shift neat&#353;aukia CapsLock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock naudoja vidin&#303; raid&#382;i&#371; didinim&#261;. Shift at&#353;aukia CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock naudoja vidin&#303; raid&#382;i&#371; didinim&#261;. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -972,9 +971,8 @@
+ msgstr &quot;Japoni&#353;kis klaviat&#363;ros parinktys&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock veikia kaip Shift su rakinimu. Shift at&#353;aukia CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock veikia kaip Shift su rakinimu. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2049,11 +2047,13 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Tu&#353;&#269;ios eigos taimeris...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;CapsLock naudoja vidin&#303; raid&#382;i&#371; didinim&#261;. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock naudoja vidin&#303; raid&#382;i&#371; didinim&#261;. Shift at&#353;aukia CapsLock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;CapsLock veikia kaip Shift su rakinimu. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock veikia kaip Shift su rakinimu. Shift at&#353;aukia CapsLock.&quot;
+ 
+ #~ msgid &quot;&quot;
+ #~ &quot;&lt;b&gt;Please note:&lt;/b&gt;&lt;hr&gt;The configuration is &lt;i&gt;Framebuffer&lt;/i&gt; based and &quot;
+
+Modified: sax-head/locale/mk/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/mk/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/mk/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -877,7 +877,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -918,7 +918,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/mr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/mr/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/mr/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -890,7 +890,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&#2325;&#2373;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2311;&#2306;&#2335;&#2352;&#2381;&#2344;&#2354; &#2325;&#2373;&#2346;&#2367;&#2335;&#2354;&#2366;&#2351;&#2333;&#2375;&#2358;&#2344;&#2330;&#2366; &#2313;&#2346;&#2351;&#2379;&#2327; &#2325;&#2352;&#2340;&#2379;. &#2358;&#2367;&#2347;&#2381;&#2335; &#2325;&#2373;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2352;&#2342;&#2381;&#2342;&#2381; &#2325;&#2352;&#2340;&#2379;.&quot;
+ 
+ #. XKBFile extension text
+@@ -932,7 +932,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&#2325;&#2373;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2354;&#2377;&#2325;&#2367;&#2306;&#2327;&#2360;&#2361; &#2358;&#2367;&#2347;&#2381;&#2335; &#2350;&#2381;&#2361;&#2339;&#2370;&#2344; &#2325;&#2366;&#2350; &#2325;&#2352;&#2340;&#2379;. &#2358;&#2367;&#2347;&#2381;&#2335; &#2325;&#2373;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2352;&#2342;&#2381;&#2342;&#2381; &#2325;&#2352;&#2368;&#2340; &#2344;&#2366;&#2361;&#2368;.&quot;
+ 
+ #. XKBFile extension text
+@@ -1975,3 +1975,11 @@
+ 
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#2310;&#2351;&#2337;&#2354; &#2335;&#2366;&#2351;&#2350;&#2352;...&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&#2325;&#2373;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2311;&#2306;&#2335;&#2352;&#2381;&#2344;&#2354; &#2325;&#2373;&#2346;&#2367;&#2335;&#2354;&#2366;&#2351;&#2333;&#2375;&#2358;&#2344;&#2330;&#2366; &#2313;&#2346;&#2351;&#2379;&#2327; &#2325;&#2352;&#2340;&#2379;. &#2358;&#2367;&#2347;&#2381;&#2335; &#2325;&#2373;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2352;&#2342;&#2381;&#2342;&#2381; &#2325;&#2352;&#2340;&#2379;.&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&#2325;&#2373;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2354;&#2377;&#2325;&#2367;&#2306;&#2327;&#2360;&#2361; &#2358;&#2367;&#2347;&#2381;&#2335; &#2350;&#2381;&#2361;&#2339;&#2370;&#2344; &#2325;&#2366;&#2350; &#2325;&#2352;&#2340;&#2379;. &#2358;&#2367;&#2347;&#2381;&#2335; &#2325;&#2373;&#2346;&#2381;&#2360;&#2354;&#2377;&#2325; &#2352;&#2342;&#2381;&#2342;&#2381; &#2325;&#2352;&#2368;&#2340; &#2344;&#2366;&#2361;&#2368;.&quot;
+
+Modified: sax-head/locale/nb/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/nb/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/nb/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -918,9 +918,8 @@
+ msgstr &quot;CapsLock fungerer som Shift med l&#229;sing. Shift p&#229;virker ikke CapsLock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock bruker store bokstaver internt. Shift annullerer CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock bruker store bokstaver internt. Shift p&#229;virker ikke CapsLock&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -963,9 +962,8 @@
+ msgstr &quot;Japanske tastaturvalg&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock fungerer som Shift med l&#229;sing. Shift annullerer CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock fungerer som Shift med l&#229;sing. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2037,9 +2035,10 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Tidsur for inaktivitet...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;&quot;
+-#~ &quot;CapsLock bruker store bokstaver internt. Shift p&#229;virker ikke CapsLock&quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock bruker store bokstaver internt. Shift annullerer CapsLock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;CapsLock fungerer som Shift med l&#229;sing. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock fungerer som Shift med l&#229;sing. Shift annullerer CapsLock.&quot;
+
+Modified: sax-head/locale/nl/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/nl/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/nl/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -915,9 +915,8 @@
+ &quot;op CapsLock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock gebruikt interne kapitalisatie. Shift annuleert CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock gebruikt interne kapitalisatie. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -961,11 +960,8 @@
+ msgstr &quot;Opties voor Japans toetsenbord&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;CapsLock gedraagt zich als een vergrendelde Shift-toets. Shift zal CapsLock &quot;
+-&quot;annuleren.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock gedraagt zich als een vergrendelde Shift-toets. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2022,8 +2018,12 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Idle timer...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;CapsLock gebruikt interne kapitalisatie. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock gebruikt interne kapitalisatie. Shift annuleert CapsLock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;CapsLock gedraagt zich als een vergrendelde Shift-toets. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;CapsLock gedraagt zich als een vergrendelde Shift-toets. Shift zal &quot;
++#~ &quot;CapsLock annuleren.&quot;
+
+Modified: sax-head/locale/pa/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/pa/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/pa/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -896,7 +896,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -937,7 +937,7 @@
+ msgstr &quot;&#2588;&#2622;&#2602;&#2622;&#2600;&#2624; &#2581;&#2624;-&#2604;&#2635;&#2608;&#2593; &#2586;&#2635;&#2595;&#2622;&#2562;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/pl/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/pl/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/pl/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -918,10 +918,9 @@
+ &quot;Klawisz CapsLock dzia&#322;a jak Shift z blokowaniem. Shift nie anuluje CapsLock&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+-&quot;Klawisz CapsLock prze&#322;&#261;cza na pisanie wielkimi literami; Shift anuluje &quot;
++&quot;Klawisz CapsLock prze&#322;&#261;cza na pisanie wielkimi literami. Shift anuluje &quot;
+ &quot;CapsLock&quot;
+ 
+ #. XKBFile extension text
+@@ -965,8 +964,7 @@
+ msgstr &quot;Opcje klawiatury japo&#324;skiej&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;Klawisz CapsLock dzia&#322;a jak Shift z blokowaniem; Shift anuluje Caps&quot;
+ 
+ #. XKBFile extension text
+@@ -2033,10 +2031,12 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Licznik bezczynno&#347;ci...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;&quot;
+-#~ &quot;Klawisz CapsLock prze&#322;&#261;cza na pisanie wielkimi literami. Shift anuluje &quot;
++#~ &quot;Klawisz CapsLock prze&#322;&#261;cza na pisanie wielkimi literami; Shift anuluje &quot;
+ #~ &quot;CapsLock&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;Klawisz CapsLock dzia&#322;a jak Shift z blokowaniem; Shift anuluje Caps&quot;
+
+Modified: sax-head/locale/pt/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/pt/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/pt/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -912,9 +912,8 @@
+ msgstr &quot;CapsLock funciona como Shift com bloqueio. Shift n&#227;o afecta CapsLock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock utiliza capitula&#231;&#227;o interna. Shift cancela CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock utiliza capitula&#231;&#227;o interna. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -958,9 +957,8 @@
+ msgstr &quot;Op&#231;&#245;es de Teclado Japon&#234;s&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock funciona como Shift com bloqueio. Shift cancela CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock actua como Shift com bloqueio. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2035,8 +2033,10 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Temporizador de Inactividade...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;CapsLock utiliza capitula&#231;&#227;o interna. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock utiliza capitula&#231;&#227;o interna. Shift cancela CapsLock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;CapsLock actua como Shift com bloqueio. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock funciona como Shift com bloqueio. Shift cancela CapsLock.&quot;
+
+Modified: sax-head/locale/pt_BR/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/pt_BR/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/pt_BR/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -919,9 +919,8 @@
+ msgstr &quot;CapsLock age como Shift com bloqueio. Shift n&#227;o afeta CapsLock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock usa capitaliza&#231;&#227;o interna. Shift cancela CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock usa capitaliza&#231;&#227;o interna. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -965,9 +964,8 @@
+ msgstr &quot;Op&#231;&#245;es de teclado japon&#234;s&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock age como Shift com bloqueio. Shift cancela CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock age como Shift com bloqueio. Shift&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2021,8 +2019,10 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Temporizador ocioso...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;CapsLock usa capitaliza&#231;&#227;o interna. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock usa capitaliza&#231;&#227;o interna. Shift cancela CapsLock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;CapsLock age como Shift com bloqueio. Shift&quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock age como Shift com bloqueio. Shift cancela CapsLock.&quot;
+
+Modified: sax-head/locale/ro/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ro/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/ro/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -917,11 +917,8 @@
+ msgstr &quot;CapsLock se comport&#259; ca Shift cu blocare. Shift nu afecteaz&#259; CapsLock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;CapsLock folose&#537;te transformare intern&#259; &#238;n litere mari. Shift anuleaz&#259; &quot;
+-&quot;CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock folose&#537;te transformare &#238;n litere mari intern&#259;. Shift&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -969,9 +966,8 @@
+ msgstr &quot;Op&#539;iun pentru tastatur&#259; Japonez&#259;&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock se comport&#259; ca Shift cu blocare. Shift anuleaz&#259; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock se comport&#259; ca Shift cu blocare. Shift&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2029,8 +2025,12 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;CapsLock folose&#537;te transformare &#238;n litere mari intern&#259;. Shift&quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;CapsLock folose&#537;te transformare intern&#259; &#238;n litere mari. Shift anuleaz&#259; &quot;
++#~ &quot;CapsLock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;CapsLock se comport&#259; ca Shift cu blocare. Shift&quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock se comport&#259; ca Shift cu blocare. Shift anuleaz&#259; CapsLock.&quot;
+
+Modified: sax-head/locale/ru/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ru/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/ru/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -919,11 +919,8 @@
+ &quot;CapsLock &#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1091;&#1077;&#1090; &#1082;&#1072;&#1082; Shift &#1089; &#1073;&#1083;&#1086;&#1082;&#1080;&#1088;&#1086;&#1074;&#1082;&#1086;&#1081;. Shift &#1085;&#1077; &#1074;&#1083;&#1080;&#1103;&#1077;&#1090; &#1085;&#1072; CapsLock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;CapsLock &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1091;&#1077;&#1090; &#1074;&#1085;&#1091;&#1090;&#1088;&#1077;&#1085;&#1085;&#1077;&#1077; &#1087;&#1088;&#1077;&#1086;&#1073;&#1088;&#1072;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1087;&#1088;&#1086;&#1087;&#1080;&#1089;&#1085;&#1099;&#1093; &#1073;&#1091;&#1082;&#1074;. Shift &#1086;&#1090;&#1084;&#1077;&#1085;&#1103;&#1077;&#1090; &quot;
+-&quot;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1077; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1091;&#1077;&#1090; &#1074;&#1085;&#1091;&#1090;&#1088;&#1077;&#1085;&#1085;&#1077;&#1077; &#1087;&#1088;&#1077;&#1086;&#1073;&#1088;&#1072;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1073;&#1091;&#1082;&#1074; &#1074; &#1087;&#1088;&#1086;&#1087;&#1080;&#1089;&#1085;&#1099;&#1077;. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -966,11 +963,8 @@
+ msgstr &quot;&#1055;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;&#1099; &#1103;&#1087;&#1086;&#1085;&#1089;&#1082;&#1086;&#1081; &#1082;&#1083;&#1072;&#1074;&#1080;&#1072;&#1090;&#1091;&#1088;&#1099;&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;&#1050;&#1083;&#1072;&#1074;&#1080;&#1096;&#1072; CapsLock &#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1091;&#1077;&#1090; &#1082;&#1072;&#1082; &#1082;&#1083;&#1072;&#1074;&#1080;&#1096;&#1072; Shift &#1089; &#1073;&#1083;&#1086;&#1082;&#1080;&#1088;&#1086;&#1074;&#1082;&#1086;&#1081;. Shift &#1086;&#1090;&#1084;&#1077;&#1085;&#1103;&#1077;&#1090; &quot;
+-&quot;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1077; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock &#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1091;&#1077;&#1090; &#1082;&#1072;&#1082; Shift &#1089; &#1073;&#1083;&#1086;&#1082;&#1080;&#1088;&#1086;&#1074;&#1082;&#1086;&#1081;. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2057,9 +2051,14 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#1058;&#1072;&#1081;&#1084;&#1077;&#1088; &#1087;&#1088;&#1086;&#1089;&#1090;&#1086;&#1103;...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;&quot;
+-#~ &quot;CapsLock &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1091;&#1077;&#1090; &#1074;&#1085;&#1091;&#1090;&#1088;&#1077;&#1085;&#1085;&#1077;&#1077; &#1087;&#1088;&#1077;&#1086;&#1073;&#1088;&#1072;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1073;&#1091;&#1082;&#1074; &#1074; &#1087;&#1088;&#1086;&#1087;&#1080;&#1089;&#1085;&#1099;&#1077;. Shift &quot;
++#~ &quot;CapsLock &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1091;&#1077;&#1090; &#1074;&#1085;&#1091;&#1090;&#1088;&#1077;&#1085;&#1085;&#1077;&#1077; &#1087;&#1088;&#1077;&#1086;&#1073;&#1088;&#1072;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1087;&#1088;&#1086;&#1087;&#1080;&#1089;&#1085;&#1099;&#1093; &#1073;&#1091;&#1082;&#1074;. Shift &quot;
++#~ &quot;&#1086;&#1090;&#1084;&#1077;&#1085;&#1103;&#1077;&#1090; &#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1077; CapsLock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;CapsLock &#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1091;&#1077;&#1090; &#1082;&#1072;&#1082; Shift &#1089; &#1073;&#1083;&#1086;&#1082;&#1080;&#1088;&#1086;&#1074;&#1082;&#1086;&#1081;. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;&#1050;&#1083;&#1072;&#1074;&#1080;&#1096;&#1072; CapsLock &#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1091;&#1077;&#1090; &#1082;&#1072;&#1082; &#1082;&#1083;&#1072;&#1074;&#1080;&#1096;&#1072; Shift &#1089; &#1073;&#1083;&#1086;&#1082;&#1080;&#1088;&#1086;&#1074;&#1082;&#1086;&#1081;. Shift &quot;
++#~ &quot;&#1086;&#1090;&#1084;&#1077;&#1085;&#1103;&#1077;&#1090; &#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1077; CapsLock.&quot;
+
+Modified: sax-head/locale/sax-template/sax.pot
+===================================================================
+--- sax-head/locale/sax-template/sax.pot	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/sax-template/sax.pot	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -871,7 +871,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -912,7 +912,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/si/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/si/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/si/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -869,7 +869,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -910,7 +910,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/sk/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/sk/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/sk/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -921,9 +921,8 @@
+ msgstr &quot;Caps Lock funguje ako Shift so z&#225;mkom. Shift neru&#353;&#237; Caps Lock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;Caps Lock pou&#382;&#237;va ve&#318;k&#233; p&#237;smen&#225;. Shift ru&#353;&#237; Caps Lock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;Caps Lock pou&#382;&#237;va vn&#250;torn&#233; ve&#318;k&#233; p&#237;smen&#225;. Shift ru&#353;&#237; Caps.&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -966,9 +965,8 @@
+ msgstr &quot;Mo&#382;nosti japonsk&#233;ho rozlo&#382;enia kl&#225;vesov&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;Caps Lock funguje ako Shift so z&#225;mkom. Shift ru&#353;&#237; Caps Lock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock funguje ako Shift so z&#225;mkom. Shift ru&#353;&#237; Caps.&quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2069,8 +2067,10 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#268;akanie...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;Caps Lock pou&#382;&#237;va vn&#250;torn&#233; ve&#318;k&#233; p&#237;smen&#225;. Shift ru&#353;&#237; Caps.&quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;Caps Lock pou&#382;&#237;va ve&#318;k&#233; p&#237;smen&#225;. Shift ru&#353;&#237; Caps Lock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;CapsLock funguje ako Shift so z&#225;mkom. Shift ru&#353;&#237; Caps.&quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;Caps Lock funguje ako Shift so z&#225;mkom. Shift ru&#353;&#237; Caps Lock.&quot;
+
+Modified: sax-head/locale/sl/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/sl/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/sl/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -957,7 +957,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;Tipka CaspLock uporabi notranjo spremembo velikosti &#269;rk. Tipka Shift prekine &quot;
+ &quot;delovanje tipke CapsLock.&quot;
+@@ -1005,7 +1005,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;Tipka CapsLock se vede kot tipka Shift z zaklepanjem. Tipka Shift izklju&#269;i &quot;
+ &quot;CapsLock.&quot;
+@@ -2130,13 +2130,13 @@
+ msgstr &quot;Idle timer...&quot;
+ 
+ #, fuzzy
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;&quot;
+ #~ &quot;Tipka CaspLock uporabi notranjo spremembo velikosti &#269;rk. Tipka Shift &quot;
+ #~ &quot;prekine delovanje tipke CapsLock.&quot;
+ 
+ #, fuzzy
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;&quot;
+ #~ &quot;Tipka CapsLock se vede kot tipka Shift z zaklepanjem. Tipka Shift &quot;
+ #~ &quot;izklju&#269;i CapsLock.&quot;
+
+Modified: sax-head/locale/sr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/sr/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/sr/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -896,7 +896,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -937,7 +937,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/sv/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/sv/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/sv/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -919,10 +919,8 @@
+ &quot;Caps Lock fungerar som Skift med l&#229;sning. Skift p&#229;verkar inte Caps Lock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;Caps Lock anv&#228;nder internationellt skiftl&#228;ge. Skift upph&#228;ver Caps Lock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;Caps Lock anv&#228;nder internationellt skiftl&#228;ge. Skift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -966,9 +964,8 @@
+ msgstr &quot;Inst&#228;llningar f&#246;r japanskt tangentbord&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;Caps Lock fungerar som Skift med l&#229;sning. Skift upph&#228;ver Caps Lock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;Caps Lock fungerar som Skift med l&#229;sning. Skift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2046,8 +2043,11 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Inaktivitetstidur...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;Caps Lock anv&#228;nder internationellt skiftl&#228;ge. Skift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;Caps Lock anv&#228;nder internationellt skiftl&#228;ge. Skift upph&#228;ver Caps Lock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;Caps Lock fungerar som Skift med l&#229;sning. Skift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;Caps Lock fungerar som Skift med l&#229;sning. Skift upph&#228;ver Caps Lock.&quot;
+
+Modified: sax-head/locale/ta/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/ta/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/ta/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -892,7 +892,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;CapsLock &#2953;&#2995;&#3021; &#2986;&#3014;&#2992;&#3007;&#2991; &#2958;&#2996;&#3009;&#2980;&#3021;&#2980;&#3006;&#2965;&#3021;&#2965;&#3009;&#2980;&#2994;&#3016; &#2986;&#2991;&#2985;&#3021;&#2986;&#2975;&#3009;&#2980;&#3021;&#2980;&#3009;&#2965;&#3007;&#2993;&#2980;&#3009;. CapsLock&#2965;&#3016; Shift &#2992;&#2980;&#3021;&#2980;&#3009; &quot;
+ &quot;&#2970;&#3014;&#2991;&#3021;&#2965;&#3007;&#2993;&#2980;&#3009;.&quot;
+@@ -936,7 +936,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;&#2986;&#3010;&#2975;&#3021;&#2975;&#3009;&#2980;&#2994;&#3009;&#2975;&#2985;&#3021;&#2965;&#3010;&#2975;&#3007;&#2991; Shift&#2950;&#2965; CapsLock &#2970;&#3014;&#2991;&#2994;&#3021;&#2986;&#2975;&#3009;&#2965;&#3007;&#2993;&#2980;&#3009;. CapsLock&#2965;&#3016; Shift &#2992;&#2980;&#3021;&#2980;&#3009; &#2970;&#3014;&#2991;&#3021;&#2965;&#3007;&#2993;&#2980;&#3009;&quot;
+ 
+@@ -1995,3 +1995,15 @@
+ 
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#2970;&#3014;&#2991;&#2994;&#3021;&#2986;&#3006;&#2975;&#3007;&#2994;&#3021;&#2994;&#3006;&#2980; &#2984;&#3015;&#2992;&#2965;&#3021;&#2965;&#3009;&#2993;&#3007;&#2986;&#3021;&#2986;&#3006;&#2985;&#3021;...&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;CapsLock &#2953;&#2995;&#3021; &#2986;&#3014;&#2992;&#3007;&#2991; &#2958;&#2996;&#3009;&#2980;&#3021;&#2980;&#3006;&#2965;&#3021;&#2965;&#3009;&#2980;&#2994;&#3016; &#2986;&#2991;&#2985;&#3021;&#2986;&#2975;&#3009;&#2980;&#3021;&#2980;&#3009;&#2965;&#3007;&#2993;&#2980;&#3009;. CapsLock&#2965;&#3016; Shift &#2992;&#2980;&#3021;&#2980;&#3009; &quot;
++#~ &quot;&#2970;&#3014;&#2991;&#3021;&#2965;&#3007;&#2993;&#2980;&#3009;.&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;&#2986;&#3010;&#2975;&#3021;&#2975;&#3009;&#2980;&#2994;&#3009;&#2975;&#2985;&#3021;&#2965;&#3010;&#2975;&#3007;&#2991; Shift&#2950;&#2965; CapsLock &#2970;&#3014;&#2991;&#2994;&#3021;&#2986;&#2975;&#3009;&#2965;&#3007;&#2993;&#2980;&#3009;. CapsLock&#2965;&#3016; Shift &#2992;&#2980;&#3021;&#2980;&#3009; &quot;
++#~ &quot;&#2970;&#3014;&#2991;&#3021;&#2965;&#3007;&#2993;&#2980;&#3009;&quot;
+
+Modified: sax-head/locale/th/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/th/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/th/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -894,7 +894,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -935,7 +935,7 @@
+ msgstr &quot;&#3605;&#3633;&#3623;&#3648;&#3621;&#3639;&#3629;&#3585;&#3586;&#3629;&#3591;&#3649;&#3611;&#3657;&#3609;&#3614;&#3636;&#3617;&#3614;&#3660;&#3616;&#3634;&#3625;&#3634;&#3597;&#3637;&#3656;&#3611;&#3640;&#3656;&#3609;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/tr/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/tr/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/tr/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -911,7 +911,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -952,7 +952,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/uk/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/uk/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/uk/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -915,10 +915,8 @@
+ msgstr &quot;CapsLock &#1076;&#1110;&#1108;, &#1103;&#1082; Shift &#1079; &#1092;&#1110;&#1082;&#1089;&#1072;&#1094;&#1110;&#1108;&#1102;. Shift &#1085;&#1077; &#1074;&#1087;&#1083;&#1080;&#1074;&#1072;&#1108; &#1085;&#1072; CapsLock.&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;&quot;
+-&quot;CapsLock &#1074;&#1078;&#1080;&#1074;&#1072;&#1108; &#1074;&#1085;&#1091;&#1090;&#1088;&#1110;&#1096;&#1085;&#1110;&#1081; &#1084;&#1077;&#1093;&#1072;&#1085;&#1110;&#1079;&#1084; &#1074;&#1077;&#1083;&#1080;&#1082;&#1080;&#1093; &#1083;&#1110;&#1090;&#1077;&#1088;. Shift &#1089;&#1082;&#1072;&#1089;&#1086;&#1074;&#1091;&#1108; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock &#1074;&#1078;&#1080;&#1074;&#1072;&#1108; &#1074;&#1085;&#1091;&#1090;&#1088;&#1110;&#1096;&#1085;&#1110;&#1081; &#1084;&#1077;&#1093;&#1072;&#1085;&#1110;&#1079;&#1084; &#1074;&#1077;&#1083;&#1080;&#1082;&#1080;&#1093; &#1083;&#1110;&#1090;&#1077;&#1088;. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -962,9 +960,8 @@
+ msgstr &quot;&#1055;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;&#1080; &#1103;&#1087;&#1086;&#1085;&#1089;&#1100;&#1082;&#1086;&#1111; &#1082;&#1083;&#1072;&#1074;&#1110;&#1072;&#1090;&#1091;&#1088;&#1080;&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock &#1076;&#1110;&#1108;, &#1103;&#1082; Shift &#1079; &#1092;&#1110;&#1082;&#1089;&#1072;&#1094;&#1110;&#1108;&#1102;. Shift &#1089;&#1082;&#1072;&#1089;&#1086;&#1074;&#1091;&#1108; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock &#1076;&#1110;&#1108;, &#1103;&#1082; Shift &#1079; &#1092;&#1110;&#1082;&#1089;&#1072;&#1094;&#1110;&#1108;&#1102;. Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -2043,8 +2040,12 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#1041;&#1077;&#1079;&#1076;&#1110;&#1103;&#1083;&#1100;&#1085;&#1080;&#1081; &#1090;&#1072;&#1081;&#1084;&#1077;&#1088;...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;CapsLock &#1074;&#1078;&#1080;&#1074;&#1072;&#1108; &#1074;&#1085;&#1091;&#1090;&#1088;&#1110;&#1096;&#1085;&#1110;&#1081; &#1084;&#1077;&#1093;&#1072;&#1085;&#1110;&#1079;&#1084; &#1074;&#1077;&#1083;&#1080;&#1082;&#1080;&#1093; &#1083;&#1110;&#1090;&#1077;&#1088;. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;CapsLock &#1074;&#1078;&#1080;&#1074;&#1072;&#1108; &#1074;&#1085;&#1091;&#1090;&#1088;&#1110;&#1096;&#1085;&#1110;&#1081; &#1084;&#1077;&#1093;&#1072;&#1085;&#1110;&#1079;&#1084; &#1074;&#1077;&#1083;&#1080;&#1082;&#1080;&#1093; &#1083;&#1110;&#1090;&#1077;&#1088;. Shift &#1089;&#1082;&#1072;&#1089;&#1086;&#1074;&#1091;&#1108; &quot;
++#~ &quot;CapsLock.&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;CapsLock &#1076;&#1110;&#1108;, &#1103;&#1082; Shift &#1079; &#1092;&#1110;&#1082;&#1089;&#1072;&#1094;&#1110;&#1108;&#1102;. Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock &#1076;&#1110;&#1108;, &#1103;&#1082; Shift &#1079; &#1092;&#1110;&#1082;&#1089;&#1072;&#1094;&#1110;&#1108;&#1102;. Shift &#1089;&#1082;&#1072;&#1089;&#1086;&#1074;&#1091;&#1108; CapsLock.&quot;
+
+Modified: sax-head/locale/vi/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/vi/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/vi/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -872,7 +872,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -913,7 +913,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/wa/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/wa/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/wa/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -912,7 +912,7 @@
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+@@ -954,7 +954,7 @@
+ msgstr &quot;Tchuzes di taprece po les spepieus&quot;
+ 
+ #. XKBFile extension text
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ 
+ #. XKBFile extension text
+
+Modified: sax-head/locale/xh/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/xh/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/xh/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -950,7 +950,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;Ukutshixeka Koonobumba abakhulu kusebenzisa ukwenziwa koonobumba abakhulu &quot;
+ &quot;kwangaphakathi. Ubhekeliso lurhoxisa Ukutshixeka Koonobumba Abakhulu.&quot;
+@@ -998,7 +998,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;Ukutshixeka Koonobumba abakhulu kusebenza ngesiBhekeliso xa kutshixwa. &quot;
+ &quot;Ubhekeliso lurhoxisa Ukutshixeka Koonobumba Abakhulu.&quot;
+@@ -2084,13 +2084,13 @@
+ msgstr &quot;Umgcinixesha wokuyabula...&quot;
+ 
+ #, fuzzy
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;&quot;
+ #~ &quot;Ukutshixeka Koonobumba abakhulu kusebenzisa ukwenziwa koonobumba abakhulu &quot;
+ #~ &quot;kwangaphakathi. Ubhekeliso lurhoxisa Ukutshixeka Koonobumba Abakhulu.&quot;
+ 
+ #, fuzzy
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+ #~ msgstr &quot;&quot;
+ #~ &quot;Ukutshixeka Koonobumba abakhulu kusebenza ngesiBhekeliso xa kutshixwa. &quot;
+ #~ &quot;Ubhekeliso lurhoxisa Ukutshixeka Koonobumba Abakhulu.&quot;
+
+Modified: sax-head/locale/zh_CN/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/zh_CN/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/zh_CN/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -888,9 +888,8 @@
+ msgstr &quot;CapsLock &#38190;&#30340;&#20316;&#29992;&#30456;&#24403;&#20110; Shift &#38190;&#21152;&#19978;&#38145;&#23450;&#12290;Shift &#19981;&#24433;&#21709; CapsLock&#12290;&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock &#29992;&#20110;&#20869;&#37096;&#22823;&#20889;&#36716;&#25442;&#12290;Shift &#38190;&#21462;&#28040; CapsLock &#38190;&#12290;&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock &#29992;&#20110;&#20869;&#37096;&#22823;&#20889;&#36716;&#25442;&#12290;Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -930,9 +929,8 @@
+ msgstr &quot;&#26085;&#26412;&#38190;&#30424;&#36873;&#39033;&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock &#38190;&#30340;&#20316;&#29992;&#30456;&#24403;&#20110; Shift &#38190;&#21152;&#19978;&#38145;&#23450;&#12290;Shift &#38190;&#21462;&#28040; CapsLock &#38190;&#12290;&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock &#38190;&#30340;&#20316;&#29992;&#30456;&#24403;&#20110; Shift &#38190;&#21152;&#19978;&#38145;&#23450;&#12290;Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -1969,8 +1967,11 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#31354;&#38386;&#35745;&#26102;&#22120;...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;CapsLock &#29992;&#20110;&#20869;&#37096;&#22823;&#20889;&#36716;&#25442;&#12290;Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock &#29992;&#20110;&#20869;&#37096;&#22823;&#20889;&#36716;&#25442;&#12290;Shift &#38190;&#21462;&#28040; CapsLock &#38190;&#12290;&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;CapsLock &#38190;&#30340;&#20316;&#29992;&#30456;&#24403;&#20110; Shift &#38190;&#21152;&#19978;&#38145;&#23450;&#12290;Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;CapsLock &#38190;&#30340;&#20316;&#29992;&#30456;&#24403;&#20110; Shift &#38190;&#21152;&#19978;&#38145;&#23450;&#12290;Shift &#38190;&#21462;&#28040; CapsLock &#38190;&#12290;&quot;
+
+Modified: sax-head/locale/zh_TW/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/zh_TW/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/zh_TW/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -892,9 +892,8 @@
+ msgstr &quot;CapsLock &#30070;&#25104; Shift &#37782;&#23450;&#12290; Shift &#19981;&#26371;&#24433;&#38911; CapsLock&#12290;&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock &#20351;&#29992;&#20839;&#23481;&#22823;&#23531;&#12290;Shift &#26371;&#21462;&#28040; CapsLock&#12290;&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
++msgstr &quot;CapsLock &#20351;&#29992;&#20839;&#23481;&#22823;&#23531;&#12290;Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;Space key output nobreakspace at third level.&quot;
+@@ -934,9 +933,8 @@
+ msgstr &quot;&#26085;&#26412;&#37749;&#30436;&#36984;&#38917;&quot;
+ 
+ #. XKBFile extension text
+-#, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
+-msgstr &quot;CapsLock &#30070;&#25104; Shift &#37782;&#23450;&#12290;Shift &#26371;&#21462;&#28040; CapsLock&#12290;&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
++msgstr &quot;CapsLock &#30070;&#25104; Shift &#37782;&#23450;&#12290;Shift &quot;
+ 
+ #. XKBFile extension text
+ msgid &quot;CapsLock uses internal capitalization. Shift doesn't cancel CapsLock.&quot;
+@@ -1972,8 +1970,10 @@
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;&#38290;&#32622;&#35336;&#26178;&#22120;...&quot;
+ 
+-#~ msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+-#~ msgstr &quot;CapsLock &#20351;&#29992;&#20839;&#23481;&#22823;&#23531;&#12290;Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock &#20351;&#29992;&#20839;&#23481;&#22823;&#23531;&#12290;Shift &#26371;&#21462;&#28040; CapsLock&#12290;&quot;
+ 
+-#~ msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+-#~ msgstr &quot;CapsLock &#30070;&#25104; Shift &#37782;&#23450;&#12290;Shift &quot;
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;CapsLock &#30070;&#25104; Shift &#37782;&#23450;&#12290;Shift &#26371;&#21462;&#28040; CapsLock&#12290;&quot;
+
+Modified: sax-head/locale/zu/LC_MESSAGES/sax.po
+===================================================================
+--- sax-head/locale/zu/LC_MESSAGES/sax.po	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/locale/zu/LC_MESSAGES/sax.po	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -934,7 +934,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock uses internal capitalization. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;I-CapsLock isebenzisa ukufakwa konobumbakazi bangaphakathi. I-Shift &quot;
+ &quot;ikhansela i-CapsLock.&quot;
+@@ -979,7 +979,7 @@
+ 
+ #. XKBFile extension text
+ #, fuzzy
+-msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++msgid &quot;CapsLock acts as Shift with locking. Shift &quot;
+ msgstr &quot;&quot;
+ &quot;I-CapsLock isebenza njenge-Shift ehluthulelayo. I-Shift ikhansela i-CapsLock.&quot;
+ 
+@@ -2040,3 +2040,15 @@
+ 
+ msgid &quot;Idle timer...&quot;
+ msgstr &quot;Iwashi lokubala isikhathi kungenziwa lutho...&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock uses internal capitalization. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;I-CapsLock isebenzisa ukufakwa konobumbakazi bangaphakathi. I-Shift &quot;
++#~ &quot;ikhansela i-CapsLock.&quot;
++
++#, fuzzy
++#~ msgid &quot;CapsLock acts as Shift with locking. Shift \&quot;pauses\&quot; CapsLock.&quot;
++#~ msgstr &quot;&quot;
++#~ &quot;I-CapsLock isebenza njenge-Shift ehluthulelayo. I-Shift ikhansela i-&quot;
++#~ &quot;CapsLock.&quot;
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-01-29 10:53:36 UTC (rev 1824)
++++ sax-head/rpm/sax2.changes	2009-02-05 16:03:13 UTC (rev 1825)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Thu Feb  5 17:02:30 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
++
++- fixed xkb key quoting in xapi.gtx (bnc #447492)
++
++-------------------------------------------------------------------
+ Thu Jan 29 11:48:20 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - Identity.map:
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000218.html">[Sax-devel] r1826 - in sax-head: rpm sysp sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#217">[ date ]</a>
+              <a href="thread.html#217">[ thread ]</a>
+              <a href="subject.html#217">[ subject ]</a>
+              <a href="author.html#217">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

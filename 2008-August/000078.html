@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1686 - in sax-branches/SaX2-48-SuSE-91-Devel: rpm	sysp/maps sysp/maps/arch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-August/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1686%20-%20in%20sax-branches/SaX2-48-SuSE-91-Devel%3A%20rpm%0A%09sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200808222120.m7MLKNKs015959%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000077.html">
+   <LINK REL="Next"  HREF="000079.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1686 - in sax-branches/SaX2-48-SuSE-91-Devel: rpm	sysp/maps sysp/maps/arch</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1686%20-%20in%20sax-branches/SaX2-48-SuSE-91-Devel%3A%20rpm%0A%09sysp/maps%20sysp/maps/arch&In-Reply-To=%3C200808222120.m7MLKNKs015959%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1686 - in sax-branches/SaX2-48-SuSE-91-Devel: rpm	sysp/maps sysp/maps/arch">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri Aug 22 23:20:23 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000077.html">[Sax-devel] r1685 - in sax-head: api/data/cdb rpm
+</A></li>
+        <LI>Next message: <A HREF="000079.html">[Sax-devel] r1687 - in sax-head: profile/script rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#78">[ date ]</a>
+              <a href="thread.html#78">[ thread ]</a>
+              <a href="subject.html#78">[ subject ]</a>
+              <a href="author.html#78">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-08-22 23:20:20 +0200 (Fri, 22 Aug 2008)
+New Revision: 1686
+
+Modified:
+   sax-branches/SaX2-48-SuSE-91-Devel/rpm/sax2.changes
+   sax-branches/SaX2-48-SuSE-91-Devel/sysp/maps/Identity.map
+   sax-branches/SaX2-48-SuSE-91-Devel/sysp/maps/arch/Identity.map.i386
+   sax-branches/SaX2-48-SuSE-91-Devel/sysp/maps/arch/Identity.map.x86_64
+Log:
+- update Identity maps for Matrox G200 EV/WB support once more:
+  &quot;G200 WB&quot; --&gt; &quot;G200 eW&quot; due to marketing reasons
+
+
+Modified: sax-branches/SaX2-48-SuSE-91-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-48-SuSE-91-Devel/rpm/sax2.changes	2008-08-22 20:11:53 UTC (rev 1685)
++++ sax-branches/SaX2-48-SuSE-91-Devel/rpm/sax2.changes	2008-08-22 21:20:20 UTC (rev 1686)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Fri Aug 22 23:18:50 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- update Identity maps for Matrox G200 EV/WB support once more:
++  &quot;G200 WB&quot; --&gt; &quot;G200 eW&quot; due to marketing reasons
++
++-------------------------------------------------------------------
+ Sat Jul 26 07:03:34 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - update Identity maps for Matrox G200 EV/WB support 
+
+Modified: sax-branches/SaX2-48-SuSE-91-Devel/sysp/maps/Identity.map
+===================================================================
+--- sax-branches/SaX2-48-SuSE-91-Devel/sysp/maps/Identity.map	2008-08-22 20:11:53 UTC (rev 1685)
++++ sax-branches/SaX2-48-SuSE-91-Devel/sysp/maps/Identity.map	2008-08-22 21:20:20 UTC (rev 1686)
+@@ -419,7 +419,7 @@
+ NAME=Matrox&#167;DEVICE=MGA G200 AGP&#167;VID=0x102b&#167;DID=0x0521&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=VideoRam 8192&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+ NAME=Matrox&#167;DEVICE=MGA G200 AGP&#167;VID=0x102b&#167;DID=0x0521&#167;SERVER=mga&#167;EXT=dri&#167;OPT=&#167;RAW=VideoRam 8192&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=3D
+ NAME=Matrox&#167;DEVICE=MGA G200 EV&#167;VID=0x102b&#167;DID=0x0530&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+-NAME=Matrox&#167;DEVICE=MGA G200 WB&#167;VID=0x102b&#167;DID=0x0532&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
++NAME=Matrox&#167;DEVICE=MGA G200 eW&#167;VID=0x102b&#167;DID=0x0532&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+ NAME=Matrox&#167;DEVICE=MGA 2164W AGP&#167;VID=0x102b&#167;DID=0x051f&#167;SERVER=mga&#167;EXT=&#167;OPT=NoHal&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+ NAME=Matrox&#167;DEVICE=MGA-1084SG Mystique&#167;VID=0x102b&#167;DID=0x051a&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT&#167;SUBVENDOR=0x102b&#167;SUBDEVICE=0x1100
+ NAME=Matrox&#167;DEVICE=MGA 1064SG &#167;VID=0x102b&#167;DID=0x051a&#167;SERVER=mga&#167;EXT=&#167;OPT=NoHal&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+
+Modified: sax-branches/SaX2-48-SuSE-91-Devel/sysp/maps/arch/Identity.map.i386
+===================================================================
+--- sax-branches/SaX2-48-SuSE-91-Devel/sysp/maps/arch/Identity.map.i386	2008-08-22 20:11:53 UTC (rev 1685)
++++ sax-branches/SaX2-48-SuSE-91-Devel/sysp/maps/arch/Identity.map.i386	2008-08-22 21:20:20 UTC (rev 1686)
+@@ -419,7 +419,7 @@
+ NAME=Matrox&#167;DEVICE=MGA G200 AGP&#167;VID=0x102b&#167;DID=0x0521&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=VideoRam 8192&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+ NAME=Matrox&#167;DEVICE=MGA G200 AGP&#167;VID=0x102b&#167;DID=0x0521&#167;SERVER=mga&#167;EXT=dri&#167;OPT=&#167;RAW=VideoRam 8192&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=3D
+ NAME=Matrox&#167;DEVICE=MGA G200 EV&#167;VID=0x102b&#167;DID=0x0530&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+-NAME=Matrox&#167;DEVICE=MGA G200 WB&#167;VID=0x102b&#167;DID=0x0532&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
++NAME=Matrox&#167;DEVICE=MGA G200 eW&#167;VID=0x102b&#167;DID=0x0532&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+ NAME=Matrox&#167;DEVICE=MGA 2164W AGP&#167;VID=0x102b&#167;DID=0x051f&#167;SERVER=mga&#167;EXT=&#167;OPT=NoHal&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+ NAME=Matrox&#167;DEVICE=MGA-1084SG Mystique&#167;VID=0x102b&#167;DID=0x051a&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT&#167;SUBVENDOR=0x102b&#167;SUBDEVICE=0x1100
+ NAME=Matrox&#167;DEVICE=MGA 1064SG &#167;VID=0x102b&#167;DID=0x051a&#167;SERVER=mga&#167;EXT=&#167;OPT=NoHal&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+
+Modified: sax-branches/SaX2-48-SuSE-91-Devel/sysp/maps/arch/Identity.map.x86_64
+===================================================================
+--- sax-branches/SaX2-48-SuSE-91-Devel/sysp/maps/arch/Identity.map.x86_64	2008-08-22 20:11:53 UTC (rev 1685)
++++ sax-branches/SaX2-48-SuSE-91-Devel/sysp/maps/arch/Identity.map.x86_64	2008-08-22 21:20:20 UTC (rev 1686)
+@@ -419,7 +419,7 @@
+ NAME=Matrox&#167;DEVICE=MGA G200 AGP&#167;VID=0x102b&#167;DID=0x0521&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=VideoRam 8192&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+ NAME=Matrox&#167;DEVICE=MGA G200 AGP&#167;VID=0x102b&#167;DID=0x0521&#167;SERVER=mga&#167;EXT=dri&#167;OPT=&#167;RAW=VideoRam 8192&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=3D
+ NAME=Matrox&#167;DEVICE=MGA G200 EV&#167;VID=0x102b&#167;DID=0x0530&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+-NAME=Matrox&#167;DEVICE=MGA G200 WB&#167;VID=0x102b&#167;DID=0x0532&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
++NAME=Matrox&#167;DEVICE=MGA G200 eW&#167;VID=0x102b&#167;DID=0x0532&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+ NAME=Matrox&#167;DEVICE=MGA 2164W AGP&#167;VID=0x102b&#167;DID=0x051f&#167;SERVER=mga&#167;EXT=&#167;OPT=NoHal&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+ NAME=Matrox&#167;DEVICE=MGA-1084SG Mystique&#167;VID=0x102b&#167;DID=0x051a&#167;SERVER=mga&#167;EXT=&#167;OPT=&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT&#167;SUBVENDOR=0x102b&#167;SUBDEVICE=0x1100
+ NAME=Matrox&#167;DEVICE=MGA 1064SG &#167;VID=0x102b&#167;DID=0x051a&#167;SERVER=mga&#167;EXT=&#167;OPT=NoHal&#167;RAW=&#167;PROFILE=&#167;SCRIPT3D=&#167;PACKAGE3D=&#167;FLAG=DEFAULT
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000077.html">[Sax-devel] r1685 - in sax-head: api/data/cdb rpm
+</A></li>
+	<LI>Next message: <A HREF="000079.html">[Sax-devel] r1687 - in sax-head: profile/script rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#78">[ date ]</a>
+              <a href="thread.html#78">[ thread ]</a>
+              <a href="subject.html#78">[ subject ]</a>
+              <a href="author.html#78">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

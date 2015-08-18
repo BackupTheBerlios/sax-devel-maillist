@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1902 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1902%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps&In-Reply-To=%3C201002221420.o1MEKIQc023457%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1902 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1902%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%20rpm%0A%09sysp/maps&In-Reply-To=%3C201002221420.o1MEKIQc023457%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1902 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Mon Feb 22 15:20:18 CET 2010</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#291">[ date ]</a>
+              <a href="thread.html#291">[ thread ]</a>
+              <a href="subject.html#291">[ subject ]</a>
+              <a href="author.html#291">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2010-02-22 15:20:16 +0100 (Mon, 22 Feb 2010)
+New Revision: 1902
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Input.map
+Log:
+- no longer make use of evdev-driven input profiles due to radical
+  changes in evdev driver configuration of SLE11-SP1. Use 
+  'Option &quot;AutoAddDevices&quot; &quot;on&quot;' in ServerFlags section of xorg.conf
+  in case you rely on evdev driver. (bnc #577481)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-11-30 15:00:01 UTC (rev 1901)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2010-02-22 14:20:16 UTC (rev 1902)
+@@ -1,4 +1,12 @@
+ -------------------------------------------------------------------
++Mon Feb 22 15:16:59 CET 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- no longer make use of evdev-driven input profiles due to radical
++  changes in evdev driver configuration of SLE11-SP1. Use 
++  'Option &quot;AutoAddDevices&quot; &quot;on&quot;' in ServerFlags section of xorg.conf
++  in case you rely on evdev driver. (bnc #577481)
++
++-------------------------------------------------------------------
+ Wed Aug 12 00:08:00 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - added missing 16:9 modes as valid modes requested by HP
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Input.map
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Input.map	2009-11-30 15:00:01 UTC (rev 1901)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Input.map	2010-02-22 14:20:16 UTC (rev 1902)
+@@ -8,14 +8,14 @@
+ 0x0212 : 0x0001 : synaptics : synaptics
+ 0x0002 : 0x0007 : synaptics : synaptics
+ 0x046d : 0xc705 : logitech-MX900 : mouse
+-0x046d : 0xc50e : logitech-MediaPlay : evdev
++#0x046d : 0xc50e : logitech-MediaPlay : evdev
+ 0x046d : 0xc508 : logitech-TrackManOptical : mouse
+ 0x046d : 0xc01b : logitech-MX310 : mouse
+-0x046d : 0xc041 : logitech-Gaming : evdev
+-0x0210 : 0x0028 : logitech-mxlaser : evdev
+-0x046d : 0xc521 : logitech-vxnano : evdev
+-0x045e : 0x0095 : microsoft-IntelliMouse-Explorer : evdev
+-0x046d : 0xc040 : logitech-optical : evdev
++#0x046d : 0xc041 : logitech-Gaming : evdev
++#0x0210 : 0x0028 : logitech-mxlaser : evdev
++#0x046d : 0xc521 : logitech-vxnano : evdev
++#0x045e : 0x0095 : microsoft-IntelliMouse-Explorer : evdev
++#0x046d : 0xc040 : logitech-optical : evdev
+ 0x0210 : 0x0003 : ibm-trackpoint : mouse
+ 0x0002 : 0x000a : ibm-trackpoint : mouse
+ 0x04b3 : 0x300f : ibm-trackpoint : mouse
+@@ -24,18 +24,18 @@
+ 0x05ac : 0x1000 : alps-macbook : synaptics
+ 0x0002 : 0x0008 : alps : synaptics
+ 0x1943 : 0x5000 : fujitsu : fujitsu
+-0x5853 : 0xfffe : xen-mouse : evdev
+-0x03f0 : 0x1126 : hp-mouse : evdev
+-0x0029 : 0x0000 : touchscreen : evdev
+-0x0030 : 0x0000 : touchscreen : evdev
+-0x04e7 : 0x0030 : touchscreen : evdev
+-0x0596 : 0x0001 : touchscreen : evdev
++#0x5853 : 0xfffe : xen-mouse : evdev
++#0x03f0 : 0x1126 : hp-mouse : evdev
++#0x0029 : 0x0000 : touchscreen : evdev
++#0x0030 : 0x0000 : touchscreen : evdev
++#0x04e7 : 0x0030 : touchscreen : evdev
++#0x0596 : 0x0001 : touchscreen : evdev
+ 0x80ee : 0x0100 : vbox-mouse : vboxmouse
+ 0x15ad : 0x0100 : vmware-mouse : vmmouse
+ # Keyboards
+ # Microsoft Natural Ergonomic Keyboard 4000
+ # ---&gt; is profile: microsoft-natural
+-0x045e : 0x00db : microsoft-natural : evdev
++#0x045e : 0x00db : microsoft-natural : evdev
+ # Chicony Electronics USB Wireless HID Receiver
+ # ---&gt; is profile: no information yet
+ 0x04f2 : 0x0200 : &lt;undefined&gt; : kbd
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#291">[ date ]</a>
+              <a href="thread.html#291">[ thread ]</a>
+              <a href="subject.html#291">[ subject ]</a>
+              <a href="author.html#291">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

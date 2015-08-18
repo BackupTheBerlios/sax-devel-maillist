@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1944 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm startup sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1944%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/script%20rpm%20startup%20sysp/maps&In-Reply-To=%3C20130403145811.3E25D55B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000333.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1944 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm startup sysp/maps</H1>
+    <B>sndirsch at scm.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1944%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/script%20rpm%20startup%20sysp/maps&In-Reply-To=%3C20130403145811.3E25D55B0C%40scm.berlios.de%3E"
+       TITLE="[Sax-devel] r1944 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm startup sysp/maps">sndirsch at scm.berlios.de
+       </A><BR>
+    <I>Wed Apr  3 16:58:10 CEST 2013</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000333.html">[Sax-devel] r1945 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#332">[ date ]</a>
+              <a href="thread.html#332">[ thread ]</a>
+              <a href="subject.html#332">[ subject ]</a>
+              <a href="author.html#332">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2013-04-03 16:58:10 +0200 (Wed, 03 Apr 2013)
+New Revision: 1944
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/DrvSelectInSecBootMode.sh
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/startup/sax.sh
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Driver.map
+Log:
+- No longer apply ModeSetting profile in any case, but only for
+  graphics drivers, which can still be in use on modern hardware
+  with secureboot (intel, radeon, nvidia, mga, ast, cirrus). This
+  is now done via the Driver.map, so this works also with
+  yast2-x11 during installation. (bnc#813137)
+- dummy secure boot mode is now also considered by Modesetting
+  helper script
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/DrvSelectInSecBootMode.sh
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/DrvSelectInSecBootMode.sh	2013-03-28 13:34:17 UTC (rev 1943)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/DrvSelectInSecBootMode.sh	2013-04-03 14:58:10 UTC (rev 1944)
+@@ -22,12 +22,14 @@
+ }
+ 
+ secureboot=off
+-if mokutil --sb-state | grep -q &quot;SecureBoot enabled&quot;; then
++if mokutil --sb-state 2&gt;/dev/null | grep -q &quot;SecureBoot enabled&quot;; then
+     secureboot=on
+ elif xxd -p \
+-    /sys/firmware/efi/vars/SecureBoot-8be4df61-93ca-11d2-aa0d-00e098032b8c/data | \
++    /sys/firmware/efi/vars/SecureBoot-8be4df61-93ca-11d2-aa0d-00e098032b8c/data 2&gt;/dev/null | \
+     grep -q &quot;01&quot;; then
+     secureboot=on
++elif cat /proc/cmdline | grep -q &quot;secureboot_enable=1&quot;; then
++    secureboot=on
+ fi
+ 
+ if [ &quot;$secureboot&quot; == &quot;off&quot; ]; then
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-03-28 13:34:17 UTC (rev 1943)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2013-04-03 14:58:10 UTC (rev 1944)
+@@ -1,4 +1,15 @@
+ -------------------------------------------------------------------
++Wed Apr  3 16:44:29 CEST 2013 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- No longer apply ModeSetting profile in any case, but only for
++  graphics drivers, which can still be in use on modern hardware
++  with secureboot (intel, radeon, nvidia, mga, ast, cirrus). This
++  is now done via the Driver.map, so this works also with
++  yast2-x11 during installation. (bnc#813137)
++- dummy secure boot mode is now also considered by Modesetting
++  helper script
++
++-------------------------------------------------------------------
+ Thu Mar 28 13:38:00 CET 2013 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - fall back to fbdev in secureboot mode with ast KMS driver,
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/startup/sax.sh
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/startup/sax.sh	2013-03-28 13:34:17 UTC (rev 1943)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/startup/sax.sh	2013-04-03 14:58:10 UTC (rev 1944)
+@@ -31,9 +31,9 @@
+ ### no longer write BusID by default if there is only one possible
+ ### primary device
+ if [ $(/usr/sbin/sysp -c | wc -l) -lt 2 ]; then 
+-	BATCH_MODE=&quot;-b nobus -b ModeSetting&quot;
++	BATCH_MODE=&quot;-b nobus&quot;
+ else
+-	BATCH_MODE=&quot;-b ModeSetting&quot;
++	BATCH_MODE=&quot;&quot;
+ fi
+ CMD_LINE=&quot;&quot;
+ AUTO_CONF=&quot;&quot;
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Driver.map
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Driver.map	2013-03-28 13:34:17 UTC (rev 1943)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Driver.map	2013-04-03 14:58:10 UTC (rev 1944)
+@@ -4,12 +4,15 @@
+ # Driver Name | Profile
+ # -----------------------------------------------------
+ nv       : Depth24,NVidia,NoModelines,NoComposite
+-nvidia   : Depth24,NVidia,NoModelines,Composite
+-radeon   : Depth24,Radeon,Virtual,NoModelines,NoModes
++nvidia   : Depth24,NVidia,NoModelines,Composite,ModeSetting
++radeon   : Depth24,Radeon,Virtual,NoModelines,NoModes,ModeSetting
+ i810     : Depth24,NoDDC,LinearAlloc
+ sis      : SiS,Depth24
+ fglrx    : FireGL,AIGLX,Composite
+ tseng    : VideoRAM
+-intel    : Depth24,Intel,AIGLX,Composite,Virtual2k,NoModelines,NoModes
++intel    : Depth24,Intel,AIGLX,Composite,Virtual2k,NoModelines,NoModes,ModeSetting
+ fbdev    : NoModelines
+ radeonhd : Depth24,RadeonHD,Virtual
++mga      : ModeSetting,NoModelines,NoModes
++cirrus   : ModeSetting,NoModelines,NoModes
++ast:     : ModeSetting,NoModelines,NoModes
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000333.html">[Sax-devel] r1945 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#332">[ date ]</a>
+              <a href="thread.html#332">[ thread ]</a>
+              <a href="subject.html#332">[ subject ]</a>
+              <a href="author.html#332">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Compiling sax2 for Debian Etch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Compiling%20sax2%20for%20Debian%20Etch&In-Reply-To=%3C20070226221636.GA2681%40suse.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000028.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Compiling sax2 for Debian Etch</H1>
+    <B>Stefan Dirsch</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Compiling%20sax2%20for%20Debian%20Etch&In-Reply-To=%3C20070226221636.GA2681%40suse.de%3E"
+       TITLE="[Sax-devel] Compiling sax2 for Debian Etch">sndirsch at suse.de
+       </A><BR>
+    <I>Mon Feb 26 23:16:36 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000028.html">[Sax-devel] Compiling sax2 for Debian Etch
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#29">[ date ]</a>
+              <a href="thread.html#29">[ thread ]</a>
+              <a href="subject.html#29">[ subject ]</a>
+              <a href="author.html#29">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Feb 26, 2007 at 09:04:38PM +0100, Dieter J&#228;ger wrote:
+&gt;<i> Hi friends,
+</I>&gt;<i> 
+</I>&gt;<i> So far I managed to create libxf86config.a and the parser header files from 
+</I>&gt;<i> the debian package and put them into two small packages. After installation, 
+</I>&gt;<i> when compiling sax2 I get the following error:
+</I>&gt;<i> 
+</I>&gt;<i> $ make 
+</I>&gt;<i> ...
+</I>&gt;<i> cc -c  -iquote /usr/X11R6/include -iquote /usr/include/xorg -I. -D_REENTRANT -D_
+</I>&gt;<i> GNU_SOURCE -DTHREADS_HAVE_PIDS -DDEBIAN -fno-strict-aliasing -pipe -I/usr/local/
+</I>&gt;<i> include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -O2    -DVERSION=\&quot;\&quot; -DXS_VE                                                                                                  
+</I>&gt;<i> RSION=\&quot;\&quot; -fPIC &quot;-I/usr/lib/perl/5.8/CORE&quot;  -DX_BYTE_ORDER=X_LITTLE_ENDIAN -DNE                                                                                                  
+</I>&gt;<i> W_INPUT -DNDEBUG -DHAVE_EXTENSIONS_SECTION parse.c
+</I>&gt;<i> cc -c  -iquote /usr/X11R6/include -iquote /usr/include/xorg -I. -D_REENTRANT -D_                                                                                                  
+</I>&gt;<i> GNU_SOURCE -DTHREADS_HAVE_PIDS -DDEBIAN -fno-strict-aliasing -pipe -I/usr/local/                                                                                                  
+</I>&gt;<i> include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -O2    -DVERSION=\&quot;\&quot; -DXS_VE                                                                                                  
+</I>&gt;<i> RSION=\&quot;\&quot; -fPIC &quot;-I/usr/lib/perl/5.8/CORE&quot;  -DX_BYTE_ORDER=X_LITTLE_ENDIAN -DNE                                                                                                  
+</I>&gt;<i> W_INPUT -DNDEBUG -DHAVE_EXTENSIONS_SECTION XFree_wrap.c
+</I>&gt;<i> Running Mkbootstrap for XFree ()
+</I>&gt;<i> chmod 644 XFree.bs
+</I>&gt;<i> rm -f blib/arch/auto/XFree/XFree.so
+</I>&gt;<i> cc  -shared -L/usr/local/lib parse.o XFree_wrap.o  -o 
+</I>&gt;<i> blib/arch/auto/XFree/XFree                                                                                                  .so     
+</I>&gt;<i> \
+</I>&gt;<i>            -L/usr/X11R6/lib -lm -lxf86config    \
+</I>&gt;<i> 
+</I>&gt;<i> /usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/4.1.2/../../../../lib64/libxf86config                                                                                                  .a(read.o): 
+</I>&gt;<i> relocation R_X86_64_32 against `a local symbol' can not be used when                                                                                                   
+</I>&gt;<i> making a shared object; recompile with -fPIC
+</I>&gt;<i> /usr/lib/gcc/x86_64-linux-gnu/4.1.2/../../../../lib64/libxf86config.a: could 
+</I>&gt;<i> not                                                                                                   
+</I>&gt;<i> read symbols: Bad value
+</I>&gt;<i> collect2: ld returned 1 exit status
+</I>&gt;<i> make[1]: *** [blib/arch/auto/XFree/XFree.so] Fehler 1
+</I>&gt;<i> make[1]: Leaving directory `/root/sax/parse'
+</I>&gt;<i> make: *** [all] Fehler 2
+</I>&gt;<i> 
+</I>&gt;<i> I compiled the xserver with the following flags:
+</I>&gt;<i> 
+</I>&gt;<i> --disable-static \
+</I>&gt;<i>              --enable-xorg \
+</I>&gt;<i>              --with-mesa-source=/usr/share/mesa-source \
+</I>&gt;<i>                  --with-default-font-path=&quot;/usr/share/fonts/X11/misc,/usr/X11R6/lib/X11/fonts/misc,/usr/share/fonts/X11/cyrillic,/usr/share/fonts/X11/100dpi/:unscaled,/usr/share/
+</I>&gt;<i> fonts/X11/75dpi/:unscaled,/usr/share/fonts/X11/Type1,/usr/X11R6/lib/  
+</I>&gt;<i> X11/fonts/Type1,/usr/share/fonts/X11/100dpi,/usr/share/fonts/X11/75dpi,/var/lib/defoma/x-ttcidfont-conf.d/di
+</I>&gt;<i> rs/TrueType&quot; \
+</I>&gt;<i>                  --with-serverconfig-path=/etc/X11/xserver \
+</I>&gt;<i>                  --with-rgb-path=/etc/X11/rgb \
+</I>&gt;<i>              --enable-xtrap \
+</I>&gt;<i>              --enable-dmx \
+</I>&gt;<i>              --enable-vfb \
+</I>&gt;<i>              --enable-install-libxf86config \
+</I>&gt;<i>                  --enable-kdrive \
+</I>&gt;<i>                  --enable-xephyr \
+</I>&gt;<i>              --enable-pic \
+</I>&gt;<i>              --disable-lbx \
+</I>&gt;<i>              --disable-xprint \
+</I>&gt;<i>                  --disable-xorgconfig \
+</I>&gt;<i>                  --disable-xorgcfg \
+</I>&gt;<i>                  --with-xkb-path=/usr/share/X11/xkb \
+</I>&gt;<i>                  --with-xkb-output=/var/lib/xkb \
+</I>&gt;<i>              --disable-misc-utils
+</I>&gt;<i> 
+</I>&gt;<i> I used the Debian defaults and 
+</I>&gt;<i> added --enable-install-libxf86config --enable-pic.
+</I>&gt;<i> 
+</I>&gt;<i> Can you help me on?
+</I>
+Add the attached patch.
+
+Stefan
+
+Public Key available
+------------------------------------------------------
+Stefan Dirsch (Res. &amp; Dev.)   SUSE LINUX Products GmbH
+Tel: 0911-740 53 0            Maxfeldstra&#223;e 5
+FAX: 0911-740 53 479          D-90409 N&#252;rnberg
+<A HREF="http://www.suse.de">http://www.suse.de</A>            Germany 
+-----------------------------------------------------------------
+SUSE LINUX Products GmbH, GF: Markus Rex, HRB 16746 (AG N&#252;rnberg)
+-----------------------------------------------------------------
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: fpic.diff
+Type: text/x-patch
+Size: 286 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/sax-devel/attachments/20070226/6cbea998/attachment.bin">https://lists.berlios.de/pipermail/sax-devel/attachments/20070226/6cbea998/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000028.html">[Sax-devel] Compiling sax2 for Debian Etch
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#29">[ date ]</a>
+              <a href="thread.html#29">[ thread ]</a>
+              <a href="subject.html#29">[ subject ]</a>
+              <a href="author.html#29">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

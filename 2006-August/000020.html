@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Sax2 cannot compile - ALL SOLVED
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile%20-%20ALL%20SOLVED&In-Reply-To=%3C200608311741.05217.aj%40getopenlab.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000019.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Sax2 cannot compile - ALL SOLVED</H1>
+    <B>A.J. Venter</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile%20-%20ALL%20SOLVED&In-Reply-To=%3C200608311741.05217.aj%40getopenlab.com%3E"
+       TITLE="[Sax-devel] Sax2 cannot compile - ALL SOLVED">aj at getopenlab.com
+       </A><BR>
+    <I>Thu Aug 31 17:41:05 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000019.html">[Sax-devel] Sax2 cannot compile - ALL SOLVED
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#20">[ date ]</a>
+              <a href="thread.html#20">[ thread ]</a>
+              <a href="subject.html#20">[ subject ]</a>
+              <a href="author.html#20">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> &gt; 2) Check for hardware changes and reconfigure if needed on post-install
+</I>&gt;<i> &gt; bootups. This one should JUST check if something has changed, and if so
+</I>&gt;<i> &gt; should reconfigure. The GUI should certainly only be involved IF there is
+</I>&gt;<i> &gt; a change.
+</I>&gt;<i>
+</I>&gt;<i> what exactly do you mean with hardware changes ? I assume
+</I>&gt;<i> Graphics card, Monitor, keyboard, mouse ? From my experience it is
+</I>&gt;<i> hard to track down the right action for hotplug devices. So I would
+</I>&gt;<i> not check for changes in Monitor,Keyboard and Mouse. I did that in
+</I>&gt;<i> the past and created more problems than solutions. To find out whether
+</I>&gt;<i> the graphics card has changed can be done by calling:
+</I>&gt;<i>
+</I>&gt;<i> 	sax2 -p
+</I>&gt;<i>
+</I>&gt;<i> This prints out the PCI location and the name of the card. If
+</I>&gt;<i> something there has changed you could reinvoke sax2 with the option -r
+</I>&gt;<i>
+</I>&gt;<i> 	sax2 -r
+</I>Okay, let me explain what I was hoping for here. 
+I would just like, when an installed machine boots to check whether the 
+current xorg.conf file will still work, and then invoke the reconfigure steps 
+if needed.
+So basically if the user swops out his video card, or replaces his monitor 
+mostly, but basically any change that would prevent X from starting correctly 
+should cause an automagic reconfiguration. Ideally it should also pick up one 
+or two other things like if the nvidia drivers have been installed since the 
+last run.
+
+I don't know if this is (directly) doable, or if I'll need to write some code 
+plugging into sax2 abilities where possible, I'm quite willing and able to 
+write some code myself if needed, but it would be a waste if sax2 can already 
+do something like this.
+
+A.J.
+-- 
+&quot;80% Of a hardware engineer's job is application of the uncertainty principle.
+80% of a software engineer's job is pretending this isn't so.&quot;
+A.J. Venter
+Chief Software Architect
+OpenLab International           | +27 83 455 99 78 (South Africa) 
+<A HREF="http://www.getopenlab.com">http://www.getopenlab.com</A>       | 086 654 2898 (Fax)
+<A HREF="http://www.silentcoder.co.za">http://www.silentcoder.co.za</A>    | +55 118 162 2079 (Brazil)
+GPG Key: <A HREF="http://pgp.mit.edu:11371/pks/lookup?op=get&amp;search=0x27CFFE5A">http://pgp.mit.edu:11371/pks/lookup?op=get&amp;search=0x27CFFE5A</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/sax-devel/attachments/20060831/25ffc21e/attachment.pgp">https://lists.berlios.de/pipermail/sax-devel/attachments/20060831/25ffc21e/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000019.html">[Sax-devel] Sax2 cannot compile - ALL SOLVED
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#20">[ date ]</a>
+              <a href="thread.html#20">[ thread ]</a>
+              <a href="subject.html#20">[ subject ]</a>
+              <a href="author.html#20">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

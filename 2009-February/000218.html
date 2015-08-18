@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1826 - in sax-head: rpm sysp sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1826%20-%20in%20sax-head%3A%20rpm%20sysp%20sysp/maps&In-Reply-To=%3C200902051719.n15HJNsv007766%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000217.html">
+   <LINK REL="Next"  HREF="000219.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1826 - in sax-head: rpm sysp sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1826%20-%20in%20sax-head%3A%20rpm%20sysp%20sysp/maps&In-Reply-To=%3C200902051719.n15HJNsv007766%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1826 - in sax-head: rpm sysp sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Thu Feb  5 18:19:23 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000217.html">[Sax-devel] r1825 - in sax-head: api/data locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES locale/sax-template locale/si/LC_MESSAG! ES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES rpm
+</A></li>
+        <LI>Next message: <A HREF="000219.html">[Sax-devel] r1827 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#218">[ date ]</a>
+              <a href="thread.html#218">[ thread ]</a>
+              <a href="subject.html#218">[ subject ]</a>
+              <a href="author.html#218">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-02-05 18:19:20 +0100 (Thu, 05 Feb 2009)
+New Revision: 1826
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/sysp/maps/Input.map
+   sax-head/sysp/sysp.c
+Log:
+- vboxmouse is no longer a standard mouse, i.e. add default mouse
+  again; use vboxmouse driver by default again (bnc #444747)
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-02-05 16:03:13 UTC (rev 1825)
++++ sax-head/rpm/sax2.changes	2009-02-05 17:19:20 UTC (rev 1826)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Thu Feb  5 18:14:35 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- vboxmouse is no longer a standard mouse, i.e. add default mouse
++  again; use vboxmouse driver by default again (bnc #444747)
++
++-------------------------------------------------------------------
+ Thu Feb  5 17:02:30 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - fixed xkb key quoting in xapi.gtx (bnc #447492)
+
+Modified: sax-head/sysp/maps/Input.map
+===================================================================
+--- sax-head/sysp/maps/Input.map	2009-02-05 16:03:13 UTC (rev 1825)
++++ sax-head/sysp/maps/Input.map	2009-02-05 17:19:20 UTC (rev 1826)
+@@ -30,8 +30,7 @@
+ 0x0030 : 0x0000 : touchscreen : evdev
+ 0x04e7 : 0x0030 : touchscreen : evdev
+ 0x0596 : 0x0001 : touchscreen : evdev
+-# Bug #444747
+-#0x80ee : 0x0100 : vbox-mouse : vboxmouse
++0x80ee : 0x0100 : vbox-mouse : vboxmouse
+ 0x15ad : 0x0100 : vmware-mouse : vmmouse
+ # Keyboards
+ # Microsoft Natural Ergonomic Keyboard 4000
+
+Modified: sax-head/sysp/sysp.c
+===================================================================
+--- sax-head/sysp/sysp.c	2009-02-05 16:03:13 UTC (rev 1825)
++++ sax-head/sysp/sysp.c	2009-02-05 17:19:20 UTC (rev 1826)
+@@ -581,9 +581,6 @@
+ 		if (strcmp(data.driver,&quot;vmmouse&quot;) == 0) {
+ 			haveStandardMouse = true;
+ 		}
+-		if (strcmp(data.driver,&quot;vboxmouse&quot;) == 0) {
+-			haveStandardMouse = true;
+-		}
+ 		bool deviceIsANutShell = false;
+ 		if (devices[i] != 1) {
+ 			deviceIsANutShell = true;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000217.html">[Sax-devel] r1825 - in sax-head: api/data locale/af/LC_MESSAGES locale/ar/LC_MESSAGES locale/bg/LC_MESSAGES locale/bn/LC_MESSAGES locale/bs/LC_MESSAGES locale/ca/LC_MESSAGES locale/cs/LC_MESSAGES locale/cy/LC_MESSAGES locale/da/LC_MESSAGES locale/de/LC_MESSAGES locale/el/LC_MESSAGES locale/en_GB/LC_MESSAGES locale/en_US/LC_MESSAGES locale/es/LC_MESSAGES locale/et/LC_MESSAGES locale/fi/LC_MESSAGES locale/fr/LC_MESSAGES locale/gl/LC_MESSAGES locale/gu/LC_MESSAGES locale/he/LC_MESSAGES locale/hi/LC_MESSAGES locale/hr/LC_MESSAGES locale/hu/LC_MESSAGES locale/id/LC_MESSAGES locale/it/LC_MESSAGES locale/ja/LC_MESSAGES locale/ka/LC_MESSAGES locale/km/LC_MESSAGES locale/ko/LC_MESSAGES locale/lo/LC_MESSAGES locale/lt/LC_MESSAGES locale/mk/LC_MESSAGES locale/mr/LC_MESSAGES locale/nb/LC_MESSAGES locale/nl/LC_MESSAGES locale/pa/LC_MESSAGES locale/pl/LC_MESSAGES locale/pt/LC_MESSAGES locale/pt_BR/LC_MESSAGES locale/ro/LC_MESSAGES locale/ru/LC_MESSAGES locale/sax-template locale/si/LC_MESSAG! ES locale/sk/LC_MESSAGES locale/sl/LC_MESSAGES locale/sr/LC_MESSAGES locale/sv/LC_MESSAGES locale/ta/LC_MESSAGES locale/th/LC_MESSAGES locale/tr/LC_MESSAGES locale/uk/LC_MESSAGES locale/vi/LC_MESSAGES locale/wa/LC_MESSAGES locale/xh/LC_MESSAGES locale/zh_CN/LC_MESSAGES locale/zh_TW/LC_MESSAGES locale/zu/LC_MESSAGES rpm
+</A></li>
+	<LI>Next message: <A HREF="000219.html">[Sax-devel] r1827 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#218">[ date ]</a>
+              <a href="thread.html#218">[ thread ]</a>
+              <a href="subject.html#218">[ subject ]</a>
+              <a href="author.html#218">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

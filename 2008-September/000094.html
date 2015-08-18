@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1702 - in sax-head: api/data/cdb rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1702%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200809101322.m8ADMKHU023243%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000093.html">
+   <LINK REL="Next"  HREF="000095.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1702 - in sax-head: api/data/cdb rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1702%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200809101322.m8ADMKHU023243%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1702 - in sax-head: api/data/cdb rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Sep 10 15:22:20 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000093.html">[Sax-devel] r1701 - in sax-head: api/data/cdb rpm
+</A></li>
+        <LI>Next message: <A HREF="000095.html">[Sax-devel] r1703 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#94">[ date ]</a>
+              <a href="thread.html#94">[ thread ]</a>
+              <a href="subject.html#94">[ subject ]</a>
+              <a href="author.html#94">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-09-10 15:22:19 +0200 (Wed, 10 Sep 2008)
+New Revision: 1702
+
+Modified:
+   sax-head/api/data/cdb/Pens
+   sax-head/api/data/cdb/Tablets
+   sax-head/rpm/sax2.changes
+Log:
+- Added touch devices also the the generic Wacom USB TabletPC entry
+  (Danny Kukawka &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">dkukawka at suse.de</A>&gt;)
+
+
+Modified: sax-head/api/data/cdb/Pens
+===================================================================
+--- sax-head/api/data/cdb/Pens	2008-09-10 13:20:29 UTC (rev 1701)
++++ sax-head/api/data/cdb/Pens	2008-09-10 13:22:19 UTC (rev 1702)
+@@ -335,6 +335,21 @@
+  TabletType          = stylus
+  RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;
+ }
++
++#------------------------------------------------#
++# TABLET PCs: Wacom ISDV4 TabletPC Touch (USB)   #
++#------------------------------------------------#
++TABLET PCs:ISDV4 TABLET PC Touch (USB) {
++ Device              = /dev/input/by-id/usb-Tablet_ISD-V4-event-touch
++ Option              = USB
++ TabletMode          = Absolute
++ Driver              = wacom
++ Protocol            = Auto
++ TabletType          = touch
++ RawOption           = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++}
++
++
+ #-------------------------------------------#
+ # TABLET PCs: ASUS R1E Eraser (USB)         #
+ #-------------------------------------------#
+
+Modified: sax-head/api/data/cdb/Tablets
+===================================================================
+--- sax-head/api/data/cdb/Tablets	2008-09-10 13:20:29 UTC (rev 1701)
++++ sax-head/api/data/cdb/Tablets	2008-09-10 13:22:19 UTC (rev 1702)
+@@ -326,6 +326,7 @@
+  RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
+  StylusLink       = ISDV4 TABLET PC Stylus (USB)
+  EraserLink       = ISDV4 TABLET PC Eraser (USB)
++ TouchLink        = ISDV4 TABLET PC Touch (USB)
+ }
+ 
+ 
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-09-10 13:20:29 UTC (rev 1701)
++++ sax-head/rpm/sax2.changes	2008-09-10 13:22:19 UTC (rev 1702)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Wed Sep 10 15:21:04 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- Added touch devices also the the generic Wacom USB TabletPC entry
++  (Danny Kukawka &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">dkukawka at suse.de</A>&gt;)
++
++-------------------------------------------------------------------
+ Wed Sep 10 15:19:04 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - added Tablet PC support for HP Pavilion tx2000/tx2001 series
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000093.html">[Sax-devel] r1701 - in sax-head: api/data/cdb rpm
+</A></li>
+	<LI>Next message: <A HREF="000095.html">[Sax-devel] r1703 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#94">[ date ]</a>
+              <a href="thread.html#94">[ thread ]</a>
+              <a href="subject.html#94">[ subject ]</a>
+              <a href="author.html#94">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

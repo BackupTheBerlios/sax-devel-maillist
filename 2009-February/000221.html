@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1830 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/driver rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1830%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/driver%20rpm&In-Reply-To=%3C200902131320.n1DDKK68001024%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000220.html">
+   <LINK REL="Next"  HREF="000222.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1830 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/driver rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1830%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/driver%20rpm&In-Reply-To=%3C200902131320.n1DDKK68001024%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1830 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/driver rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri Feb 13 14:20:20 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000220.html">[Sax-devel] r1829 - in sax-head: profile/driver rpm
+</A></li>
+        <LI>Next message: <A HREF="000222.html">[Sax-devel] r1831 - in sax-head: profile/automatic/input rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#221">[ date ]</a>
+              <a href="thread.html#221">[ thread ]</a>
+              <a href="subject.html#221">[ subject ]</a>
+              <a href="author.html#221">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-02-13 14:20:12 +0100 (Fri, 13 Feb 2009)
+New Revision: 1830
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/driver/FireGL
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+Log:
+- FireGL profile: set again BusID (bnc #473662)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/driver/FireGL
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/driver/FireGL	2009-02-13 13:12:54 UTC (rev 1829)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/driver/FireGL	2009-02-13 13:20:12 UTC (rev 1830)
+@@ -19,4 +19,3 @@
+ Device-&gt;[X]-&gt;Raw-&gt;14-&gt;Option = &quot;FSAAEnable&quot; &quot;off&quot;
+ Device-&gt;[X]-&gt;Raw-&gt;15-&gt;Option = &quot;FSAAScale&quot; &quot;0&quot;
+ Device-&gt;[X]-&gt;Raw-&gt;16-&gt;Option = &quot;XAANoOffscreenPixmaps&quot; &quot;true&quot;
+-Device-&gt;[X]-&gt;BusID = Single
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-02-13 13:12:54 UTC (rev 1829)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-02-13 13:20:12 UTC (rev 1830)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Fri Feb 13 14:17:16 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- FireGL profile: set again BusID (bnc #473662)
++
++-------------------------------------------------------------------
+ Fri Feb  6 14:31:48 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - updated translations from LCN SVN (20090206)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000220.html">[Sax-devel] r1829 - in sax-head: profile/driver rpm
+</A></li>
+	<LI>Next message: <A HREF="000222.html">[Sax-devel] r1831 - in sax-head: profile/automatic/input rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#221">[ date ]</a>
+              <a href="thread.html#221">[ thread ]</a>
+              <a href="subject.html#221">[ subject ]</a>
+              <a href="author.html#221">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1704 - in sax-head: api/data/cdb rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1704%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200809101327.m8ADR1vu023702%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000095.html">
+   <LINK REL="Next"  HREF="000097.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1704 - in sax-head: api/data/cdb rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1704%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200809101327.m8ADR1vu023702%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1704 - in sax-head: api/data/cdb rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Sep 10 15:27:01 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000095.html">[Sax-devel] r1703 - in sax-head: api/data/cdb rpm
+</A></li>
+        <LI>Next message: <A HREF="000097.html">[Sax-devel] r1705 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#96">[ date ]</a>
+              <a href="thread.html#96">[ thread ]</a>
+              <a href="subject.html#96">[ subject ]</a>
+              <a href="author.html#96">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-09-10 15:27:00 +0200 (Wed, 10 Sep 2008)
+New Revision: 1704
+
+Modified:
+   sax-head/api/data/cdb/Tablets
+   sax-head/rpm/sax2.changes
+Log:
+- add HP TC4400 serial TabletPC (Danny Kukawka &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">dkukawka at suse.de</A>&gt;)
+
+
+Modified: sax-head/api/data/cdb/Tablets
+===================================================================
+--- sax-head/api/data/cdb/Tablets	2008-09-10 13:25:18 UTC (rev 1703)
++++ sax-head/api/data/cdb/Tablets	2008-09-10 13:27:00 UTC (rev 1704)
+@@ -227,6 +227,20 @@
+  EraserLink       = HP Compaq TC4200 Eraser (SERIAL)
+ }
+ 
++#----------------------------------#
++# TABLET PCs: HP Compaq TC4400     #
++#----------------------------------#
++TABLET PCs:HP Compaq TC4400 (SERIAL) {
++ TabletType       = cursor
++ TabletMode       = Absolute
++ Driver           = wacom
++ Device           = /dev/ttyS0
++ SendCoreEvents   = on
++ RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ StylusLink       = ISDV4 TABLET PC Stylus (SERIAL)
++ EraserLink       = ISDV4 TABLET PC Eraser (SERIAL)
++}
++
+ #-----------------------------------------#
+ # TABLET PCs: HP Pavilion tx2000 series   #
+ #-----------------------------------------#
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-09-10 13:25:18 UTC (rev 1703)
++++ sax-head/rpm/sax2.changes	2008-09-10 13:27:00 UTC (rev 1704)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Wed Sep 10 15:26:05 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- add HP TC4400 serial TabletPC (Danny Kukawka &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">dkukawka at suse.de</A>&gt;)
++
++-------------------------------------------------------------------
+ Wed Sep 10 15:23:24 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - add some more serial Wacom TabletPCs:
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000095.html">[Sax-devel] r1703 - in sax-head: api/data/cdb rpm
+</A></li>
+	<LI>Next message: <A HREF="000097.html">[Sax-devel] r1705 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#96">[ date ]</a>
+              <a href="thread.html#96">[ thread ]</a>
+              <a href="subject.html#96">[ subject ]</a>
+              <a href="author.html#96">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

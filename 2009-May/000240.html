@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1849 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1849%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/automatic/monitor%20sysp/maps&In-Reply-To=%3C200905141154.n4EBsWMX011384%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000239.html">
+   <LINK REL="Next"  HREF="000241.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1849 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1849%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/automatic/monitor%20sysp/maps&In-Reply-To=%3C200905141154.n4EBsWMX011384%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1849 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Thu May 14 13:54:32 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000239.html">[Sax-devel] r1848 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+</A></li>
+        <LI>Next message: <A HREF="000241.html">[Sax-devel] r1850 - sax-branches/SaX2-81-SuSE-11-1-Devel/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#240">[ date ]</a>
+              <a href="thread.html#240">[ thread ]</a>
+              <a href="subject.html#240">[ subject ]</a>
+              <a href="author.html#240">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-05-14 13:54:28 +0200 (Thu, 14 May 2009)
+New Revision: 1849
+
+Added:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-AE1900
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map
+Log:
+- use special profile for MSI AE1900 (bnc #500853)
+
+
+Added: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-AE1900
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-AE1900	2009-05-06 13:52:22 UTC (rev 1848)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/automatic/monitor/MSI-AE1900	2009-05-14 11:54:28 UTC (rev 1849)
+@@ -0,0 +1,13 @@
++# /.../
++# MSI AE1900AE (LVDS-1) monitor profile
++# ----
++
++Monitor-&gt;[X]-&gt;HorizSync = 30-48
++Monitor-&gt;[X]-&gt;VertRefresh = 59-61
++Monitor-&gt;[X]-&gt;DisplaySize = 305 230
++Monitor-&gt;[X]-&gt;PreferredMode = 1366x768
++Screen-&gt;[X]-&gt;Depth-&gt;8-&gt;Modes = 1366x768
++Screen-&gt;[X]-&gt;Depth-&gt;15-&gt;Modes = 1366x768
++Screen-&gt;[X]-&gt;Depth-&gt;16-&gt;Modes = 1366x768
++Screen-&gt;[X]-&gt;Depth-&gt;24-&gt;Modes = 1366x768
++Device-&gt;[X]-&gt;Raw-&gt;11-&gt;Option = &quot;AccelMethod&quot; &quot;UXA&quot;
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map	2009-05-06 13:52:22 UTC (rev 1848)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/maps/Identity.map	2009-05-14 11:54:28 UTC (rev 1849)
+@@ -592,6 +592,8 @@
+ NAME=Intel&amp;DEVICE=E7221&amp;VID=0x8086&amp;DID=0x258A&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=i915G&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=945G&amp;VID=0x8086&amp;DID=0x2772&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=i915G&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945G&amp;VID=0x8086&amp;DID=0x2772&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=i915G&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
++NAME=Intel&amp;DEVICE=945G MSI-AE1900&amp;VID=0x8086&amp;DID=0x2772&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=i915G,MSI-AE1900&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT&amp;SUBVENDOR=0x1462&amp;SUBDEVICE=0x7438
++NAME=Intel&amp;DEVICE=945G MSI-AE1900&amp;VID=0x8086&amp;DID=0x2772&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=i915G,MSI-AE1900&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D&amp;SUBVENDOR=0x1462&amp;SUBDEVICE=0x7438
+ NAME=Intel&amp;DEVICE=945 GM&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=intel&amp;EXT=&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+ NAME=Intel&amp;DEVICE=945 GM&amp;VID=0x8086&amp;DID=0x27a2&amp;SERVER=intel&amp;EXT=dri&amp;OPT=&amp;RAW=&amp;PROFILE=&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=3D
+ NAME=Intel&amp;DEVICE=946GZ&amp;VID=0x8086&amp;DID=0x2972&amp;SERVER=intel&amp;EXT=&amp;OPT=EXANoComposite&amp;RAW=&amp;PROFILE=Virtual&amp;SCRIPT3D=&amp;PACKAGE3D=&amp;FLAG=DEFAULT
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000239.html">[Sax-devel] r1848 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp/maps
+</A></li>
+	<LI>Next message: <A HREF="000241.html">[Sax-devel] r1850 - sax-branches/SaX2-81-SuSE-11-1-Devel/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#240">[ date ]</a>
+              <a href="thread.html#240">[ thread ]</a>
+              <a href="subject.html#240">[ subject ]</a>
+              <a href="author.html#240">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

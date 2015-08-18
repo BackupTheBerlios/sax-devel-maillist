@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1655 - in sax-head: api rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1655%20-%20in%20sax-head%3A%20api%20rpm&In-Reply-To=%3C200807091436.m69Ealn0031423%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000050.html">
+   <LINK REL="Next"  HREF="000052.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1655 - in sax-head: api rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1655%20-%20in%20sax-head%3A%20api%20rpm&In-Reply-To=%3C200807091436.m69Ealn0031423%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1655 - in sax-head: api rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Jul  9 16:36:47 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000050.html">[Sax-devel] r1654 - in sax-head: api api/macros libsax/tools rpm	sysp/maps
+</A></li>
+        <LI>Next message: <A HREF="000052.html">[Sax-devel] r1656 - in sax-branches/SaX2-71-SuSE-10-1-Devel:	profile/automatic/input rpm rpm/spec sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#51">[ date ]</a>
+              <a href="thread.html#51">[ thread ]</a>
+              <a href="subject.html#51">[ subject ]</a>
+              <a href="author.html#51">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-07-09 16:36:44 +0200 (Wed, 09 Jul 2008)
+New Revision: 1655
+
+Modified:
+   sax-head/api/keyboard.cpp
+   sax-head/rpm/sax2.changes
+Log:
+- show &quot;busy cursor&quot; when setting console keyboard
+
+
+Modified: sax-head/api/keyboard.cpp
+===================================================================
+--- sax-head/api/keyboard.cpp	2008-07-09 09:13:45 UTC (rev 1654)
++++ sax-head/api/keyboard.cpp	2008-07-09 14:36:44 UTC (rev 1655)
+@@ -219,6 +219,7 @@
+ 	//====================================
+ 	// run yast keyboard module 
+ 	//------------------------------------
++	qApp-&gt;setOverrideCursor ( Qt::forbiddenCursor );
+ 	QString baseLayout = *layouts.begin();
+ 	QString complete = &quot;/usr/share/sax/api/macros/setconsolekeyboard.sh &quot; 
+ 		+ baseLayout;
+@@ -231,6 +232,7 @@
+ 	while (proc-&gt;isRunning()) {
+ 		usleep (1000);
+ 	}
++	qApp-&gt;restoreOverrideCursor();
+ 	return true;
+ }
+ } // end namespace
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-07-09 09:13:45 UTC (rev 1654)
++++ sax-head/rpm/sax2.changes	2008-07-09 14:36:44 UTC (rev 1655)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Wed Jul  9 16:35:37 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- show &quot;busy cursor&quot; when setting console keyboard
++
++-------------------------------------------------------------------
+ Wed Jul  9 11:07:33 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
+ 
+ - added vmware-mouse to be applied in Input.map
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000050.html">[Sax-devel] r1654 - in sax-head: api api/macros libsax/tools rpm	sysp/maps
+</A></li>
+	<LI>Next message: <A HREF="000052.html">[Sax-devel] r1656 - in sax-branches/SaX2-71-SuSE-10-1-Devel:	profile/automatic/input rpm rpm/spec sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#51">[ date ]</a>
+              <a href="thread.html#51">[ thread ]</a>
+              <a href="subject.html#51">[ subject ]</a>
+              <a href="author.html#51">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1663 -	sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1663%20-%0A%09sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input&In-Reply-To=%3C200807171043.m6HAh9cw018377%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000058.html">
+   <LINK REL="Next"  HREF="000060.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1663 -	sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1663%20-%0A%09sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input&In-Reply-To=%3C200807171043.m6HAh9cw018377%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1663 -	sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Thu Jul 17 12:43:09 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000058.html">[Sax-devel] r1662 - in sax-head: rpm startup
+</A></li>
+        <LI>Next message: <A HREF="000060.html">[Sax-devel] r1664 - in sax-branches/SaX2-71-SuSE-10-1-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#59">[ date ]</a>
+              <a href="thread.html#59">[ thread ]</a>
+              <a href="subject.html#59">[ subject ]</a>
+              <a href="author.html#59">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-07-17 12:42:59 +0200 (Thu, 17 Jul 2008)
+New Revision: 1663
+
+Modified:
+   sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input/elo
+Log:
+- added missing &quot;!remove ...&quot; statements to elo profile (bnc #408436)
+
+
+Modified: sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input/elo
+===================================================================
+--- sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input/elo	2008-07-16 09:34:18 UTC (rev 1662)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input/elo	2008-07-17 10:42:59 UTC (rev 1663)
+@@ -1,4 +1,10 @@
+-InputDevice -&gt; [X] -&gt; Identifier = Mouse [[X]]
+-InputDevice -&gt; [X] -&gt; Driver = evdev
+-InputDevice -&gt; [X] -&gt; Option -&gt; InputFashion = Mouse
+-InputDevice -&gt; [X] -&gt; Option -&gt; Name = evdev;Touchscreen
++!remove InputDevice -&gt; [X] -&gt; Option -&gt; Emulate3Buttons
++!remove InputDevice -&gt; [X] -&gt; Option -&gt; Buttons
++!remove InputDevice -&gt; [X] -&gt; Option -&gt; Protocol
++!remove InputDevice -&gt; [X] -&gt; Option -&gt; ZAxisMapping
++!remove InputDevice -&gt; [X] -&gt; Option -&gt; Option
++
++InputDevice -&gt; [X] -&gt; Identifier = Mouse [[X]]
++InputDevice -&gt; [X] -&gt; Driver = evdev
++InputDevice -&gt; [X] -&gt; Option -&gt; InputFashion = Mouse
++InputDevice -&gt; [X] -&gt; Option -&gt; Name = evdev;Touchscreen
+\ No newline at end of file
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000058.html">[Sax-devel] r1662 - in sax-head: rpm startup
+</A></li>
+	<LI>Next message: <A HREF="000060.html">[Sax-devel] r1664 - in sax-branches/SaX2-71-SuSE-10-1-Devel: rpm	sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#59">[ date ]</a>
+              <a href="thread.html#59">[ thread ]</a>
+              <a href="subject.html#59">[ subject ]</a>
+              <a href="author.html#59">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

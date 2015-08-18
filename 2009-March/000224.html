@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1833 - in sax-head: . profile/driver rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1833%20-%20in%20sax-head%3A%20.%20profile/driver%20rpm&In-Reply-To=%3C200903012043.n21KhbG7021353%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000225.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1833 - in sax-head: . profile/driver rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1833%20-%20in%20sax-head%3A%20.%20profile/driver%20rpm&In-Reply-To=%3C200903012043.n21KhbG7021353%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1833 - in sax-head: . profile/driver rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Sun Mar  1 21:43:37 CET 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000225.html">[Sax-devel] r1834 - in sax-head: rpm sysp
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#224">[ date ]</a>
+              <a href="thread.html#224">[ thread ]</a>
+              <a href="subject.html#224">[ subject ]</a>
+              <a href="author.html#224">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-03-01 21:43:35 +0100 (Sun, 01 Mar 2009)
+New Revision: 1833
+
+Modified:
+   sax-head/init.pl
+   sax-head/profile/driver/FireGL
+   sax-head/rpm/sax2.changes
+Log:
+- freetype module no longer a seperate server plugin
+
+
+Modified: sax-head/init.pl
+===================================================================
+--- sax-head/init.pl	2009-02-28 20:44:09 UTC (rev 1832)
++++ sax-head/init.pl	2009-03-01 20:43:35 UTC (rev 1833)
+@@ -176,7 +176,7 @@
+ 	#==========================================
+ 	# Module specification                     
+ 	#------------------------------------------
+-	$var{Module}{0}{Load}      = &quot;dri,dbe,freetype,extmod,glx&quot;;
++	$var{Module}{0}{Load}      = &quot;dri,dbe,extmod,glx&quot;;
+ 
+ 	#==========================================
+ 	# ServerFlags specification                
+
+Modified: sax-head/profile/driver/FireGL
+===================================================================
+--- sax-head/profile/driver/FireGL	2009-02-28 20:44:09 UTC (rev 1832)
++++ sax-head/profile/driver/FireGL	2009-03-01 20:43:35 UTC (rev 1833)
+@@ -12,7 +12,7 @@
+ !remove Monitor -&gt; [X] -&gt; Modeline
+ 
+ Screen-&gt;[X]-&gt;DefaultDepth    = 24
+-Module-&gt;[X]-&gt;Load            = dbe,freetype,extmod,glx,dri
++Module-&gt;[X]-&gt;Load            = dbe,extmod,glx,dri
+ Device-&gt;[X]-&gt;Raw-&gt;11-&gt;Option = &quot;Capabilities&quot; &quot;0x00000000&quot;
+ Device-&gt;[X]-&gt;Raw-&gt;12-&gt;Option = &quot;VideoOverlay&quot; &quot;on&quot;
+ Device-&gt;[X]-&gt;Raw-&gt;13-&gt;Option = &quot;OpenGLOverlay&quot; &quot;off&quot;
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-02-28 20:44:09 UTC (rev 1832)
++++ sax-head/rpm/sax2.changes	2009-03-01 20:43:35 UTC (rev 1833)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Sun Mar  1 21:38:36 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- freetype module no longer a seperate server plugin
++
++-------------------------------------------------------------------
+ Sat Feb 28 21:35:02 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - use simplified 'synaptics' profile for all Synaptics/Alps
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000225.html">[Sax-devel] r1834 - in sax-head: rpm sysp
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#224">[ date ]</a>
+              <a href="thread.html#224">[ thread ]</a>
+              <a href="subject.html#224">[ subject ]</a>
+              <a href="author.html#224">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

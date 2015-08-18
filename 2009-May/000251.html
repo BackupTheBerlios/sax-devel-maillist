@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1860 - sax-head/rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1860%20-%20sax-head/rpm&In-Reply-To=%3C200905281105.n4SB5Ujx023473%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000250.html">
+   <LINK REL="Next"  HREF="000252.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1860 - sax-head/rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1860%20-%20sax-head/rpm&In-Reply-To=%3C200905281105.n4SB5Ujx023473%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1860 - sax-head/rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Thu May 28 13:05:30 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000250.html">[Sax-devel] r1859 - in sax-head: api modules/create rpm
+</A></li>
+        <LI>Next message: <A HREF="000252.html">[Sax-devel] r1861 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#251">[ date ]</a>
+              <a href="thread.html#251">[ thread ]</a>
+              <a href="subject.html#251">[ subject ]</a>
+              <a href="author.html#251">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-05-28 13:05:28 +0200 (Thu, 28 May 2009)
+New Revision: 1860
+
+Modified:
+   sax-head/rpm/sax2.changes
+   sax-head/rpm/sax2.spec
+Log:
+- sysfsutils no longer required in BuildRequires
+
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-05-27 20:40:03 UTC (rev 1859)
++++ sax-head/rpm/sax2.changes	2009-05-28 11:05:28 UTC (rev 1860)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Thu May 28 13:04:32 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- sysfsutils no longer required in BuildRequires
++
++-------------------------------------------------------------------
+ Wed May 27 22:37:52 CEST 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - disabled mouse and keyboard module (bnc #483554)
+
+Modified: sax-head/rpm/sax2.spec
+===================================================================
+--- sax-head/rpm/sax2.spec	2009-05-27 20:40:03 UTC (rev 1859)
++++ sax-head/rpm/sax2.spec	2009-05-28 11:05:28 UTC (rev 1860)
+@@ -25,7 +25,7 @@
+ BuildRequires:  antlr bison doxygen flex gettext-devel ghostscript-fonts-std
+ BuildRequires:  graphviz hal-devel python-devel
+ BuildRequires:  libqt4 libqt4-devel libqt4-qt3support libqt4-x11
+-BuildRequires:  hwinfo-devel readline-devel swig sysfsutils update-desktop-files
++BuildRequires:  hwinfo-devel readline-devel swig update-desktop-files
+ BuildRequires:  xorg-x11-server-sdk
+ %if %{suse_version} &gt; 1020
+ BuildRequires:  fdupes
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000250.html">[Sax-devel] r1859 - in sax-head: api modules/create rpm
+</A></li>
+	<LI>Next message: <A HREF="000252.html">[Sax-devel] r1861 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/automatic/monitor rpm sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#251">[ date ]</a>
+              <a href="thread.html#251">[ thread ]</a>
+              <a href="subject.html#251">[ subject ]</a>
+              <a href="author.html#251">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

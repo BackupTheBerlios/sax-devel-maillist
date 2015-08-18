@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1669 - in sax-branches/SaX2-71-SuSE-10-1-Devel:	api/data/cdb rpm sysp
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1669%20-%20in%20sax-branches/SaX2-71-SuSE-10-1-Devel%3A%0A%09api/data/cdb%20rpm%20sysp&In-Reply-To=%3C200807281239.m6SCdw9D008120%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000063.html">
+   <LINK REL="Next"  HREF="000065.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1669 - in sax-branches/SaX2-71-SuSE-10-1-Devel:	api/data/cdb rpm sysp</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1669%20-%20in%20sax-branches/SaX2-71-SuSE-10-1-Devel%3A%0A%09api/data/cdb%20rpm%20sysp&In-Reply-To=%3C200807281239.m6SCdw9D008120%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1669 - in sax-branches/SaX2-71-SuSE-10-1-Devel:	api/data/cdb rpm sysp">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Mon Jul 28 14:39:58 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000063.html">[Sax-devel] r1668 - in sax-head: . api/macros libsax/bindings/perl	libsax/tools modules parse profile/script rpm spp startup	sysp/lib/cvt sysp/lib/fbset sysp/script tools/isax tools/plog
+</A></li>
+        <LI>Next message: <A HREF="000065.html">[Sax-devel] r1670 - in sax-branches/SaX2-71-SuSE-10-1-Devel: rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-07-28 14:39:55 +0200 (Mon, 28 Jul 2008)
+New Revision: 1669
+
+Modified:
+   sax-branches/SaX2-71-SuSE-10-1-Devel/api/data/cdb/Monitors
+   sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-71-SuSE-10-1-Devel/sysp/sysp.c
+Log:
+- add InputDevice sections for ELO USB touchscreen (using &quot;elo&quot;
+  profile) and a standard mouse if such an ELO USB touchscreen has
+  been detected (bnc #410315)
+- added another monitor entry for HP Preload
+
+
+Modified: sax-branches/SaX2-71-SuSE-10-1-Devel/api/data/cdb/Monitors
+===================================================================
+--- sax-branches/SaX2-71-SuSE-10-1-Devel/api/data/cdb/Monitors	2008-07-24 15:45:42 UTC (rev 1668)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/api/data/cdb/Monitors	2008-07-28 12:39:55 UTC (rev 1669)
+@@ -41111,6 +41111,15 @@
+ }
+ 
+ #==============================================
++# AUO 1020 LCD MONITOR
++#----------------------------------------------
++AUO:AUO 1020 LCD MONITOR {
++ DDC=AUO1020
++ Resolution=1024x600
++ Profile=AUO10C2
++}
++
++#==============================================
+ # CMO LCD Monitor
+ #----------------------------------------------
+ CMO:CMO LCD Monitor {
+
+Modified: sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes	2008-07-24 15:45:42 UTC (rev 1668)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes	2008-07-28 12:39:55 UTC (rev 1669)
+@@ -1,4 +1,12 @@
+ -------------------------------------------------------------------
++Mon Jul 28 11:31:27 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- add InputDevice sections for ELO USB touchscreen (using &quot;elo&quot;
++  profile) and a standard mouse if such an ELO USB touchscreen has
++  been detected (bnc #410315)
++- added another monitor entry for HP Preload
++
++-------------------------------------------------------------------
+ Fri Jul 18 12:11:19 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - Identity.map/Identity.map.i386: 
+
+Modified: sax-branches/SaX2-71-SuSE-10-1-Devel/sysp/sysp.c
+===================================================================
+--- sax-branches/SaX2-71-SuSE-10-1-Devel/sysp/sysp.c	2008-07-24 15:45:42 UTC (rev 1668)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/sysp/sysp.c	2008-07-28 12:39:55 UTC (rev 1669)
+@@ -516,7 +516,10 @@
+ 			if (strcmp(data.profile,&quot;alps&quot;) == 0) {
+ 				devices[i] = 1;
+ 			}
++			if (strcmp(data.profile,&quot;elo&quot;) == 0) {
++				devices[i] = 1;
+ 			}
++			}
+ 		}
+ 		m.Reset();
+ 		//============================================
+@@ -556,7 +559,8 @@
+ 			(strcmp(data.device,&quot;/dev/input/mice&quot;) == 0) &amp;&amp; (
+ 				(strcmp(data.profile,&quot;&lt;undefined&gt;&quot;) == 0) || (
+ 					(strcmp(data.profile,&quot;alps&quot;) != 0) &amp;&amp;
+-					(strcmp(data.profile,&quot;synaptics&quot;) != 0)
++					(strcmp(data.profile,&quot;synaptics&quot;) != 0) &amp;&amp;
++					(strcmp(data.profile,&quot;elo&quot;) != 0)
+ 				)
+ 			)
+ 		) {
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000063.html">[Sax-devel] r1668 - in sax-head: . api/macros libsax/bindings/perl	libsax/tools modules parse profile/script rpm spp startup	sysp/lib/cvt sysp/lib/fbset sysp/script tools/isax tools/plog
+</A></li>
+	<LI>Next message: <A HREF="000065.html">[Sax-devel] r1670 - in sax-branches/SaX2-71-SuSE-10-1-Devel: rpm	sysp/maps
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

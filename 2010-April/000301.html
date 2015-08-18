@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1915 - in sax-head: parse rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1915%20-%20in%20sax-head%3A%20parse%20rpm&In-Reply-To=%3C201004140836.o3E8aXpf003874%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000300.html">
+   <LINK REL="Next"  HREF="000302.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1915 - in sax-head: parse rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1915%20-%20in%20sax-head%3A%20parse%20rpm&In-Reply-To=%3C201004140836.o3E8aXpf003874%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1915 - in sax-head: parse rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Apr 14 10:36:33 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000300.html">[Sax-devel] r1914 - in sax-head: . rpm
+</A></li>
+        <LI>Next message: <A HREF="000302.html">[Sax-devel] r1916 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#301">[ date ]</a>
+              <a href="thread.html#301">[ thread ]</a>
+              <a href="subject.html#301">[ subject ]</a>
+              <a href="author.html#301">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2010-04-14 10:36:32 +0200 (Wed, 14 Apr 2010)
+New Revision: 1915
+
+Modified:
+   sax-head/parse/parse.c
+   sax-head/rpm/sax2.changes
+Log:
+- parse/parse.c: escape sequence %D no longer defined in X.Org
+  (bnc #596454)
+
+
+Modified: sax-head/parse/parse.c
+===================================================================
+--- sax-head/parse/parse.c	2010-04-14 07:52:49 UTC (rev 1914)
++++ sax-head/parse/parse.c	2010-04-14 08:36:32 UTC (rev 1915)
+@@ -117,7 +117,7 @@
+ 
+ 	char CONFPATH[SIZE]=
+ 		&quot;%A,%R,/etc/%R,%P/etc/X11/%R,%E,%F,/etc/X11/%F,&quot; \
+-		&quot;%P/etc/X11/%F,%D/%X,/etc/X11/%X,/etc/%X,%P/etc/X11/%X.%H,&quot; \
++		&quot;%P/etc/X11/%F,/etc/X11/%X,/etc/%X,%P/etc/X11/%X.%H,&quot; \
+ 		&quot;%P/etc/X11/%X,%P/lib/X11/%X.%H,%P/lib/X11/%X&quot;;
+ 
+ 	//===================================
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2010-04-14 07:52:49 UTC (rev 1914)
++++ sax-head/rpm/sax2.changes	2010-04-14 08:36:32 UTC (rev 1915)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Wed Apr 14 10:23:01 CEST 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- parse/parse.c: escape sequence %D no longer defined in X.Org
++  (bnc #596454)
++
++-------------------------------------------------------------------
+ Wed Apr 14 09:50:36 CEST 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - .doit: no longer create %changelog entries
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000300.html">[Sax-devel] r1914 - in sax-head: . rpm
+</A></li>
+	<LI>Next message: <A HREF="000302.html">[Sax-devel] r1916 - sax-head/rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#301">[ date ]</a>
+              <a href="thread.html#301">[ thread ]</a>
+              <a href="subject.html#301">[ subject ]</a>
+              <a href="author.html#301">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

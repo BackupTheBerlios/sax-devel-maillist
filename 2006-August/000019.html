@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Sax2 cannot compile - ALL SOLVED
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile%20-%20ALL%20SOLVED&In-Reply-To=%3C20060831152347.GA21382%40suse.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000018.html">
+   <LINK REL="Next"  HREF="000020.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Sax2 cannot compile - ALL SOLVED</H1>
+    <B>Marcus Sch&#228;fer</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile%20-%20ALL%20SOLVED&In-Reply-To=%3C20060831152347.GA21382%40suse.de%3E"
+       TITLE="[Sax-devel] Sax2 cannot compile - ALL SOLVED">ms at suse.de
+       </A><BR>
+    <I>Thu Aug 31 17:23:47 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000018.html">[Sax-devel] Sax2 cannot compile - ALL SOLVED
+</A></li>
+        <LI>Next message: <A HREF="000020.html">[Sax-devel] Sax2 cannot compile - ALL SOLVED
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> w00000000t
+</I>&gt;<i> I got it all working - it wasn' the PM files that were failing, it was the 
+</I>&gt;<i> support files for those (the .bs's and so)
+</I>
+*wow* great you rock ! :-)
+
+&gt;<i> After much hacking and some manual work - I have a fully working sax2 package 
+</I>&gt;<i> for OpenLab, which will be upstream compatible with slackware assuming the 
+</I>&gt;<i> dependencies are met (OL ships them all as  a matter of course, slackware the 
+</I>&gt;<i> user decides if he wants them).
+</I>&gt;<i> 
+</I>&gt;<i> I uploaded the package to my own site at:
+</I>&gt;<i> <A HREF="http://silentcoder.co.za/downloads/sax2-8.1_98.1-i486-1ajv.tgz">http://silentcoder.co.za/downloads/sax2-8.1_98.1-i486-1ajv.tgz</A>
+</I>&gt;<i> 
+</I>&gt;<i> You are welcome to provide either a link or a mirror of the package.
+</I>
+Thanks a lot for all your effort
+
+&gt;<i> Now comes the part of integrating it into the LIVEcd as best possible. So I 
+</I>&gt;<i> hoped you could give me a few quick pointers.
+</I>&gt;<i> 
+</I>&gt;<i> I have basically three sepperate tasks I need done.
+</I>&gt;<i> 1) Setup the INITIAL configuration on LIVEcd bootup so that the user can
+</I>&gt;<i> get a desktop. If at all possible, this should NOT load the GUI, but merely 
+</I>&gt;<i> generate a workable xorg.conf file so the user can get a desktop.
+</I>
+yes this can be done by calling sax2 in the following way:
+
+	sax2 -r -a
+
+Please note if there are multiple cards installed sax tries to activate
+them all together. Unfortunately the quality of the drivers isn't as
+good enough as this process would work in any case. According to this
+my suggestion would be to always configure only the primary chip even
+if there are multiple chips available. This can be done by calling sax2
+in the following way:
+
+	sax2 -r -c 0 -a
+
+&gt;<i> 2) Check for hardware changes and reconfigure if needed on post-install 
+</I>&gt;<i> bootups. This one should JUST check if something has changed, and if so 
+</I>&gt;<i> should reconfigure. The GUI should certainly only be involved IF there is a 
+</I>&gt;<i> change.
+</I>
+what exactly do you mean with hardware changes ? I assume
+Graphics card, Monitor, keyboard, mouse ? From my experience it is
+hard to track down the right action for hotplug devices. So I would
+not check for changes in Monitor,Keyboard and Mouse. I did that in
+the past and created more problems than solutions. To find out whether
+the graphics card has changed can be done by calling:
+
+	sax2 -p
+
+This prints out the PCI location and the name of the card. If
+something there has changed you could reinvoke sax2 with the option -r
+
+	sax2 -r
+
+Starts from scratch detecting the hardware etc, etc...
+
+&gt;<i> 3)  Configure advanced hardware like touchscreens by hand. This is the easy 
+</I>&gt;<i> one, I merely need to add a launch-button for sax2 into OLAD.
+</I>
+sax2 supports a profile batch mode (a very very simple language I wrote)
+which allows you to write a file and pass it to sax2 to for example
+create an InputDevice section for a touchscreen. You could have a look
+at /usr/share/sax/profile for details. Unfortunately dokumentation is
+rather bad because this mode was meant for debugging originally :-)
+
+&gt;<i> So the last remaining questions from me are whether sax2 can do 1 and 2
+</I>&gt;<i> and if so - what commandlines would I need ? I'll worry about
+</I>&gt;<i> the bootscripts :)
+</I>
+I think this is all feasible for you ;)
+
+&gt;<i> I did the X setup tools for OL4.0 myself, and enhanced them for the first 4.1 
+</I>&gt;<i> builds, but I am very willing to concede that you wrote by far the best X 
+</I>&gt;<i> config tool I have ever seen - hugely better than any of my sets of scripts, 
+</I>&gt;<i> hence my willingness to hack and tweak until it worked.
+</I>&gt;<i> Giving back the package to all slackware users as well - seems only fair to 
+</I>&gt;<i> me :)
+</I>
+Thank you very much for this very nice compliment. There aren't much
+people out in the world who are interested in a X configuration tool.
+It makes me feeling happy.
+
+&gt;<i> A.J.
+</I>&gt;<i> PS. Thanks for all your help in getting it up, I am actually mid-in a project 
+</I>&gt;<i> we are doing in collaboration with Novell and it was Novell who initially 
+</I>&gt;<i> sugested that I look at sax2 - I am happy I listened :)
+</I>
+I'm hopping you will be successfull in the project. If you have any
+question feel free to ask. I'm pretty sure you know there are bugs and
+if you search for a while you will find one :) So don't hesitate to
+contact me at any time 
+
+Best Regards
+Marcus
+-- 
+ Public Key available
+ -------------------------------------------------------
+ Marcus Sch&#228;fer (Res. &amp; Dev.)   SUSE LINUX Products GmbH
+ Tel: 0911-740 53 0             Maxfeldstrasse 5
+ FAX: 0911-740 53 479           D-90409 N&#252;rnberg
+ <A HREF="http://www.suse.de">http://www.suse.de</A>             Germany
+ -------------------------------------------------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000018.html">[Sax-devel] Sax2 cannot compile - ALL SOLVED
+</A></li>
+	<LI>Next message: <A HREF="000020.html">[Sax-devel] Sax2 cannot compile - ALL SOLVED
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

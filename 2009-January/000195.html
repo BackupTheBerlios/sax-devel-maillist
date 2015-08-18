@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1807 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm sysp sysp/script
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1807%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/script%20rpm%20sysp%20sysp/script&In-Reply-To=%3C200901091715.n09HF6KX024990%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000194.html">
+   <LINK REL="Next"  HREF="000196.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1807 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm sysp sysp/script</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1807%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09profile/script%20rpm%20sysp%20sysp/script&In-Reply-To=%3C200901091715.n09HF6KX024990%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1807 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/script rpm sysp sysp/script">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri Jan  9 18:15:06 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000194.html">[Sax-devel] r1806 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	api/data/cdb rpm
+</A></li>
+        <LI>Next message: <A HREF="000196.html">[Sax-devel] r1808 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	startup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#195">[ date ]</a>
+              <a href="thread.html#195">[ thread ]</a>
+              <a href="subject.html#195">[ subject ]</a>
+              <a href="author.html#195">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-01-09 18:15:05 +0100 (Fri, 09 Jan 2009)
+New Revision: 1807
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/Profile.pm
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/cfg.c
+   sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/script/memory.pl
+Log:
+- always use '-br' option when starting the Xserver; workarounds
+  configuration of Intel 845G machines (bnc #463288)
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/Profile.pm
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/Profile.pm	2009-01-09 17:14:12 UTC (rev 1806)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/profile/script/Profile.pm	2009-01-09 17:15:05 UTC (rev 1807)
+@@ -103,7 +103,7 @@
+ 	my $xorglogname = &quot;/var/log/Xorg.99.log&quot;;
+ 	if (($ENV{HW_UPDATE} == 1) || (! -f $xorglogname)) {
+ 		my $xc = ProfileCreatePreliminaryConfig();
+-		qx (Xorg -probeonly -logverbose 255 -xf86config $xc :99 &gt;/dev/null 2&gt;&amp;1);
++		qx (Xorg -probeonly -logverbose 255 -xf86config $xc -br :99 &gt;/dev/null 2&gt;&amp;1);
+ 	}
+ 	local $/;
+ 	open (FD, &quot;&lt;$xorglogname&quot;) ||
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-01-09 17:14:12 UTC (rev 1806)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2009-01-09 17:15:05 UTC (rev 1807)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Fri Jan  2 23:50:51 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- always use '-br' option when starting the Xserver; workarounds
++  configuration of Intel 845G machines (bnc #463288)
++
++-------------------------------------------------------------------
+ Fri Jan  2 23:25:42 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - added monitor entry for 'Samsung SyncMaster 206BW' (bnc #463320) 
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/cfg.c
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/cfg.c	2009-01-09 17:14:12 UTC (rev 1806)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/cfg.c	2009-01-09 17:15:05 UTC (rev 1807)
+@@ -336,14 +336,15 @@
+ 	str scr  ; sprintf(scr,&quot;:%d&quot;,disp);
+ 	str log  ; sprintf(log,&quot;/var/log/%s.%d.log&quot;,LOADER_NAME,disp);
+ 	str lgv  ; sprintf(lgv,&quot;255&quot;);
++	str bground; sprintf(bground,&quot;-br&quot;);
+ 	Display   *dpy  = NULL;
+ 	int spid    = 0;
+ 	int hasRR12 = False;
+ 	int major, minor;
+ 	string result = &quot;&quot;;
+ 	string proc = qx(
+-		XWRAPPER,STDOUT,7,&quot;%s %s %s %s %s %s %s&quot;,
+-		XW_LOG,BLANK,VERBOSE,lgv,CONFIG,file,scr
++		XWRAPPER,STDOUT,8,&quot;%s %s %s %s %s %s %s %s&quot;,
++		XW_LOG,BLANK,VERBOSE,lgv,CONFIG,file,bground,scr
+ 	);
+ 	spid = atoi(proc.c_str());
+ 	dpy = XOpenDisplay (scr);
+@@ -454,6 +455,7 @@
+ 	str scr  ; sprintf(scr,&quot;:%d&quot;,dpy);
+ 	str log  ; sprintf(log,&quot;/var/log/%s.%d.log&quot;,LOADER_NAME,dpy);
+ 	str lgv  ; sprintf(lgv,&quot;255&quot;);
++	str bground; sprintf(bground,&quot;-br&quot;);
+ 	MsgDetect *parse = NULL;
+ 	Display   *disp  = NULL;
+ 	int spid  = 0;
+@@ -461,8 +463,8 @@
+ 
+ 	if (access(log,R_OK) != 0) {
+ 		string proc = qx(
+-			XWRAPPER,STDOUT,7,&quot;%s %s %s %s %s %s %s&quot;,
+-			XW_LOG,BLANK,VERBOSE,lgv,CONFIG,file,scr
++			XWRAPPER,STDOUT,8,&quot;%s %s %s %s %s %s %s %s&quot;,
++			XW_LOG,BLANK,VERBOSE,lgv,CONFIG,file,bground,scr
+ 		);
+ 		disp = XOpenDisplay (scr);
+ 		if (disp) {
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/script/memory.pl
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/script/memory.pl	2009-01-09 17:14:12 UTC (rev 1806)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/sysp/script/memory.pl	2009-01-09 17:15:05 UTC (rev 1807)
+@@ -17,7 +17,7 @@
+ my $logs = &quot;/var/log/Xorg.99.log&quot;;
+ my $video;
+ if (! -f $logs) {
+-	my $param = &quot;-probeonly -logverbose 255 -verbose -xf86config $ARGV[0]&quot;;
++	my $param = &quot;-probeonly -logverbose 255 -verbose -xf86config $ARGV[0] -br&quot;;
+ 	qx (X $param :99 2&gt;&amp;1);
+ 	$code = $? &gt;&gt; 8;
+ }
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000194.html">[Sax-devel] r1806 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	api/data/cdb rpm
+</A></li>
+	<LI>Next message: <A HREF="000196.html">[Sax-devel] r1808 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	startup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#195">[ date ]</a>
+              <a href="thread.html#195">[ thread ]</a>
+              <a href="subject.html#195">[ subject ]</a>
+              <a href="author.html#195">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

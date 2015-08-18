@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1781 - in sax-head: libsax rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1781%20-%20in%20sax-head%3A%20libsax%20rpm&In-Reply-To=%3C200811261553.mAQFrvgX007566%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000169.html">
+   <LINK REL="Next"  HREF="000171.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1781 - in sax-head: libsax rpm</H1>
+    <B>marcus_schaefer at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1781%20-%20in%20sax-head%3A%20libsax%20rpm&In-Reply-To=%3C200811261553.mAQFrvgX007566%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1781 - in sax-head: libsax rpm">marcus_schaefer at mail.berlios.de
+       </A><BR>
+    <I>Wed Nov 26 16:53:57 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000169.html">[Sax-devel] r1780 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+        <LI>Next message: <A HREF="000171.html">[Sax-devel] r1782 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#170">[ date ]</a>
+              <a href="thread.html#170">[ thread ]</a>
+              <a href="subject.html#170">[ subject ]</a>
+              <a href="author.html#170">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: marcus_schaefer
+Date: 2008-11-26 16:53:53 +0100 (Wed, 26 Nov 2008)
+New Revision: 1781
+
+Modified:
+   sax-head/libsax/process.cpp
+   sax-head/rpm/sax2.changes
+Log:
+
+- fixed sysp processing on multiple devices (bnc #448209)
+
+
+
+Modified: sax-head/libsax/process.cpp
+===================================================================
+--- sax-head/libsax/process.cpp	2008-11-26 13:56:00 UTC (rev 1780)
++++ sax-head/libsax/process.cpp	2008-11-26 15:53:53 UTC (rev 1781)
+@@ -316,6 +316,9 @@
+ 	foreach (line,data) {
+ 		int id = 0;
+ //		QString line (in);
++		if (line.isEmpty()) {
++			continue;
++		}
+ 		QStringList tokens = QStringList::split ( &quot;=&gt;&quot;, line );
+ 		QString idstr = tokens.first();
+ 		QString data  = tokens.last();
+@@ -330,6 +333,7 @@
+ 		addID (id);
+ 		val = val.stripWhiteSpace();
+ 		key = key.stripWhiteSpace();
++		//printf (&quot;+++ %s %s\n&quot;,key.toLatin1().data(),val.toLatin1().data());
+ 		if (key == &quot;Vesa&quot;) {
+ 			vesa.append (val);
+ 			vesa.append (&quot;,&quot;);
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-11-26 13:56:00 UTC (rev 1780)
++++ sax-head/rpm/sax2.changes	2008-11-26 15:53:53 UTC (rev 1781)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Wed Nov 26 16:50:20 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">ms at suse.de</A>
++
++- fixed sysp processing on multiple devices (bnc #448209)
++
++-------------------------------------------------------------------
+ Wed Nov 26 14:54:24 CET 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - use 'vesa' driver for some POS Intel devices (bnc #448656)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000169.html">[Sax-devel] r1780 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+	<LI>Next message: <A HREF="000171.html">[Sax-devel] r1782 - in sax-head: rpm sysp/maps sysp/maps/arch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#170">[ date ]</a>
+              <a href="thread.html#170">[ thread ]</a>
+              <a href="subject.html#170">[ subject ]</a>
+              <a href="author.html#170">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

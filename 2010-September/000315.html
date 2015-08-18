@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1926 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1926%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09modules%20rpm&In-Reply-To=%3C20100916144652.CABB948106B%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1926 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1926%20-%20in%20sax-branches/SaX2-81-SuSE-11-1-Devel%3A%0A%09modules%20rpm&In-Reply-To=%3C20100916144652.CABB948106B%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1926 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	modules rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Thu Sep 16 16:46:52 CEST 2010</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#315">[ date ]</a>
+              <a href="thread.html#315">[ thread ]</a>
+              <a href="subject.html#315">[ subject ]</a>
+              <a href="author.html#315">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2010-09-16 16:46:52 +0200 (Thu, 16 Sep 2010)
+New Revision: 1926
+
+Modified:
+   sax-branches/SaX2-81-SuSE-11-1-Devel/modules/ImportAPI.pm
+   sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+Log:
+- modules/ImportAPI.pm
+  * avoid division by zero during hsync check due to truncated
+    modelines (bnc #609048)
+-- line, and those below, will be ignored--
+M    SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+M    SaX2-81-SuSE-11-1-Devel/modules/ImportAPI.pm
+
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/modules/ImportAPI.pm
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/modules/ImportAPI.pm	2010-06-22 15:59:26 UTC (rev 1925)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/modules/ImportAPI.pm	2010-09-16 14:46:52 UTC (rev 1926)
+@@ -1437,6 +1437,9 @@
+ 				my $dcf = $param[1]; $dcf = $dcf * 1e6;
+ 				my $hfl = $param[5]; 
+ 				my $vfl = $param[9];
++				if (($hfl == 0) || ($vfl == 0)) {
++					redo;
++				}
+ 				my $zf = int ($dcf/$hfl); 
+ 				my $rr = int ($zf/$vfl);
+ 				my $zf = int ($zf / 1e3) * 1e3;
+
+Modified: sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2010-06-22 15:59:26 UTC (rev 1925)
++++ sax-branches/SaX2-81-SuSE-11-1-Devel/rpm/sax2.changes	2010-09-16 14:46:52 UTC (rev 1926)
+@@ -1,4 +1,11 @@
+ -------------------------------------------------------------------
++Thu Sep 16 16:39:14 CEST 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- modules/ImportAPI.pm
++  * avoid division by zero during hsync check due to truncated
++    modelines (bnc #609048)
++
++-------------------------------------------------------------------
+ Tue Jun 22 17:58:01 CEST 2010 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - Input.map, &quot;BMC&quot; profile
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#315">[ date ]</a>
+              <a href="thread.html#315">[ thread ]</a>
+              <a href="subject.html#315">[ subject ]</a>
+              <a href="author.html#315">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

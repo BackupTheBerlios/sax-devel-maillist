@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1701 - in sax-head: api/data/cdb rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1701%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200809101320.m8ADKUoG023157%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000092.html">
+   <LINK REL="Next"  HREF="000094.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1701 - in sax-head: api/data/cdb rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1701%20-%20in%20sax-head%3A%20api/data/cdb%20rpm&In-Reply-To=%3C200809101320.m8ADKUoG023157%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1701 - in sax-head: api/data/cdb rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Wed Sep 10 15:20:30 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000092.html">[Sax-devel] r1700 - in sax-head: api/data/cdb rpm
+</A></li>
+        <LI>Next message: <A HREF="000094.html">[Sax-devel] r1702 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#93">[ date ]</a>
+              <a href="thread.html#93">[ thread ]</a>
+              <a href="subject.html#93">[ subject ]</a>
+              <a href="author.html#93">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-09-10 15:20:29 +0200 (Wed, 10 Sep 2008)
+New Revision: 1701
+
+Modified:
+   sax-head/api/data/cdb/Pens
+   sax-head/api/data/cdb/Tablets
+   sax-head/rpm/sax2.changes
+Log:
+- added Tablet PC support for HP Pavilion tx2000/tx2001 series
+  (Danny Kukawka &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">dkukawka at suse.de</A>&gt;)
+
+
+Modified: sax-head/api/data/cdb/Pens
+===================================================================
+--- sax-head/api/data/cdb/Pens	2008-09-10 13:18:09 UTC (rev 1700)
++++ sax-head/api/data/cdb/Pens	2008-09-10 13:20:29 UTC (rev 1701)
+@@ -389,9 +389,9 @@
+ }
+ 
+ #---------------------------------------------#
+-# TABLET PCs: HP Pavilion tx2500 Eraser (USB) #
++# TABLET PCs: HP Pavilion tx2000 Eraser (USB) #
+ #---------------------------------------------#
+-TABLET PCs:HP Pavilion tx2500 Eraser (USB) {
++TABLET PCs:HP Pavilion tx2000 Eraser (USB) {
+  Device              = /dev/input/by-id/usb-Tablet_ISD-V4-event-stylus
+  Option              = USB
+  TabletMode          = Absolute
+@@ -402,9 +402,9 @@
+ }
+ 
+ #---------------------------------------------#
+-# TABLET PCs: HP Pavilion tx2500 Stylus (USB) #
++# TABLET PCs: HP Pavilion tx2000 Stylus (USB) #
+ #---------------------------------------------#
+-TABLET PCs:HP Pavilion tx2500 Stylus (USB) {
++TABLET PCs:HP Pavilion tx2000 Stylus (USB) {
+  Device              = /dev/input/by-id/usb-Tablet_ISD-V4-event-stylus
+  Option              = USB
+  TabletMode          = Absolute
+@@ -415,9 +415,9 @@
+ }
+ 
+ #---------------------------------------------#
+-# TABLET PCs: HP Pavilion tx2500 Touch (USB)  #
++# TABLET PCs: HP Pavilion tx2000 Touch (USB)  #
+ #---------------------------------------------#
+-TABLET PCs:HP Pavilion tx2500 Touch (USB) {
++TABLET PCs:HP Pavilion tx2000 Touch (USB) {
+  Device              = /dev/input/by-id/usb-Tablet_ISD-V4-event-touch
+  Option              = USB
+  TabletMode          = Absolute
+
+Modified: sax-head/api/data/cdb/Tablets
+===================================================================
+--- sax-head/api/data/cdb/Tablets	2008-09-10 13:18:09 UTC (rev 1700)
++++ sax-head/api/data/cdb/Tablets	2008-09-10 13:20:29 UTC (rev 1701)
+@@ -194,6 +194,38 @@
+ }
+ 
+ #-----------------------------------------#
++# TABLET PCs: HP Pavilion tx2000 series   #
++#-----------------------------------------#
++TABLET PCs:HP Pavilion tx2000 series (USB) {
++ Driver           = wacom
++ Device           = /dev/input/by-id/usb-Tablet_ISD-V4-event-stylus
++ Option           = USB
++ SendCoreEvents   = on
++ TabletType       = cursor
++ TabletMode       = Absolute
++ RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ StylusLink       = HP Pavilion tx2000 Stylus (USB)
++ EraserLink       = HP Pavilion tx2000 Eraser (USB)
++ TouchLink        = HP Pavilion tx2000 Touch (USB) 
++}
++
++#-----------------------------------------#
++# TABLET PCs: HP Pavilion tx2100 series   #
++#-----------------------------------------#
++TABLET PCs:HP Pavilion tx2100 series (USB) {
++ Driver           = wacom
++ Device           = /dev/input/by-id/usb-Tablet_ISD-V4-event-stylus
++ Option           = USB
++ SendCoreEvents   = on
++ TabletType       = cursor
++ TabletMode       = Absolute
++ RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
++ StylusLink       = HP Pavilion tx2000 Stylus (USB)
++ EraserLink       = HP Pavilion tx2000 Eraser (USB)
++ TouchLink        = HP Pavilion tx2000 Touch (USB) 
++}
++
++#-----------------------------------------#
+ # TABLET PCs: HP Pavilion tx2500 series   #
+ #-----------------------------------------#
+ TABLET PCs:HP Pavilion tx2500 series (USB) {
+@@ -204,9 +236,9 @@
+  TabletType       = cursor
+  TabletMode       = Absolute
+  RawOption        = &quot;ForceDevice&quot; &quot;ISDV4&quot;
+- StylusLink       = HP Pavilion tx2500 Stylus (USB)
+- EraserLink       = HP Pavilion tx2500 Eraser (USB)
+- TouchLink        = HP Pavilion tx2500 Touch (USB) 
++ StylusLink       = HP Pavilion tx2000 Stylus (USB)
++ EraserLink       = HP Pavilion tx2000 Eraser (USB)
++ TouchLink        = HP Pavilion tx2000 Touch (USB) 
+ }
+ 
+ #----------------------------------#
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-09-10 13:18:09 UTC (rev 1700)
++++ sax-head/rpm/sax2.changes	2008-09-10 13:20:29 UTC (rev 1701)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Wed Sep 10 15:19:04 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- added Tablet PC support for HP Pavilion tx2000/tx2001 series
++  (Danny Kukawka &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">dkukawka at suse.de</A>&gt;)
++
++-------------------------------------------------------------------
+ Wed Sep 10 15:15:16 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - added Tablet PC support for  HP Pavilion tx2500 series
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000092.html">[Sax-devel] r1700 - in sax-head: api/data/cdb rpm
+</A></li>
+	<LI>Next message: <A HREF="000094.html">[Sax-devel] r1702 - in sax-head: api/data/cdb rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#93">[ date ]</a>
+              <a href="thread.html#93">[ thread ]</a>
+              <a href="subject.html#93">[ subject ]</a>
+              <a href="author.html#93">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

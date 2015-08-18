@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] Sax2 cannot compile - SOLVED - new problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile%20-%20SOLVED%20-%20new%20problem&In-Reply-To=%3C20060831131657.GA15689%40suse.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000014.html">
+   <LINK REL="Next"  HREF="000016.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] Sax2 cannot compile - SOLVED - new problem</H1>
+    <B>Marcus Sch&#228;fer</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20Sax2%20cannot%20compile%20-%20SOLVED%20-%20new%20problem&In-Reply-To=%3C20060831131657.GA15689%40suse.de%3E"
+       TITLE="[Sax-devel] Sax2 cannot compile - SOLVED - new problem">ms at suse.de
+       </A><BR>
+    <I>Thu Aug 31 15:16:57 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000014.html">[Sax-devel] Sax2 cannot compile - SOLVED - new problem
+</A></li>
+        <LI>Next message: <A HREF="000016.html">[Sax-devel] Sax2 cannot compile - SOLVED - new problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> Darnit :S
+</I>&gt;<i> I managed to get it to compile by redoing wlan.c (my version attached - I 
+</I>&gt;<i> basically just ripped out all the actial CODE leaving only valid function 
+</I>&gt;<i> headers) . This patch may be usefull to others. Since sax2 doesn't USE the 
+</I>&gt;<i> wlan features - this should do no harm, while allowing it to compile on more 
+</I>&gt;<i> machine.
+</I>
+fine good job, thanks for doing so
+
+&gt;<i> However, now after running I get this:
+</I>&gt;<i> bash-3.1# sax.sh
+</I>&gt;<i> SaX: initializing please wait...
+</I>&gt;<i> SaX: your current configuration will not be read in
+</I>&gt;<i> 
+</I>&gt;<i> Can't locate FBSet.pm in @INC (@INC 
+</I>&gt;<i> contains: /usr/share/sax/modules/detect /usr/share/sax/modules /usr/lib/perl5/5.8.8/i486-linux /usr/lib/perl5/5.8.8 /usr/lib/perl5/site_perl/5.8.8/i486-linux /usr/lib/perl5/site_perl/5.8.8 /usr/lib/perl5/site_perl/5.8.7 /usr/lib/perl5/site_perl/5.8.6 /usr/lib/perl5/site_perl .) 
+</I>&gt;<i> at /usr/share/sax/modules/AutoDetect.pm line 19.
+</I>&gt;<i> BEGIN failed--compilation aborted at /usr/share/sax/modules/AutoDetect.pm line 
+</I>&gt;<i> 19.
+</I>&gt;<i> Compilation failed in require at /usr/share/sax/init.pl line 18.
+</I>&gt;<i> BEGIN failed--compilation aborted at /usr/share/sax/init.pl line 18.
+</I>&gt;<i> 
+</I>&gt;<i> Some googling confirmed that a few other people have had this problem in the 
+</I>&gt;<i> past - but it seems that nobody has a solution yet. 
+</I>&gt;<i> 
+</I>&gt;<i> I haven't even TRIED to package it yet, this is still just a plain make 
+</I>&gt;<i> install, so presumably sax2 decided where to install the modules etc. - yet 
+</I>&gt;<i> it cannot find it now - any advice here ?
+</I>
+the problem is as long as you didn't install it into your system
+sax2 cannot work. The major reason for this are the perl modules.
+I'm using MakeMaker to create the Makefiles from the Makefile.PL
+input source. The modules are autoloaded and therefore it is needed
+that perl installs the modules into the perl distribution. With
+my system the location for e.g FBSet.pm is
+
+	/usr/lib/perl5/vendor_perl/5.8.8/i586-linux-thread-multi/FBSet.pm
+
+I you don't mind install the build or even better you can create a
+package set :-) This would be really great. Another solution is to
+add -- use lib &quot;&lt;path-to-local-build&gt;&quot;; -- whenever needed but this requires
+some places within sax to be changed. I think this is not an option.
+
+Regards
+Marcus
+-- 
+ Public Key available
+ -------------------------------------------------------
+ Marcus Sch&#228;fer (Res. &amp; Dev.)   SUSE LINUX Products GmbH
+ Tel: 0911-740 53 0             Maxfeldstrasse 5
+ FAX: 0911-740 53 479           D-90409 N&#252;rnberg
+ <A HREF="http://www.suse.de">http://www.suse.de</A>             Germany
+ -------------------------------------------------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000014.html">[Sax-devel] Sax2 cannot compile - SOLVED - new problem
+</A></li>
+	<LI>Next message: <A HREF="000016.html">[Sax-devel] Sax2 cannot compile - SOLVED - new problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

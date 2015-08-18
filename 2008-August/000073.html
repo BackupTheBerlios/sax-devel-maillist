@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1679 - in sax-head: . doc profile/driver rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-August/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1679%20-%20in%20sax-head%3A%20.%20doc%20profile/driver%20rpm&In-Reply-To=%3C200808050924.m759OeMa026674%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000072.html">
+   <LINK REL="Next"  HREF="000074.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1679 - in sax-head: . doc profile/driver rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1679%20-%20in%20sax-head%3A%20.%20doc%20profile/driver%20rpm&In-Reply-To=%3C200808050924.m759OeMa026674%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1679 - in sax-head: . doc profile/driver rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Tue Aug  5 11:24:40 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000072.html">[Sax-devel] r1678 - in sax-head: api/data/cdb	profile/automatic/input profile/automatic/monitor rpm	sysp/maps sysp/maps/arch
+</A></li>
+        <LI>Next message: <A HREF="000074.html">[Sax-devel] r1682 - in sax-head: api/tablet rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#73">[ date ]</a>
+              <a href="thread.html#73">[ thread ]</a>
+              <a href="subject.html#73">[ subject ]</a>
+              <a href="author.html#73">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-08-05 11:24:38 +0200 (Tue, 05 Aug 2008)
+New Revision: 1679
+
+Modified:
+   sax-head/doc/appendix-api.tex
+   sax-head/init.pl
+   sax-head/profile/driver/FireGL
+   sax-head/rpm/sax2.changes
+Log:
+- type1 module no longer available; obsoleted by freetype module
+  since some time
+
+
+Modified: sax-head/doc/appendix-api.tex
+===================================================================
+--- sax-head/doc/appendix-api.tex	2008-08-04 19:44:08 UTC (rev 1678)
++++ sax-head/doc/appendix-api.tex	2008-08-05 09:24:38 UTC (rev 1679)
+@@ -281,7 +281,7 @@
+ Path {
+  0 ServerFlags      =    AllowMouseOpenFail
+  0 FontPath         =    /usr/lib/X11/fonts/misc:unscaled
+- 0 ModuleLoad       =    dbe,type1,speedo,extmod,freetype
++ 0 ModuleLoad       =    dbe,freetype,extmod,glx
+ }
+ Layout {
+  0 Screen:Screen[0] =    &lt;none&gt; &lt;none&gt; &lt;none&gt; &lt;none&gt;
+
+Modified: sax-head/init.pl
+===================================================================
+--- sax-head/init.pl	2008-08-04 19:44:08 UTC (rev 1678)
++++ sax-head/init.pl	2008-08-05 09:24:38 UTC (rev 1679)
+@@ -176,7 +176,7 @@
+ 	#==========================================
+ 	# Module specification                     
+ 	#------------------------------------------
+-	$var{Module}{0}{Load}      = &quot;dbe,type1,freetype,extmod,glx&quot;;
++	$var{Module}{0}{Load}      = &quot;dbe,freetype,extmod,glx&quot;;
+ 
+ 	#==========================================
+ 	# ServerFlags specification                
+
+Modified: sax-head/profile/driver/FireGL
+===================================================================
+--- sax-head/profile/driver/FireGL	2008-08-04 19:44:08 UTC (rev 1678)
++++ sax-head/profile/driver/FireGL	2008-08-05 09:24:38 UTC (rev 1679)
+@@ -12,7 +12,7 @@
+ !remove Monitor -&gt; [X] -&gt; Modeline
+ 
+ Screen-&gt;[X]-&gt;DefaultDepth    = 24
+-Module-&gt;[X]-&gt;Load            = dbe,type1,freetype,extmod,glx,dri
++Module-&gt;[X]-&gt;Load            = dbe,freetype,extmod,glx,dri
+ Device-&gt;[X]-&gt;Raw-&gt;11-&gt;Option = &quot;Capabilities&quot; &quot;0x00000000&quot;
+ Device-&gt;[X]-&gt;Raw-&gt;12-&gt;Option = &quot;VideoOverlay&quot; &quot;on&quot;
+ Device-&gt;[X]-&gt;Raw-&gt;13-&gt;Option = &quot;OpenGLOverlay&quot; &quot;off&quot;
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2008-08-04 19:44:08 UTC (rev 1678)
++++ sax-head/rpm/sax2.changes	2008-08-05 09:24:38 UTC (rev 1679)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Tue Aug  5 11:23:01 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- type1 module no longer available; obsoleted by freetype module
++  since some time
++
++-------------------------------------------------------------------
+ Mon Aug  4 20:50:36 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - HP Preload:
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000072.html">[Sax-devel] r1678 - in sax-head: api/data/cdb	profile/automatic/input profile/automatic/monitor rpm	sysp/maps sysp/maps/arch
+</A></li>
+	<LI>Next message: <A HREF="000074.html">[Sax-devel] r1682 - in sax-head: api/tablet rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#73">[ date ]</a>
+              <a href="thread.html#73">[ thread ]</a>
+              <a href="subject.html#73">[ subject ]</a>
+              <a href="author.html#73">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

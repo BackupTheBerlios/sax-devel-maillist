@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1829 - in sax-head: profile/driver rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1829%20-%20in%20sax-head%3A%20profile/driver%20rpm&In-Reply-To=%3C200902131312.n1DDCvMh000481%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000219.html">
+   <LINK REL="Next"  HREF="000221.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1829 - in sax-head: profile/driver rpm</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1829%20-%20in%20sax-head%3A%20profile/driver%20rpm&In-Reply-To=%3C200902131312.n1DDCvMh000481%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1829 - in sax-head: profile/driver rpm">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Fri Feb 13 14:12:57 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000219.html">[Sax-devel] r1827 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp sysp/maps
+</A></li>
+        <LI>Next message: <A HREF="000221.html">[Sax-devel] r1830 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/driver rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#220">[ date ]</a>
+              <a href="thread.html#220">[ thread ]</a>
+              <a href="subject.html#220">[ subject ]</a>
+              <a href="author.html#220">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2009-02-13 14:12:54 +0100 (Fri, 13 Feb 2009)
+New Revision: 1829
+
+Modified:
+   sax-head/profile/driver/FireGL
+   sax-head/rpm/sax2.changes
+Log:
+- FireGL profile: set again BusID (bnc #473662)
+
+
+Modified: sax-head/profile/driver/FireGL
+===================================================================
+--- sax-head/profile/driver/FireGL	2009-02-06 13:33:25 UTC (rev 1828)
++++ sax-head/profile/driver/FireGL	2009-02-13 13:12:54 UTC (rev 1829)
+@@ -19,4 +19,3 @@
+ Device-&gt;[X]-&gt;Raw-&gt;14-&gt;Option = &quot;FSAAEnable&quot; &quot;off&quot;
+ Device-&gt;[X]-&gt;Raw-&gt;15-&gt;Option = &quot;FSAAScale&quot; &quot;0&quot;
+ Device-&gt;[X]-&gt;Raw-&gt;16-&gt;Option = &quot;XAANoOffscreenPixmaps&quot; &quot;true&quot;
+-Device-&gt;[X]-&gt;BusID = Single
+
+Modified: sax-head/rpm/sax2.changes
+===================================================================
+--- sax-head/rpm/sax2.changes	2009-02-06 13:33:25 UTC (rev 1828)
++++ sax-head/rpm/sax2.changes	2009-02-13 13:12:54 UTC (rev 1829)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Fri Feb 13 14:11:06 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- FireGL profile: set again BusID (bnc #473662)
++
++-------------------------------------------------------------------
+ Thu Feb  5 18:14:35 CET 2009 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - vboxmouse is no longer a standard mouse, i.e. add default mouse
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000219.html">[Sax-devel] r1827 - in sax-branches/SaX2-81-SuSE-11-1-Devel: rpm	sysp sysp/maps
+</A></li>
+	<LI>Next message: <A HREF="000221.html">[Sax-devel] r1830 - in sax-branches/SaX2-81-SuSE-11-1-Devel:	profile/driver rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#220">[ date ]</a>
+              <a href="thread.html#220">[ thread ]</a>
+              <a href="subject.html#220">[ subject ]</a>
+              <a href="author.html#220">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>

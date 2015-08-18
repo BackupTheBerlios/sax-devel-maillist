@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Sax-devel] r1656 - in sax-branches/SaX2-71-SuSE-10-1-Devel:	profile/automatic/input rpm rpm/spec sysp/maps
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/sax-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1656%20-%20in%20sax-branches/SaX2-71-SuSE-10-1-Devel%3A%0A%09profile/automatic/input%20rpm%20rpm/spec%20sysp/maps&In-Reply-To=%3C200807131323.m6DDNJnR024882%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000051.html">
+   <LINK REL="Next"  HREF="000053.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Sax-devel] r1656 - in sax-branches/SaX2-71-SuSE-10-1-Devel:	profile/automatic/input rpm rpm/spec sysp/maps</H1>
+    <B>sndirsch at mail.berlios.de</B> 
+    <A HREF="mailto:sax-devel%40lists.berlios.de?Subject=Re%3A%20%5BSax-devel%5D%20r1656%20-%20in%20sax-branches/SaX2-71-SuSE-10-1-Devel%3A%0A%09profile/automatic/input%20rpm%20rpm/spec%20sysp/maps&In-Reply-To=%3C200807131323.m6DDNJnR024882%40sheep.berlios.de%3E"
+       TITLE="[Sax-devel] r1656 - in sax-branches/SaX2-71-SuSE-10-1-Devel:	profile/automatic/input rpm rpm/spec sysp/maps">sndirsch at mail.berlios.de
+       </A><BR>
+    <I>Sun Jul 13 15:23:19 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000051.html">[Sax-devel] r1655 - in sax-head: api rpm
+</A></li>
+        <LI>Next message: <A HREF="000053.html">[Sax-devel] r1657 - in sax-head: api/data rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#52">[ date ]</a>
+              <a href="thread.html#52">[ thread ]</a>
+              <a href="subject.html#52">[ subject ]</a>
+              <a href="author.html#52">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: sndirsch
+Date: 2008-07-13 15:23:15 +0200 (Sun, 13 Jul 2008)
+New Revision: 1656
+
+Added:
+   sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input/elo
+Modified:
+   sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes
+   sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/spec/sax2.spec
+   sax-branches/SaX2-71-SuSE-10-1-Devel/sysp/maps/Input.map
+Log:
+- use evdev driver for elo touchscreen (bnc #408436)
+
+
+Added: sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input/elo
+===================================================================
+--- sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input/elo	2008-07-09 14:36:44 UTC (rev 1655)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/profile/automatic/input/elo	2008-07-13 13:23:15 UTC (rev 1656)
+@@ -0,0 +1,4 @@
++InputDevice -&gt; [X] -&gt; Identifier = Mouse [[X]]
++InputDevice -&gt; [X] -&gt; Driver = evdev
++InputDevice -&gt; [X] -&gt; Option -&gt; InputFashion = Mouse
++InputDevice -&gt; [X] -&gt; Option -&gt; Name = evdev;Touchscreen
+
+Modified: sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes
+===================================================================
+--- sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes	2008-07-09 14:36:44 UTC (rev 1655)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/sax2.changes	2008-07-13 13:23:15 UTC (rev 1656)
+@@ -1,4 +1,9 @@
+ -------------------------------------------------------------------
++Sun Jul 13 14:38:02 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
++
++- use evdev driver for elo touchscreen (bnc #408436) 
++
++-------------------------------------------------------------------
+ Wed Jul  2 20:11:01 CEST 2008 - <A HREF="https://lists.berlios.de/mailman/listinfo/sax-devel">sndirsch at suse.de</A>
+ 
+ - allow also Com2/Com3 for the serial touch configuration
+
+Modified: sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/spec/sax2.spec
+===================================================================
+--- sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/spec/sax2.spec	2008-07-09 14:36:44 UTC (rev 1655)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/rpm/spec/sax2.spec	2008-07-13 13:23:15 UTC (rev 1656)
+@@ -274,6 +274,15 @@
+ #-------------------------------------------------
+ %suse_update_desktop_file -i %name System SystemSetup
+ #=================================================
++# hwinfo data (bnc #408436)
++#-------------------------------------------------
++mkdir -p $RPM_BUILD_ROOT/var/lib/hardware/ids
++cat &gt; $RPM_BUILD_ROOT/var/lib/hardware/ids/sax2-ident &lt;&lt; EOF
++ vendor.id              usb 0x04e7
++&amp;device.id              usb 0x0030
++ +hwclass                mouse
++EOF
++#=================================================
+ # uninstall script stage:[previous]
+ #-------------------------------------------------
+ 
+@@ -282,6 +291,27 @@
+ if [ ! -d /var/cache/xfine ];then
+ 	mkdir -p /var/cache/xfine
+ fi
++
++%post -n sax2-ident
++if ls var/lib/hardware/ids/* &amp;&gt; /dev/null; then
++  &gt;  var/lib/hardware/hd.ids
++  for i in var/lib/hardware/ids/*; do
++    cat $i &gt;&gt; var/lib/hardware/hd.ids
++  done
++fi
++
++%postun -n sax2-ident
++if [ &quot;$1&quot; -eq 0 ]; then
++  if ls var/lib/hardware/ids/* &amp;&gt; /dev/null; then
++    &gt;  var/lib/hardware/hd.ids
++    for i in var/lib/hardware/ids/*; do
++      cat $i &gt;&gt; var/lib/hardware/hd.ids
++    done
++  else
++    rm -f var/lib/hardware/hd.ids
++  fi
++fi
++
+ #=================================================
+ # SaX files...      
+ #-------------------------------------------------
+@@ -456,6 +486,7 @@
+ %dir /usr/share/sax/api/data
+ %dir /usr/share/sax/sysp/maps
+ %dir /usr/share/sax/sysp
++%dir /var/lib/hardware
+ /usr/share/sax/sysp/maps/Identity.map
+ /usr/share/sax/sysp/maps/Keyboard.map
+ /usr/share/sax/sysp/maps/Vendor.map
+@@ -463,6 +494,7 @@
+ /usr/share/sax/sysp/maps/Driver.map
+ /usr/share/sax/api/data/cdb/*
+ /usr/share/sax/profile
++/var/lib/hardware/ids
+ #=================================================
+ # SaX-libsax file list...  
+ # ------------------------------------------------
+
+Modified: sax-branches/SaX2-71-SuSE-10-1-Devel/sysp/maps/Input.map
+===================================================================
+--- sax-branches/SaX2-71-SuSE-10-1-Devel/sysp/maps/Input.map	2008-07-09 14:36:44 UTC (rev 1655)
++++ sax-branches/SaX2-71-SuSE-10-1-Devel/sysp/maps/Input.map	2008-07-13 13:23:15 UTC (rev 1656)
+@@ -12,3 +12,4 @@
+ 0x0210 : 0x0003 : ibm-trackpoint
+ 0x0210 : 0x0018 : xen-mouse
+ 0x03f0 : 0x1126 : hp-mouse
++0x04e7 : 0x0030 : elo
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000051.html">[Sax-devel] r1655 - in sax-head: api rpm
+</A></li>
+	<LI>Next message: <A HREF="000053.html">[Sax-devel] r1657 - in sax-head: api/data rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#52">[ date ]</a>
+              <a href="thread.html#52">[ thread ]</a>
+              <a href="subject.html#52">[ subject ]</a>
+              <a href="author.html#52">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/sax-devel">More information about the Sax-devel
+mailing list</a><br>
+</body></html>
